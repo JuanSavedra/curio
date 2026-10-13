@@ -1,0 +1,172 @@
+﻿/*
+ * Animação de personagem do Curió. É ilustração, não easing de interface:
+ * aqui o pulinho e o bater de asas podem ir e voltar. Cada reação dura no máximo ~1,2s.
+ * Origens em unidades do viewBox (0 0 80 80).
+ */
+
+.curio {
+	overflow: visible;
+}
+
+.curio__ave,
+.curio__cabeca,
+.curio__asa,
+.curio__bico-baixo {
+	transform-box: view-box;
+}
+
+.curio__ave {
+	transform-origin: 38px 74px;
+}
+
+.curio__cabeca {
+	transform-origin: 44px 42px;
+}
+
+.curio__olho {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+.curio__bico-baixo {
+	transform-origin: 61px 31px;
+}
+
+/* ---------- Esperando: pisca e inclina a cabeça de vez em quando ---------- */
+
+.curio--esperando:not(.curio--parado) .curio__olho {
+	animation: curio-pisca 5.3s infinite;
+}
+
+.curio--esperando:not(.curio--parado) .curio__cabeca {
+	animation: curio-curioso 8.7s var(--ease-saida) infinite;
+}
+
+@keyframes curio-pisca {
+	0%,
+	93%,
+	100% {
+		transform: scaleY(1);
+	}
+	95% {
+		transform: scaleY(0.1);
+	}
+}
+
+@keyframes curio-curioso {
+	0%,
+	55%,
+	100% {
+		transform: rotate(0);
+	}
+	60%,
+	75% {
+		transform: rotate(9deg);
+	}
+}
+
+/* ---------- Feliz: pulinho e notas saindo do bico ---------- */
+
+.curio--feliz .curio__ave {
+	animation: curio-pula 700ms var(--ease-saida);
+}
+
+.curio--feliz .curio__bico-baixo,
+.curio--comemorando .curio__bico-baixo {
+	transform: rotate(16deg);
+	animation: curio-canta 900ms var(--ease-saida);
+}
+
+.curio__nota {
+	animation: curio-nota 1.1s var(--ease-saida) both;
+}
+
+.curio__nota--2 {
+	animation-delay: 250ms;
+}
+
+@keyframes curio-pula {
+	0%,
+	60%,
+	100% {
+		transform: translateY(0);
+	}
+	25% {
+		transform: translateY(-7px) scaleY(1.03);
+	}
+}
+
+@keyframes curio-canta {
+	0% {
+		transform: rotate(0);
+	}
+	30% {
+		transform: rotate(20deg);
+	}
+}
+
+@keyframes curio-nota {
+	from {
+		opacity: 0;
+		transform: translate(-6px, 8px);
+	}
+}
+
+/* ---------- Consolando: cabeça inclinada, olhar suave ---------- */
+
+.curio--consolando .curio__cabeca {
+	transform: rotate(-10deg);
+	animation: curio-inclina 600ms var(--ease-saida);
+}
+
+@keyframes curio-inclina {
+	from {
+		transform: rotate(0);
+	}
+}
+
+/* ---------- Comemorando: asas abertas, batendo, e canto ---------- */
+
+.curio--comemorando .curio__ave {
+	animation: curio-pula 700ms var(--ease-saida) 2;
+}
+
+.curio--comemorando .curio__asa {
+	transform-origin: 36px 44px;
+	animation: curio-bate-asa 300ms ease-in-out 4 alternate;
+}
+
+
+@keyframes curio-bate-asa {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(-16deg);
+	}
+}
+
+/* ---------- Movimento reduzido: só troca de expressão com fade ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.curio .curio__ave,
+	.curio .curio__olho,
+	.curio .curio__cabeca,
+	.curio .curio__asa,
+	.curio .curio__bico-baixo,
+	.curio .curio__nota {
+		animation: none;
+	}
+
+	.curio--feliz,
+	.curio--consolando,
+	.curio--comemorando {
+		animation: curio-aparece var(--dur-lenta) ease-out;
+	}
+}
+
+@keyframes curio-aparece {
+	from {
+		opacity: 0;
+	}
+}

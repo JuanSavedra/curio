@@ -220,7 +220,7 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 		<div className="feed" style={temaAtual ? corDoTema(temaAtual) : undefined} data-tem-tema={Boolean(temaAtual)}>
 			<header className="topo">
 				<h1 className="marca">
-					<Curio tamanho={34} />
+					<Curio tamanho={34} parado />
 					<span>Curiô</span>
 				</h1>
 
@@ -298,7 +298,7 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 				{status === 'pronto' && !pendentes.length && (
 					<section className="cena cena--fim" aria-labelledby="fim-titulo">
 						<div className="aviso">
-							<Curio humor="feliz" tamanho={80} />
+							<Curio humor="comemorando" tamanho={88} />
 							<h2 id="fim-titulo" className="fim__titulo aviso__titulo" tabIndex={-1}>
 								{filtro === 'tudo'
 									? 'Você já viu todas as perguntas que temos por agora.'

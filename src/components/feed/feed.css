@@ -487,49 +487,6 @@
 	}
 }
 
-/* ---------- Curió: animação de personagem ---------- */
-
-.curio {
-	overflow: visible;
-}
-
-.curio--feliz .curio__corpo {
-	transform-origin: 50% 100%;
-	animation: curio-pula 600ms var(--ease-saida) 1;
-}
-
-.curio--feliz .curio__notas {
-	animation: notas-sobem 900ms var(--ease-saida) both;
-}
-
-.curio--consolando .curio__cabeca {
-	transform-origin: 38px 30px;
-	transform: rotate(-8deg);
-	animation: curio-inclina var(--dur-lenta) var(--ease-saida);
-}
-
-@keyframes curio-pula {
-	30% {
-		transform: translateY(-5px);
-	}
-	60% {
-		transform: translateY(0);
-	}
-}
-
-@keyframes notas-sobem {
-	from {
-		opacity: 0;
-		transform: translate(-4px, 6px);
-	}
-}
-
-@keyframes curio-inclina {
-	from {
-		transform: rotate(0);
-	}
-}
-
 /* ---------- Avisos: falha e fim da fila ---------- */
 
 .aviso {
@@ -701,14 +658,8 @@
 	}
 
 	.alt[data-estado='certa'] .alt__marca,
-	.alt[data-estado='errada'] .alt__marca,
-	.curio--feliz .curio__corpo,
-	.curio--consolando .curio__cabeca {
+	.alt[data-estado='errada'] .alt__marca {
 		animation: none;
-	}
-
-	.curio--feliz .curio__notas {
-		animation: aparece var(--dur-lenta) ease-out both;
 	}
 
 	.osso {

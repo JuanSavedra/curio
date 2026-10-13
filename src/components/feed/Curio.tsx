@@ -1,57 +1,137 @@
-export type Humor = 'neutro' | 'feliz' | 'consolando';
+import { useId } from 'react';
+import './curio.css';
+
+export type Humor = 'esperando' | 'feliz' | 'consolando' | 'comemorando';
 
 interface Props {
 	humor?: Humor;
 	tamanho?: number;
+	/** Sem animação de espera (para o logo, por exemplo) */
+	parado?: boolean;
 	className?: string;
 }
 
+// Silhuetas compartilhadas: desenhadas uma vez com contorno por baixo e outra vez por cima,
+// para o contorno aparecer só na borda de fora.
+const CAUDA = 'M23 47 8.5 61.5c-1.6 1.6-.4 4 1.8 3.2L28 56z';
+const BICO = 'M60.5 22.5c6.5.3 11.5 3 13.8 6.6L61 31c-1.3-2.6-1.4-5.6-.5-8.5z';
+
 /**
- * O Curió, versão 1: macho de cabeça e dorso escuros, peito castanho-ferrugem
- * e a pintinha branca na asa. É decorativo; o texto ao lado sempre diz o resultado.
+ * O Curió: macho de cabeça e dorso escuros, peito castanho-ferrugem,
+ * pintinha branca na asa e bico grosso. É decorativo; o texto ao lado sempre diz o resultado.
  */
-export function Curio({ humor = 'neutro', tamanho = 56, className = '' }: Props) {
+export function Curio({ humor = 'esperando', tamanho = 56, parado = false, className = '' }: Props) {
+	const alegre = humor === 'feliz' || humor === 'comemorando';
+	const idPeito = `curio-peito-${useId().replace(/:/g, '')}`;
 	return (
 		<svg
-			className={`curio curio--${humor} ${className}`}
+			className={`curio curio--${humor}${parado ? ' curio--parado' : ''} ${className}`}
 			width={tamanho}
 			height={tamanho}
-			viewBox="0 0 64 64"
+			viewBox="0 0 80 80"
 			aria-hidden="true"
 			focusable="false"
 		>
-			{humor === 'feliz' && (
-				<g className="curio__notas" fill="var(--ferrugem)">
-					<path d="M55 14v-8.5l5-1.2v7.2" fill="none" stroke="var(--ferrugem)" strokeWidth="1.6" strokeLinecap="round" />
-					<ellipse cx="53.6" cy="14.2" rx="2.2" ry="1.7" />
-					<ellipse cx="58.6" cy="11.6" rx="2.2" ry="1.7" />
-				</g>
-			)}
-			<g className="curio__corpo">
-				<path d="M15 41 3 51.5c-.9.8-.2 2.2 1 1.9L18 48z" fill="var(--plumagem)" />
-				<ellipse cx="30" cy="39" rx="20" ry="17" fill="var(--plumagem)" />
-				<ellipse cx="36.5" cy="44" rx="13" ry="10.5" fill="var(--ferrugem)" />
-				<path d="M13 36c3-9 13-12 21-8-2 7-9 13-19 12-1.5-.2-2.4-2.2-2-4z" fill="oklch(0.33 0.02 40)" />
-				<circle cx="22" cy="35.5" r="1.8" fill="var(--ninho)" />
-				<g className="curio__cabeca">
-					<circle cx="38" cy="22" r="13" fill="var(--plumagem)" />
-					<path d="M49.5 18.5c4 .8 7.5 2.5 9 5-1.5 2.6-5 4-9 4.5-1.5-3-1.5-6.5 0-9.5z" fill="oklch(0.42 0.02 50)" />
-					<path d="M50 23.2h7.5" stroke="var(--plumagem)" strokeWidth="1" strokeLinecap="round" />
-					{humor === 'neutro' && (
-						<g>
-							<circle cx="42.5" cy="19.5" r="3" fill="var(--ninho)" />
-							<circle cx="43.3" cy="19.6" r="1.8" fill="var(--plumagem)" />
-							<circle cx="43.9" cy="18.9" r="0.6" fill="var(--ninho)" />
+			<defs>
+				<radialGradient id={idPeito} cx="0.6" cy="0.35" r="0.75">
+					<stop offset="0" stopColor="var(--curio-peito-luz)" />
+					<stop offset="0.7" stopColor="var(--ferrugem)" />
+				</radialGradient>
+			</defs>
+			{alegre && (
+				<g className="curio__notas" fill="var(--ferrugem)" stroke="var(--ferrugem)" strokeWidth="1.6" strokeLinecap="round">
+					<g className="curio__nota">
+						<path d="M71 13V5.5l5-1.2V11" fill="none" />
+						<ellipse cx="69.6" cy="13.2" rx="2.3" ry="1.8" stroke="none" />
+						<ellipse cx="74.6" cy="11" rx="2.3" ry="1.8" stroke="none" />
+					</g>
+					{humor === 'comemorando' && (
+						<g className="curio__nota curio__nota--2">
+							<path d="M61 10V3.5" fill="none" />
+							<ellipse cx="59.4" cy="10.3" rx="2.2" ry="1.7" stroke="none" />
 						</g>
 					)}
-					{humor === 'feliz' && (
-						<path d="M39.6 20.6q2.9-3.6 5.8 0" fill="none" stroke="var(--ninho)" strokeWidth="1.8" strokeLinecap="round" />
-					)}
-					{humor === 'consolando' && (
-						<path d="M39.6 18.8q2.9 2.8 5.8 0" fill="none" stroke="var(--ninho)" strokeWidth="1.8" strokeLinecap="round" />
+				</g>
+			)}
+
+			<g className="curio__ave">
+				{/* Contorno */}
+				<g fill="var(--curio-contorno)" stroke="var(--curio-contorno)" strokeWidth="2.6" strokeLinejoin="round">
+					<path d={CAUDA} />
+					<ellipse cx="38" cy="50" rx="24" ry="20" />
+					<circle cx="47" cy="29" r="16" />
+				</g>
+
+				<path d={CAUDA} fill="var(--plumagem)" />
+				<path d="M12 59.5 18 54" stroke="var(--curio-luz)" strokeWidth="1.4" strokeLinecap="round" />
+
+				{/* Corpo e peito */}
+				<ellipse cx="38" cy="50" rx="24" ry="20" fill="var(--plumagem)" />
+				<ellipse cx="45.5" cy="55" rx="15.5" ry="13" fill={`url(#${idPeito})`} />
+
+				{/* Asa da frente */}
+				<g className="curio__asa">
+					{humor === 'comemorando' ? (
+						<>
+							{/* Asa erguida, com as penas da ponta abertas */}
+							<path
+								d="M37 45C31 37 25 28 18 16.5c-1.2-2-3.8-1.2-3.5 1.1.5 4.5 1.7 8.6 3.4 12.4-2.6-1-5.3-1.3-7.6-.6-1.9.6-1.9 3-.1 3.8 2.3 1 4.4 2.4 6.2 4.1-2 .3-3.8 1-5.2 2.1-1.5 1.2-.8 3.4 1.1 3.5C20 43.5 28.5 46.5 37 45z"
+								fill="var(--curio-luz)"
+								stroke="var(--curio-contorno)"
+								strokeWidth="1.3"
+								strokeLinejoin="round"
+							/>
+							<path d="M21 31.5c4 3.5 8.5 7.5 12 11.5M16.5 38.5c5.5 1.5 11 3.5 16 5.5" stroke="var(--plumagem)" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+							<circle cx="27" cy="37.5" r="2.2" fill="var(--ninho)" />
+						</>
+					) : (
+						<>
+							<path d="M16.5 46c3-11 17-14.5 27.5-8.5-1.8 9.5-10.5 17.5-22 17.5-4.3 0-6.5-4.5-5.5-9z" fill="var(--curio-luz)" />
+							<path d="M20 51.5c5 .5 11-1.5 15.5-6M19 46.5c4.5-.5 9.5-2.5 13-6" stroke="var(--plumagem)" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+							<circle cx="27.5" cy="44.5" r="2.2" fill="var(--ninho)" />
+						</>
 					)}
 				</g>
-				<path d="M28 55.5v4M35 55.5v4" stroke="oklch(0.42 0.02 50)" strokeWidth="2" strokeLinecap="round" />
+
+				{/* Pés */}
+				<path d="M33 69.5v4.5M43 69.5v4.5M30.5 74h5M40.5 74h5" stroke="var(--curio-bico)" strokeWidth="2" strokeLinecap="round" />
+
+				{/* Cabeça */}
+				<g className="curio__cabeca">
+					<circle cx="47" cy="29" r="16" fill="var(--plumagem)" />
+					<path d="M33.5 24.5c2-6.5 8-11 15-11.5-5.5 2.5-9.5 7-11 12.5z" fill="var(--curio-luz)" />
+
+					<path d={BICO} fill="var(--curio-bico)" stroke="var(--curio-contorno)" strokeWidth="1.3" strokeLinejoin="round" />
+					<path d="M63 25c3.5.3 6.5 1.5 8.5 3.3" stroke="var(--curio-bico-luz)" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+					<path
+						className="curio__bico-baixo"
+						d="M61 31l13.3-1.9c-1.8 3-6.3 5-12 4.6z"
+						fill="var(--curio-bico)"
+						stroke="var(--curio-contorno)"
+						strokeWidth="1.3"
+						strokeLinejoin="round"
+					/>
+
+					<g className="curio__olho">
+						{humor === 'esperando' && (
+							<>
+								<circle cx="53.5" cy="25.5" r="3.8" fill="var(--ninho)" />
+								<circle cx="54.4" cy="25.8" r="2.4" fill="var(--curio-contorno)" />
+								<circle cx="55.3" cy="24.6" r="0.9" fill="var(--ninho)" />
+							</>
+						)}
+						{alegre && <path d="M49.8 27.2q3.7-5.2 7.4 0" fill="none" stroke="var(--ninho)" strokeWidth="2.3" strokeLinecap="round" />}
+						{humor === 'consolando' && (
+							<>
+								{/* Olhar para baixo e sobrancelha erguida do lado de dentro: compaixão */}
+								<circle cx="53.5" cy="25.8" r="4.1" fill="var(--ninho)" />
+								<circle cx="54" cy="27" r="2" fill="var(--curio-contorno)" />
+								<circle cx="54.7" cy="26.2" r="0.7" fill="var(--ninho)" />
+								<path d="M49.6 21.6q3.5-.2 7.2-3" fill="none" stroke="var(--curio-bico-luz)" strokeWidth="1.8" strokeLinecap="round" />
+							</>
+						)}
+					</g>
+				</g>
 			</g>
 		</svg>
 	);
