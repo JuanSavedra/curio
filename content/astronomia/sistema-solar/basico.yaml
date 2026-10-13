@@ -1,0 +1,99 @@
+titulo: Sistema Solar
+perguntas:
+  - id: luas-de-marte
+    enunciado: Quantas luas tem Marte?
+    alternativas:
+      - Nenhuma
+      - Duas
+      - Quatro
+      - Doze
+    resposta: Duas
+    explicacao: >-
+      Marte tem duas luas pequenininhas, Fobos e Deimos, nomes gregos para "medo" e "pavor".
+      Fobos está se aproximando de Marte aos pouquinhos e, daqui a uns 50 milhões de anos,
+      deve se despedaçar e virar um anel em volta do planeta.
+
+  - id: dia-de-venus
+    enunciado: Em Vênus, o que dura mais tempo, um dia ou um ano?
+    alternativas:
+      - O dia
+      - O ano
+      - Os dois duram o mesmo
+    resposta: O dia
+    explicacao: >-
+      Vênus gira tão devagar que uma volta em torno de si leva 243 dias terrestres, mais do que
+      os 225 dias da volta completa em torno do Sol. E tem mais: ele gira ao contrário, então
+      lá o Sol nasce a oeste.
+
+  - id: planeta-mais-quente
+    enunciado: Qual é o planeta mais quente do Sistema Solar?
+    alternativas:
+      - Mercúrio
+      - Vênus
+      - Marte
+      - Júpiter
+    resposta: Vênus
+    explicacao: >-
+      Mercúrio fica mais perto do Sol, mas quase não tem atmosfera e perde o calor à noite.
+      Vênus é coberto por uma camada grossa de gás carbônico que prende o calor como uma estufa,
+      e a temperatura passa de 460 °C, quente o bastante para derreter chumbo.
+
+  - id: luz-do-sol
+    enunciado: Quanto tempo a luz do Sol leva para chegar até a Terra?
+    alternativas:
+      - Cerca de 8 segundos
+      - Cerca de 8 minutos
+      - Cerca de 8 horas
+      - Um dia inteiro
+    resposta: Cerca de 8 minutos
+    explicacao: >-
+      A luz viaja a quase 300 mil quilômetros por segundo e leva uns 8 minutos e 20 segundos
+      para cruzar os 150 milhões de quilômetros até aqui. Ou seja, o Sol que você vê no céu
+      é o Sol de 8 minutos atrás.
+
+  - id: saturno-flutua
+    enunciado: Se existisse uma banheira gigante o bastante, qual destes planetas flutuaria nela?
+    alternativas:
+      - Terra
+      - Marte
+      - Saturno
+      - Netuno
+    resposta: Saturno
+    explicacao: >-
+      Saturno é feito quase todo de hidrogênio e hélio, e sua densidade média é menor que a
+      da água. Ele é enorme, mas, comparado ao tamanho, é "levinho" como uma boia.
+
+  - id: pegadas-na-lua
+    enunciado: As pegadas dos astronautas da Apollo continuam na Lua até hoje. Por quê?
+    alternativas:
+      - Lá não há vento nem chuva
+      - O solo da Lua é magnético
+      - A gravidade da Lua prende a poeira
+    resposta: Lá não há vento nem chuva
+    explicacao: >-
+      Sem atmosfera, não há vento nem água para apagar nada. As pegadas só vão sumindo
+      muito devagar, com o impacto de micrometeoritos, e devem durar milhões de anos.
+
+  - id: grande-mancha
+    enunciado: O que é a Grande Mancha Vermelha de Júpiter?
+    alternativas:
+      - Um vulcão
+      - Uma tempestade
+      - Um oceano
+      - Uma cratera
+    resposta: Uma tempestade
+    explicacao: >-
+      É uma tempestade gigante, com ventos de mais de 400 km/h, observada sem parar desde
+      o século 19. Ela vem encolhendo, mas ainda é maior que a Terra inteira.
+
+  - id: tamanho-do-sol
+    enunciado: Quantas Terras caberiam dentro do Sol?
+    alternativas:
+      - Cerca de 100
+      - Cerca de 1.300
+      - Cerca de 1,3 milhão
+      - Cerca de 1 bilhão
+    resposta: Cerca de 1,3 milhão
+    explicacao: >-
+      O diâmetro do Sol é uns 109 vezes o da Terra, e o volume cresce ao cubo: dá cerca de
+      1,3 milhão de Terras. Mesmo assim, o Sol é uma estrela de tamanho médio.

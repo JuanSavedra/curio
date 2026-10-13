@@ -36,7 +36,19 @@ Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/s
 
 ## Status
 
-O template Astro + React foi criado e as regras de produto e design (PRODUCT.md e DESIGN.md seed) foram definidas. **Próximo passo:** `impeccable shape` da primeira tela (o feed de perguntas).
+Fases de criação da interface:
+
+1. ✅ **Fundação visual:** tokens em `src/styles/tokens.css` (paleta OKLCH com contraste AA verificado, fonte Parkinsans servida pelo próprio site, escala, espaço, movimento).
+2. ✅ **Feed de perguntas** (`src/components/feed/`): feed misto com filtro por tema, uma carta por tela com encaixe, palco do Curió, explicação, atalhos de teclado. Três decks de exemplo em `content/`.
+3. **O Curió:** v1 em SVG com 3 reações. Falta a versão caprichada.
+4. **Celebrações** (`animate`): penas, canto, sequência de dias.
+5. **Temas e progresso:** tela de temas e tela de tema concluído.
+6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
+7. **Registro:** `impeccable document` para tirar o DESIGN.md do modo seed.
+
+**Próximo passo:** fase 3 ou 4, conforme a preferência do usuário.
+
+Conteúdo: use `$...$` (KaTeX) só para fórmulas de verdade (frações, raízes, potências, π). Números e sequências vão como texto comum.
 
 Atualize esta seção quando uma etapa terminar.
 

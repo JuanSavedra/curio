@@ -1,0 +1,108 @@
+/*
+ * Tokens do Curiô ("O Ninho Cantante").
+ * Primitivos primeiro, papéis semânticos depois. Contrastes verificados (WCAG AA).
+ */
+:root {
+	color-scheme: light;
+
+	/* Neutros: todos tingidos de ferrugem (The Plumage Rule) */
+	--creme: oklch(0.975 0.008 55);
+	--ninho: oklch(0.99 0.005 60);
+	--penugem: oklch(0.945 0.016 55);
+	--linha: oklch(0.88 0.02 50);
+	--linha-forte: oklch(0.8 0.03 50);
+	--plumagem: oklch(0.25 0.02 40);
+	--plumagem-suave: oklch(0.45 0.025 45);
+
+	/* Marca: o peito castanho do curió */
+	--ferrugem: oklch(0.53 0.14 42);
+	--ferrugem-forte: oklch(0.47 0.13 40);
+	--ferrugem-clara: oklch(0.93 0.035 50);
+
+	/* Estados de resposta */
+	--acerto: oklch(0.52 0.12 155);
+	--acerto-fundo: oklch(0.94 0.045 155);
+	--acerto-tinta: oklch(0.4 0.1 155);
+	--erro: oklch(0.58 0.14 18);
+	--erro-fundo: oklch(0.945 0.025 18);
+	--erro-tinta: oklch(0.46 0.13 18);
+
+	/*
+	 * Temas: mesma luminosidade (0,8) e croma próximo, para nenhum gritar mais.
+	 * "tinta" é a versão escura para texto sobre fundo claro.
+	 */
+	--astronomia: oklch(0.8 0.1 275);
+	--astronomia-tinta: oklch(0.46 0.13 275);
+	--astronomia-fundo: oklch(0.955 0.018 275);
+	--matematica: oklch(0.8 0.105 240);
+	--matematica-tinta: oklch(0.46 0.105 240);
+	--matematica-fundo: oklch(0.955 0.018 240);
+	--ciencias: oklch(0.8 0.105 200);
+	--ciencias-tinta: oklch(0.46 0.075 200);
+	--ciencias-fundo: oklch(0.955 0.022 200);
+	--logica: oklch(0.8 0.105 310);
+	--logica-tinta: oklch(0.46 0.13 310);
+	--logica-fundo: oklch(0.955 0.022 310);
+	--historia: oklch(0.8 0.105 80);
+	--historia-tinta: oklch(0.46 0.095 80);
+	--historia-fundo: oklch(0.955 0.025 80);
+	--geografia: oklch(0.8 0.105 125);
+	--geografia-tinta: oklch(0.46 0.115 125);
+	--geografia-fundo: oklch(0.955 0.025 125);
+	--linguagem: oklch(0.8 0.105 350);
+	--linguagem-tinta: oklch(0.46 0.13 350);
+	--linguagem-fundo: oklch(0.955 0.022 350);
+
+	/* Papéis semânticos */
+	--cor-fundo: var(--creme);
+	--cor-superficie: var(--ninho);
+	--cor-painel: var(--penugem);
+	--cor-texto: var(--plumagem);
+	--cor-texto-suave: var(--plumagem-suave);
+	--cor-borda: var(--linha);
+	--cor-borda-forte: var(--linha-forte);
+	--cor-acao: var(--ferrugem);
+	--cor-acao-hover: var(--ferrugem-forte);
+	--cor-acao-texto: var(--ninho);
+	--cor-foco: var(--ferrugem);
+
+	/* Tipografia: uma família só (The One Voice Rule), escala fixa ~1,2 */
+	--fonte: 'Parkinsans Variable', 'Segoe UI', system-ui, sans-serif;
+	--texto-xs: 0.8125rem;
+	--texto-sm: 0.9375rem;
+	--texto-base: 1.0625rem;
+	--texto-lg: 1.25rem;
+	--texto-xl: 1.5rem;
+	--texto-2xl: 1.875rem;
+	--peso-normal: 400;
+	--peso-medio: 500;
+	--peso-forte: 650;
+	--peso-titulo: 750;
+
+	/* Espaço (base 4px) */
+	--esp-3xs: 0.25rem;
+	--esp-2xs: 0.5rem;
+	--esp-xs: 0.75rem;
+	--esp-sm: 1rem;
+	--esp-md: 1.5rem;
+	--esp-lg: 2rem;
+	--esp-xl: 3rem;
+	--esp-2xl: 4rem;
+
+	/* Forma */
+	--raio-carta: 1.75rem;
+	--raio-alt: 1.125rem;
+	--raio-pilula: 999px;
+
+	/* Elevação: sombras quentes, que só crescem como resposta (The Soft Lift Rule) */
+	--sombra-repouso: 0 1px 0 var(--linha);
+	--sombra-carta: 0 1px 0 var(--linha), 0 12px 32px -20px oklch(0.4 0.08 45 / 0.35);
+	--sombra-levanta: 0 1px 0 var(--linha), 0 10px 20px -10px oklch(0.4 0.09 45 / 0.35);
+
+	/* Movimento */
+	--ease-saida: cubic-bezier(0.25, 1, 0.5, 1);
+	--ease-saida-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--dur-rapida: 150ms;
+	--dur-media: 220ms;
+	--dur-lenta: 400ms;
+}

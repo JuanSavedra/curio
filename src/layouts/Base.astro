@@ -1,0 +1,28 @@
+---
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+
+interface Props {
+	titulo: string;
+	descricao: string;
+}
+
+const { titulo, descricao } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content={descricao} />
+		<meta name="theme-color" content="#fbf5f2" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{titulo}</title>
+	</head>
+	<body>
+		<a class="pular-link" href="#perguntas">Ir para as perguntas</a>
+		<slot />
+	</body>
+</html>
