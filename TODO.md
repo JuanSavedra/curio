@@ -25,7 +25,8 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 
 ### Conteúdo
 - [ ] Decks para os 4 temas que ainda não têm perguntas: Ciências, História, Geografia, Linguagem.
-- [ ] Guia curto de como escrever uma pergunta e uma explicação (tom, tamanho, quando usar fórmula).
+- [ ] Guia curto de como escrever uma pergunta e uma explicação (tom, tamanho, quando usar fórmula). Limites para todas as cartas terem o mesmo desenho: pergunta com até uns 80 caracteres (4 linhas no celular), alternativa com até uma linha e explicação com até uns 200 caracteres (cabe na carta do computador sem ela crescer).
+- [ ] Aviso no build quando uma pergunta, alternativa ou explicação passar do limite de tamanho.
 - [ ] Revisão de fatos de todos os decks.
 
 ### Fase 6: ninho à noite e acabamento

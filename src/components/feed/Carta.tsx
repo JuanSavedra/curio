@@ -67,29 +67,6 @@ export function Carta({ pergunta, indice, escolha, saudar, ultima, onResponder, 
 				</header>
 
 				<div className="carta__corpo">
-					{/* Palco do Curió: ele espera aqui e, depois da resposta, reage com a explicação */}
-					<div role="status" aria-live="polite" className="palco">
-						{respondida ? (
-							<div className="resultado" data-acertou={acertou} ref={resultadoRef}>
-								<div className="resultado__linha">
-									<Curio humor={acertou ? 'feliz' : 'consolando'} tamanho={60} />
-									<p className="resultado__titulo">
-										{acertou ? <IconeCerto /> : <IconeQuase tamanho={18} />}
-										<span>{acertou ? textoAcerto(pergunta.id) : textoErro(pergunta.id, pergunta.correta)}</span>
-									</p>
-								</div>
-								<p className="resultado__explicacao" dangerouslySetInnerHTML={{ __html: pergunta.explicacao }} />
-							</div>
-						) : (
-							<div className="espera">
-								<Curio tamanho={saudar ? 52 : 44} />
-								{saudar && (
-									<p className="fala">Oi! Eu sou o Curió. Responda o que souber. O que não souber, a gente descobre junto.</p>
-								)}
-							</div>
-						)}
-					</div>
-
 					<ol className="alternativas" aria-label="Alternativas">
 						{pergunta.alternativas.map((alternativa, i) => {
 							const estado = estadoDa(i);
@@ -114,6 +91,29 @@ export function Carta({ pergunta, indice, escolha, saudar, ultima, onResponder, 
 							);
 						})}
 					</ol>
+
+					{/* Palco do Curió, sempre logo abaixo das alternativas: ele espera aqui e depois reage com a explicação */}
+					<div role="status" aria-live="polite" className="palco">
+						{respondida ? (
+							<div className="resultado" data-acertou={acertou} ref={resultadoRef}>
+								<div className="resultado__linha">
+									<Curio humor={acertou ? 'feliz' : 'consolando'} tamanho={60} />
+									<p className="resultado__titulo">
+										{acertou ? <IconeCerto /> : <IconeQuase tamanho={18} />}
+										<span>{acertou ? textoAcerto(pergunta.id) : textoErro(pergunta.id, pergunta.correta)}</span>
+									</p>
+								</div>
+								<p className="resultado__explicacao" dangerouslySetInnerHTML={{ __html: pergunta.explicacao }} />
+							</div>
+						) : (
+							<div className="espera">
+								<Curio tamanho={saudar ? 52 : 44} />
+								{saudar && (
+									<p className="fala">Oi! Eu sou o Curió. Responda o que souber. O que não souber, a gente descobre junto.</p>
+								)}
+							</div>
+						)}
+					</div>
 				</div>
 
 				<footer className="carta__pe">

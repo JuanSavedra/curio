@@ -47,7 +47,7 @@ perguntas:
       $1 = 0{,}999\ldots$ São dois jeitos diferentes de escrever o mesmo número.
 
   - id: aniversario
-    enunciado: Numa sala com 23 pessoas, qual a chance de duas delas fazerem aniversário no mesmo dia?
+    enunciado: Numa sala com 23 pessoas, qual a chance de duas terem o mesmo aniversário?
     alternativas:
       - Menos de 10%
       - Cerca de 25%

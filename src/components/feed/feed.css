@@ -164,10 +164,16 @@
 	box-shadow: var(--sombra-carta);
 }
 
+/*
+ * Altura mínima para perguntas de até 4 linhas (3 no computador):
+ * assim a primeira alternativa começa sempre no mesmo lugar em todas as cartas.
+ */
 .carta__topo {
 	position: relative;
 	display: grid;
+	align-content: start;
 	gap: var(--esp-xs);
+	min-height: 13.25rem;
 	padding: var(--esp-md) var(--esp-md) var(--esp-lg);
 	background: var(--tema);
 }
@@ -237,7 +243,7 @@
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	justify-content: flex-end;
+	padding-top: var(--esp-2xs);
 }
 
 .espera {
@@ -589,24 +595,18 @@
 	}
 
 	.cena {
-		padding: var(--esp-md) var(--esp-lg) var(--esp-xl);
+		padding: var(--esp-xs) var(--esp-lg) var(--esp-lg);
 	}
 
+	/* A carta ocupa a altura da tela, como no celular: todas do mesmo tamanho */
 	.carta {
-		flex: none;
 		width: min(36rem, 100%);
-		margin: auto;
-	}
-
-	/* Altura estável: a explicação ocupa o palco sem a carta mudar de tamanho */
-	@media (min-height: 50rem) {
-		.carta {
-			min-height: 42rem;
-		}
+		margin: 0 auto;
 	}
 
 	.carta__topo {
-		padding: var(--esp-lg) var(--esp-lg) var(--esp-xl);
+		min-height: 13.25rem;
+		padding: var(--esp-lg);
 	}
 
 	.carta__enunciado {
@@ -614,12 +614,40 @@
 	}
 
 	.carta__corpo {
-		padding: var(--esp-xl) var(--esp-lg) var(--esp-md);
+		gap: var(--esp-xs);
+		padding: var(--esp-lg) var(--esp-lg) var(--esp-2xs);
+	}
+
+	.palco {
+		padding-top: 0;
+	}
+
+	.alt {
+		min-height: 3.25rem;
+	}
+
+	/* Curió ao lado da explicação: a resposta cabe na carta sem ela crescer */
+	.resultado {
+		grid-template-columns: auto 1fr;
+		align-items: start;
+		gap: var(--esp-3xs) var(--esp-sm);
+	}
+
+	.resultado__linha {
+		display: contents;
+	}
+
+	.resultado .curio {
+		grid-row: 1 / span 2;
+	}
+
+	.resultado__explicacao {
+		grid-column: 2;
 	}
 
 	.carta__pe {
 		justify-items: center;
-		padding: 0 var(--esp-lg) var(--esp-lg);
+		padding: var(--esp-2xs) var(--esp-lg) var(--esp-md);
 	}
 
 	.proxima {
