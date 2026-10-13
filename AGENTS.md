@@ -1,3 +1,45 @@
+# Curiô
+
+Feed de perguntas e respostas em português que troca o scroll de vídeos curtos por curiosidade. Os temas são separados (ciências, matemática, raciocínio lógico etc.), e toda resposta revela uma explicação curta. O mascote é o Curió. É gratuito, sem anúncios, sem cadastro obrigatório e **com custo zero de manutenção**. Essa é uma restrição de projeto: nada que exija servidor pago.
+
+## Leia antes de qualquer trabalho
+
+1. **`PRODUCT.md`**: público, propósito, personalidade, anti-referências, princípios e acessibilidade (WCAG 2.2 AA).
+2. **`DESIGN.md`**: identidade visual ("O Ninho Cantante"), regras de cor, tipografia, movimento e a lista de Do's and Don'ts. **As regras são estritas: não as contorne.** Se uma tarefa entrar em conflito com elas, pergunte antes.
+3. **`README.md`**: a ideia e a stack em linguagem de usuário.
+
+Os dois `.md` de regras têm títulos de seção em inglês (exigidos pelo formato) e conteúdo em português. Mantenha assim.
+
+## Fluxo de design: impeccable
+
+Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/skills/impeccable/` (leia o `SKILL.md` dele).
+
+- Carregue o contexto com `node .agents/skills/impeccable/scripts/load-context.mjs`.
+- O registro é **product**. Carregue `reference/product.md` e a referência do subcomando em uso.
+- **Ordem obrigatória:** `shape` (briefing confirmado pelo usuário) antes de `craft` (código). Nunca implemente uma tela sem briefing confirmado.
+- O `DESIGN.md` está em **modo seed**: cores exatas e fonte ainda não foram escolhidas (`[to be resolved during implementation]`). Elas são definidas no primeiro `craft`, respeitando as regras do arquivo. Depois que houver código, rode `document` de novo para registrar os tokens reais.
+
+## Stack e decisões técnicas
+
+- **Astro 7** (site estático) com **ilhas React 19**, usadas apenas onde há estado (o player do quiz).
+- **Conteúdo:** perguntas em arquivos YAML/MD no repositório, agrupadas em **decks** de cerca de 20 a 50 perguntas por arquivo, organizados em `content/<tema>/<subtema>/<deck>.yaml`. São validadas com Content Collections + Zod. Toda pergunta tem uma **explicação obrigatória**.
+- **Fórmulas:** KaTeX renderizado no build.
+- **Progresso e sequência de dias:** `localStorage`. Não há backend. Se um dia houver, só plano gratuito (Supabase, Cloudflare D1).
+- **Hospedagem:** Cloudflare Pages (gratuito). **Limite de 20.000 arquivos por deploy:** nunca gere uma página ou um JSON por pergunta. Gere páginas por tema/deck e JSON agrupado por deck.
+
+## Convenções
+
+- Textos da interface em **português do Brasil**, com o tom definido em `PRODUCT.md` (amigo curioso, acolhedor, nunca professor nem vendedor).
+- **Sem travessão (—) nem `--`** em textos da interface ou da documentação.
+- Nome do pacote npm: `curio` (sem acento). Nome de exibição: **Curiô**.
+- **Commits:** o usuário faz os commits. Não faça commit. Ao fim de cada etapa, sugira uma mensagem no padrão Conventional Commits em pt-BR.
+
+## Status
+
+O template Astro + React foi criado e as regras de produto e design (PRODUCT.md e DESIGN.md seed) foram definidas. **Próximo passo:** `impeccable shape` da primeira tela (o feed de perguntas).
+
+Atualize esta seção quando uma etapa terminar.
+
 ## Development
 
 When starting the dev server, use background mode:
@@ -7,6 +49,8 @@ astro dev --background
 ```
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+
+Other scripts: `npm run build` (static build into `dist/`) and `npm run preview`.
 
 ## Documentation
 
