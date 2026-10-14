@@ -7,21 +7,17 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 ### Pendências da fase 2 (feed)
 - [ ] Testar com leitor de tela de verdade (NVDA no Windows ou TalkBack no Android). Precisa ser feito à mão.
 
-### Fase 4: celebrações
-- [ ] Refinar a asa erguida do Curió comemorando (hoje está boa, mas um pouco pontuda).
-- [ ] `shape` das celebrações: quando cada uma acontece e quanto dura.
-- [ ] Acerto: penas caindo e o Curió cantando, em até 1,2s, sem bloquear o próximo toque.
-- [ ] Sequência de dias: comemoração ao completar 3, 7, 30 dias, sem culpa quando a sequência quebra.
-- [ ] Versão com movimento reduzido: fade e troca de cor, sem partículas.
-- [ ] Som opcional, desligado por padrão, com controle visível.
-
-## Depois
-
 ### Fase 5: temas e progresso
 - [ ] `shape` da tela de temas (com hierarquia, sem grade de cartas idênticas).
 - [ ] Página por tema com seus decks e o progresso de cada um.
-- [ ] Tela de tema concluído, pintada com a cor do tema.
+- [ ] Tela de tema concluído, pintada com a cor do tema (com o Curió comemorando e a cor se espalhando).
 - [ ] Ícone próprio para cada tema.
+
+## Depois
+
+### Som
+- [ ] `shape` do som: quais sons, quando tocam, onde fica o controle.
+- [ ] Canto curto do Curió no acerto e nas celebrações, desligado por padrão, com controle visível e preferência salva.
 
 ### Conteúdo
 - [ ] Decks para os 4 temas que ainda não têm perguntas: Ciências, História, Geografia, Linguagem.
@@ -52,3 +48,5 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [x] Fase 2: feed de perguntas com filtro por tema, palco do Curió, explicação, teclado e três decks de exemplo.
 - [x] Fase 2: conferidos no navegador a falha de rede, o fim de tema e o zoom de 200%; validação dos decks testada com arquivos quebrados; axe-core sem violações WCAG.
 - [x] Fase 3: Curió em SVG com volume e contorno quente, quatro reações (esperando, feliz, consolando, comemorando), animações de personagem com versão para movimento reduzido e favicon só com a cabeça.
+- [x] Cartas com o mesmo desenho: pergunta, alternativas e palco sempre na mesma posição, carta da altura da tela.
+- [x] Fase 4: celebrações. Penas caindo em 3, 5, 10 e a cada 10 acertos seguidos; marcos de 3, 7, 14, 30, 50 e 100 dias com a pílula brilhando; versão para movimento reduzido; asa do Curió comemorando refinada.

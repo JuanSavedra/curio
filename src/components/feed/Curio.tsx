@@ -75,14 +75,14 @@ export function Curio({ humor = 'esperando', tamanho = 56, parado = false, class
 						<>
 							{/* Asa erguida, com as penas da ponta abertas */}
 							<path
-								d="M37 45C31 37 25 28 18 16.5c-1.2-2-3.8-1.2-3.5 1.1.5 4.5 1.7 8.6 3.4 12.4-2.6-1-5.3-1.3-7.6-.6-1.9.6-1.9 3-.1 3.8 2.3 1 4.4 2.4 6.2 4.1-2 .3-3.8 1-5.2 2.1-1.5 1.2-.8 3.4 1.1 3.5C20 43.5 28.5 46.5 37 45z"
+								d="M37 45c-3-8.5-9.5-17-18.5-22.5-3.5-2.1-7.5.6-6.5 4.3.4 1.4 1.2 2.6 2.2 3.5-3 .2-4.8 3.4-3.1 5.8.8 1.1 2 1.8 3.3 2-2 1.4-1.7 4.6.6 5.6C20 46.5 29 47 37 45z"
 								fill="var(--curio-luz)"
 								stroke="var(--curio-contorno)"
 								strokeWidth="1.3"
 								strokeLinejoin="round"
 							/>
-							<path d="M21 31.5c4 3.5 8.5 7.5 12 11.5M16.5 38.5c5.5 1.5 11 3.5 16 5.5" stroke="var(--plumagem)" strokeWidth="1.3" strokeLinecap="round" fill="none" />
-							<circle cx="27" cy="37.5" r="2.2" fill="var(--ninho)" />
+							<path d="M15.5 31c6 2.5 12 6.5 17 11.5M15 39c5.5.8 11 2.5 16 4.8" stroke="var(--plumagem)" strokeWidth="1.3" strokeLinecap="round" fill="none" />
+							<circle cx="26" cy="35" r="2.2" fill="var(--ninho)" />
 						</>
 					) : (
 						<>

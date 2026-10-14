@@ -53,11 +53,12 @@ export function lerSequencia(): number {
 	return s.ultimoDia === diaLocal(new Date()) || s.ultimoDia === diaLocal(ontem) ? s.dias : 0;
 }
 
-export function registrarDia(): number {
+/** Registra a resposta de hoje. `novoDia` diz se foi a primeira do dia (quando um marco pode ser completado). */
+export function registrarDia(): { dias: number; novoDia: boolean } {
 	const hoje = diaLocal(new Date());
 	const s = ler<Sequencia | null>(CHAVE_SEQUENCIA, null);
-	if (s?.ultimoDia === hoje) return s.dias;
+	if (s?.ultimoDia === hoje) return { dias: s.dias, novoDia: false };
 	const dias = lerSequencia() + 1;
 	gravar(CHAVE_SEQUENCIA, { dias, ultimoDia: hoje });
-	return dias;
+	return { dias, novoDia: true };
 }

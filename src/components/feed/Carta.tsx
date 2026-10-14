@@ -2,8 +2,9 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 import { TEMAS, type Tema } from '../../data/temas';
 import type { PerguntaPublicada } from '../../lib/tipos';
 import { Curio } from './Curio';
-import { IconeCerto, IconeQuase, IconeSeta } from './Icones';
-import { LETRAS, textoAcerto, textoErro } from './textos';
+import { IconeCerto, IconeNota, IconeQuase, IconeSeta } from './Icones';
+import { Penas } from './Penas';
+import { LETRAS, textoAcerto, textoDias, textoErro, textoSeguidas, type Celebracao } from './textos';
 
 export interface PerguntaNaFila extends PerguntaPublicada {
 	tema: Tema;
@@ -14,6 +15,7 @@ interface Props {
 	pergunta: PerguntaNaFila;
 	indice: number;
 	escolha: number | undefined;
+	celebracao: Celebracao | undefined;
 	saudar: boolean;
 	ultima: boolean;
 	onResponder: (indice: number, alternativa: number) => void;
@@ -27,7 +29,7 @@ export const corDoTema = (tema: Tema) =>
 		'--tema-fundo': `var(--${tema}-fundo)`,
 	}) as CSSProperties;
 
-export function Carta({ pergunta, indice, escolha, saudar, ultima, onResponder, onAvancar }: Props) {
+export function Carta({ pergunta, indice, escolha, celebracao, saudar, ultima, onResponder, onAvancar }: Props) {
 	const respondida = escolha !== undefined;
 	const acertou = escolha === pergunta.correta;
 	const proximaRef = useRef<HTMLButtonElement>(null);
@@ -96,13 +98,26 @@ export function Carta({ pergunta, indice, escolha, saudar, ultima, onResponder, 
 					<div role="status" aria-live="polite" className="palco">
 						{respondida ? (
 							<div className="resultado" data-acertou={acertou} ref={resultadoRef}>
+								{celebracao && <Penas />}
 								<div className="resultado__linha">
-									<Curio humor={acertou ? 'feliz' : 'consolando'} tamanho={60} />
+									<Curio humor={celebracao ? 'comemorando' : acertou ? 'feliz' : 'consolando'} tamanho={60} />
 									<p className="resultado__titulo">
 										{acertou ? <IconeCerto /> : <IconeQuase tamanho={18} />}
-										<span>{acertou ? textoAcerto(pergunta.id) : textoErro(pergunta.id, pergunta.correta)}</span>
+										<span>
+											{celebracao?.tipo === 'seguidas'
+												? textoSeguidas(celebracao.n)
+												: acertou
+													? textoAcerto(pergunta.id)
+													: textoErro(pergunta.id, pergunta.correta)}
+										</span>
 									</p>
 								</div>
+								{celebracao?.tipo === 'dias' && (
+									<p className="resultado__marco">
+										<IconeNota tamanho={18} />
+										<span>{textoDias(celebracao.n)}</span>
+									</p>
+								)}
 								<p className="resultado__explicacao" dangerouslySetInnerHTML={{ __html: pergunta.explicacao }} />
 							</div>
 						) : (

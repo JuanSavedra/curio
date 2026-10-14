@@ -423,6 +423,84 @@
 	line-height: 1.55;
 }
 
+.resultado__marco {
+	display: flex;
+	align-items: center;
+	gap: var(--esp-2xs);
+	justify-self: start;
+	padding: var(--esp-2xs) var(--esp-sm);
+	border-radius: var(--raio-pilula);
+	background: var(--ferrugem-clara);
+	color: var(--ferrugem-forte);
+	font-weight: var(--peso-forte);
+	line-height: 1.3;
+}
+
+.resultado__marco svg {
+	flex: none;
+}
+
+/* ---------- Celebração: penas caindo sobre o palco ---------- */
+
+.palco {
+	position: relative;
+}
+
+/* Começa acima do palco (sobre as alternativas); a carta recorta o que sair dela */
+.penas {
+	position: absolute;
+	inset: -12rem 0 auto;
+	height: 0;
+	pointer-events: none;
+	z-index: 1;
+}
+
+.pena {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+	animation: pena-cai 1s var(--ease-saida) both;
+}
+
+@keyframes pena-cai {
+	from {
+		opacity: 0;
+		transform: translate(0, 0) rotate(var(--giro0)) scale(var(--escala));
+	}
+	15% {
+		opacity: 1;
+	}
+	70% {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translate(var(--deriva), var(--queda)) rotate(var(--giro1)) scale(var(--escala));
+	}
+}
+
+/* ---------- Pílula da sequência: brilha uma vez num marco ---------- */
+
+.sequencia--marco {
+	animation: sequencia-brilha 1.2s var(--ease-saida);
+}
+
+@keyframes sequencia-brilha {
+	0% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0 oklch(0.53 0.14 42 / 0.5);
+	}
+	25% {
+		transform: scale(1.12);
+		background-color: var(--ferrugem);
+		color: var(--ninho);
+	}
+	100% {
+		transform: scale(1);
+		box-shadow: 0 0 0 0.75rem oklch(0.53 0.14 42 / 0);
+	}
+}
+
 @keyframes resultado-entra {
 	from {
 		opacity: 0;
@@ -638,9 +716,10 @@
 	}
 
 	.resultado .curio {
-		grid-row: 1 / span 2;
+		grid-row: 1 / span 3;
 	}
 
+	.resultado__marco,
 	.resultado__explicacao {
 		grid-column: 2;
 	}
@@ -692,6 +771,23 @@
 
 	.osso {
 		animation: none;
+	}
+
+	/* Sem partículas: a celebração vira só troca de expressão e de cor */
+	.penas {
+		display: none;
+	}
+
+	.sequencia--marco {
+		animation: sequencia-cor 1.2s ease-out;
+	}
+}
+
+@keyframes sequencia-cor {
+	25%,
+	60% {
+		background-color: var(--ferrugem);
+		color: var(--ninho);
 	}
 }
 

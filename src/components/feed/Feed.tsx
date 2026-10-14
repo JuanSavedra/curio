@@ -5,6 +5,7 @@ import { Carta, corDoTema, type PerguntaNaFila } from './Carta';
 import { Curio } from './Curio';
 import { IconeCerto, IconeNota, IconeRecomecar } from './Icones';
 import { esquecerVistas, jaVisitou, lerSequencia, lerVistas, marcarVisita, marcarVista, registrarDia } from './progresso';
+import { MARCOS_DE_DIAS, ehMarcoDeSeguidas, type Celebracao } from './textos';
 import './feed.css';
 
 type Filtro = Tema | 'tudo';
@@ -50,6 +51,11 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 	const [atual, setAtual] = useState(0);
 	const [sequencia, setSequencia] = useState(0);
 	const [saudar, setSaudar] = useState(false);
+	const [celebracoes, setCelebracoes] = useState<Record<string, Celebracao>>({});
+	// Muda a cada marco de dias para a pílula brilhar de novo
+	const [brilhoSequencia, setBrilhoSequencia] = useState(0);
+	// Acertos seguidos nesta sessão. Errar recomeça em silêncio; pular não conta.
+	const seguidas = useRef(0);
 
 	const trilhoRef = useRef<HTMLElement>(null);
 	const cache = useRef(new Map<string, DeckPublicado>());
@@ -171,7 +177,20 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 			marcarVista(pergunta.id);
 			marcarVisita();
 			setSaudar(false);
-			setSequencia(registrarDia());
+
+			const { dias, novoDia } = registrarDia();
+			setSequencia(dias);
+			seguidas.current = alternativa === pergunta.correta ? seguidas.current + 1 : 0;
+
+			// Marco de dias vale mais que acertos seguidos (é mais raro)
+			let celebracao: Celebracao | undefined;
+			if (novoDia && MARCOS_DE_DIAS.includes(dias)) {
+				celebracao = { tipo: 'dias', n: dias };
+				setBrilhoSequencia((b) => b + 1);
+			} else if (ehMarcoDeSeguidas(seguidas.current)) {
+				celebracao = { tipo: 'seguidas', n: seguidas.current };
+			}
+			if (celebracao) setCelebracoes((c) => ({ ...c, [pergunta.id]: celebracao }));
 		},
 		[fila, respostas],
 	);
@@ -251,7 +270,11 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 				</nav>
 
 				{sequencia > 0 && (
-					<p className="sequencia" title="Dias seguidos respondendo perguntas">
+					<p
+						key={brilhoSequencia}
+						className={`sequencia${brilhoSequencia ? ' sequencia--marco' : ''}`}
+						title="Dias seguidos respondendo perguntas"
+					>
 						<IconeNota tamanho={18} />
 						<span>{sequencia === 1 ? '1 dia' : `${sequencia} dias`}</span>
 						<span className="so-leitor"> seguidos</span>
@@ -288,6 +311,7 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 							pergunta={pergunta}
 							indice={i}
 							escolha={respostas[pergunta.id]}
+							celebracao={celebracoes[pergunta.id]}
 							saudar={saudar && i === 0}
 							ultima={i === fila.length - 1}
 							onResponder={responder}
