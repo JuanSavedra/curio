@@ -2,36 +2,36 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Um deck = um arquivo em content/<tema>/<subtema>/<deck>.yaml
-const pergunta = z
+// One deck = one file at content/<topic>/<subtopic>/<deck>.yaml
+const question = z
 	.object({
-		id: z.string().regex(/^[a-z0-9-]+$/, 'Use só letras minúsculas, números e hífens no id.'),
-		enunciado: z.string().min(5),
-		alternativas: z.array(z.string().min(1)).min(2).max(4),
-		resposta: z.string().min(1),
-		explicacao: z.string().min(20, 'Toda pergunta precisa de uma explicação de verdade.'),
+		id: z.string().regex(/^[a-z0-9-]+$/, 'Use only lowercase letters, numbers and hyphens in the id.'),
+		prompt: z.string().min(5),
+		choices: z.array(z.string().min(1)).min(2).max(4),
+		answer: z.string().min(1),
+		explanation: z.string().min(20, 'Every question needs a real explanation.'),
 	})
-	.refine((p) => p.alternativas.includes(p.resposta), {
-		message: 'A resposta precisa ser igual (letra por letra) a uma das alternativas.',
-		path: ['resposta'],
+	.refine((q) => q.choices.includes(q.answer), {
+		message: 'The answer must equal (letter by letter) one of the choices.',
+		path: ['answer'],
 	})
-	.refine((p) => new Set(p.alternativas).size === p.alternativas.length, {
-		message: 'Há alternativas repetidas.',
-		path: ['alternativas'],
+	.refine((q) => new Set(q.choices).size === q.choices.length, {
+		message: 'There are repeated choices.',
+		path: ['choices'],
 	});
 
 const decks = defineCollection({
 	loader: glob({ pattern: '**/*.{yaml,yml}', base: './content' }),
 	schema: z
 		.object({
-			titulo: z.string().min(2),
-			// Nome de exibição do subtema (a pasta não guarda acentos). Sem ele, vem do nome da pasta.
-			subtema: z.string().min(2).optional(),
-			perguntas: z.array(pergunta).min(1),
+			title: z.string().min(2),
+			// Display name of the subtopic (folder names carry no accents). Without it, it comes from the folder name.
+			subtopic: z.string().min(2).optional(),
+			questions: z.array(question).min(1),
 		})
-		.refine((d) => new Set(d.perguntas.map((p) => p.id)).size === d.perguntas.length, {
-			message: 'Há perguntas com o mesmo id neste deck.',
-			path: ['perguntas'],
+		.refine((d) => new Set(d.questions.map((q) => q.id)).size === d.questions.length, {
+			message: 'Two questions in this deck share the same id.',
+			path: ['questions'],
 		}),
 });
 

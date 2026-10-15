@@ -1,98 +1,98 @@
-titulo: Planetas e o Sol
-subtema: Sistema Solar
-perguntas:
-  - id: luas-de-marte
-    enunciado: Quantas luas tem Marte?
-    alternativas:
+title: Planetas e o Sol
+subtopic: Sistema Solar
+questions:
+  - id: mars-moons
+    prompt: Quantas luas tem Marte?
+    choices:
       - Nenhuma
       - Duas
       - Quatro
       - Doze
-    resposta: Duas
-    explicacao: >-
+    answer: Duas
+    explanation: >-
       Marte tem duas luas pequenininhas, Fobos e Deimos ("medo" e "pavor" em grego). Fobos
       está se aproximando do planeta e, em uns 50 milhões de anos, deve virar um anel em volta dele.
 
-  - id: dia-de-venus
-    enunciado: Em Vênus, o que dura mais tempo, um dia ou um ano?
-    alternativas:
+  - id: venus-day
+    prompt: Em Vênus, o que dura mais tempo, um dia ou um ano?
+    choices:
       - O dia
       - O ano
       - Os dois duram o mesmo
-    resposta: O dia
-    explicacao: >-
+    answer: O dia
+    explanation: >-
       Vênus gira tão devagar que uma volta em torno de si leva 243 dias terrestres, mais do que
       os 225 dias da volta completa em torno do Sol. E tem mais: ele gira ao contrário, então
       lá o Sol nasce a oeste.
 
-  - id: planeta-mais-quente
-    enunciado: Qual é o planeta mais quente do Sistema Solar?
-    alternativas:
+  - id: hottest-planet
+    prompt: Qual é o planeta mais quente do Sistema Solar?
+    choices:
       - Mercúrio
       - Vênus
       - Marte
       - Júpiter
-    resposta: Vênus
-    explicacao: >-
+    answer: Vênus
+    explanation: >-
       Mercúrio fica mais perto do Sol, mas quase não tem atmosfera e perde o calor. Vênus é
       coberto de gás carbônico, que prende o calor como uma estufa: passa de 460 °C, o bastante
       para derreter chumbo.
 
-  - id: luz-do-sol
-    enunciado: Quanto tempo a luz do Sol leva para chegar até a Terra?
-    alternativas:
+  - id: sunlight
+    prompt: Quanto tempo a luz do Sol leva para chegar até a Terra?
+    choices:
       - Cerca de 8 segundos
       - Cerca de 8 minutos
       - Cerca de 8 horas
       - Um dia inteiro
-    resposta: Cerca de 8 minutos
-    explicacao: >-
+    answer: Cerca de 8 minutos
+    explanation: >-
       A luz viaja a quase 300 mil km por segundo e leva uns 8 minutos para cruzar os
       150 milhões de km até aqui. O Sol que você vê no céu é o Sol de 8 minutos atrás.
 
-  - id: saturno-flutua
-    enunciado: Se existisse uma banheira gigante o bastante, qual destes planetas flutuaria nela?
-    alternativas:
+  - id: saturn-floats
+    prompt: Se existisse uma banheira gigante o bastante, qual destes planetas flutuaria nela?
+    choices:
       - Terra
       - Marte
       - Saturno
       - Netuno
-    resposta: Saturno
-    explicacao: >-
+    answer: Saturno
+    explanation: >-
       Saturno é feito quase todo de hidrogênio e hélio, e sua densidade média é menor que a
       da água. Ele é enorme, mas, comparado ao tamanho, é "levinho" como uma boia.
 
-  - id: pegadas-na-lua
-    enunciado: As pegadas dos astronautas da Apollo continuam na Lua até hoje. Por quê?
-    alternativas:
+  - id: moon-footprints
+    prompt: As pegadas dos astronautas da Apollo continuam na Lua até hoje. Por quê?
+    choices:
       - Lá não há vento nem chuva
       - O solo da Lua é magnético
       - A gravidade da Lua prende a poeira
-    resposta: Lá não há vento nem chuva
-    explicacao: >-
+    answer: Lá não há vento nem chuva
+    explanation: >-
       Sem atmosfera, não há vento nem água para apagar nada. As pegadas só vão sumindo
       muito devagar, com o impacto de micrometeoritos, e devem durar milhões de anos.
 
-  - id: grande-mancha
-    enunciado: O que é a Grande Mancha Vermelha de Júpiter?
-    alternativas:
+  - id: great-spot
+    prompt: O que é a Grande Mancha Vermelha de Júpiter?
+    choices:
       - Um vulcão
       - Uma tempestade
       - Um oceano
       - Uma cratera
-    resposta: Uma tempestade
-    explicacao: >-
+    answer: Uma tempestade
+    explanation: >-
       É uma tempestade gigante, com ventos de mais de 400 km/h, observada sem parar desde
       o século 19. Ela vem encolhendo, mas ainda é maior que a Terra inteira.
 
-  - id: tamanho-do-sol
-    enunciado: Quantas Terras caberiam dentro do Sol?
-    alternativas:
+  - id: sun-size
+    prompt: Quantas Terras caberiam dentro do Sol?
+    choices:
       - Cerca de 100
       - Cerca de 1.300
       - Cerca de 1,3 milhão
       - Cerca de 1 bilhão
-    resposta: Cerca de 1,3 milhão
-    explicacao: >-
+    answer: Cerca de 1,3 milhão
+    explanation: >-
       O diâmetro do Sol é uns 109 vezes o da Terra, e o volume cresce ao cubo: dá cerca de
       1,3 milhão de Terras. Mesmo assim, o Sol é uma estrela de tamanho médio.

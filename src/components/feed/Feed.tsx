@@ -1,412 +1,412 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { TEMAS, corDoTema, ehTema, type Tema } from '../../data/temas';
-import { rotaDoDeck, rotaDosTemas } from '../../lib/rotas';
-import type { DeckPublicado, ResumoDeck } from '../../lib/tipos';
-import { Carta, type PerguntaNaFila } from './Carta';
+import { TOPICS, TOPIC_IDS, topicFromSlug, topicStyle, type Topic } from '../../data/topics';
+import { FEED_QUERY, deckJsonRoute, topicsRoute } from '../../lib/routes';
+import type { DeckSummary, PublishedDeck } from '../../lib/types';
+import { Card, type QueuedQuestion } from './Card';
+import { DAY_MILESTONES, isRunMilestone, type Celebration } from './copy';
 import { Curio } from './Curio';
-import { IconeCerto, IconeNota, IconeRecomecar, IconeTemas } from './Icones';
+import { CheckIcon, NoteIcon, RestartIcon, TopicsIcon } from './Icons';
 import {
-	esquecerVistas,
-	gravarUltimoTema,
-	jaVisitou,
-	lerSequencia,
-	lerVistas,
-	marcarVisita,
-	marcarVista,
-	progressoDosDecks,
-	registrarDia,
-} from './progresso';
-import { TemaConcluido } from './TemaConcluido';
-import { MARCOS_DE_DIAS, ehMarcoDeSeguidas, type Celebracao } from './textos';
+	decksProgress,
+	forgetSeen,
+	hasVisited,
+	markSeen,
+	markVisited,
+	readSeen,
+	readStreak,
+	recordDay,
+	writeLastTopic,
+} from './progress';
+import { TopicComplete } from './TopicComplete';
 import './feed.css';
 
-type Filtro = Tema | 'tudo';
-type Status = 'carregando' | 'pronto' | 'falhou';
+type Filter = Topic | 'all';
+type Status = 'loading' | 'ready' | 'failed';
 
-// Quantos decks buscar de uma vez. Mantém a página leve mesmo com muito conteúdo.
-const LOTE = 3;
+// How many decks to fetch at once. Keeps the page light even with a lot of content.
+const BATCH = 3;
 
-function embaralhar<T>(lista: T[]): T[] {
-	const copia = [...lista];
-	for (let i = copia.length - 1; i > 0; i--) {
+function shuffle<T>(list: T[]): T[] {
+	const copy = [...list];
+	for (let i = copy.length - 1; i > 0; i--) {
 		const j = Math.floor(Math.random() * (i + 1));
-		[copia[i], copia[j]] = [copia[j], copia[i]];
+		[copy[i], copy[j]] = [copy[j], copy[i]];
 	}
-	return copia;
+	return copy;
 }
 
-// Intercala os decks para o feed misto não repetir o mesmo tema em sequência.
-function intercalar(decks: DeckPublicado[], vistas: Set<string>): PerguntaNaFila[] {
-	const pilhas = decks.map((deck) =>
-		embaralhar(deck.perguntas.filter((p) => !vistas.has(p.id))).map((p) => ({ ...p, tema: deck.tema, deck: deck.titulo })),
+// Interleaves the decks so the mixed feed doesn't repeat the same topic back to back.
+function interleave(decks: PublishedDeck[], seen: Set<string>): QueuedQuestion[] {
+	const stacks = decks.map((deck) =>
+		shuffle(deck.questions.filter((q) => !seen.has(q.id))).map((q) => ({ ...q, topic: deck.topic, deckTitle: deck.title })),
 	);
-	const fila: PerguntaNaFila[] = [];
-	while (pilhas.some((p) => p.length)) {
-		for (const pilha of pilhas) {
-			const proxima = pilha.shift();
-			if (proxima) fila.push(proxima);
+	const queue: QueuedQuestion[] = [];
+	while (stacks.some((stack) => stack.length)) {
+		for (const stack of stacks) {
+			const next = stack.shift();
+			if (next) queue.push(next);
 		}
 	}
-	return fila;
+	return queue;
 }
 
-const reduzirMovimento = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-export default function Feed({ decks }: { decks: ResumoDeck[] }) {
-	const temasComConteudo = (Object.keys(TEMAS) as Tema[]).filter((t) => decks.some((d) => d.tema === t));
+export default function Feed({ decks }: { decks: DeckSummary[] }) {
+	const topicsWithContent = TOPIC_IDS.filter((t) => decks.some((d) => d.topic === t));
 
-	const [filtro, setFiltro] = useState<Filtro>('tudo');
-	// Quando a pessoa chega por uma coleção da página do tema, o feed mostra só ela
-	const [deckFiltro, setDeckFiltro] = useState<ResumoDeck | null>(null);
-	const [status, setStatus] = useState<Status>('carregando');
-	const [fila, setFila] = useState<PerguntaNaFila[]>([]);
-	const [pendentes, setPendentes] = useState<ResumoDeck[]>([]);
-	const [respostas, setRespostas] = useState<Record<string, number>>({});
-	const [atual, setAtual] = useState(0);
-	const [sequencia, setSequencia] = useState(0);
-	const [saudar, setSaudar] = useState(false);
-	const [celebracoes, setCelebracoes] = useState<Record<string, Celebracao>>({});
-	// Muda a cada marco de dias para a pílula brilhar de novo
-	const [brilhoSequencia, setBrilhoSequencia] = useState(0);
-	// Acertos seguidos nesta sessão. Errar recomeça em silêncio; pular não conta.
-	const seguidas = useRef(0);
+	const [filter, setFilter] = useState<Filter>('all');
+	// When the person arrives through a deck on a topic page, the feed shows only that deck
+	const [deckFilter, setDeckFilter] = useState<DeckSummary | null>(null);
+	const [status, setStatus] = useState<Status>('loading');
+	const [queue, setQueue] = useState<QueuedQuestion[]>([]);
+	const [pending, setPending] = useState<DeckSummary[]>([]);
+	const [answers, setAnswers] = useState<Record<string, number>>({});
+	const [current, setCurrent] = useState(0);
+	const [streak, setStreak] = useState(0);
+	const [greet, setGreet] = useState(false);
+	const [celebrations, setCelebrations] = useState<Record<string, Celebration>>({});
+	// Changes at every day milestone so the pill glows again
+	const [streakGlow, setStreakGlow] = useState(0);
+	// Correct answers in a row in this session. A wrong answer restarts silently; skipping doesn't count.
+	const run = useRef(0);
 
-	const trilhoRef = useRef<HTMLElement>(null);
-	const cache = useRef(new Map<string, DeckPublicado>());
-	const carregandoMais = useRef(false);
+	const railRef = useRef<HTMLElement>(null);
+	const cache = useRef(new Map<string, PublishedDeck>());
+	const loadingMore = useRef(false);
 
-	const buscarDecks = useCallback(async (lista: ResumoDeck[]) => {
+	const fetchDecks = useCallback(async (list: DeckSummary[]) => {
 		return Promise.all(
-			lista.map(async (resumo) => {
-				const guardado = cache.current.get(resumo.id);
-				if (guardado) return guardado;
-				const resposta = await fetch(rotaDoDeck(resumo.id));
-				if (!resposta.ok) throw new Error(`Falha ao buscar ${resumo.id}`);
-				const deck = (await resposta.json()) as DeckPublicado;
-				cache.current.set(resumo.id, deck);
+			list.map(async (summary) => {
+				const cached = cache.current.get(summary.id);
+				if (cached) return cached;
+				const response = await fetch(deckJsonRoute(summary.id));
+				if (!response.ok) throw new Error(`Failed to fetch ${summary.id}`);
+				const deck = (await response.json()) as PublishedDeck;
+				cache.current.set(summary.id, deck);
 				return deck;
 			}),
 		);
 	}, []);
 
-	// Busca lotes até ter perguntas novas ou acabarem os decks.
-	const proximoLote = useCallback(
-		async (restantes: ResumoDeck[]) => {
-			const vistas = lerVistas();
-			let novas: PerguntaNaFila[] = [];
-			while (!novas.length && restantes.length) {
-				const lote = restantes.slice(0, LOTE);
-				restantes = restantes.slice(LOTE);
-				novas = intercalar(await buscarDecks(lote), vistas);
+	// Fetches batches until there are new questions or the decks run out.
+	const nextBatch = useCallback(
+		async (remaining: DeckSummary[]) => {
+			const seen = readSeen();
+			let fresh: QueuedQuestion[] = [];
+			while (!fresh.length && remaining.length) {
+				const batch = remaining.slice(0, BATCH);
+				remaining = remaining.slice(BATCH);
+				fresh = interleave(await fetchDecks(batch), seen);
 			}
-			return { novas, restantes };
+			return { fresh, remaining };
 		},
-		[buscarDecks],
+		[fetchDecks],
 	);
 
-	const montarFila = useCallback(
-		async (novoFiltro: Filtro, deck: ResumoDeck | null = null) => {
-			setStatus('carregando');
-			setFiltro(novoFiltro);
-			setDeckFiltro(deck);
-			setAtual(0);
+	const buildQueue = useCallback(
+		async (newFilter: Filter, deck: DeckSummary | null = null) => {
+			setStatus('loading');
+			setFilter(newFilter);
+			setDeckFilter(deck);
+			setCurrent(0);
 			try {
-				const candidatos = embaralhar(deck ? [deck] : decks.filter((d) => novoFiltro === 'tudo' || d.tema === novoFiltro));
-				const { novas, restantes } = await proximoLote(candidatos);
-				setFila(novas);
-				setPendentes(restantes);
-				setStatus('pronto');
-				trilhoRef.current?.scrollTo({ top: 0 });
+				const candidates = shuffle(deck ? [deck] : decks.filter((d) => newFilter === 'all' || d.topic === newFilter));
+				const { fresh, remaining } = await nextBatch(candidates);
+				setQueue(fresh);
+				setPending(remaining);
+				setStatus('ready');
+				railRef.current?.scrollTo({ top: 0 });
 			} catch {
-				setStatus('falhou');
+				setStatus('failed');
 			}
 		},
-		[decks, proximoLote],
+		[decks, nextBatch],
 	);
 
-	// Primeira carga: lê o progresso local e o filtro da URL (?tema=astronomia, ?deck=<id>, ?rever=1).
+	// First load: reads local progress and the URL filter (?tema=astronomia, ?deck=<id>, ?rever=1).
 	useEffect(() => {
-		setSequencia(lerSequencia());
-		setSaudar(!jaVisitou());
+		setStreak(readStreak());
+		setGreet(!hasVisited());
 		const params = new URLSearchParams(location.search);
-		const doTema = params.get('tema') ?? '';
-		const deck = decks.find((d) => d.id === params.get('deck')) ?? null;
-		const tema: Filtro = deck ? deck.tema : ehTema(doTema) && temasComConteudo.includes(doTema) ? doTema : 'tudo';
+		const urlTopic = topicFromSlug(params.get(FEED_QUERY.topic) ?? '');
+		const deck = decks.find((d) => d.id === params.get(FEED_QUERY.deck)) ?? null;
+		const topic: Filter = deck ? deck.topic : urlTopic && topicsWithContent.includes(urlTopic) ? urlTopic : 'all';
 
-		// "Rever" vem das páginas de tema: esquece só o que foi pedido, uma vez, e limpa o endereço.
-		if (params.get('rever') === '1' && tema !== 'tudo') {
-			esquecerVistas(prefixosDe(tema, deck));
-			params.delete('rever');
-			const consulta = params.toString();
-			history.replaceState(null, '', `${location.pathname}${consulta ? `?${consulta}` : ''}`);
+		// "Rever" comes from the topic pages: forgets only what was asked, once, and cleans the address.
+		if (params.get(FEED_QUERY.review) === '1' && topic !== 'all') {
+			forgetSeen(prefixesOf(topic, deck));
+			params.delete(FEED_QUERY.review);
+			const query = params.toString();
+			history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
 		}
-		void montarFila(tema, deck);
+		void buildQueue(topic, deck);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	// Perto do fim da fila, busca o próximo lote em silêncio.
+	// Near the end of the queue, quietly fetches the next batch.
 	useEffect(() => {
-		if (status !== 'pronto' || !pendentes.length || carregandoMais.current || atual < fila.length - 3) return;
-		carregandoMais.current = true;
-		proximoLote(pendentes)
-			.then(({ novas, restantes }) => {
-				setFila((f) => [...f, ...novas]);
-				setPendentes(restantes);
+		if (status !== 'ready' || !pending.length || loadingMore.current || current < queue.length - 3) return;
+		loadingMore.current = true;
+		nextBatch(pending)
+			.then(({ fresh, remaining }) => {
+				setQueue((q) => [...q, ...fresh]);
+				setPending(remaining);
 			})
 			.catch(() => {
-				// Sem rede agora: o fim da fila oferece tentar de novo.
+				// No network right now: the end of the queue offers to try again.
 			})
 			.finally(() => {
-				carregandoMais.current = false;
+				loadingMore.current = false;
 			});
-	}, [atual, fila.length, pendentes, status, proximoLote]);
+	}, [current, queue.length, pending, status, nextBatch]);
 
-	// Qual carta está no centro do trilho.
+	// Which card is in the middle of the rail.
 	useEffect(() => {
-		const trilho = trilhoRef.current;
-		if (!trilho) return;
-		let quadro = 0;
-		const medir = () => {
-			quadro = 0;
-			const meio = trilho.scrollTop + trilho.clientHeight / 2;
-			const cenas = trilho.querySelectorAll<HTMLElement>('.cena[data-indice]');
-			for (const cena of cenas) {
-				if (cena.offsetTop <= meio && cena.offsetTop + cena.offsetHeight > meio) {
-					setAtual(Number(cena.dataset.indice));
+		const rail = railRef.current;
+		if (!rail) return;
+		let frame = 0;
+		const measure = () => {
+			frame = 0;
+			const middle = rail.scrollTop + rail.clientHeight / 2;
+			const scenes = rail.querySelectorAll<HTMLElement>('.scene[data-index]');
+			for (const scene of scenes) {
+				if (scene.offsetTop <= middle && scene.offsetTop + scene.offsetHeight > middle) {
+					setCurrent(Number(scene.dataset.index));
 					return;
 				}
 			}
 		};
-		const aoRolar = () => {
-			if (!quadro) quadro = requestAnimationFrame(medir);
+		const onScroll = () => {
+			if (!frame) frame = requestAnimationFrame(measure);
 		};
-		trilho.addEventListener('scroll', aoRolar, { passive: true });
+		rail.addEventListener('scroll', onScroll, { passive: true });
 		return () => {
-			trilho.removeEventListener('scroll', aoRolar);
-			cancelAnimationFrame(quadro);
+			rail.removeEventListener('scroll', onScroll);
+			cancelAnimationFrame(frame);
 		};
 	}, []);
 
-	const irPara = useCallback((indice: number) => {
-		const trilho = trilhoRef.current;
-		const alvo = trilho?.querySelector<HTMLElement>(`.cena[data-indice="${indice}"]`) ?? trilho?.querySelector<HTMLElement>('.cena--fim');
-		if (!alvo) return;
-		alvo.scrollIntoView({ block: 'start', behavior: reduzirMovimento() ? 'auto' : 'smooth' });
-		alvo.querySelector<HTMLElement>('.carta__enunciado, .fim__titulo')?.focus({ preventScroll: true });
+	const goTo = useCallback((index: number) => {
+		const rail = railRef.current;
+		const target = rail?.querySelector<HTMLElement>(`.scene[data-index="${index}"]`) ?? rail?.querySelector<HTMLElement>('.scene--end');
+		if (!target) return;
+		target.scrollIntoView({ block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+		target.querySelector<HTMLElement>('.card__prompt, .end__title')?.focus({ preventScroll: true });
 	}, []);
 
-	const responder = useCallback(
-		(indice: number, alternativa: number) => {
-			const pergunta = fila[indice];
-			if (!pergunta || respostas[pergunta.id] !== undefined) return;
-			setRespostas((r) => ({ ...r, [pergunta.id]: alternativa }));
-			marcarVista(pergunta.id);
-			gravarUltimoTema(pergunta.tema);
-			marcarVisita();
-			setSaudar(false);
+	const answer = useCallback(
+		(index: number, choice: number) => {
+			const question = queue[index];
+			if (!question || answers[question.id] !== undefined) return;
+			setAnswers((a) => ({ ...a, [question.id]: choice }));
+			markSeen(question.id);
+			writeLastTopic(question.topic);
+			markVisited();
+			setGreet(false);
 
-			const { dias, novoDia } = registrarDia();
-			setSequencia(dias);
-			seguidas.current = alternativa === pergunta.correta ? seguidas.current + 1 : 0;
+			const { days, newDay } = recordDay();
+			setStreak(days);
+			run.current = choice === question.correct ? run.current + 1 : 0;
 
-			// Marco de dias vale mais que acertos seguidos (é mais raro)
-			let celebracao: Celebracao | undefined;
-			if (novoDia && MARCOS_DE_DIAS.includes(dias)) {
-				celebracao = { tipo: 'dias', n: dias };
-				setBrilhoSequencia((b) => b + 1);
-			} else if (ehMarcoDeSeguidas(seguidas.current)) {
-				celebracao = { tipo: 'seguidas', n: seguidas.current };
+			// A day milestone is worth more than a run of correct answers (it's rarer)
+			let celebration: Celebration | undefined;
+			if (newDay && DAY_MILESTONES.includes(days)) {
+				celebration = { kind: 'days', n: days };
+				setStreakGlow((g) => g + 1);
+			} else if (isRunMilestone(run.current)) {
+				celebration = { kind: 'run', n: run.current };
 			}
-			if (celebracao) setCelebracoes((c) => ({ ...c, [pergunta.id]: celebracao }));
+			if (celebration) setCelebrations((c) => ({ ...c, [question.id]: celebration }));
 		},
-		[fila, respostas],
+		[queue, answers],
 	);
 
-	// Atalhos: 1 a 4 (ou A a D) respondem, setas ou J/K trocam de carta.
+	// Shortcuts: 1 to 4 (or A to D) answer, arrows or J/K switch cards.
 	useEffect(() => {
-		const aoTeclar = (e: KeyboardEvent) => {
-			if (e.altKey || e.ctrlKey || e.metaKey || status !== 'pronto') return;
+		const onKey = (e: KeyboardEvent) => {
+			if (e.altKey || e.ctrlKey || e.metaKey || status !== 'ready') return;
 			if ((e.target as HTMLElement).closest('input, textarea, select, [contenteditable]')) return;
-			const tecla = e.key.toLowerCase();
-			const alternativa = '1234'.indexOf(tecla) >= 0 ? '1234'.indexOf(tecla) : 'abcd'.indexOf(tecla);
-			const pergunta = fila[atual];
-			if (alternativa >= 0 && pergunta && alternativa < pergunta.alternativas.length) {
+			const key = e.key.toLowerCase();
+			const choice = '1234'.indexOf(key) >= 0 ? '1234'.indexOf(key) : 'abcd'.indexOf(key);
+			const question = queue[current];
+			if (choice >= 0 && question && choice < question.choices.length) {
 				e.preventDefault();
-				responder(atual, alternativa);
-			} else if (tecla === 'arrowdown' || tecla === 'j') {
+				answer(current, choice);
+			} else if (key === 'arrowdown' || key === 'j') {
 				e.preventDefault();
-				irPara(atual + 1);
-			} else if ((tecla === 'arrowup' || tecla === 'k') && atual > 0) {
+				goTo(current + 1);
+			} else if ((key === 'arrowup' || key === 'k') && current > 0) {
 				e.preventDefault();
-				irPara(atual - 1);
+				goTo(current - 1);
 			}
 		};
-		window.addEventListener('keydown', aoTeclar);
-		return () => window.removeEventListener('keydown', aoTeclar);
-	}, [atual, fila, status, responder, irPara]);
+		window.addEventListener('keydown', onKey);
+		return () => window.removeEventListener('keydown', onKey);
+	}, [current, queue, status, answer, goTo]);
 
-	function trocarFiltro(novo: Filtro) {
-		if (novo === filtro && !deckFiltro && status === 'pronto') return;
+	function switchFilter(next: Filter) {
+		if (next === filter && !deckFilter && status === 'ready') return;
 		const url = new URL(location.href);
-		url.searchParams.delete('deck');
-		url.searchParams.delete('rever');
-		if (novo === 'tudo') url.searchParams.delete('tema');
-		else url.searchParams.set('tema', novo);
+		url.searchParams.delete(FEED_QUERY.deck);
+		url.searchParams.delete(FEED_QUERY.review);
+		if (next === 'all') url.searchParams.delete(FEED_QUERY.topic);
+		else url.searchParams.set(FEED_QUERY.topic, TOPICS[next].slug);
 		history.replaceState(null, '', url);
-		void montarFila(novo);
+		void buildQueue(next);
 	}
 
-	function prefixosDe(tema: Filtro, deck: ResumoDeck | null) {
-		return (deck ? [deck] : decks.filter((d) => tema === 'tudo' || d.tema === tema)).map((d) => `${d.id}/`);
+	function prefixesOf(topic: Filter, deck: DeckSummary | null) {
+		return (deck ? [deck] : decks.filter((d) => topic === 'all' || d.topic === topic)).map((d) => `${d.id}/`);
 	}
 
-	function verDeNovo() {
-		esquecerVistas(prefixosDe(filtro, deckFiltro));
-		setRespostas({});
-		void montarFila(filtro, deckFiltro);
+	function reviewAgain() {
+		forgetSeen(prefixesOf(filter, deckFilter));
+		setAnswers({});
+		void buildQueue(filter, deckFilter);
 	}
 
-	// O tema só está concluído quando todas as perguntas dele foram vistas (pular não conta).
-	const resumoDoTema =
-		status === 'pronto' && !pendentes.length && !deckFiltro && filtro !== 'tudo'
-			? progressoDosDecks(
-					lerVistas(),
-					decks.filter((d) => d.tema === filtro),
+	// A topic is only complete when all of its questions were seen (skipping doesn't count).
+	const topicSummary =
+		status === 'ready' && !pending.length && !deckFilter && filter !== 'all'
+			? decksProgress(
+					readSeen(),
+					decks.filter((d) => d.topic === filter),
 				)
 			: null;
-	const temaConcluido = resumoDoTema?.concluido ?? false;
+	const topicComplete = topicSummary?.complete ?? false;
 
-	const temaAtual = fila[Math.min(atual, fila.length - 1)]?.tema;
+	const currentTopic = queue[Math.min(current, queue.length - 1)]?.topic;
 
 	return (
-		<div className="feed" style={temaAtual ? corDoTema(temaAtual) : undefined} data-tem-tema={Boolean(temaAtual)}>
-			<header className="topo">
-				<h1 className="marca">
-					<Curio tamanho={34} parado />
+		<div className="feed" style={currentTopic ? topicStyle(currentTopic) : undefined} data-has-topic={Boolean(currentTopic)}>
+			<header className="topbar">
+				<h1 className="brand">
+					<Curio size={34} still />
 					<span>Curiô</span>
 				</h1>
 
 				<nav className="chips" aria-label="Temas">
 					<ul>
 						<li>
-							<button type="button" className="chip chip--tudo" aria-pressed={filtro === 'tudo'} onClick={() => trocarFiltro('tudo')}>
+							<button type="button" className="chip chip--all" aria-pressed={filter === 'all'} onClick={() => switchFilter('all')}>
 								Tudo
 							</button>
 						</li>
-						{temasComConteudo.map((tema) => (
-							<li key={tema}>
+						{topicsWithContent.map((topic) => (
+							<li key={topic}>
 								<button
 									type="button"
 									className="chip"
-									style={corDoTema(tema)}
-									aria-pressed={filtro === tema}
-									onClick={() => trocarFiltro(tema)}
+									style={topicStyle(topic)}
+									aria-pressed={filter === topic}
+									onClick={() => switchFilter(topic)}
 								>
-									<span className="chip__ponto" aria-hidden="true">
-										{filtro === tema && <IconeCerto tamanho={12} />}
+									<span className="chip__dot" aria-hidden="true">
+										{filter === topic && <CheckIcon size={12} />}
 									</span>
-									{TEMAS[tema]}
+									{TOPICS[topic].name}
 								</button>
 							</li>
 						))}
 					</ul>
 				</nav>
 
-				<div className="topo__acoes">
-					<a className="temas-link" href={rotaDosTemas()}>
-						<IconeTemas tamanho={18} />
+				<div className="topbar__actions">
+					<a className="topics-link" href={topicsRoute()}>
+						<TopicsIcon size={18} />
 						<span>Temas</span>
 					</a>
-					{sequencia > 0 && (
+					{streak > 0 && (
 						<p
-							key={brilhoSequencia}
-							className={`sequencia${brilhoSequencia ? ' sequencia--marco' : ''}`}
+							key={streakGlow}
+							className={`streak${streakGlow ? ' streak--milestone' : ''}`}
 							title="Dias seguidos respondendo perguntas"
 						>
-							<IconeNota tamanho={18} />
-							<span>{sequencia === 1 ? '1 dia' : `${sequencia} dias`}</span>
-							<span className="so-leitor"> seguidos</span>
+							<NoteIcon size={18} />
+							<span>{streak === 1 ? '1 dia' : `${streak} dias`}</span>
+							<span className="sr-only"> seguidos</span>
 						</p>
 					)}
 				</div>
 			</header>
 
-			<main id="perguntas" className="trilho" ref={trilhoRef} aria-busy={status === 'carregando'}>
-				{status === 'carregando' && (
-					<div className="cena">
-						<p className="so-leitor">Carregando perguntas…</p>
-						<Esqueleto />
+			<main id="questions" className="rail" ref={railRef} aria-busy={status === 'loading'}>
+				{status === 'loading' && (
+					<div className="scene">
+						<p className="sr-only">Carregando perguntas…</p>
+						<Skeleton />
 					</div>
 				)}
 
-				{status === 'falhou' && (
-					<section className="cena cena--aviso">
-						<div className="aviso">
-							<Curio humor="consolando" tamanho={72} />
-							<h2 className="aviso__titulo">Não consegui carregar as perguntas.</h2>
+				{status === 'failed' && (
+					<section className="scene scene--notice">
+						<div className="notice">
+							<Curio mood="comforting" size={72} />
+							<h2 className="notice__title">Não consegui carregar as perguntas.</h2>
 							<p>Confira sua conexão com a internet e tente de novo.</p>
-							<button type="button" className="proxima" onClick={() => montarFila(filtro)}>
-								<IconeRecomecar />
+							<button type="button" className="next" onClick={() => buildQueue(filter)}>
+								<RestartIcon />
 								Tentar de novo
 							</button>
 						</div>
 					</section>
 				)}
 
-				{status === 'pronto' &&
-					fila.map((pergunta, i) => (
-						<Carta
-							key={pergunta.id}
-							pergunta={pergunta}
-							indice={i}
-							escolha={respostas[pergunta.id]}
-							celebracao={celebracoes[pergunta.id]}
-							saudar={saudar && i === 0}
-							ultima={i === fila.length - 1}
-							onResponder={responder}
-							onAvancar={(indice) => irPara(indice + 1)}
+				{status === 'ready' &&
+					queue.map((question, i) => (
+						<Card
+							key={question.id}
+							question={question}
+							index={i}
+							choice={answers[question.id]}
+							celebration={celebrations[question.id]}
+							greet={greet && i === 0}
+							last={i === queue.length - 1}
+							onAnswer={answer}
+							onAdvance={(index) => goTo(index + 1)}
 						/>
 					))}
 
-				{temaConcluido && filtro !== 'tudo' && resumoDoTema && (
-					<TemaConcluido tema={filtro} total={resumoDoTema.total} onRever={verDeNovo} />
+				{topicComplete && filter !== 'all' && topicSummary && (
+					<TopicComplete topic={filter} total={topicSummary.total} onReview={reviewAgain} />
 				)}
 
-				{status === 'pronto' && !pendentes.length && !temaConcluido && (
-					<section className="cena cena--fim" aria-labelledby="fim-titulo">
-						<div className="aviso">
-							<Curio humor="comemorando" tamanho={88} />
-							<h2 id="fim-titulo" className="fim__titulo aviso__titulo" tabIndex={-1}>
-								{deckFiltro
-									? `Você viu tudo de ${deckFiltro.titulo} por agora.`
-									: filtro === 'tudo'
+				{status === 'ready' && !pending.length && !topicComplete && (
+					<section className="scene scene--end" aria-labelledby="end-title">
+						<div className="notice">
+							<Curio mood="celebrating" size={88} />
+							<h2 id="end-title" className="end__title notice__title" tabIndex={-1}>
+								{deckFilter
+									? `Você viu tudo de ${deckFilter.title} por agora.`
+									: filter === 'all'
 										? 'Você já viu todas as perguntas que temos por agora.'
-										: `Você viu tudo de ${TEMAS[filtro]} por agora.`}
+										: `Você viu tudo de ${TOPICS[filter].name} por agora.`}
 							</h2>
 							<p>O Curió está juntando mais curiosidades. Enquanto isso:</p>
-							<ul className="fim__opcoes">
-								{temasComConteudo
-									.filter((t) => t !== filtro || deckFiltro)
-									.map((tema) => (
-										<li key={tema}>
-											<button type="button" className="chip" style={corDoTema(tema)} onClick={() => trocarFiltro(tema)}>
-												<span className="chip__ponto" aria-hidden="true" />
-												{TEMAS[tema]}
+							<ul className="end__options">
+								{topicsWithContent
+									.filter((t) => t !== filter || deckFilter)
+									.map((topic) => (
+										<li key={topic}>
+											<button type="button" className="chip" style={topicStyle(topic)} onClick={() => switchFilter(topic)}>
+												<span className="chip__dot" aria-hidden="true" />
+												{TOPICS[topic].name}
 											</button>
 										</li>
 									))}
 							</ul>
-							<button type="button" className="pular" onClick={verDeNovo}>
-								<IconeRecomecar tamanho={18} />
+							<button type="button" className="skip" onClick={reviewAgain}>
+								<RestartIcon size={18} />
 								Rever as que já respondi
 							</button>
 						</div>
 					</section>
 				)}
 
-				{status === 'pronto' && pendentes.length > 0 && (
-					<section className="cena cena--fim" aria-label="Carregando mais perguntas">
-						<Esqueleto />
+				{status === 'ready' && pending.length > 0 && (
+					<section className="scene scene--end" aria-label="Carregando mais perguntas">
+						<Skeleton />
 					</section>
 				)}
 			</main>
@@ -414,17 +414,17 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 	);
 }
 
-function Esqueleto() {
+function Skeleton() {
 	return (
-		<div className="carta carta--esqueleto" aria-hidden="true">
-			<div className="carta__topo">
-				<span className="osso osso--curto" />
-				<span className="osso" />
-				<span className="osso osso--medio" />
+		<div className="card card--skeleton" aria-hidden="true">
+			<div className="card__head">
+				<span className="skeleton-bar skeleton-bar--short" />
+				<span className="skeleton-bar" />
+				<span className="skeleton-bar skeleton-bar--medium" />
 			</div>
-			<div className="carta__corpo">
+			<div className="card__body">
 				{[0, 1, 2, 3].map((i) => (
-					<span key={i} className="osso osso--alt" />
+					<span key={i} className="skeleton-bar skeleton-bar--tall" />
 				))}
 			</div>
 		</div>

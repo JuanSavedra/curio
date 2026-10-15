@@ -10,7 +10,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 ### Fase 5: temas e progresso (falta só conferir à mão)
 - [ ] Conferir a tela de temas, a página de tema e o tema concluído com teclado e leitor de tela de verdade (junto com o teste da fase 2).
 - [ ] Decidir se "Rever" deve guardar que o tema já foi concluído. Hoje rever zera o progresso do deck, e o selo "Concluído" some até terminar de novo.
-- [ ] `extract`: `.botao` (temas.css) e `.proxima` (feed.css) têm o mesmo desenho em dois arquivos; unificar num botão só.
+- [ ] `extract`: `.button` (`topics.css`) e `.next` (`feed.css`) têm o mesmo desenho em dois arquivos; unificar num botão só.
 
 ## Depois
 
@@ -42,6 +42,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Compartilhar uma pergunta com alguém.
 
 ## Feito
+- [x] Idioma do código padronizado em inglês: arquivos, pastas, identificadores, classes e variáveis CSS, chaves do YAML, ids, chaves do `localStorage`, comentários e mensagens de erro de build. Textos da interface, conteúdo das perguntas e endereços públicos seguem em português. Regra e glossário no `AGENTS.md`. Conferido com capturas idênticas antes e depois (a única diferença é a frase de acerto/erro, escolhida por hash do id) e axe-core sem violações.
 - [x] Fase 5: temas e progresso. Tela `/temas` com o tema em andamento em destaque, lista que muda de desenho conforme o progresso (novo, em andamento, concluído) e temas "em breve". Página `/temas/<tema>` com as coleções agrupadas por subtema e o progresso de cada uma. Feed filtra por coleção (`?deck=`) e aceita `?rever=1`. Tela de tema concluído pintada com a cor do tema (cor se espalhando, Curió comemorando, penas, versão com fade para movimento reduzido). Sete ícones de tema. Conferido a 320px, 390px e 1280px; axe-core sem violações.
 - [x] Regras de produto e design (PRODUCT.md e DESIGN.md seed).
 - [x] Fase 1: fundação visual (tokens, paleta com contraste AA, fonte Parkinsans).

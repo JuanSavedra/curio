@@ -1,96 +1,96 @@
-titulo: Números curiosos
-subtema: Números
-perguntas:
-  - id: zero-par
-    enunciado: O zero é par ou ímpar?
-    alternativas:
+title: Números curiosos
+subtopic: Números
+questions:
+  - id: zero-even
+    prompt: O zero é par ou ímpar?
+    choices:
       - Par
       - Ímpar
       - Nem par nem ímpar
-    resposta: Par
-    explicacao: >-
+    answer: Par
+    explanation: >-
       Um número é par quando dividido por 2 não deixa resto. Como 0 ÷ 2 = 0, com resto zero,
       o zero é par. Ele também fica entre −1 e 1, dois ímpares, como todo par.
 
-  - id: soma-ate-cem
-    enunciado: Quanto dá 1 + 2 + 3 + … + 100?
-    alternativas:
+  - id: sum-to-hundred
+    prompt: Quanto dá 1 + 2 + 3 + … + 100?
+    choices:
       - '1.000'
       - '5.000'
       - '5.050'
       - '10.100'
-    resposta: '5.050'
-    explicacao: >-
+    answer: '5.050'
+    explanation: >-
       Junte as pontas: 1 + 100 = 101, 2 + 99 = 101, e assim por diante. São 50 pares
       de 101, então a soma é 50 × 101 = 5.050. Dizem que o matemático Gauss descobriu
       esse truque ainda criança, na escola.
 
-  - id: raiz-de-dois
-    enunciado: Dá para escrever $\sqrt{2}$ como uma fração de dois números inteiros?
-    alternativas:
+  - id: root-of-two
+    prompt: Dá para escrever $\sqrt{2}$ como uma fração de dois números inteiros?
+    choices:
       - Sim
       - Não
-    resposta: Não
-    explicacao: >-
+    answer: Não
+    explanation: >-
       $\sqrt{2}$ é irracional: suas casas decimais (1,41421356…) nunca terminam nem
       se repetem. Os gregos antigos já sabiam disso, e a descoberta teria incomodado bastante
       os seguidores de Pitágoras.
 
-  - id: noves-infinitos
-    enunciado: O número 0,999…, com noves que nunca acabam, é igual a quanto?
-    alternativas:
+  - id: infinite-nines
+    prompt: O número 0,999…, com noves que nunca acabam, é igual a quanto?
+    choices:
       - Um pouquinho menos que 1
       - Exatamente 1
       - Não dá para saber
-    resposta: Exatamente 1
-    explicacao: >-
+    answer: Exatamente 1
+    explanation: >-
       Pense que $\frac{1}{3} = 0{,}333\ldots$ Multiplicando os dois lados por 3, fica
       $1 = 0{,}999\ldots$ São dois jeitos diferentes de escrever o mesmo número.
 
-  - id: aniversario
-    enunciado: Numa sala com 23 pessoas, qual a chance de duas terem o mesmo aniversário?
-    alternativas:
+  - id: birthday
+    prompt: Numa sala com 23 pessoas, qual a chance de duas terem o mesmo aniversário?
+    choices:
       - Menos de 10%
       - Cerca de 25%
       - Mais de 50%
-    resposta: Mais de 50%
-    explicacao: >-
+    answer: Mais de 50%
+    explanation: >-
       Parece pouco, mas o que conta são os pares de pessoas, e 23 pessoas formam 253 pares.
       A chance passa de 50%, e com 70 pessoas já chega a 99,9%. É o famoso paradoxo do aniversário.
 
-  - id: papel-dobrado
-    enunciado: Se desse para dobrar uma folha de papel ao meio 42 vezes, até onde chegaria a pilha?
-    alternativas:
+  - id: folded-paper
+    prompt: Se desse para dobrar uma folha de papel ao meio 42 vezes, até onde chegaria a pilha?
+    choices:
       - Até o teto
       - Até o topo do Everest
       - Até a Lua
-    resposta: Até a Lua
-    explicacao: >-
+    answer: Até a Lua
+    explanation: >-
       Cada dobra dobra a espessura. Uma folha de 0,1 mm dobrada 42 vezes fica com
       $0{,}1 \times 2^{42}$ mm, uns 440 mil quilômetros, mais que a distância até a Lua.
       Na prática, ninguém consegue passar de umas 12 dobras.
 
-  - id: o-que-e-pi
-    enunciado: O que é o número $\pi$?
-    alternativas:
+  - id: what-is-pi
+    prompt: O que é o número $\pi$?
+    choices:
       - O contorno de qualquer círculo dividido pelo seu diâmetro
       - Um número inventado para arredondar contas
       - O maior número primo conhecido
-    resposta: O contorno de qualquer círculo dividido pelo seu diâmetro
-    explicacao: >-
+    answer: O contorno de qualquer círculo dividido pelo seu diâmetro
+    explanation: >-
       Não importa o tamanho do círculo: o contorno dividido pelo diâmetro sempre dá
       $\pi \approx 3{,}14159$. Ele tem infinitas casas decimais e ganhou até um dia próprio,
       14 de março (3/14, no jeito americano de escrever datas).
 
-  - id: qual-e-primo
-    enunciado: Qual destes números é primo?
-    alternativas:
+  - id: which-is-prime
+    prompt: Qual destes números é primo?
+    choices:
       - '51'
       - '57'
       - '91'
       - '97'
-    resposta: '97'
-    explicacao: >-
+    answer: '97'
+    explanation: >-
       Os outros enganam bem: 51 = 3 × 17, 57 = 3 × 19 e 91 = 7 × 13.
       Já o 97 só é divisível por 1 e por ele mesmo. Uma dica: se a soma dos algarismos
       é múltiplo de 3, o número também é.

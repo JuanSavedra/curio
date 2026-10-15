@@ -33,10 +33,12 @@ As perguntas ficam agrupadas em **decks** (cerca de 20 a 50 perguntas por arquiv
 
 ```
 content/
-  ciencias/astronomia/sistema-solar.yaml
-  matematica/probabilidade/basico.yaml
-  logica/sequencias/nivel-1.yaml
+  astronomy/solar-system/basics.yaml
+  math/numbers/curiosities.yaml
+  logic/sequences/level-1.yaml
 ```
+
+As pastas e as chaves dos arquivos ficam em inglês (`title`, `questions`, `prompt`, `choices`, `answer`, `explanation`). O texto das perguntas e das explicações é em português.
 
 > ⚠️ O Cloudflare Pages gratuito aceita até 20.000 arquivos por deploy. Por isso as perguntas são publicadas agrupadas por deck, e nunca como um arquivo por pergunta.
 

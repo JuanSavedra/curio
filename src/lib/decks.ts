@@ -1,45 +1,45 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { ehTema, type Tema } from '../data/temas';
-import { textoRico } from './texto-rico';
-import type { DeckPublicado, ResumoDeck } from './tipos';
+import { isTopic, type Topic } from '../data/topics';
+import { richText } from './rich-text';
+import type { DeckSummary, PublishedDeck } from './types';
 
-function temaDoDeck(deck: CollectionEntry<'decks'>): Tema {
-	const [tema, subtema, nome] = deck.id.split('/');
-	if (!subtema || !nome) {
-		throw new Error(`O deck "${deck.id}" precisa ficar em content/<tema>/<subtema>/<deck>.yaml.`);
+function topicOfDeck(deck: CollectionEntry<'decks'>): Topic {
+	const [topic, subtopic, name] = deck.id.split('/');
+	if (!subtopic || !name) {
+		throw new Error(`Deck "${deck.id}" must live in content/<topic>/<subtopic>/<deck>.yaml.`);
 	}
-	if (!ehTema(tema)) {
-		throw new Error(`O deck "${deck.id}" está num tema desconhecido: "${tema}". Cadastre-o em src/data/temas.ts.`);
+	if (!isTopic(topic)) {
+		throw new Error(`Deck "${deck.id}" is in an unknown topic: "${topic}". Register it in src/data/topics.ts.`);
 	}
-	return tema;
+	return topic;
 }
 
-const nomeDaPasta = (pasta: string) => pasta.charAt(0).toUpperCase() + pasta.slice(1).replace(/-/g, ' ');
+const nameFromFolder = (folder: string) => folder.charAt(0).toUpperCase() + folder.slice(1).replace(/-/g, ' ');
 
-export async function listarDecks(): Promise<ResumoDeck[]> {
+export async function listDecks(): Promise<DeckSummary[]> {
 	const decks = await getCollection('decks');
 	return decks
 		.map((deck) => ({
 			id: deck.id,
-			tema: temaDoDeck(deck),
-			subtema: deck.data.subtema ?? nomeDaPasta(deck.id.split('/')[1]),
-			titulo: deck.data.titulo,
-			total: deck.data.perguntas.length,
+			topic: topicOfDeck(deck),
+			subtopic: deck.data.subtopic ?? nameFromFolder(deck.id.split('/')[1]),
+			title: deck.data.title,
+			total: deck.data.questions.length,
 		}))
 		.sort((a, b) => a.id.localeCompare(b.id));
 }
 
-export function publicarDeck(deck: CollectionEntry<'decks'>): DeckPublicado {
+export function publishDeck(deck: CollectionEntry<'decks'>): PublishedDeck {
 	return {
 		id: deck.id,
-		tema: temaDoDeck(deck),
-		titulo: deck.data.titulo,
-		perguntas: deck.data.perguntas.map((p) => ({
-			id: `${deck.id}/${p.id}`,
-			enunciado: textoRico(p.enunciado),
-			alternativas: p.alternativas.map(textoRico),
-			correta: p.alternativas.indexOf(p.resposta),
-			explicacao: textoRico(p.explicacao),
+		topic: topicOfDeck(deck),
+		title: deck.data.title,
+		questions: deck.data.questions.map((q) => ({
+			id: `${deck.id}/${q.id}`,
+			prompt: richText(q.prompt),
+			choices: q.choices.map(richText),
+			correct: q.choices.indexOf(q.answer),
+			explanation: richText(q.explanation),
 		})),
 	};
 }

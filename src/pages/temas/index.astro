@@ -1,30 +1,31 @@
 ---
-import Temas from '../../components/temas/Temas';
+// This folder is named after the public pt-BR address (/temas): the folder name IS the URL.
+import Topics from '../../components/topics/Topics';
 import Base from '../../layouts/Base.astro';
-import { listarDecks } from '../../lib/decks';
+import { listDecks } from '../../lib/decks';
 
-const decks = await listarDecks();
+const decks = await listDecks();
 ---
 
 <Base
-	titulo="Temas | Curiô"
-	descricao="Escolha um tema do Curiô e descubra de ciências a astronomia, uma pergunta curiosa de cada vez."
-	idPrincipal="conteudo"
-	textoPular="Ir para os temas"
+	title="Temas | Curiô"
+	description="Escolha um tema do Curiô e descubra de ciências a astronomia, uma pergunta curiosa de cada vez."
+	mainId="content"
+	skipText="Ir para os temas"
 >
-	<Temas client:load decks={decks} />
+	<Topics client:load decks={decks} />
 	<noscript>
-		<p class="sem-js">O Curiô precisa de JavaScript ligado para mostrar os temas.</p>
+		<p class="no-js">O Curiô precisa de JavaScript ligado para mostrar os temas.</p>
 	</noscript>
 </Base>
 
 <style>
-	.sem-js {
+	.no-js {
 		position: fixed;
-		inset: auto var(--esp-sm) var(--esp-sm);
-		padding: var(--esp-sm);
-		border-radius: var(--raio-alt);
-		background: var(--cor-painel);
+		inset: auto var(--space-sm) var(--space-sm);
+		padding: var(--space-sm);
+		border-radius: var(--radius-md);
+		background: var(--color-panel);
 		text-align: center;
 	}
 </style>

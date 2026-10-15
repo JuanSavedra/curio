@@ -1,76 +1,76 @@
-/* ---------- Estrutura: topo fixo + trilho de cartas com encaixe ---------- */
+/* ---------- Structure: fixed top bar + rail of snapping cards ---------- */
 
 .feed {
-	--fundo-atual: var(--tema-fundo, var(--cor-fundo));
+	--current-bg: var(--topic-bg, var(--color-bg));
 	display: grid;
 	grid-template-rows: auto 1fr;
 	height: 100dvh;
-	background-color: var(--fundo-atual);
-	transition: background-color var(--dur-lenta) var(--ease-saida);
+	background-color: var(--current-bg);
+	transition: background-color var(--dur-slow) var(--ease-out);
 }
 
-.topo {
+.topbar {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) auto;
 	grid-template-areas:
-		'marca acoes'
+		'brand actions'
 		'chips chips';
 	align-items: center;
-	gap: var(--esp-2xs) var(--esp-sm);
-	padding: var(--esp-xs) var(--esp-sm) var(--esp-2xs);
+	gap: var(--space-2xs) var(--space-sm);
+	padding: var(--space-xs) var(--space-sm) var(--space-2xs);
 }
 
-.marca {
-	grid-area: marca;
+.brand {
+	grid-area: brand;
 	min-height: 2.75rem;
 	display: flex;
 	align-items: center;
-	gap: var(--esp-2xs);
-	font-size: var(--texto-xl);
-	font-weight: var(--peso-titulo);
+	gap: var(--space-2xs);
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
 	letter-spacing: -0.01em;
 	line-height: 1;
 }
 
-.topo__acoes {
-	grid-area: acoes;
+.topbar__actions {
+	grid-area: actions;
 	display: flex;
 	align-items: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 }
 
-/* Porta para a tela de temas: mesma forma dos chips, sem cor de tema */
-.temas-link {
+/* Door to the topics screen: same shape as the chips, no topic color */
+.topics-link {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	min-height: 2.75rem;
-	padding: 0 var(--esp-sm) 0 var(--esp-xs);
-	border: 2px solid var(--cor-borda);
-	border-radius: var(--raio-pilula);
-	background: var(--cor-superficie);
+	padding: 0 var(--space-sm) 0 var(--space-xs);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	background: var(--color-surface);
 	color: inherit;
-	font-size: var(--texto-sm);
-	font-weight: var(--peso-medio);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
 	text-decoration: none;
 	transition:
-		transform var(--dur-rapida) var(--ease-saida),
-		border-color var(--dur-rapida) var(--ease-saida);
+		transform var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out);
 }
 
-.temas-link:active {
+.topics-link:active {
 	transform: scale(0.96);
 }
 
-/* Telas bem estreitas: só o ícone (o nome continua para o leitor de tela) */
+/* Very narrow screens: icon only (the name stays for screen readers) */
 @media (max-width: 24rem) {
-	.temas-link {
+	.topics-link {
 		justify-content: center;
 		width: 2.75rem;
 		padding: 0;
 	}
 
-	.temas-link span {
+	.topics-link span {
 		position: absolute;
 		width: 1px;
 		height: 1px;
@@ -82,38 +82,38 @@
 }
 
 @media (hover: hover) {
-	.temas-link:hover {
-		border-color: var(--plumagem-suave);
+	.topics-link:hover {
+		border-color: var(--plumage-soft);
 	}
 }
 
-.sequencia {
+.streak {
 	display: flex;
 	align-items: center;
-	gap: var(--esp-3xs);
+	gap: var(--space-3xs);
 	min-height: 2.75rem;
-	padding: 0 var(--esp-xs);
-	border-radius: var(--raio-pilula);
-	background: var(--ferrugem-clara);
-	color: var(--ferrugem-forte);
-	font-weight: var(--peso-titulo);
+	padding: 0 var(--space-xs);
+	border-radius: var(--radius-pill);
+	background: var(--rust-light);
+	color: var(--rust-strong);
+	font-weight: var(--weight-heading);
 	font-variant-numeric: tabular-nums;
 	white-space: nowrap;
 }
 
-/* ---------- Chips de tema ---------- */
+/* ---------- Topic chips ---------- */
 
 .chips {
 	grid-area: chips;
 	min-width: 0;
-	margin: 0 calc(var(--esp-sm) * -1);
+	margin: 0 calc(var(--space-sm) * -1);
 }
 
 .chips ul {
 	display: flex;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	margin: 0;
-	padding: var(--esp-3xs) var(--esp-sm);
+	padding: var(--space-3xs) var(--space-sm);
 	list-style: none;
 	overflow-x: auto;
 	scrollbar-width: none;
@@ -126,34 +126,34 @@
 .chip {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	min-height: 2.75rem;
-	padding: 0 var(--esp-sm) 0 var(--esp-xs);
-	border: 2px solid var(--cor-borda);
-	border-radius: var(--raio-pilula);
-	background: var(--cor-superficie);
-	font-size: var(--texto-sm);
-	font-weight: var(--peso-medio);
+	padding: 0 var(--space-sm) 0 var(--space-xs);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	background: var(--color-surface);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
 	white-space: nowrap;
 	cursor: pointer;
 	transition:
-		transform var(--dur-rapida) var(--ease-saida),
-		background-color var(--dur-rapida) var(--ease-saida),
-		border-color var(--dur-rapida) var(--ease-saida);
+		transform var(--dur-fast) var(--ease-out),
+		background-color var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out);
 }
 
-.chip--tudo {
-	padding-left: var(--esp-sm);
+.chip--all {
+	padding-left: var(--space-sm);
 }
 
-.chip__ponto {
+.chip__dot {
 	display: grid;
 	place-items: center;
 	width: 1.125rem;
 	height: 1.125rem;
 	border-radius: 50%;
-	background: var(--tema);
-	color: var(--plumagem);
+	background: var(--topic);
+	color: var(--plumage);
 }
 
 .chip:active {
@@ -161,348 +161,348 @@
 }
 
 .chip[aria-pressed='true'] {
-	border-color: var(--tema-tinta);
-	background: var(--tema);
-	color: var(--plumagem);
-	font-weight: var(--peso-forte);
+	border-color: var(--topic-ink);
+	background: var(--topic);
+	color: var(--plumage);
+	font-weight: var(--weight-strong);
 }
 
-.chip[aria-pressed='true'] .chip__ponto {
-	background: var(--ninho);
+.chip[aria-pressed='true'] .chip__dot {
+	background: var(--nest);
 }
 
-/* "Tudo" não é tema, então não pega cor de tema (herdaria a da carta atual) */
-.chip--tudo[aria-pressed='true'] {
-	border-color: var(--plumagem);
-	background: var(--plumagem);
-	color: var(--ninho);
+/* "Tudo" is not a topic, so it takes no topic color (it would inherit the current card's) */
+.chip--all[aria-pressed='true'] {
+	border-color: var(--plumage);
+	background: var(--plumage);
+	color: var(--nest);
 }
 
 @media (hover: hover) {
 	.chip:hover {
-		border-color: var(--tema-tinta);
+		border-color: var(--topic-ink);
 	}
 
-	.chip--tudo:hover {
-		border-color: var(--plumagem-suave);
+	.chip--all:hover {
+		border-color: var(--plumage-soft);
 	}
 }
 
-/* ---------- Trilho e cenas ---------- */
+/* ---------- Rail and scenes ---------- */
 
-.trilho {
+.rail {
 	overflow-y: auto;
 	overscroll-behavior: contain;
 	scroll-snap-type: y mandatory;
 	scroll-behavior: smooth;
 }
 
-.cena {
+.scene {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
-	padding: var(--esp-2xs) var(--esp-xs) var(--esp-xs);
+	padding: var(--space-2xs) var(--space-xs) var(--space-xs);
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 }
 
-/* ---------- Carta ---------- */
+/* ---------- Card ---------- */
 
-.carta {
+.card {
 	position: relative;
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 	overflow: clip;
-	border-radius: var(--raio-carta);
-	background: var(--cor-superficie);
-	box-shadow: var(--sombra-carta);
+	border-radius: var(--radius-card);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-card);
 }
 
 /*
- * Altura mínima para perguntas de até 4 linhas (3 no computador):
- * assim a primeira alternativa começa sempre no mesmo lugar em todas as cartas.
+ * Minimum height for questions of up to 4 lines (3 on desktop):
+ * so the first choice always starts in the same place on every card.
  */
-.carta__topo {
+.card__head {
 	position: relative;
 	display: grid;
 	align-content: start;
-	gap: var(--esp-xs);
+	gap: var(--space-xs);
 	min-height: 13.25rem;
-	padding: var(--esp-md) var(--esp-md) var(--esp-lg);
-	background: var(--tema);
+	padding: var(--space-md) var(--space-md) var(--space-lg);
+	background: var(--topic);
 }
 
-/* Borda de penas: meias-luas da cor do tema pendendo do cabeçalho */
-.carta__topo::after {
+/* Feather edge: half-moons in the topic color hanging from the head */
+.card__head::after {
 	content: '';
 	position: absolute;
 	inset: auto 0 -0.625rem;
 	height: 0.625rem;
-	background: var(--tema);
+	background: var(--topic);
 	-webkit-mask: radial-gradient(circle at 0.75rem 0, #000 0.625rem, transparent 0.66rem) 0 0 / 1.5rem 0.625rem repeat-x;
 	mask: radial-gradient(circle at 0.75rem 0, #000 0.625rem, transparent 0.66rem) 0 0 / 1.5rem 0.625rem repeat-x;
 }
 
-.carta__tema {
-	font-size: var(--texto-sm);
-	font-weight: var(--peso-medio);
+.card__topic {
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
 }
 
-.carta__tema-nome {
-	font-weight: var(--peso-titulo);
+.card__topic-name {
+	font-weight: var(--weight-heading);
 }
 
-.carta__enunciado {
-	font-size: var(--texto-xl);
-	font-weight: var(--peso-titulo);
+.card__prompt {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
 	line-height: 1.25;
 	letter-spacing: -0.01em;
 }
 
-.carta__enunciado:focus-visible {
-	outline-color: var(--plumagem);
+.card__prompt:focus-visible {
+	outline-color: var(--plumage);
 	outline-offset: 6px;
 	border-radius: 0.25rem;
 }
 
-.carta__corpo {
+.card__body {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	gap: var(--esp-sm);
-	padding: var(--esp-lg) var(--esp-sm) var(--esp-sm);
+	gap: var(--space-sm);
+	padding: var(--space-lg) var(--space-sm) var(--space-sm);
 }
 
-/* Rodapé preso à base da tela enquanto a carta rola: "Próxima" sempre ao alcance */
-.carta__pe {
+/* Footer pinned to the bottom of the screen while the card scrolls: "Próxima" always within reach */
+.card__foot {
 	position: sticky;
 	bottom: 0;
 	display: grid;
-	padding: var(--esp-2xs) var(--esp-sm) var(--esp-sm);
-	background: var(--cor-superficie);
+	padding: var(--space-2xs) var(--space-sm) var(--space-sm);
+	background: var(--color-surface);
 }
 
-/* Degradê que avisa quando há conteúdo passando por baixo do rodapé */
-.carta__pe::before {
+/* Gradient that warns when content is passing under the footer */
+.card__foot::before {
 	content: '';
 	position: absolute;
 	inset: -1.5rem 0 100%;
-	background: linear-gradient(to bottom, oklch(0.99 0.005 60 / 0), var(--cor-superficie));
+	background: linear-gradient(to bottom, oklch(0.99 0.005 60 / 0), var(--color-surface));
 	pointer-events: none;
 }
 
-/* ---------- Palco do Curió ---------- */
+/* ---------- The Curió's stage ---------- */
 
-.palco {
+.stage {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	padding-top: var(--esp-2xs);
+	padding-top: var(--space-2xs);
 }
 
-.espera {
+.waiting {
 	display: flex;
 	align-items: flex-end;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 }
 
-.espera .curio {
+.waiting .curio {
 	flex: none;
 }
 
-/* Balão de fala: a ponta aponta para o Curió */
-.fala {
-	margin-bottom: var(--esp-sm);
-	padding: var(--esp-xs) var(--esp-sm);
-	border-radius: var(--raio-alt) var(--raio-alt) var(--raio-alt) 0.25rem;
-	background: var(--cor-painel);
-	font-size: var(--texto-sm);
+/* Speech bubble: the tail points at the Curió */
+.speech {
+	margin-bottom: var(--space-sm);
+	padding: var(--space-xs) var(--space-sm);
+	border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 0.25rem;
+	background: var(--color-panel);
+	font-size: var(--text-sm);
 	line-height: 1.45;
-	animation: resultado-entra var(--dur-lenta) var(--ease-saida-expo) 200ms both;
+	animation: result-in var(--dur-slow) var(--ease-out-expo) 200ms both;
 }
 
-/* ---------- Alternativas ---------- */
+/* ---------- Choices ---------- */
 
-.alternativas {
+.choices {
 	display: grid;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.alt {
+.choice {
 	display: grid;
 	grid-template-columns: 2.25rem 1fr auto;
 	align-items: center;
-	gap: var(--esp-xs);
+	gap: var(--space-xs);
 	width: 100%;
 	min-height: 3.5rem;
-	padding: var(--esp-2xs) var(--esp-sm) var(--esp-2xs) var(--esp-2xs);
-	border: 2px solid var(--cor-borda-forte);
-	border-radius: var(--raio-alt);
-	background: var(--cor-superficie);
-	font-size: var(--texto-base);
-	font-weight: var(--peso-medio);
+	padding: var(--space-2xs) var(--space-sm) var(--space-2xs) var(--space-2xs);
+	border: 2px solid var(--color-border-strong);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	font-size: var(--text-base);
+	font-weight: var(--weight-medium);
 	line-height: 1.3;
 	text-align: left;
 	cursor: pointer;
 	transition:
-		transform var(--dur-rapida) var(--ease-saida),
-		box-shadow var(--dur-media) var(--ease-saida),
-		background-color var(--dur-media) var(--ease-saida),
-		border-color var(--dur-media) var(--ease-saida),
-		color var(--dur-media) var(--ease-saida);
+		transform var(--dur-fast) var(--ease-out),
+		box-shadow var(--dur-medium) var(--ease-out),
+		background-color var(--dur-medium) var(--ease-out),
+		border-color var(--dur-medium) var(--ease-out),
+		color var(--dur-medium) var(--ease-out);
 }
 
-.alt__marca {
+.choice__mark {
 	display: grid;
 	place-items: center;
 	width: 2.25rem;
 	height: 2.25rem;
 	border-radius: 50%;
-	background: var(--tema-fundo);
-	color: var(--tema-tinta);
-	font-weight: var(--peso-titulo);
+	background: var(--topic-bg);
+	color: var(--topic-ink);
+	font-weight: var(--weight-heading);
 	transition:
-		background-color var(--dur-media) var(--ease-saida),
-		color var(--dur-media) var(--ease-saida);
+		background-color var(--dur-medium) var(--ease-out),
+		color var(--dur-medium) var(--ease-out);
 }
 
-.alt__etiqueta {
-	font-size: var(--texto-xs);
-	font-weight: var(--peso-forte);
+.choice__label {
+	font-size: var(--text-xs);
+	font-weight: var(--weight-strong);
 	white-space: nowrap;
 }
 
 @media (hover: hover) {
-	.alt[data-estado='livre']:hover {
+	.choice[data-state='open']:hover {
 		transform: translateY(-2px);
-		border-color: var(--tema-tinta);
-		box-shadow: var(--sombra-levanta);
+		border-color: var(--topic-ink);
+		box-shadow: var(--shadow-lift);
 	}
 }
 
-.alt[data-estado='livre']:active {
+.choice[data-state='open']:active {
 	transform: translateY(1px);
 	box-shadow: none;
 }
 
-.alt[aria-disabled] {
+.choice[aria-disabled] {
 	cursor: default;
 }
 
-.alt[data-estado='certa'] {
-	border-color: var(--acerto);
-	background: var(--acerto-fundo);
-	color: var(--acerto-tinta);
+.choice[data-state='correct'] {
+	border-color: var(--correct);
+	background: var(--correct-bg);
+	color: var(--correct-ink);
 }
 
-.alt[data-estado='certa'] .alt__marca {
-	background: var(--acerto);
-	color: var(--ninho);
-	animation: marca-surge var(--dur-media) var(--ease-saida-expo);
+.choice[data-state='correct'] .choice__mark {
+	background: var(--correct);
+	color: var(--nest);
+	animation: mark-pop var(--dur-medium) var(--ease-out-expo);
 }
 
-.alt[data-estado='errada'] {
-	border-color: var(--erro);
-	background: var(--erro-fundo);
-	color: var(--erro-tinta);
+.choice[data-state='wrong'] {
+	border-color: var(--wrong);
+	background: var(--wrong-bg);
+	color: var(--wrong-ink);
 }
 
-.alt[data-estado='errada'] .alt__marca {
-	background: var(--erro);
-	color: var(--ninho);
-	animation: marca-surge var(--dur-media) var(--ease-saida-expo);
+.choice[data-state='wrong'] .choice__mark {
+	background: var(--wrong);
+	color: var(--nest);
+	animation: mark-pop var(--dur-medium) var(--ease-out-expo);
 }
 
-.alt[data-estado='apagada'] {
-	border-color: var(--cor-borda);
-	color: var(--cor-texto-suave);
+.choice[data-state='dimmed'] {
+	border-color: var(--color-border);
+	color: var(--color-text-soft);
 }
 
-.alt[data-estado='apagada'] .alt__marca {
-	background: var(--cor-painel);
-	color: var(--cor-texto-suave);
+.choice[data-state='dimmed'] .choice__mark {
+	background: var(--color-panel);
+	color: var(--color-text-soft);
 }
 
-@keyframes marca-surge {
+@keyframes mark-pop {
 	from {
 		transform: scale(0.5);
 	}
 }
 
-/* ---------- Resultado e explicação ---------- */
+/* ---------- Result and explanation ---------- */
 
-.resultado {
+.result {
 	display: grid;
-	gap: var(--esp-xs);
-	padding-top: var(--esp-2xs);
-	animation: resultado-entra var(--dur-media) var(--ease-saida-expo);
+	gap: var(--space-xs);
+	padding-top: var(--space-2xs);
+	animation: result-in var(--dur-medium) var(--ease-out-expo);
 }
 
-.resultado__linha {
+.result__row {
 	display: flex;
 	align-items: center;
-	gap: var(--esp-xs);
+	gap: var(--space-xs);
 }
 
-.resultado .curio {
+.result .curio {
 	flex: none;
 }
 
-.resultado__titulo {
+.result__title {
 	display: flex;
 	align-items: center;
-	gap: var(--esp-2xs);
-	font-size: var(--texto-lg);
-	font-weight: var(--peso-titulo);
+	gap: var(--space-2xs);
+	font-size: var(--text-lg);
+	font-weight: var(--weight-heading);
 	line-height: 1.25;
 }
 
-.resultado__titulo svg {
+.result__title svg {
 	flex: none;
 }
 
-.resultado[data-acertou='true'] .resultado__titulo {
-	color: var(--acerto-tinta);
+.result[data-correct='true'] .result__title {
+	color: var(--correct-ink);
 }
 
-.resultado[data-acertou='false'] .resultado__titulo {
-	color: var(--erro-tinta);
+.result[data-correct='false'] .result__title {
+	color: var(--wrong-ink);
 }
 
-.resultado__explicacao {
+.result__explanation {
 	max-width: 65ch;
 	line-height: 1.55;
 }
 
-.resultado__marco {
+.result__milestone {
 	display: flex;
 	align-items: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	justify-self: start;
-	padding: var(--esp-2xs) var(--esp-sm);
-	border-radius: var(--raio-pilula);
-	background: var(--ferrugem-clara);
-	color: var(--ferrugem-forte);
-	font-weight: var(--peso-forte);
+	padding: var(--space-2xs) var(--space-sm);
+	border-radius: var(--radius-pill);
+	background: var(--rust-light);
+	color: var(--rust-strong);
+	font-weight: var(--weight-strong);
 	line-height: 1.3;
 }
 
-.resultado__marco svg {
+.result__milestone svg {
 	flex: none;
 }
 
-/* ---------- Celebração: penas caindo sobre o palco ---------- */
+/* ---------- Celebration: feathers falling over the stage ---------- */
 
-.palco {
+.stage {
 	position: relative;
 }
 
-/* Começa acima do palco (sobre as alternativas); a carta recorta o que sair dela */
-.penas {
+/* Starts above the stage (over the choices); the card clips whatever leaves it */
+.feathers {
 	position: absolute;
 	inset: -12rem 0 auto;
 	height: 0;
@@ -510,17 +510,17 @@
 	z-index: 1;
 }
 
-.pena {
+.feather {
 	position: absolute;
 	top: 0;
 	opacity: 0;
-	animation: pena-cai 1s var(--ease-saida) both;
+	animation: feather-fall 1s var(--ease-out) both;
 }
 
-@keyframes pena-cai {
+@keyframes feather-fall {
 	from {
 		opacity: 0;
-		transform: translate(0, 0) rotate(var(--giro0)) scale(var(--escala));
+		transform: translate(0, 0) rotate(var(--spin-from)) scale(var(--scale));
 	}
 	15% {
 		opacity: 1;
@@ -530,25 +530,25 @@
 	}
 	to {
 		opacity: 0;
-		transform: translate(var(--deriva), var(--queda)) rotate(var(--giro1)) scale(var(--escala));
+		transform: translate(var(--drift), var(--fall)) rotate(var(--spin-to)) scale(var(--scale));
 	}
 }
 
-/* ---------- Pílula da sequência: brilha uma vez num marco ---------- */
+/* ---------- Streak pill: glows once at a milestone ---------- */
 
-.sequencia--marco {
-	animation: sequencia-brilha 1.2s var(--ease-saida);
+.streak--milestone {
+	animation: streak-glow 1.2s var(--ease-out);
 }
 
-@keyframes sequencia-brilha {
+@keyframes streak-glow {
 	0% {
 		transform: scale(1);
 		box-shadow: 0 0 0 0 oklch(0.53 0.14 42 / 0.5);
 	}
 	25% {
 		transform: scale(1.12);
-		background-color: var(--ferrugem);
-		color: var(--ninho);
+		background-color: var(--rust);
+		color: var(--nest);
 	}
 	100% {
 		transform: scale(1);
@@ -556,118 +556,118 @@
 	}
 }
 
-@keyframes resultado-entra {
+@keyframes result-in {
 	from {
 		opacity: 0;
 		transform: translateY(0.5rem);
 	}
 }
 
-/* ---------- Botões de avançar ---------- */
+/* ---------- Advance buttons ---------- */
 
-.proxima {
+.next {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	min-height: 3.5rem;
-	padding: 0 var(--esp-lg);
+	padding: 0 var(--space-lg);
 	border: 0;
-	border-radius: var(--raio-pilula);
-	background: var(--cor-acao);
-	color: var(--cor-acao-texto);
-	font-size: var(--texto-lg);
-	font-weight: var(--peso-forte);
+	border-radius: var(--radius-pill);
+	background: var(--color-action);
+	color: var(--color-action-text);
+	font-size: var(--text-lg);
+	font-weight: var(--weight-strong);
 	cursor: pointer;
-	animation: resultado-entra var(--dur-media) var(--ease-saida-expo);
+	animation: result-in var(--dur-medium) var(--ease-out-expo);
 	transition:
-		transform var(--dur-rapida) var(--ease-saida),
-		background-color var(--dur-rapida) var(--ease-saida),
-		box-shadow var(--dur-media) var(--ease-saida);
+		transform var(--dur-fast) var(--ease-out),
+		background-color var(--dur-fast) var(--ease-out),
+		box-shadow var(--dur-medium) var(--ease-out);
 }
 
 @media (hover: hover) {
-	.proxima:hover {
-		background: var(--cor-acao-hover);
+	.next:hover {
+		background: var(--color-action-hover);
 		transform: translateY(-1px);
-		box-shadow: var(--sombra-levanta);
+		box-shadow: var(--shadow-lift);
 	}
 }
 
-.proxima:active {
+.next:active {
 	transform: translateY(1px);
 	box-shadow: none;
 }
 
-.pular {
+.skip {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	justify-self: center;
 	min-height: 2.75rem;
-	padding: 0 var(--esp-sm);
+	padding: 0 var(--space-sm);
 	border: 0;
-	border-radius: var(--raio-pilula);
+	border-radius: var(--radius-pill);
 	background: transparent;
-	color: var(--cor-texto-suave);
-	font-size: var(--texto-sm);
-	font-weight: var(--peso-medio);
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
 	cursor: pointer;
 	transition:
-		background-color var(--dur-rapida) var(--ease-saida),
-		color var(--dur-rapida) var(--ease-saida);
+		background-color var(--dur-fast) var(--ease-out),
+		color var(--dur-fast) var(--ease-out);
 }
 
 @media (hover: hover) {
-	.pular:hover {
-		background: var(--cor-painel);
-		color: var(--cor-texto);
+	.skip:hover {
+		background: var(--color-panel);
+		color: var(--color-text);
 	}
 }
 
-/* ---------- Avisos: falha e fim da fila ---------- */
+/* ---------- Notices: failure and end of the queue ---------- */
 
-.aviso {
+.notice {
 	display: grid;
 	justify-items: center;
-	gap: var(--esp-sm);
+	gap: var(--space-sm);
 	max-width: 28rem;
 	margin: auto;
-	padding: var(--esp-xl) var(--esp-md);
+	padding: var(--space-xl) var(--space-md);
 	text-align: center;
 }
 
-.aviso__titulo {
-	font-size: var(--texto-xl);
-	font-weight: var(--peso-titulo);
+.notice__title {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
 	line-height: 1.25;
 }
 
-.aviso__titulo:focus-visible {
+.notice__title:focus-visible {
 	outline-offset: 6px;
 	border-radius: 0.25rem;
 }
 
-.fim__opcoes {
+.end__options {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: var(--esp-2xs);
+	gap: var(--space-2xs);
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-/* ---------- Tema concluído: a tela vira a cor do tema ---------- */
+/* ---------- Topic complete: the screen becomes the topic's color ---------- */
 
-.cena--concluida {
+.scene--complete {
 	position: relative;
 	overflow: clip;
 }
 
-/* Um círculo enorme que cresce a partir do Curió (só transform) */
-.concluida__cor {
+/* A huge circle that grows out from the Curió (transform only) */
+.complete__color {
 	position: absolute;
 	top: 36%;
 	left: 50%;
@@ -675,123 +675,123 @@
 	height: 300vmax;
 	margin: -150vmax 0 0 -150vmax;
 	border-radius: 50%;
-	background: var(--tema);
+	background: var(--topic);
 	transform: scale(0);
-	transition: transform 1100ms var(--ease-saida-expo);
+	transition: transform 1100ms var(--ease-out-expo);
 }
 
-.cena--ativa .concluida__cor {
+.scene--active .complete__color {
 	transform: scale(1);
 }
 
-.concluida__conteudo {
+.complete__content {
 	position: relative;
 	opacity: 0;
 	transform: translateY(0.75rem);
 	transition:
-		opacity var(--dur-lenta) var(--ease-saida) 350ms,
-		transform var(--dur-lenta) var(--ease-saida-expo) 350ms;
+		opacity var(--dur-slow) var(--ease-out) 350ms,
+		transform var(--dur-slow) var(--ease-out-expo) 350ms;
 }
 
-.cena--ativa .concluida__conteudo {
+.scene--active .complete__content {
 	opacity: 1;
 	transform: none;
 }
 
-.concluida__penas {
+.complete__feathers {
 	position: absolute;
 	inset: 0 0 auto;
 	height: 0;
 }
 
-.concluida__penas .penas {
+.complete__feathers .feathers {
 	inset: 0 0 auto;
 }
 
-.concluida__selo {
+.complete__badge {
 	display: inline-flex;
 	align-items: center;
-	gap: var(--esp-3xs);
-	padding: 0.25rem var(--esp-sm) 0.25rem var(--esp-xs);
-	border-radius: var(--raio-pilula);
-	background: var(--ninho);
-	color: var(--acerto-tinta);
-	font-size: var(--texto-sm);
-	font-weight: var(--peso-titulo);
+	gap: var(--space-3xs);
+	padding: 0.25rem var(--space-sm) 0.25rem var(--space-xs);
+	border-radius: var(--radius-pill);
+	background: var(--nest);
+	color: var(--correct-ink);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-heading);
 }
 
-.concluida__titulo {
-	font-size: var(--texto-3xl);
+.complete__title {
+	font-size: var(--text-3xl);
 	line-height: 1.1;
 	letter-spacing: -0.015em;
 }
 
-.concluida__texto {
-	font-weight: var(--peso-medio);
+.complete__text {
+	font-weight: var(--weight-medium);
 }
 
-.concluida__acoes {
+.complete__actions {
 	display: grid;
 	justify-items: center;
-	gap: var(--esp-2xs);
-	margin-top: var(--esp-2xs);
+	gap: var(--space-2xs);
+	margin-top: var(--space-2xs);
 }
 
-.concluida__acoes .proxima {
+.complete__actions .next {
 	text-decoration: none;
 }
 
-/* Sobre a cor do tema o cinza suave do botão não passa no contraste: usa a tinta forte */
-.cena--concluida .pular {
-	color: var(--plumagem);
+/* On the topic color the button's soft gray fails contrast: use the strong ink */
+.scene--complete .skip {
+	color: var(--plumage);
 }
 
 @media (hover: hover) {
-	.cena--concluida .pular:hover {
+	.scene--complete .skip:hover {
 		background: oklch(0.99 0.005 60 / 0.55);
 	}
 }
 
-/* ---------- Esqueleto ---------- */
+/* ---------- Skeleton ---------- */
 
-.carta--esqueleto .carta__topo {
-	background: var(--cor-painel);
+.card--skeleton .card__head {
+	background: var(--color-panel);
 }
 
-.carta--esqueleto .carta__topo::after {
-	background: var(--cor-painel);
+.card--skeleton .card__head::after {
+	background: var(--color-panel);
 }
 
-.osso {
+.skeleton-bar {
 	display: block;
 	height: 1.5rem;
 	border-radius: 0.5rem;
-	background: var(--linha);
-	animation: osso-pulsa 1.4s ease-in-out infinite alternate;
+	background: var(--line);
+	animation: skeleton-pulse 1.4s ease-in-out infinite alternate;
 }
 
-.osso--curto {
+.skeleton-bar--short {
 	width: 35%;
 	height: 1rem;
 }
 
-.osso--medio {
+.skeleton-bar--medium {
 	width: 70%;
 }
 
-.osso--alt {
+.skeleton-bar--tall {
 	height: 3.5rem;
-	border-radius: var(--raio-alt);
-	background: var(--cor-painel);
+	border-radius: var(--radius-md);
+	background: var(--color-panel);
 }
 
-@keyframes osso-pulsa {
+@keyframes skeleton-pulse {
 	to {
 		opacity: 0.55;
 	}
 }
 
-/* ---------- KaTeX dentro do texto ---------- */
+/* ---------- KaTeX inside text ---------- */
 
 .formula {
 	white-space: nowrap;
@@ -801,14 +801,14 @@
 	font-size: 1.05em;
 }
 
-/* ---------- Computador e tablet ---------- */
+/* ---------- Desktop and tablet ---------- */
 
 @media (min-width: 48rem) {
-	.topo {
+	.topbar {
 		grid-template-columns: auto 1fr auto;
-		grid-template-areas: 'marca chips acoes';
-		gap: var(--esp-md);
-		padding: var(--esp-sm) var(--esp-lg);
+		grid-template-areas: 'brand chips actions';
+		gap: var(--space-md);
+		padding: var(--space-sm) var(--space-lg);
 	}
 
 	.chips {
@@ -817,149 +817,149 @@
 
 	.chips ul {
 		justify-content: center;
-		padding: var(--esp-3xs);
+		padding: var(--space-3xs);
 	}
 
-	.cena {
-		padding: var(--esp-xs) var(--esp-lg) var(--esp-lg);
+	.scene {
+		padding: var(--space-xs) var(--space-lg) var(--space-lg);
 	}
 
-	/* A carta ocupa a altura da tela, como no celular: todas do mesmo tamanho */
-	.carta {
+	/* The card takes the screen height, like on mobile: all the same size */
+	.card {
 		width: min(36rem, 100%);
 		margin: 0 auto;
 	}
 
-	.carta__topo {
+	.card__head {
 		min-height: 13.25rem;
-		padding: var(--esp-lg);
+		padding: var(--space-lg);
 	}
 
-	.carta__enunciado {
-		font-size: var(--texto-2xl);
+	.card__prompt {
+		font-size: var(--text-2xl);
 	}
 
-	.carta__corpo {
-		gap: var(--esp-xs);
-		padding: var(--esp-lg) var(--esp-lg) var(--esp-2xs);
+	.card__body {
+		gap: var(--space-xs);
+		padding: var(--space-lg) var(--space-lg) var(--space-2xs);
 	}
 
-	.palco {
+	.stage {
 		padding-top: 0;
 	}
 
-	.alt {
+	.choice {
 		min-height: 3.25rem;
 	}
 
-	/* Curió ao lado da explicação: a resposta cabe na carta sem ela crescer */
-	.resultado {
+	/* Curió next to the explanation: the answer fits in the card without it growing */
+	.result {
 		grid-template-columns: auto 1fr;
 		align-items: start;
-		gap: var(--esp-3xs) var(--esp-sm);
+		gap: var(--space-3xs) var(--space-sm);
 	}
 
-	.resultado__linha {
+	.result__row {
 		display: contents;
 	}
 
-	.resultado .curio {
+	.result .curio {
 		grid-row: 1 / span 3;
 	}
 
-	.resultado__marco,
-	.resultado__explicacao {
+	.result__milestone,
+	.result__explanation {
 		grid-column: 2;
 	}
 
-	.carta__pe {
+	.card__foot {
 		justify-items: center;
-		padding: var(--esp-2xs) var(--esp-lg) var(--esp-md);
+		padding: var(--space-2xs) var(--space-lg) var(--space-md);
 	}
 
-	.proxima {
+	.next {
 		min-width: 14rem;
 	}
 }
 
-/* ---------- Movimento reduzido: só fade e troca de cor ---------- */
+/* ---------- Reduced motion: only fade and color change ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-	.trilho {
+	.rail {
 		scroll-behavior: auto;
 	}
 
-	.alt,
+	.choice,
 	.chip,
-	.proxima {
+	.next {
 		transition-property: background-color, border-color, color, box-shadow;
 	}
 
-	.alt[data-estado='livre']:hover,
-	.alt[data-estado='livre']:active,
+	.choice[data-state='open']:hover,
+	.choice[data-state='open']:active,
 	.chip:active,
-	.proxima:hover,
-	.proxima:active {
+	.next:hover,
+	.next:active {
 		transform: none;
 	}
 
-	.resultado,
-	.proxima {
-		animation: aparece var(--dur-media) ease-out;
+	.result,
+	.next {
+		animation: fade-in var(--dur-medium) ease-out;
 	}
 
-	.fala {
-		animation: aparece var(--dur-lenta) ease-out both;
+	.speech {
+		animation: fade-in var(--dur-slow) ease-out both;
 	}
 
-	.alt[data-estado='certa'] .alt__marca,
-	.alt[data-estado='errada'] .alt__marca {
+	.choice[data-state='correct'] .choice__mark,
+	.choice[data-state='wrong'] .choice__mark {
 		animation: none;
 	}
 
-	.osso {
+	.skeleton-bar {
 		animation: none;
 	}
 
-	/* Sem partículas: a celebração vira só troca de expressão e de cor */
-	.penas {
+	/* No particles: the celebration becomes just a change of expression and color */
+	.feathers {
 		display: none;
 	}
 
-	/* Tema concluído: a cor não se espalha, só aparece (fade) */
-	.concluida__cor {
+	/* Topic complete: the color doesn't spread, it just appears (fade) */
+	.complete__color {
 		transform: none;
 		opacity: 0;
-		transition: opacity var(--dur-lenta) ease-out;
+		transition: opacity var(--dur-slow) ease-out;
 	}
 
-	.cena--ativa .concluida__cor {
+	.scene--active .complete__color {
 		opacity: 1;
 	}
 
-	.concluida__conteudo {
+	.complete__content {
 		transform: none;
-		transition: opacity var(--dur-lenta) ease-out 150ms;
+		transition: opacity var(--dur-slow) ease-out 150ms;
 	}
 
-	.temas-link:active {
+	.topics-link:active {
 		transform: none;
 	}
 
-	.sequencia--marco {
-		animation: sequencia-cor 1.2s ease-out;
+	.streak--milestone {
+		animation: streak-color 1.2s ease-out;
 	}
 }
 
-@keyframes sequencia-cor {
+@keyframes streak-color {
 	25%,
 	60% {
-		background-color: var(--ferrugem);
-		color: var(--ninho);
+		background-color: var(--rust);
+		color: var(--nest);
 	}
 }
 
-@keyframes aparece {
+@keyframes fade-in {
 	from {
 		opacity: 0;
 	}

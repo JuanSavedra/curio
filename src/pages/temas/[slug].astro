@@ -1,0 +1,43 @@
+---
+import TopicPage from '../../components/topics/TopicPage';
+import { TOPICS, type Topic } from '../../data/topics';
+import Base from '../../layouts/Base.astro';
+import { listDecks } from '../../lib/decks';
+import type { DeckSummary } from '../../lib/types';
+
+// One page per topic that already has questions (never one per question: deploy file limit).
+// The address uses the public pt-BR slug (/temas/astronomia), the code uses the topic id.
+export async function getStaticPaths() {
+	const decks = await listDecks();
+	const topics = [...new Set(decks.map((d) => d.topic))];
+	return topics.map((topic) => ({
+		params: { slug: TOPICS[topic].slug },
+		props: { topic, decks: decks.filter((d) => d.topic === topic) },
+	}));
+}
+
+const { topic, decks } = Astro.props as { topic: Topic; decks: DeckSummary[] };
+---
+
+<Base
+	title={`${TOPICS[topic].name} | Curiô`}
+	description={`Perguntas curiosas de ${TOPICS[topic].name}, com uma explicação para cada resposta. Grátis e sem anúncios.`}
+	mainId="content"
+	skipText="Ir para as coleções"
+>
+	<TopicPage client:load topic={topic} decks={decks} />
+	<noscript>
+		<p class="no-js">O Curiô precisa de JavaScript ligado para mostrar as perguntas.</p>
+	</noscript>
+</Base>
+
+<style>
+	.no-js {
+		position: fixed;
+		inset: auto var(--space-sm) var(--space-sm);
+		padding: var(--space-sm);
+		border-radius: var(--radius-md);
+		background: var(--color-panel);
+		text-align: center;
+	}
+</style>

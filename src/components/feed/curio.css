@@ -1,48 +1,48 @@
 ﻿/*
- * Animação de personagem do Curió. É ilustração, não easing de interface:
- * aqui o pulinho e o bater de asas podem ir e voltar. Cada reação dura no máximo ~1,2s.
- * Origens em unidades do viewBox (0 0 80 80).
+ * Character animation for the Curió. This is illustration, not UI easing:
+ * here the hop and the wing flap are allowed to go back and forth. Each reaction lasts ~1.2s at most.
+ * Origins are in viewBox units (0 0 80 80).
  */
 
 .curio {
 	overflow: visible;
 }
 
-.curio__ave,
-.curio__cabeca,
-.curio__asa,
-.curio__bico-baixo {
+.curio__bird,
+.curio__head,
+.curio__wing,
+.curio__lower-beak {
 	transform-box: view-box;
 }
 
-.curio__ave {
+.curio__bird {
 	transform-origin: 38px 74px;
 }
 
-.curio__cabeca {
+.curio__head {
 	transform-origin: 44px 42px;
 }
 
-.curio__olho {
+.curio__eye {
 	transform-box: fill-box;
 	transform-origin: center;
 }
 
-.curio__bico-baixo {
+.curio__lower-beak {
 	transform-origin: 61px 31px;
 }
 
-/* ---------- Esperando: pisca e inclina a cabeça de vez em quando ---------- */
+/* ---------- Waiting: blinks and tilts the head now and then ---------- */
 
-.curio--esperando:not(.curio--parado) .curio__olho {
-	animation: curio-pisca 5.3s infinite;
+.curio--waiting:not(.curio--still) .curio__eye {
+	animation: curio-blink 5.3s infinite;
 }
 
-.curio--esperando:not(.curio--parado) .curio__cabeca {
-	animation: curio-curioso 8.7s var(--ease-saida) infinite;
+.curio--waiting:not(.curio--still) .curio__head {
+	animation: curio-curious 8.7s var(--ease-out) infinite;
 }
 
-@keyframes curio-pisca {
+@keyframes curio-blink {
 	0%,
 	93%,
 	100% {
@@ -53,7 +53,7 @@
 	}
 }
 
-@keyframes curio-curioso {
+@keyframes curio-curious {
 	0%,
 	55%,
 	100% {
@@ -65,27 +65,27 @@
 	}
 }
 
-/* ---------- Feliz: pulinho e notas saindo do bico ---------- */
+/* ---------- Happy: a little hop and notes coming out of the beak ---------- */
 
-.curio--feliz .curio__ave {
-	animation: curio-pula 700ms var(--ease-saida);
+.curio--happy .curio__bird {
+	animation: curio-hop 700ms var(--ease-out);
 }
 
-.curio--feliz .curio__bico-baixo,
-.curio--comemorando .curio__bico-baixo {
+.curio--happy .curio__lower-beak,
+.curio--celebrating .curio__lower-beak {
 	transform: rotate(16deg);
-	animation: curio-canta 900ms var(--ease-saida);
+	animation: curio-sing 900ms var(--ease-out);
 }
 
-.curio__nota {
-	animation: curio-nota 1.1s var(--ease-saida) both;
+.curio__note {
+	animation: curio-note 1.1s var(--ease-out) both;
 }
 
-.curio__nota--2 {
+.curio__note--2 {
 	animation-delay: 250ms;
 }
 
-@keyframes curio-pula {
+@keyframes curio-hop {
 	0%,
 	60%,
 	100% {
@@ -96,7 +96,7 @@
 	}
 }
 
-@keyframes curio-canta {
+@keyframes curio-sing {
 	0% {
 		transform: rotate(0);
 	}
@@ -105,39 +105,39 @@
 	}
 }
 
-@keyframes curio-nota {
+@keyframes curio-note {
 	from {
 		opacity: 0;
 		transform: translate(-6px, 8px);
 	}
 }
 
-/* ---------- Consolando: cabeça inclinada, olhar suave ---------- */
+/* ---------- Comforting: tilted head, soft gaze ---------- */
 
-.curio--consolando .curio__cabeca {
+.curio--comforting .curio__head {
 	transform: rotate(-10deg);
-	animation: curio-inclina 600ms var(--ease-saida);
+	animation: curio-tilt 600ms var(--ease-out);
 }
 
-@keyframes curio-inclina {
+@keyframes curio-tilt {
 	from {
 		transform: rotate(0);
 	}
 }
 
-/* ---------- Comemorando: asas abertas, batendo, e canto ---------- */
+/* ---------- Celebrating: wings open, flapping, and singing ---------- */
 
-.curio--comemorando .curio__ave {
-	animation: curio-pula 700ms var(--ease-saida) 2;
+.curio--celebrating .curio__bird {
+	animation: curio-hop 700ms var(--ease-out) 2;
 }
 
-.curio--comemorando .curio__asa {
+.curio--celebrating .curio__wing {
 	transform-origin: 36px 44px;
-	animation: curio-bate-asa 300ms ease-in-out 4 alternate;
+	animation: curio-flap 300ms ease-in-out 4 alternate;
 }
 
 
-@keyframes curio-bate-asa {
+@keyframes curio-flap {
 	from {
 		transform: rotate(0);
 	}
@@ -146,26 +146,26 @@
 	}
 }
 
-/* ---------- Movimento reduzido: só troca de expressão com fade ---------- */
+/* ---------- Reduced motion: only the expression changes, with a fade ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-	.curio .curio__ave,
-	.curio .curio__olho,
-	.curio .curio__cabeca,
-	.curio .curio__asa,
-	.curio .curio__bico-baixo,
-	.curio .curio__nota {
+	.curio .curio__bird,
+	.curio .curio__eye,
+	.curio .curio__head,
+	.curio .curio__wing,
+	.curio .curio__lower-beak,
+	.curio .curio__note {
 		animation: none;
 	}
 
-	.curio--feliz,
-	.curio--consolando,
-	.curio--comemorando {
-		animation: curio-aparece var(--dur-lenta) ease-out;
+	.curio--happy,
+	.curio--comforting,
+	.curio--celebrating {
+		animation: curio-fade-in var(--dur-slow) ease-out;
 	}
 }
 
-@keyframes curio-aparece {
+@keyframes curio-fade-in {
 	from {
 		opacity: 0;
 	}

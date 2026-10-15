@@ -1,116 +1,116 @@
 /*
- * Tokens do Curiô ("O Ninho Cantante").
- * Primitivos primeiro, papéis semânticos depois. Contrastes verificados (WCAG AA).
+ * Curiô tokens ("O Ninho Cantante").
+ * Primitives first, semantic roles after. Contrasts verified (WCAG AA).
  */
 :root {
 	color-scheme: light;
 
-	/* Neutros: todos tingidos de ferrugem (The Plumage Rule) */
-	--creme: oklch(0.975 0.008 55);
-	--ninho: oklch(0.99 0.005 60);
-	--penugem: oklch(0.945 0.016 55);
-	--linha: oklch(0.88 0.02 50);
-	--linha-forte: oklch(0.8 0.03 50);
-	--plumagem: oklch(0.25 0.02 40);
-	--plumagem-suave: oklch(0.45 0.025 45);
+	/* Neutrals: all tinted toward rust (The Plumage Rule) */
+	--cream: oklch(0.975 0.008 55);
+	--nest: oklch(0.99 0.005 60);
+	--down: oklch(0.945 0.016 55);
+	--line: oklch(0.88 0.02 50);
+	--line-strong: oklch(0.8 0.03 50);
+	--plumage: oklch(0.25 0.02 40);
+	--plumage-soft: oklch(0.45 0.025 45);
 
-	/* Marca: o peito castanho do curió */
-	--ferrugem: oklch(0.53 0.14 42);
-	--ferrugem-forte: oklch(0.47 0.13 40);
-	--ferrugem-clara: oklch(0.93 0.035 50);
+	/* Brand: the curió's brown chest */
+	--rust: oklch(0.53 0.14 42);
+	--rust-strong: oklch(0.47 0.13 40);
+	--rust-light: oklch(0.93 0.035 50);
 
-	/* O Curió: segundo tom para volume, contorno quente (clareia no modo escuro) */
-	--curio-contorno: oklch(0.2 0.02 40);
-	--curio-luz: oklch(0.35 0.025 42);
-	--curio-peito-luz: oklch(0.62 0.13 50);
-	--curio-bico: oklch(0.44 0.02 50);
-	--curio-bico-luz: oklch(0.6 0.02 55);
+	/* The Curió: second tone for volume, warm outline (lightens in dark mode) */
+	--curio-outline: oklch(0.2 0.02 40);
+	--curio-light: oklch(0.35 0.025 42);
+	--curio-chest-light: oklch(0.62 0.13 50);
+	--curio-beak: oklch(0.44 0.02 50);
+	--curio-beak-light: oklch(0.6 0.02 55);
 
-	/* Estados de resposta */
-	--acerto: oklch(0.52 0.12 155);
-	--acerto-fundo: oklch(0.94 0.045 155);
-	--acerto-tinta: oklch(0.4 0.1 155);
-	--erro: oklch(0.58 0.14 18);
-	--erro-fundo: oklch(0.945 0.025 18);
-	--erro-tinta: oklch(0.46 0.13 18);
+	/* Answer states */
+	--correct: oklch(0.52 0.12 155);
+	--correct-bg: oklch(0.94 0.045 155);
+	--correct-ink: oklch(0.4 0.1 155);
+	--wrong: oklch(0.58 0.14 18);
+	--wrong-bg: oklch(0.945 0.025 18);
+	--wrong-ink: oklch(0.46 0.13 18);
 
 	/*
-	 * Temas: mesma luminosidade (0,8) e croma próximo, para nenhum gritar mais.
-	 * "tinta" é a versão escura para texto sobre fundo claro.
+	 * Topics: same lightness (0.8) and close chroma, so none shouts louder.
+	 * "ink" is the dark version for text on a light background; "bg" is the soft tint.
 	 */
-	--astronomia: oklch(0.8 0.1 275);
-	--astronomia-tinta: oklch(0.46 0.13 275);
-	--astronomia-fundo: oklch(0.955 0.018 275);
-	--matematica: oklch(0.8 0.105 240);
-	--matematica-tinta: oklch(0.46 0.105 240);
-	--matematica-fundo: oklch(0.955 0.018 240);
-	--ciencias: oklch(0.8 0.105 200);
-	--ciencias-tinta: oklch(0.46 0.075 200);
-	--ciencias-fundo: oklch(0.955 0.022 200);
-	--logica: oklch(0.8 0.105 310);
-	--logica-tinta: oklch(0.46 0.13 310);
-	--logica-fundo: oklch(0.955 0.022 310);
-	--historia: oklch(0.8 0.105 80);
-	--historia-tinta: oklch(0.46 0.095 80);
-	--historia-fundo: oklch(0.955 0.025 80);
-	--geografia: oklch(0.8 0.105 125);
-	--geografia-tinta: oklch(0.46 0.115 125);
-	--geografia-fundo: oklch(0.955 0.025 125);
-	--linguagem: oklch(0.8 0.105 350);
-	--linguagem-tinta: oklch(0.46 0.13 350);
-	--linguagem-fundo: oklch(0.955 0.022 350);
+	--astronomy: oklch(0.8 0.1 275);
+	--astronomy-ink: oklch(0.46 0.13 275);
+	--astronomy-bg: oklch(0.955 0.018 275);
+	--math: oklch(0.8 0.105 240);
+	--math-ink: oklch(0.46 0.105 240);
+	--math-bg: oklch(0.955 0.018 240);
+	--science: oklch(0.8 0.105 200);
+	--science-ink: oklch(0.46 0.075 200);
+	--science-bg: oklch(0.955 0.022 200);
+	--logic: oklch(0.8 0.105 310);
+	--logic-ink: oklch(0.46 0.13 310);
+	--logic-bg: oklch(0.955 0.022 310);
+	--history: oklch(0.8 0.105 80);
+	--history-ink: oklch(0.46 0.095 80);
+	--history-bg: oklch(0.955 0.025 80);
+	--geography: oklch(0.8 0.105 125);
+	--geography-ink: oklch(0.46 0.115 125);
+	--geography-bg: oklch(0.955 0.025 125);
+	--language: oklch(0.8 0.105 350);
+	--language-ink: oklch(0.46 0.13 350);
+	--language-bg: oklch(0.955 0.022 350);
 
-	/* Papéis semânticos */
-	--cor-fundo: var(--creme);
-	--cor-superficie: var(--ninho);
-	--cor-painel: var(--penugem);
-	--cor-texto: var(--plumagem);
-	--cor-texto-suave: var(--plumagem-suave);
-	--cor-borda: var(--linha);
-	--cor-borda-forte: var(--linha-forte);
-	--cor-acao: var(--ferrugem);
-	--cor-acao-hover: var(--ferrugem-forte);
-	--cor-acao-texto: var(--ninho);
-	--cor-foco: var(--ferrugem);
+	/* Semantic roles */
+	--color-bg: var(--cream);
+	--color-surface: var(--nest);
+	--color-panel: var(--down);
+	--color-text: var(--plumage);
+	--color-text-soft: var(--plumage-soft);
+	--color-border: var(--line);
+	--color-border-strong: var(--line-strong);
+	--color-action: var(--rust);
+	--color-action-hover: var(--rust-strong);
+	--color-action-text: var(--nest);
+	--color-focus: var(--rust);
 
-	/* Tipografia: uma família só (The One Voice Rule), escala fixa ~1,2 */
-	--fonte: 'Parkinsans Variable', 'Segoe UI', system-ui, sans-serif;
-	--texto-xs: 0.8125rem;
-	--texto-sm: 0.9375rem;
-	--texto-base: 1.0625rem;
-	--texto-lg: 1.25rem;
-	--texto-xl: 1.5rem;
-	--texto-2xl: 1.875rem;
-	--texto-3xl: 2.375rem;
-	--peso-normal: 400;
-	--peso-medio: 500;
-	--peso-forte: 650;
-	--peso-titulo: 750;
+	/* Typography: a single family (The One Voice Rule), fixed scale ~1.2 */
+	--font: 'Parkinsans Variable', 'Segoe UI', system-ui, sans-serif;
+	--text-xs: 0.8125rem;
+	--text-sm: 0.9375rem;
+	--text-base: 1.0625rem;
+	--text-lg: 1.25rem;
+	--text-xl: 1.5rem;
+	--text-2xl: 1.875rem;
+	--text-3xl: 2.375rem;
+	--weight-normal: 400;
+	--weight-medium: 500;
+	--weight-strong: 650;
+	--weight-heading: 750;
 
-	/* Espaço (base 4px) */
-	--esp-3xs: 0.25rem;
-	--esp-2xs: 0.5rem;
-	--esp-xs: 0.75rem;
-	--esp-sm: 1rem;
-	--esp-md: 1.5rem;
-	--esp-lg: 2rem;
-	--esp-xl: 3rem;
-	--esp-2xl: 4rem;
+	/* Space (4px base) */
+	--space-3xs: 0.25rem;
+	--space-2xs: 0.5rem;
+	--space-xs: 0.75rem;
+	--space-sm: 1rem;
+	--space-md: 1.5rem;
+	--space-lg: 2rem;
+	--space-xl: 3rem;
+	--space-2xl: 4rem;
 
-	/* Forma */
-	--raio-carta: 1.75rem;
-	--raio-alt: 1.125rem;
-	--raio-pilula: 999px;
+	/* Shape */
+	--radius-card: 1.75rem;
+	--radius-md: 1.125rem;
+	--radius-pill: 999px;
 
-	/* Elevação: sombras quentes, que só crescem como resposta (The Soft Lift Rule) */
-	--sombra-repouso: 0 1px 0 var(--linha);
-	--sombra-carta: 0 1px 0 var(--linha), 0 12px 32px -20px oklch(0.4 0.08 45 / 0.35);
-	--sombra-levanta: 0 1px 0 var(--linha), 0 10px 20px -10px oklch(0.4 0.09 45 / 0.35);
+	/* Elevation: warm shadows that only grow as a response (The Soft Lift Rule) */
+	--shadow-rest: 0 1px 0 var(--line);
+	--shadow-card: 0 1px 0 var(--line), 0 12px 32px -20px oklch(0.4 0.08 45 / 0.35);
+	--shadow-lift: 0 1px 0 var(--line), 0 10px 20px -10px oklch(0.4 0.09 45 / 0.35);
 
-	/* Movimento */
-	--ease-saida: cubic-bezier(0.25, 1, 0.5, 1);
-	--ease-saida-expo: cubic-bezier(0.16, 1, 0.3, 1);
-	--dur-rapida: 150ms;
-	--dur-media: 220ms;
-	--dur-lenta: 400ms;
+	/* Motion */
+	--ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--dur-fast: 150ms;
+	--dur-medium: 220ms;
+	--dur-slow: 400ms;
 }

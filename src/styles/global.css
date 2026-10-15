@@ -14,11 +14,11 @@ html {
 
 body {
 	margin: 0;
-	background: var(--cor-fundo);
-	color: var(--cor-texto);
-	font-family: var(--fonte);
-	font-size: var(--texto-base);
-	font-weight: var(--peso-normal);
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font);
+	font-size: var(--text-base);
+	font-weight: var(--weight-normal);
 	line-height: 1.5;
 	font-kerning: normal;
 	-webkit-font-smoothing: antialiased;
@@ -47,11 +47,11 @@ button {
 }
 
 :focus-visible {
-	outline: 3px solid var(--cor-foco);
+	outline: 3px solid var(--color-focus);
 	outline-offset: 3px;
 }
 
-.so-leitor {
+.sr-only {
 	position: absolute;
 	width: 1px;
 	height: 1px;
@@ -63,25 +63,25 @@ button {
 	border: 0;
 }
 
-.pular-link {
+.skip-link {
 	position: absolute;
-	top: var(--esp-2xs);
-	left: var(--esp-2xs);
+	top: var(--space-2xs);
+	left: var(--space-2xs);
 	z-index: 10;
-	padding: var(--esp-2xs) var(--esp-sm);
-	border-radius: var(--raio-pilula);
-	background: var(--cor-superficie);
-	color: var(--cor-texto);
-	font-weight: var(--peso-forte);
+	padding: var(--space-2xs) var(--space-sm);
+	border-radius: var(--radius-pill);
+	background: var(--color-surface);
+	color: var(--color-text);
+	font-weight: var(--weight-strong);
 	transform: translateY(-200%);
-	transition: transform var(--dur-media) var(--ease-saida);
+	transition: transform var(--dur-medium) var(--ease-out);
 }
 
-.pular-link:focus-visible {
+.skip-link:focus-visible {
 	transform: none;
 }
 
-/* Cada componente define sua versão suave (fade, troca de cor). Aqui só a rolagem. */
+/* Each component defines its own soft version (fade, color change). Here, only scrolling. */
 @media (prefers-reduced-motion: reduce) {
 	* {
 		scroll-behavior: auto !important;

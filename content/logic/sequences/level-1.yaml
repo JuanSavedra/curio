@@ -1,93 +1,93 @@
-titulo: Sequências e padrões
-subtema: Sequências
-perguntas:
-  - id: dobrando
-    enunciado: 'Qual número vem a seguir? 2, 4, 8, 16, …'
-    alternativas:
+title: Sequências e padrões
+subtopic: Sequências
+questions:
+  - id: doubling
+    prompt: 'Qual número vem a seguir? 2, 4, 8, 16, …'
+    choices:
       - '18'
       - '24'
       - '32'
       - '64'
-    resposta: '32'
-    explicacao: >-
+    answer: '32'
+    explanation: >-
       Cada número é o dobro do anterior: 16 × 2 = 32. Essas são as potências de 2,
       a base de como os computadores guardam informação.
 
   - id: fibonacci
-    enunciado: 'E nesta? 1, 1, 2, 3, 5, 8, …'
-    alternativas:
+    prompt: 'E nesta? 1, 1, 2, 3, 5, 8, …'
+    choices:
       - '11'
       - '13'
       - '16'
-    resposta: '13'
-    explicacao: >-
+    answer: '13'
+    explanation: >-
       Cada número é a soma dos dois anteriores: 5 + 8 = 13. É a sequência de Fibonacci,
       que aparece nas espirais das sementes de girassol e das pinhas.
 
-  - id: quadrados
-    enunciado: 'Qual número continua a sequência? 1, 4, 9, 16, 25, …'
-    alternativas:
+  - id: squares
+    prompt: 'Qual número continua a sequência? 1, 4, 9, 16, 25, …'
+    choices:
       - '30'
       - '35'
       - '36'
       - '49'
-    resposta: '36'
-    explicacao: >-
+    answer: '36'
+    explanation: >-
       São os quadrados: $1^2, 2^2, 3^2, 4^2, 5^2$. O próximo é $6^2 = 36$. Dá para desenhar
       cada um como um quadradinho de pontos, e é daí que vem o nome.
 
-  - id: letras-pulando
-    enunciado: 'Qual letra vem depois? A, C, E, G, …'
-    alternativas:
+  - id: skipping-letters
+    prompt: 'Qual letra vem depois? A, C, E, G, …'
+    choices:
       - H
       - I
       - J
-    resposta: I
-    explicacao: >-
+    answer: I
+    explanation: >-
       A sequência pula uma letra de cada vez: A (pula B), C (pula D), E (pula F), G (pula H), I.
 
-  - id: iniciais-dos-numeros
-    enunciado: 'Que letra continua? U, D, T, Q, C, …'
-    alternativas:
+  - id: number-initials
+    prompt: 'Que letra continua? U, D, T, Q, C, …'
+    choices:
       - S
       - O
       - N
-    resposta: S
-    explicacao: >-
+    answer: S
+    explanation: >-
       São as iniciais de Um, Dois, Três, Quatro, Cinco… e Seis! Muitos desafios de lógica
       escondem algo que a gente usa todo dia.
 
-  - id: iniciais-dos-meses
-    enunciado: 'E esta? J, F, M, A, M, J, …'
-    alternativas:
+  - id: month-initials
+    prompt: 'E esta? J, F, M, A, M, J, …'
+    choices:
       - J
       - A
       - S
-    resposta: J
-    explicacao: >-
+    answer: J
+    explanation: >-
       Janeiro, Fevereiro, Março, Abril, Maio, Junho… e Julho. Depois dele, a sequência
       continua com A de Agosto.
 
-  - id: diferencas-impares
-    enunciado: 'Qual o próximo número? 3, 6, 11, 18, 27, …'
-    alternativas:
+  - id: odd-differences
+    prompt: 'Qual o próximo número? 3, 6, 11, 18, 27, …'
+    choices:
       - '36'
       - '38'
       - '40'
       - '45'
-    resposta: '38'
-    explicacao: >-
+    answer: '38'
+    explanation: >-
       Olhe para a distância entre os números: +3, +5, +7, +9. São os ímpares em ordem,
       então o próximo salto é +11, e 27 + 11 = 38.
 
-  - id: olhe-e-diga
-    enunciado: 'Desafio: 1, 11, 21, 1211, 111221, …'
-    alternativas:
+  - id: look-and-say
+    prompt: 'Desafio: 1, 11, 21, 1211, 111221, …'
+    choices:
       - '312211'
       - '1112221'
       - '122211'
-    resposta: '312211'
-    explicacao: >-
+    answer: '312211'
+    explanation: >-
       Cada termo descreve o anterior em voz alta. "1" tem um 1, então vira 11. "11" tem dois 1,
       vira 21. Lendo 111221: três 1, dois 2, um 1, ou seja, 312211. É a sequência
       "olhe e diga", estudada pelo matemático John Conway.

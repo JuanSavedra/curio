@@ -3,14 +3,14 @@ import 'katex/dist/katex.min.css';
 import '../styles/global.css';
 
 interface Props {
-	titulo: string;
-	descricao: string;
-	/** Id do <main> da página, alvo do link "pular para o conteúdo" */
-	idPrincipal?: string;
-	textoPular?: string;
+	title: string;
+	description: string;
+	/** Id of the page's <main>, target of the "skip to content" link */
+	mainId?: string;
+	skipText?: string;
 }
 
-const { titulo, descricao, idPrincipal = 'perguntas', textoPular = 'Ir para as perguntas' } = Astro.props;
+const { title, description, mainId = 'questions', skipText = 'Ir para as perguntas' } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,14 +18,14 @@ const { titulo, descricao, idPrincipal = 'perguntas', textoPular = 'Ir para as p
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={descricao} />
+		<meta name="description" content={description} />
 		<meta name="theme-color" content="#fbf5f2" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{titulo}</title>
+		<title>{title}</title>
 	</head>
 	<body>
-		<a class="pular-link" href={`#${idPrincipal}`}>{textoPular}</a>
+		<a class="skip-link" href={`#${mainId}`}>{skipText}</a>
 		<slot />
 	</body>
 </html>

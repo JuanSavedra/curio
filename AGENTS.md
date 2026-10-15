@@ -22,10 +22,19 @@ Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/s
 ## Stack e decisões técnicas
 
 - **Astro 7** (site estático) com **ilhas React 19**, usadas apenas onde há estado (o player do quiz).
-- **Conteúdo:** perguntas em arquivos YAML/MD no repositório, agrupadas em **decks** de cerca de 20 a 50 perguntas por arquivo, organizados em `content/<tema>/<subtema>/<deck>.yaml`. São validadas com Content Collections + Zod. Toda pergunta tem uma **explicação obrigatória**.
+- **Conteúdo:** perguntas em arquivos YAML/MD no repositório, agrupadas em **decks** de cerca de 20 a 50 perguntas por arquivo, organizados em `content/<topic>/<subtopic>/<deck>.yaml` (pastas em inglês, como `content/astronomy/solar-system/basics.yaml`). Cada arquivo tem `title`, `subtopic` (opcional, o nome de exibição) e `questions`, e cada pergunta tem `id`, `prompt`, `choices`, `answer` e `explanation`. São validadas com Content Collections + Zod em `src/content.config.ts`. Toda pergunta tem uma **explicação obrigatória**.
 - **Fórmulas:** KaTeX renderizado no build.
 - **Progresso e sequência de dias:** `localStorage`. Não há backend. Se um dia houver, só plano gratuito (Supabase, Cloudflare D1).
 - **Hospedagem:** Cloudflare Pages (gratuito). **Limite de 20.000 arquivos por deploy:** nunca gere uma página ou um JSON por pergunta. Gere páginas por tema/deck e JSON agrupado por deck.
+
+## Idioma: código em inglês, interface em português
+
+- **Código em inglês.** Tudo que a pessoa não vê: nomes de variáveis, funções, tipos e componentes, nomes de arquivos e pastas, classes e variáveis CSS, atributos `data-*`, chaves e ids do YAML (de perguntas, decks e temas), chaves do `localStorage`, comentários e mensagens de erro de build. Isso vale para qualquer arquivo novo e para qualquer arquivo que você editar.
+- **Português do Brasil só no que a pessoa vê:** textos da interface (inclui `aria-label`, `title` e `<title>`), o conteúdo das perguntas e explicações, e os endereços públicos (rotas e parâmetros, como `/temas/astronomia` e `?tema=`). Os endereços ficam em `src/lib/routes.ts` e na pasta `src/pages/temas/` (o nome da pasta é a URL). Em todo o resto o código usa o id em inglês, e `TOPICS` em `src/data/topics.ts` liga o id ao nome de exibição e ao endereço (`slug`).
+- Documentação (`.md`) e mensagens de commit continuam em português do Brasil.
+- **Nomes próprios ficam:** `Curio` (o mascote, sem acento no código) e o pacote `curio`.
+- **Glossário** (para o código ficar consistente): tema = `topic`, subtema = `subtopic`, pergunta = `question`, alternativa = `choice`, carta = `card`, descoberta/vista = `discovered`/`seen`, sequência de dias = `streak`, acertos seguidos = `run`, penas = `feathers`. Em código, `theme` só significa claro/escuro (modo), nunca tema de assunto.
+- **Tema novo:** id em inglês e slug em português em `src/data/topics.ts`, cor com o mesmo id em `src/styles/tokens.css` (`--<id>`, `--<id>-ink`, `--<id>-bg`) e pasta `content/<id>/`.
 
 ## Convenções
 
@@ -41,8 +50,8 @@ Fases de criação da interface:
 1. ✅ **Fundação visual:** tokens em `src/styles/tokens.css` (paleta OKLCH com contraste AA verificado, fonte Parkinsans servida pelo próprio site, escala, espaço, movimento).
 2. ✅ **Feed de perguntas** (`src/components/feed/`): feed misto com filtro por tema, uma carta por tela com encaixe, palco do Curió, explicação, atalhos de teclado. Três decks de exemplo em `content/`.
 3. ✅ **O Curió** (`src/components/feed/Curio.tsx` e `curio.css`): quatro reações e animações de personagem.
-4. ✅ **Celebrações:** penas (`Penas.tsx`) em acertos seguidos e marcos de dias. O som ficou para uma etapa própria.
-5. ✅ **Temas e progresso:** tela de temas (`src/components/temas/`, rotas `/temas` e `/temas/<tema>`), ícone de cada tema em `Icones.tsx` e tela de tema concluído (`TemaConcluido.tsx`). O feed aceita `?tema=`, `?deck=` e `?rever=1`.
+4. ✅ **Celebrações:** penas (`Feathers.tsx`) em acertos seguidos e marcos de dias. O som ficou para uma etapa própria.
+5. ✅ **Temas e progresso:** tela de temas (`src/components/topics/`, rotas `/temas` e `/temas/<slug>`), ícone de cada tema em `Icons.tsx` e tela de tema concluído (`TopicComplete.tsx`). O feed aceita `?tema=`, `?deck=` e `?rever=1` (nomes definidos em `FEED_QUERY`, em `src/lib/routes.ts`).
 6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
 7. **Registro:** `impeccable document` para tirar o DESIGN.md do modo seed.
 
