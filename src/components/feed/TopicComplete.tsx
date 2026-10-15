@@ -63,11 +63,11 @@ export function TopicComplete({ topic, total, onReview }: Props) {
 					Foram {total} {total === 1 ? 'pergunta' : 'perguntas'}. O Curió cantou de orgulho.
 				</p>
 				<div className="complete__actions">
-					<a className="next" href={topicsRoute()}>
+					<a className="button" href={topicsRoute()}>
 						Escolher outro tema
 						<ArrowRightIcon />
 					</a>
-					<button type="button" className="skip" onClick={onReview}>
+					<button type="button" className="button button--quiet" onClick={onReview}>
 						<RestartIcon size={18} />
 						Rever as perguntas
 					</button>

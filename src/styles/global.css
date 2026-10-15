@@ -1,5 +1,6 @@
 @import '@fontsource-variable/parkinsans';
 @import './tokens.css';
+@import './button.css';
 
 *,
 *::before,

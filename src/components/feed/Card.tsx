@@ -126,12 +126,12 @@ export function Card({ question, index, choice, celebration, greet, last, onAnsw
 
 				<footer className="card__foot">
 					{answered ? (
-						<button type="button" className="next" ref={nextRef} onClick={() => onAdvance(index)}>
+						<button type="button" className="button" ref={nextRef} onClick={() => onAdvance(index)}>
 							{last ? 'Continuar' : 'Próxima'}
 							<ArrowDownIcon />
 						</button>
 					) : (
-						<button type="button" className="skip" onClick={() => onAdvance(index)}>
+						<button type="button" className="button button--quiet" onClick={() => onAdvance(index)}>
 							Pular esta
 						</button>
 					)}

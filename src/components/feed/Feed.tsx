@@ -345,7 +345,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 							<Curio mood="comforting" size={72} />
 							<h2 className="notice__title">Não consegui carregar as perguntas.</h2>
 							<p>Confira sua conexão com a internet e tente de novo.</p>
-							<button type="button" className="next" onClick={() => buildQueue(filter)}>
+							<button type="button" className="button" onClick={() => buildQueue(filter)}>
 								<RestartIcon />
 								Tentar de novo
 							</button>
@@ -396,7 +396,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 										</li>
 									))}
 							</ul>
-							<button type="button" className="skip" onClick={reviewAgain}>
+							<button type="button" className="button button--quiet" onClick={reviewAgain}>
 								<RestartIcon size={18} />
 								Rever as que já respondi
 							</button>

@@ -83,75 +83,6 @@
 	transition: transform var(--dur-slow) var(--ease-out-expo);
 }
 
-.button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--space-2xs);
-	min-height: 3.5rem;
-	padding: 0 var(--space-lg);
-	border: 2px solid transparent;
-	border-radius: var(--radius-pill);
-	background: var(--color-action);
-	color: var(--color-action-text);
-	font-size: var(--text-lg);
-	font-weight: var(--weight-strong);
-	text-decoration: none;
-	transition:
-		transform var(--dur-fast) var(--ease-out),
-		background-color var(--dur-fast) var(--ease-out),
-		box-shadow var(--dur-medium) var(--ease-out);
-}
-
-@media (hover: hover) {
-	.button:hover {
-		background: var(--color-action-hover);
-		transform: translateY(-1px);
-		box-shadow: var(--shadow-lift);
-	}
-}
-
-.button:active {
-	transform: translateY(1px);
-	box-shadow: none;
-}
-
-/* Secondary action: no background, so it doesn't compete with the main one */
-.button--quiet {
-	min-height: 2.75rem;
-	padding: 0 var(--space-sm);
-	background: transparent;
-	color: var(--plumage);
-	font-size: var(--text-sm);
-	font-weight: var(--weight-medium);
-}
-
-@media (hover: hover) {
-	.button--quiet:hover {
-		background: oklch(0.99 0.005 60 / 0.55);
-		color: var(--plumage);
-		box-shadow: none;
-		transform: none;
-	}
-}
-
-/* Review: what was already seen doesn't ask for emphasis */
-.button--outline {
-	min-height: 3rem;
-	border-color: var(--color-border-strong);
-	background: transparent;
-	color: var(--color-text);
-	font-size: var(--text-base);
-}
-
-@media (hover: hover) {
-	.button--outline:hover {
-		border-color: var(--topic-ink);
-		background: var(--topic-bg);
-		color: var(--color-text);
-	}
-}
-
 .done-badge {
 	display: inline-flex;
 	align-items: center;
@@ -207,6 +138,10 @@
 
 /* Featured: the topic in progress, painted in its own color */
 .featured {
+	/* On the topic color the quiet button's soft gray fails contrast (see src/styles/button.css) */
+	--quiet-color: var(--plumage);
+	--quiet-hover-bg: oklch(0.99 0.005 60 / 0.55);
+	--quiet-hover-color: var(--plumage);
 	display: grid;
 	gap: var(--space-sm);
 	padding: var(--space-md);
@@ -593,14 +528,11 @@
 		transition: none;
 	}
 
-	.button,
 	.row,
 	.row__arrow {
 		transition-property: background-color, border-color, color, box-shadow;
 	}
 
-	.button:hover,
-	.button:active,
 	.row:hover,
 	.row:active,
 	.row:hover .row__arrow {

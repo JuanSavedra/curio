@@ -563,67 +563,16 @@
 	}
 }
 
-/* ---------- Advance buttons ---------- */
+/* ---------- Buttons in the feed (shared styles live in src/styles/button.css) ---------- */
 
-.next {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--space-2xs);
-	min-height: 3.5rem;
-	padding: 0 var(--space-lg);
-	border: 0;
-	border-radius: var(--radius-pill);
-	background: var(--color-action);
-	color: var(--color-action-text);
-	font-size: var(--text-lg);
-	font-weight: var(--weight-strong);
-	cursor: pointer;
+/* The main button eases in when it appears */
+.feed .button:not(.button--quiet) {
 	animation: result-in var(--dur-medium) var(--ease-out-expo);
-	transition:
-		transform var(--dur-fast) var(--ease-out),
-		background-color var(--dur-fast) var(--ease-out),
-		box-shadow var(--dur-medium) var(--ease-out);
 }
 
-@media (hover: hover) {
-	.next:hover {
-		background: var(--color-action-hover);
-		transform: translateY(-1px);
-		box-shadow: var(--shadow-lift);
-	}
-}
-
-.next:active {
-	transform: translateY(1px);
-	box-shadow: none;
-}
-
-.skip {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: var(--space-2xs);
+/* The card footer centers the quiet "skip" action */
+.card__foot .button--quiet {
 	justify-self: center;
-	min-height: 2.75rem;
-	padding: 0 var(--space-sm);
-	border: 0;
-	border-radius: var(--radius-pill);
-	background: transparent;
-	color: var(--color-text-soft);
-	font-size: var(--text-sm);
-	font-weight: var(--weight-medium);
-	cursor: pointer;
-	transition:
-		background-color var(--dur-fast) var(--ease-out),
-		color var(--dur-fast) var(--ease-out);
-}
-
-@media (hover: hover) {
-	.skip:hover {
-		background: var(--color-panel);
-		color: var(--color-text);
-	}
 }
 
 /* ---------- Notices: failure and end of the queue ---------- */
@@ -662,6 +611,10 @@
 /* ---------- Topic complete: the screen becomes the topic's color ---------- */
 
 .scene--complete {
+	/* On the topic color the quiet button's soft gray fails contrast (see src/styles/button.css) */
+	--quiet-color: var(--plumage);
+	--quiet-hover-bg: oklch(0.99 0.005 60 / 0.55);
+	--quiet-hover-color: var(--plumage);
 	position: relative;
 	overflow: clip;
 }
@@ -735,21 +688,6 @@
 	justify-items: center;
 	gap: var(--space-2xs);
 	margin-top: var(--space-2xs);
-}
-
-.complete__actions .next {
-	text-decoration: none;
-}
-
-/* On the topic color the button's soft gray fails contrast: use the strong ink */
-.scene--complete .skip {
-	color: var(--plumage);
-}
-
-@media (hover: hover) {
-	.scene--complete .skip:hover {
-		background: oklch(0.99 0.005 60 / 0.55);
-	}
 }
 
 /* ---------- Skeleton ---------- */
@@ -877,7 +815,7 @@
 		padding: var(--space-2xs) var(--space-lg) var(--space-md);
 	}
 
-	.next {
+	.feed .button:not(.button--quiet) {
 		min-width: 14rem;
 	}
 }
@@ -890,21 +828,18 @@
 	}
 
 	.choice,
-	.chip,
-	.next {
+	.chip {
 		transition-property: background-color, border-color, color, box-shadow;
 	}
 
 	.choice[data-state='open']:hover,
 	.choice[data-state='open']:active,
-	.chip:active,
-	.next:hover,
-	.next:active {
+	.chip:active {
 		transform: none;
 	}
 
 	.result,
-	.next {
+	.feed .button:not(.button--quiet) {
 		animation: fade-in var(--dur-medium) ease-out;
 	}
 
