@@ -25,6 +25,8 @@ const decks = defineCollection({
 	schema: z
 		.object({
 			titulo: z.string().min(2),
+			// Nome de exibição do subtema (a pasta não guarda acentos). Sem ele, vem do nome da pasta.
+			subtema: z.string().min(2).optional(),
 			perguntas: z.array(pergunta).min(1),
 		})
 		.refine((d) => new Set(d.perguntas.map((p) => p.id)).size === d.perguntas.length, {

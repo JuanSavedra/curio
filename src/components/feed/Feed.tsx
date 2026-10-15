@@ -1,10 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { TEMAS, ehTema, type Tema } from '../../data/temas';
+import { TEMAS, corDoTema, ehTema, type Tema } from '../../data/temas';
+import { rotaDoDeck, rotaDosTemas } from '../../lib/rotas';
 import type { DeckPublicado, ResumoDeck } from '../../lib/tipos';
-import { Carta, corDoTema, type PerguntaNaFila } from './Carta';
+import { Carta, type PerguntaNaFila } from './Carta';
 import { Curio } from './Curio';
-import { IconeCerto, IconeNota, IconeRecomecar } from './Icones';
-import { esquecerVistas, jaVisitou, lerSequencia, lerVistas, marcarVisita, marcarVista, registrarDia } from './progresso';
+import { IconeCerto, IconeNota, IconeRecomecar, IconeTemas } from './Icones';
+import {
+	esquecerVistas,
+	gravarUltimoTema,
+	jaVisitou,
+	lerSequencia,
+	lerVistas,
+	marcarVisita,
+	marcarVista,
+	progressoDosDecks,
+	registrarDia,
+} from './progresso';
+import { TemaConcluido } from './TemaConcluido';
 import { MARCOS_DE_DIAS, ehMarcoDeSeguidas, type Celebracao } from './textos';
 import './feed.css';
 
@@ -44,6 +56,8 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 	const temasComConteudo = (Object.keys(TEMAS) as Tema[]).filter((t) => decks.some((d) => d.tema === t));
 
 	const [filtro, setFiltro] = useState<Filtro>('tudo');
+	// Quando a pessoa chega por uma coleção da página do tema, o feed mostra só ela
+	const [deckFiltro, setDeckFiltro] = useState<ResumoDeck | null>(null);
 	const [status, setStatus] = useState<Status>('carregando');
 	const [fila, setFila] = useState<PerguntaNaFila[]>([]);
 	const [pendentes, setPendentes] = useState<ResumoDeck[]>([]);
@@ -66,7 +80,7 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 			lista.map(async (resumo) => {
 				const guardado = cache.current.get(resumo.id);
 				if (guardado) return guardado;
-				const resposta = await fetch(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/decks/${resumo.id}.json`);
+				const resposta = await fetch(rotaDoDeck(resumo.id));
 				if (!resposta.ok) throw new Error(`Falha ao buscar ${resumo.id}`);
 				const deck = (await resposta.json()) as DeckPublicado;
 				cache.current.set(resumo.id, deck);
@@ -91,12 +105,13 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 	);
 
 	const montarFila = useCallback(
-		async (novoFiltro: Filtro) => {
+		async (novoFiltro: Filtro, deck: ResumoDeck | null = null) => {
 			setStatus('carregando');
 			setFiltro(novoFiltro);
+			setDeckFiltro(deck);
 			setAtual(0);
 			try {
-				const candidatos = embaralhar(decks.filter((d) => novoFiltro === 'tudo' || d.tema === novoFiltro));
+				const candidatos = embaralhar(deck ? [deck] : decks.filter((d) => novoFiltro === 'tudo' || d.tema === novoFiltro));
 				const { novas, restantes } = await proximoLote(candidatos);
 				setFila(novas);
 				setPendentes(restantes);
@@ -109,12 +124,23 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 		[decks, proximoLote],
 	);
 
-	// Primeira carga: lê o progresso local e o tema da URL (?tema=astronomia).
+	// Primeira carga: lê o progresso local e o filtro da URL (?tema=astronomia, ?deck=<id>, ?rever=1).
 	useEffect(() => {
 		setSequencia(lerSequencia());
 		setSaudar(!jaVisitou());
-		const doEndereco = new URLSearchParams(location.search).get('tema') ?? '';
-		void montarFila(ehTema(doEndereco) && temasComConteudo.includes(doEndereco) ? doEndereco : 'tudo');
+		const params = new URLSearchParams(location.search);
+		const doTema = params.get('tema') ?? '';
+		const deck = decks.find((d) => d.id === params.get('deck')) ?? null;
+		const tema: Filtro = deck ? deck.tema : ehTema(doTema) && temasComConteudo.includes(doTema) ? doTema : 'tudo';
+
+		// "Rever" vem das páginas de tema: esquece só o que foi pedido, uma vez, e limpa o endereço.
+		if (params.get('rever') === '1' && tema !== 'tudo') {
+			esquecerVistas(prefixosDe(tema, deck));
+			params.delete('rever');
+			const consulta = params.toString();
+			history.replaceState(null, '', `${location.pathname}${consulta ? `?${consulta}` : ''}`);
+		}
+		void montarFila(tema, deck);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -175,6 +201,7 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 			if (!pergunta || respostas[pergunta.id] !== undefined) return;
 			setRespostas((r) => ({ ...r, [pergunta.id]: alternativa }));
 			marcarVista(pergunta.id);
+			gravarUltimoTema(pergunta.tema);
 			marcarVisita();
 			setSaudar(false);
 
@@ -219,19 +246,35 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 	}, [atual, fila, status, responder, irPara]);
 
 	function trocarFiltro(novo: Filtro) {
-		if (novo === filtro && status === 'pronto') return;
+		if (novo === filtro && !deckFiltro && status === 'pronto') return;
 		const url = new URL(location.href);
+		url.searchParams.delete('deck');
+		url.searchParams.delete('rever');
 		if (novo === 'tudo') url.searchParams.delete('tema');
 		else url.searchParams.set('tema', novo);
 		history.replaceState(null, '', url);
 		void montarFila(novo);
 	}
 
-	function verDeNovo() {
-		esquecerVistas(decks.filter((d) => filtro === 'tudo' || d.tema === filtro).map((d) => `${d.id}/`));
-		setRespostas({});
-		void montarFila(filtro);
+	function prefixosDe(tema: Filtro, deck: ResumoDeck | null) {
+		return (deck ? [deck] : decks.filter((d) => tema === 'tudo' || d.tema === tema)).map((d) => `${d.id}/`);
 	}
+
+	function verDeNovo() {
+		esquecerVistas(prefixosDe(filtro, deckFiltro));
+		setRespostas({});
+		void montarFila(filtro, deckFiltro);
+	}
+
+	// O tema só está concluído quando todas as perguntas dele foram vistas (pular não conta).
+	const resumoDoTema =
+		status === 'pronto' && !pendentes.length && !deckFiltro && filtro !== 'tudo'
+			? progressoDosDecks(
+					lerVistas(),
+					decks.filter((d) => d.tema === filtro),
+				)
+			: null;
+	const temaConcluido = resumoDoTema?.concluido ?? false;
 
 	const temaAtual = fila[Math.min(atual, fila.length - 1)]?.tema;
 
@@ -269,17 +312,23 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 					</ul>
 				</nav>
 
-				{sequencia > 0 && (
-					<p
-						key={brilhoSequencia}
-						className={`sequencia${brilhoSequencia ? ' sequencia--marco' : ''}`}
-						title="Dias seguidos respondendo perguntas"
-					>
-						<IconeNota tamanho={18} />
-						<span>{sequencia === 1 ? '1 dia' : `${sequencia} dias`}</span>
-						<span className="so-leitor"> seguidos</span>
-					</p>
-				)}
+				<div className="topo__acoes">
+					<a className="temas-link" href={rotaDosTemas()}>
+						<IconeTemas tamanho={18} />
+						<span>Temas</span>
+					</a>
+					{sequencia > 0 && (
+						<p
+							key={brilhoSequencia}
+							className={`sequencia${brilhoSequencia ? ' sequencia--marco' : ''}`}
+							title="Dias seguidos respondendo perguntas"
+						>
+							<IconeNota tamanho={18} />
+							<span>{sequencia === 1 ? '1 dia' : `${sequencia} dias`}</span>
+							<span className="so-leitor"> seguidos</span>
+						</p>
+					)}
+				</div>
 			</header>
 
 			<main id="perguntas" className="trilho" ref={trilhoRef} aria-busy={status === 'carregando'}>
@@ -319,19 +368,25 @@ export default function Feed({ decks }: { decks: ResumoDeck[] }) {
 						/>
 					))}
 
-				{status === 'pronto' && !pendentes.length && (
+				{temaConcluido && filtro !== 'tudo' && resumoDoTema && (
+					<TemaConcluido tema={filtro} total={resumoDoTema.total} onRever={verDeNovo} />
+				)}
+
+				{status === 'pronto' && !pendentes.length && !temaConcluido && (
 					<section className="cena cena--fim" aria-labelledby="fim-titulo">
 						<div className="aviso">
 							<Curio humor="comemorando" tamanho={88} />
 							<h2 id="fim-titulo" className="fim__titulo aviso__titulo" tabIndex={-1}>
-								{filtro === 'tudo'
-									? 'Você já viu todas as perguntas que temos por agora.'
-									: `Você viu tudo de ${TEMAS[filtro]} por agora.`}
+								{deckFiltro
+									? `Você viu tudo de ${deckFiltro.titulo} por agora.`
+									: filtro === 'tudo'
+										? 'Você já viu todas as perguntas que temos por agora.'
+										: `Você viu tudo de ${TEMAS[filtro]} por agora.`}
 							</h2>
 							<p>O Curió está juntando mais curiosidades. Enquanto isso:</p>
 							<ul className="fim__opcoes">
 								{temasComConteudo
-									.filter((t) => t !== filtro)
+									.filter((t) => t !== filtro || deckFiltro)
 									.map((tema) => (
 										<li key={tema}>
 											<button type="button" className="chip" style={corDoTema(tema)} onClick={() => trocarFiltro(tema)}>

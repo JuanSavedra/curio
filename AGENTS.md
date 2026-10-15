@@ -42,7 +42,7 @@ Fases de criação da interface:
 2. ✅ **Feed de perguntas** (`src/components/feed/`): feed misto com filtro por tema, uma carta por tela com encaixe, palco do Curió, explicação, atalhos de teclado. Três decks de exemplo em `content/`.
 3. ✅ **O Curió** (`src/components/feed/Curio.tsx` e `curio.css`): quatro reações e animações de personagem.
 4. ✅ **Celebrações:** penas (`Penas.tsx`) em acertos seguidos e marcos de dias. O som ficou para uma etapa própria.
-5. **Temas e progresso:** tela de temas e tela de tema concluído.
+5. ✅ **Temas e progresso:** tela de temas (`src/components/temas/`, rotas `/temas` e `/temas/<tema>`), ícone de cada tema em `Icones.tsx` e tela de tema concluído (`TemaConcluido.tsx`). O feed aceita `?tema=`, `?deck=` e `?rever=1`.
 6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
 7. **Registro:** `impeccable document` para tirar o DESIGN.md do modo seed.
 

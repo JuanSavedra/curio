@@ -1,0 +1,30 @@
+---
+import Temas from '../../components/temas/Temas';
+import Base from '../../layouts/Base.astro';
+import { listarDecks } from '../../lib/decks';
+
+const decks = await listarDecks();
+---
+
+<Base
+	titulo="Temas | Curiô"
+	descricao="Escolha um tema do Curiô e descubra de ciências a astronomia, uma pergunta curiosa de cada vez."
+	idPrincipal="conteudo"
+	textoPular="Ir para os temas"
+>
+	<Temas client:load decks={decks} />
+	<noscript>
+		<p class="sem-js">O Curiô precisa de JavaScript ligado para mostrar os temas.</p>
+	</noscript>
+</Base>
+
+<style>
+	.sem-js {
+		position: fixed;
+		inset: auto var(--esp-sm) var(--esp-sm);
+		padding: var(--esp-sm);
+		border-radius: var(--raio-alt);
+		background: var(--cor-painel);
+		text-align: center;
+	}
+</style>

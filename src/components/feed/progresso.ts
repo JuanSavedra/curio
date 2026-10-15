@@ -1,3 +1,5 @@
+import type { ResumoDeck } from '../../lib/tipos';
+
 // Progresso local. Se o localStorage estiver bloqueado, tudo funciona, só não fica guardado.
 const CHAVE_VISTAS = 'curio:vistas';
 const CHAVE_SEQUENCIA = 'curio:sequencia';
@@ -32,6 +34,30 @@ export function esquecerVistas(prefixos: string[]) {
 	const restantes = [...lerVistas()].filter((id) => !prefixos.some((p) => id.startsWith(p)));
 	gravar(CHAVE_VISTAS, restantes);
 }
+
+/** Quantas perguntas do deck já foram vistas (descobertas), nunca mais que o total. */
+export function descobertasDoDeck(vistas: Set<string>, deck: string, total: number) {
+	let n = 0;
+	for (const id of vistas) if (id.startsWith(`${deck}/`)) n++;
+	return Math.min(n, total);
+}
+
+export interface ProgressoDosDecks {
+	total: number;
+	descobertas: number;
+	concluido: boolean;
+}
+
+/** Soma o progresso de um conjunto de decks (um tema inteiro, por exemplo). */
+export function progressoDosDecks(vistas: Set<string>, decks: ResumoDeck[]): ProgressoDosDecks {
+	const total = decks.reduce((soma, d) => soma + d.total, 0);
+	const descobertas = decks.reduce((soma, d) => soma + descobertasDoDeck(vistas, d.id, d.total), 0);
+	return { total, descobertas, concluido: total > 0 && descobertas >= total };
+}
+
+const CHAVE_ULTIMO_TEMA = 'curio:ultimo-tema';
+export const lerUltimoTema = () => ler<string | null>(CHAVE_ULTIMO_TEMA, null);
+export const gravarUltimoTema = (tema: string) => gravar(CHAVE_ULTIMO_TEMA, tema);
 
 export const jaVisitou = () => ler(CHAVE_VISITOU, false);
 export const marcarVisita = () => gravar(CHAVE_VISITOU, true);

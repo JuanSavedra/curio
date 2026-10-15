@@ -1,5 +1,5 @@
-import { useEffect, useRef, type CSSProperties } from 'react';
-import { TEMAS, type Tema } from '../../data/temas';
+import { useEffect, useRef } from 'react';
+import { TEMAS, corDoTema, type Tema } from '../../data/temas';
 import type { PerguntaPublicada } from '../../lib/tipos';
 import { Curio } from './Curio';
 import { IconeCerto, IconeNota, IconeQuase, IconeSeta } from './Icones';
@@ -21,13 +21,6 @@ interface Props {
 	onResponder: (indice: number, alternativa: number) => void;
 	onAvancar: (indice: number) => void;
 }
-
-export const corDoTema = (tema: Tema) =>
-	({
-		'--tema': `var(--${tema})`,
-		'--tema-tinta': `var(--${tema}-tinta)`,
-		'--tema-fundo': `var(--${tema}-fundo)`,
-	}) as CSSProperties;
 
 export function Carta({ pergunta, indice, escolha, celebracao, saudar, ultima, onResponder, onAvancar }: Props) {
 	const respondida = escolha !== undefined;

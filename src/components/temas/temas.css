@@ -1,0 +1,613 @@
+/* ---------- Páginas de temas: /temas e /temas/<tema> ---------- */
+
+.pagina-temas {
+	--trilha: var(--penugem);
+	min-height: 100dvh;
+	padding: var(--esp-2xs) var(--esp-sm) var(--esp-2xl);
+	background: var(--cor-fundo);
+}
+
+/* A página de um tema respira na cor dele */
+.pagina-temas--tema {
+	--trilha: var(--ninho);
+	background: var(--tema-fundo);
+}
+
+.pagina-temas__topo,
+.temas,
+.tema-pagina {
+	width: min(100%, 72rem);
+	margin-inline: auto;
+}
+
+/* A página de um tema é uma coluna de leitura: não estica por telas largas */
+.pagina-temas--tema .pagina-temas__topo,
+.pagina-temas--tema .tema-pagina {
+	width: min(100%, 48rem);
+}
+
+.voltar {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--esp-2xs);
+	min-height: 2.75rem;
+	padding: 0 var(--esp-sm) 0 var(--esp-xs);
+	border-radius: var(--raio-pilula);
+	color: var(--cor-texto-suave);
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-medio);
+	text-decoration: none;
+	transition:
+		background-color var(--dur-rapida) var(--ease-saida),
+		color var(--dur-rapida) var(--ease-saida);
+}
+
+@media (hover: hover) {
+	.voltar:hover {
+		background: var(--cor-painel);
+		color: var(--cor-texto);
+	}
+}
+
+/* ---------- Peças: selo do tema, barra, botões ---------- */
+
+.selo-tema {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: var(--selo);
+	height: var(--selo);
+	border-radius: 50%;
+	background: var(--tema);
+	color: var(--plumagem);
+}
+
+/* Sobre a cor do tema, o selo vira o creme claro (a cor já está atrás dele) */
+.selo-tema--claro {
+	background: var(--ninho);
+}
+
+.barra {
+	height: 0.75rem;
+	border-radius: var(--raio-pilula);
+	background: var(--trilha);
+	overflow: hidden;
+}
+
+.barra__cheio {
+	height: 100%;
+	border-radius: inherit;
+	background: var(--tema-tinta);
+	/* Desliza para dentro da trilha: só transform, e a ponta arredondada nunca estica */
+	transform: translateX(calc((var(--p, 0) - 1) * 100%));
+	transition: transform var(--dur-lenta) var(--ease-saida-expo);
+}
+
+.botao {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--esp-2xs);
+	min-height: 3.5rem;
+	padding: 0 var(--esp-lg);
+	border: 2px solid transparent;
+	border-radius: var(--raio-pilula);
+	background: var(--cor-acao);
+	color: var(--cor-acao-texto);
+	font-size: var(--texto-lg);
+	font-weight: var(--peso-forte);
+	text-decoration: none;
+	transition:
+		transform var(--dur-rapida) var(--ease-saida),
+		background-color var(--dur-rapida) var(--ease-saida),
+		box-shadow var(--dur-media) var(--ease-saida);
+}
+
+@media (hover: hover) {
+	.botao:hover {
+		background: var(--cor-acao-hover);
+		transform: translateY(-1px);
+		box-shadow: var(--sombra-levanta);
+	}
+}
+
+.botao:active {
+	transform: translateY(1px);
+	box-shadow: none;
+}
+
+/* Ação secundária: sem fundo, para não competir com a principal */
+.botao--quieto {
+	min-height: 2.75rem;
+	padding: 0 var(--esp-sm);
+	background: transparent;
+	color: var(--plumagem);
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-medio);
+}
+
+@media (hover: hover) {
+	.botao--quieto:hover {
+		background: oklch(0.99 0.005 60 / 0.55);
+		color: var(--plumagem);
+		box-shadow: none;
+		transform: none;
+	}
+}
+
+/* Rever: o que já foi visto não pede destaque */
+.botao--contorno {
+	min-height: 3rem;
+	border-color: var(--cor-borda-forte);
+	background: transparent;
+	color: var(--cor-texto);
+	font-size: var(--texto-base);
+}
+
+@media (hover: hover) {
+	.botao--contorno:hover {
+		border-color: var(--tema-tinta);
+		background: var(--tema-fundo);
+		color: var(--cor-texto);
+	}
+}
+
+.selo-concluido {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--esp-3xs);
+	justify-self: start;
+	padding: 0.125rem var(--esp-xs) 0.125rem var(--esp-2xs);
+	border-radius: var(--raio-pilula);
+	background: var(--ninho);
+	color: var(--acerto-tinta);
+	font-size: var(--texto-xs);
+	font-weight: var(--peso-titulo);
+	white-space: nowrap;
+}
+
+.secao-titulo {
+	margin-bottom: var(--esp-xs);
+	color: var(--cor-texto-suave);
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-forte);
+}
+
+/* ---------- /temas ---------- */
+
+/* minmax(0, 1fr): a coluna nunca cresce além da tela por causa do conteúdo */
+.temas {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--esp-lg);
+	padding-top: var(--esp-xs);
+}
+
+.temas__destaque {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	align-content: start;
+	gap: var(--esp-md);
+}
+
+.temas__titulo {
+	max-width: 18ch;
+	font-size: var(--texto-2xl);
+	font-weight: var(--peso-titulo);
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+}
+
+.temas__lista {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	align-content: start;
+	gap: var(--esp-lg);
+}
+
+/* Destaque: o tema em andamento, pintado com a cor dele */
+.destaque {
+	display: grid;
+	gap: var(--esp-sm);
+	padding: var(--esp-md);
+	border-radius: var(--raio-carta);
+	background: var(--tema);
+	box-shadow: var(--sombra-carta);
+}
+
+.destaque__rotulo {
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-medio);
+}
+
+.destaque__cabeca {
+	display: flex;
+	align-items: center;
+	gap: var(--esp-sm);
+}
+
+.destaque__titulo {
+	font-size: var(--texto-2xl);
+	font-weight: var(--peso-titulo);
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+}
+
+.destaque__progresso {
+	display: grid;
+	gap: var(--esp-2xs);
+}
+
+.destaque .barra,
+.cabeca-tema .barra {
+	--trilha: oklch(0.99 0.005 60 / 0.6);
+}
+
+.destaque__contagem {
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-medio);
+}
+
+.destaque__acoes {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--esp-2xs) var(--esp-xs);
+	margin-top: var(--esp-2xs);
+}
+
+.destaque__acoes .botao:first-child {
+	flex: 1 1 12rem;
+}
+
+/* Lista dos outros temas: o tamanho e a cor de cada linha contam como está a conversa com o tema */
+.lista-temas {
+	display: grid;
+	gap: var(--esp-xs);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.linha {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: var(--esp-xs) var(--esp-sm);
+	min-height: 4.5rem;
+	padding: var(--esp-xs) var(--esp-sm) var(--esp-xs) var(--esp-xs);
+	border: 2px solid var(--cor-borda);
+	border-radius: var(--raio-alt);
+	background: var(--cor-superficie);
+	color: inherit;
+	text-decoration: none;
+	transition:
+		transform var(--dur-rapida) var(--ease-saida),
+		box-shadow var(--dur-media) var(--ease-saida),
+		border-color var(--dur-media) var(--ease-saida);
+}
+
+.linha__texto {
+	display: grid;
+	min-width: 0;
+}
+
+.linha__nome {
+	font-size: var(--texto-lg);
+	font-weight: var(--peso-titulo);
+	line-height: 1.25;
+}
+
+.linha__meta {
+	color: var(--cor-texto-suave);
+	font-size: var(--texto-sm);
+}
+
+.linha__seta {
+	display: grid;
+	place-items: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	border-radius: 50%;
+	color: var(--cor-texto-suave);
+	transition:
+		transform var(--dur-media) var(--ease-saida),
+		color var(--dur-media) var(--ease-saida);
+}
+
+.linha__barra {
+	grid-column: 2 / -1;
+}
+
+/* Em andamento: ganha altura, a cor suave do tema e a barra */
+.linha[data-estado='andamento'] {
+	padding-block: var(--esp-sm);
+	border-color: var(--tema);
+	background: var(--tema-fundo);
+	--trilha: var(--ninho);
+}
+
+/* Concluído: a linha toma a cor do tema, como um selo conquistado */
+.linha[data-estado='concluido'] {
+	border-color: var(--tema);
+	background: var(--tema);
+}
+
+.linha[data-estado='concluido'] .linha__meta {
+	color: var(--plumagem);
+}
+
+@media (hover: hover) {
+	.linha:hover {
+		transform: translateY(-2px);
+		border-color: var(--tema-tinta);
+		box-shadow: var(--sombra-levanta);
+	}
+
+	.linha:hover .linha__seta {
+		transform: translateX(3px);
+		color: var(--tema-tinta);
+	}
+}
+
+.linha:active {
+	transform: translateY(1px);
+	box-shadow: none;
+}
+
+/* Temas sem perguntas ainda: suaves, sem clique */
+.embreve {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--esp-2xs);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.embreve li {
+	display: flex;
+	align-items: center;
+	gap: var(--esp-2xs);
+	min-height: 2.75rem;
+	padding: 0 var(--esp-sm) 0 var(--esp-3xs);
+	border: 2px dashed var(--cor-borda-forte);
+	border-radius: var(--raio-pilula);
+	color: var(--cor-texto-suave);
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-medio);
+}
+
+/* Todos os temas concluídos */
+.tudo-feito {
+	display: grid;
+	justify-items: start;
+	gap: var(--esp-xs);
+	padding: var(--esp-md);
+	border-radius: var(--raio-carta);
+	background: var(--cor-painel);
+}
+
+.tudo-feito__titulo {
+	font-size: var(--texto-xl);
+	font-weight: var(--peso-titulo);
+	line-height: 1.25;
+}
+
+/* ---------- /temas/<tema> ---------- */
+
+.tema-pagina {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: var(--esp-lg);
+	padding-top: var(--esp-xs);
+}
+
+.cabeca-tema {
+	display: grid;
+	justify-items: start;
+	gap: var(--esp-sm);
+	padding: var(--esp-md);
+	border-radius: var(--raio-carta);
+	background: var(--tema);
+	box-shadow: var(--sombra-carta);
+}
+
+.cabeca-tema__titulo {
+	font-size: var(--texto-3xl);
+	font-weight: var(--peso-titulo);
+	line-height: 1.1;
+	letter-spacing: -0.015em;
+}
+
+.cabeca-tema__info {
+	display: grid;
+	gap: var(--esp-2xs);
+	width: min(100%, 24rem);
+}
+
+.cabeca-tema__acao {
+	margin-top: var(--esp-2xs);
+}
+
+/* Enquanto o progresso local não foi lido, o espaço fica reservado sem mostrar o texto errado */
+[data-pronto='false'] {
+	visibility: hidden;
+}
+
+.grupos {
+	display: grid;
+	gap: var(--esp-lg);
+}
+
+.decks {
+	display: grid;
+	gap: var(--esp-xs);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.deck {
+	--trilha: var(--penugem);
+	display: grid;
+	gap: var(--esp-sm);
+	padding: var(--esp-md);
+	border-radius: var(--raio-alt);
+	background: var(--cor-superficie);
+	box-shadow: var(--sombra-repouso);
+}
+
+.deck__texto {
+	display: grid;
+	align-content: start;
+	gap: var(--esp-xs);
+}
+
+.deck__titulo {
+	font-size: var(--texto-lg);
+	font-weight: var(--peso-titulo);
+	line-height: 1.25;
+}
+
+.deck__estado {
+	display: grid;
+	gap: var(--esp-2xs);
+}
+
+.deck__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--esp-2xs);
+	color: var(--cor-texto-suave);
+	font-size: var(--texto-sm);
+}
+
+.deck .selo-concluido {
+	background: var(--acerto-fundo);
+}
+
+.deck__acao .botao {
+	width: 100%;
+}
+
+/* ---------- Esqueleto enquanto o progresso local é lido ---------- */
+
+.esqueleto-temas {
+	display: grid;
+	gap: var(--esp-xs);
+}
+
+.osso-t {
+	display: block;
+	border-radius: var(--raio-carta);
+	background: var(--cor-painel);
+	animation: osso-t-pulsa 1.4s ease-in-out infinite alternate;
+}
+
+.osso-t--destaque {
+	height: 17rem;
+}
+
+.osso-t--linha {
+	height: 4.5rem;
+	border-radius: var(--raio-alt);
+}
+
+@keyframes osso-t-pulsa {
+	to {
+		opacity: 0.55;
+	}
+}
+
+/* ---------- Computador e tablet ---------- */
+
+@media (min-width: 48rem) {
+	.pagina-temas {
+		padding: var(--esp-xs) var(--esp-lg) var(--esp-2xl);
+	}
+
+	.temas__titulo {
+		font-size: var(--texto-3xl);
+	}
+
+	.destaque,
+	.cabeca-tema {
+		padding: var(--esp-lg);
+	}
+
+	.deck {
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: var(--esp-lg);
+	}
+
+	.deck__acao .botao {
+		width: auto;
+		min-width: 11rem;
+	}
+}
+
+@media (min-width: 64rem) {
+	/* Destaque à esquerda, fixo; os outros temas à direita */
+	.temas {
+		grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+		gap: var(--esp-2xl);
+		padding-top: var(--esp-lg);
+	}
+
+	.temas__destaque {
+		position: sticky;
+		top: var(--esp-md);
+	}
+
+	.temas__lista {
+		padding-top: var(--esp-xl);
+	}
+}
+
+/* ---------- Telas bem estreitas (320px) ---------- */
+
+@media (max-width: 24rem) {
+	.destaque,
+	.cabeca-tema {
+		padding: var(--esp-sm);
+	}
+
+	.destaque__titulo {
+		font-size: var(--texto-xl);
+	}
+
+	/* O selo "Concluído" desce para baixo do nome em vez de espremê-lo */
+	.linha .selo-concluido {
+		grid-column: 2 / -1;
+		grid-row: 2;
+	}
+}
+
+/* ---------- Movimento reduzido: sem deslocamento, só troca de cor ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.barra__cheio {
+		transition: none;
+	}
+
+	.botao,
+	.linha,
+	.linha__seta {
+		transition-property: background-color, border-color, color, box-shadow;
+	}
+
+	.botao:hover,
+	.botao:active,
+	.linha:hover,
+	.linha:active,
+	.linha:hover .linha__seta {
+		transform: none;
+	}
+
+	.osso-t {
+		animation: none;
+	}
+}

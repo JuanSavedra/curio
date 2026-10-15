@@ -5,9 +5,12 @@ import '../styles/global.css';
 interface Props {
 	titulo: string;
 	descricao: string;
+	/** Id do <main> da página, alvo do link "pular para o conteúdo" */
+	idPrincipal?: string;
+	textoPular?: string;
 }
 
-const { titulo, descricao } = Astro.props;
+const { titulo, descricao, idPrincipal = 'perguntas', textoPular = 'Ir para as perguntas' } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +25,7 @@ const { titulo, descricao } = Astro.props;
 		<title>{titulo}</title>
 	</head>
 	<body>
-		<a class="pular-link" href="#perguntas">Ir para as perguntas</a>
+		<a class="pular-link" href={`#${idPrincipal}`}>{textoPular}</a>
 		<slot />
 	</body>
 </html>

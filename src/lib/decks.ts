@@ -14,12 +14,15 @@ function temaDoDeck(deck: CollectionEntry<'decks'>): Tema {
 	return tema;
 }
 
+const nomeDaPasta = (pasta: string) => pasta.charAt(0).toUpperCase() + pasta.slice(1).replace(/-/g, ' ');
+
 export async function listarDecks(): Promise<ResumoDeck[]> {
 	const decks = await getCollection('decks');
 	return decks
 		.map((deck) => ({
 			id: deck.id,
 			tema: temaDoDeck(deck),
+			subtema: deck.data.subtema ?? nomeDaPasta(deck.id.split('/')[1]),
 			titulo: deck.data.titulo,
 			total: deck.data.perguntas.length,
 		}))

@@ -1,0 +1,42 @@
+---
+import PaginaTema from '../../components/temas/PaginaTema';
+import { TEMAS, type Tema } from '../../data/temas';
+import Base from '../../layouts/Base.astro';
+import { listarDecks } from '../../lib/decks';
+import type { ResumoDeck } from '../../lib/tipos';
+
+// Uma página por tema que já tem perguntas (nunca uma por pergunta: limite de arquivos do deploy).
+export async function getStaticPaths() {
+	const decks = await listarDecks();
+	const temas = [...new Set(decks.map((d) => d.tema))];
+	return temas.map((tema) => ({
+		params: { tema },
+		props: { tema, decks: decks.filter((d) => d.tema === tema) },
+	}));
+}
+
+const { tema, decks } = Astro.props as { tema: Tema; decks: ResumoDeck[] };
+---
+
+<Base
+	titulo={`${TEMAS[tema]} | Curiô`}
+	descricao={`Perguntas curiosas de ${TEMAS[tema]}, com uma explicação para cada resposta. Grátis e sem anúncios.`}
+	idPrincipal="conteudo"
+	textoPular="Ir para as coleções"
+>
+	<PaginaTema client:load tema={tema} decks={decks} />
+	<noscript>
+		<p class="sem-js">O Curiô precisa de JavaScript ligado para mostrar as perguntas.</p>
+	</noscript>
+</Base>
+
+<style>
+	.sem-js {
+		position: fixed;
+		inset: auto var(--esp-sm) var(--esp-sm);
+		padding: var(--esp-sm);
+		border-radius: var(--raio-alt);
+		background: var(--cor-painel);
+		text-align: center;
+	}
+</style>

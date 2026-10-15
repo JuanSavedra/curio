@@ -11,9 +11,9 @@
 
 .topo {
 	display: grid;
-	grid-template-columns: 1fr auto;
+	grid-template-columns: minmax(0, 1fr) auto;
 	grid-template-areas:
-		'marca sequencia'
+		'marca acoes'
 		'chips chips';
 	align-items: center;
 	gap: var(--esp-2xs) var(--esp-sm);
@@ -32,8 +32,62 @@
 	line-height: 1;
 }
 
+.topo__acoes {
+	grid-area: acoes;
+	display: flex;
+	align-items: center;
+	gap: var(--esp-2xs);
+}
+
+/* Porta para a tela de temas: mesma forma dos chips, sem cor de tema */
+.temas-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--esp-2xs);
+	min-height: 2.75rem;
+	padding: 0 var(--esp-sm) 0 var(--esp-xs);
+	border: 2px solid var(--cor-borda);
+	border-radius: var(--raio-pilula);
+	background: var(--cor-superficie);
+	color: inherit;
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-medio);
+	text-decoration: none;
+	transition:
+		transform var(--dur-rapida) var(--ease-saida),
+		border-color var(--dur-rapida) var(--ease-saida);
+}
+
+.temas-link:active {
+	transform: scale(0.96);
+}
+
+/* Telas bem estreitas: só o ícone (o nome continua para o leitor de tela) */
+@media (max-width: 24rem) {
+	.temas-link {
+		justify-content: center;
+		width: 2.75rem;
+		padding: 0;
+	}
+
+	.temas-link span {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+	}
+}
+
+@media (hover: hover) {
+	.temas-link:hover {
+		border-color: var(--plumagem-suave);
+	}
+}
+
 .sequencia {
-	grid-area: sequencia;
 	display: flex;
 	align-items: center;
 	gap: var(--esp-3xs);
@@ -44,6 +98,7 @@
 	color: var(--ferrugem-forte);
 	font-weight: var(--peso-titulo);
 	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
 }
 
 /* ---------- Chips de tema ---------- */
@@ -604,6 +659,99 @@
 	list-style: none;
 }
 
+/* ---------- Tema concluído: a tela vira a cor do tema ---------- */
+
+.cena--concluida {
+	position: relative;
+	overflow: clip;
+}
+
+/* Um círculo enorme que cresce a partir do Curió (só transform) */
+.concluida__cor {
+	position: absolute;
+	top: 36%;
+	left: 50%;
+	width: 300vmax;
+	height: 300vmax;
+	margin: -150vmax 0 0 -150vmax;
+	border-radius: 50%;
+	background: var(--tema);
+	transform: scale(0);
+	transition: transform 1100ms var(--ease-saida-expo);
+}
+
+.cena--ativa .concluida__cor {
+	transform: scale(1);
+}
+
+.concluida__conteudo {
+	position: relative;
+	opacity: 0;
+	transform: translateY(0.75rem);
+	transition:
+		opacity var(--dur-lenta) var(--ease-saida) 350ms,
+		transform var(--dur-lenta) var(--ease-saida-expo) 350ms;
+}
+
+.cena--ativa .concluida__conteudo {
+	opacity: 1;
+	transform: none;
+}
+
+.concluida__penas {
+	position: absolute;
+	inset: 0 0 auto;
+	height: 0;
+}
+
+.concluida__penas .penas {
+	inset: 0 0 auto;
+}
+
+.concluida__selo {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--esp-3xs);
+	padding: 0.25rem var(--esp-sm) 0.25rem var(--esp-xs);
+	border-radius: var(--raio-pilula);
+	background: var(--ninho);
+	color: var(--acerto-tinta);
+	font-size: var(--texto-sm);
+	font-weight: var(--peso-titulo);
+}
+
+.concluida__titulo {
+	font-size: var(--texto-3xl);
+	line-height: 1.1;
+	letter-spacing: -0.015em;
+}
+
+.concluida__texto {
+	font-weight: var(--peso-medio);
+}
+
+.concluida__acoes {
+	display: grid;
+	justify-items: center;
+	gap: var(--esp-2xs);
+	margin-top: var(--esp-2xs);
+}
+
+.concluida__acoes .proxima {
+	text-decoration: none;
+}
+
+/* Sobre a cor do tema o cinza suave do botão não passa no contraste: usa a tinta forte */
+.cena--concluida .pular {
+	color: var(--plumagem);
+}
+
+@media (hover: hover) {
+	.cena--concluida .pular:hover {
+		background: oklch(0.99 0.005 60 / 0.55);
+	}
+}
+
 /* ---------- Esqueleto ---------- */
 
 .carta--esqueleto .carta__topo {
@@ -658,7 +806,7 @@
 @media (min-width: 48rem) {
 	.topo {
 		grid-template-columns: auto 1fr auto;
-		grid-template-areas: 'marca chips sequencia';
+		grid-template-areas: 'marca chips acoes';
 		gap: var(--esp-md);
 		padding: var(--esp-sm) var(--esp-lg);
 	}
@@ -776,6 +924,26 @@
 	/* Sem partículas: a celebração vira só troca de expressão e de cor */
 	.penas {
 		display: none;
+	}
+
+	/* Tema concluído: a cor não se espalha, só aparece (fade) */
+	.concluida__cor {
+		transform: none;
+		opacity: 0;
+		transition: opacity var(--dur-lenta) ease-out;
+	}
+
+	.cena--ativa .concluida__cor {
+		opacity: 1;
+	}
+
+	.concluida__conteudo {
+		transform: none;
+		transition: opacity var(--dur-lenta) ease-out 150ms;
+	}
+
+	.temas-link:active {
+		transform: none;
 	}
 
 	.sequencia--marco {

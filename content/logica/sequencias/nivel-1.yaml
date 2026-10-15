@@ -1,4 +1,5 @@
 titulo: Sequências e padrões
+subtema: Sequências
 perguntas:
   - id: dobrando
     enunciado: 'Qual número vem a seguir? 2, 4, 8, 16, …'

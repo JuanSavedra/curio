@@ -19,6 +19,7 @@ export interface DeckPublicado {
 export interface ResumoDeck {
 	id: string;
 	tema: Tema;
+	subtema: string;
 	titulo: string;
 	total: number;
 }
