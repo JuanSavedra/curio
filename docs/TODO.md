@@ -18,9 +18,6 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Canto curto do Curió no acerto e nas celebrações, desligado por padrão, com controle visível e preferência salva.
 
 ### Conteúdo
-- [ ] Mais decks: hoje cada tema tem 1 deck de 8 perguntas. A meta é de 20 a 50 perguntas por deck e mais de um deck por tema.
-- [ ] Guia curto de como escrever uma pergunta e uma explicação (tom, tamanho, quando usar fórmula). Limites para todas as cartas terem o mesmo desenho: pergunta com até uns 80 caracteres (4 linhas no celular), alternativa com até uma linha e explicação com até uns 200 caracteres (cabe na carta do computador sem ela crescer).
-- [ ] Aviso no build quando uma pergunta, alternativa ou explicação passar do limite de tamanho.
 - [ ] Revisão de fatos de todos os decks.
 
 ### Fase 6: ninho à noite e acabamento
@@ -39,6 +36,22 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Funcionar offline (PWA), já que o conteúdo é estático.
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
+- [ ] Filtros no feed além do tema: por subtema, por dificuldade, só o que ainda não vi, só o que errei.
+- [ ] Subtemas navegáveis dentro de cada tema (Matemática → números primos, frações, geometria), com progresso por subtema. Hoje o subtema existe nos arquivos, mas só agrupa as coleções.
+- [ ] Etiquetas de dificuldade nas perguntas (campo opcional no YAML, por exemplo `level`), mostradas de forma discreta na carta e usáveis como filtro. Cuidado para não virar pressão ou ranking.
+- [ ] Referências e vídeos para aprender mais, como campo opcional `learnMore` na pergunta, com links para fontes confiáveis. Links externos abrem em nova aba e nunca são obrigatórios.
+- [ ] Revisar o que errei: um deck só com as perguntas que errei, para tentar de novo sem pressa.
+- [ ] Pergunta do dia: uma pergunta por dia, igual para todo mundo, sem precisar de servidor (escolhida pela data).
+- [ ] Álbum de descobertas: tela com tudo que já descobri, por tema, com as explicações para reler.
+- [ ] Exportar e importar o progresso em um arquivo, para trocar de aparelho sem cadastro.
+- [ ] Mais tipos de pergunta: verdadeiro ou falso, ordenar, completar a lacuna, imagem na pergunta.
+- [ ] Imagens e ilustrações nas explicações, sempre com texto alternativo.
+- [ ] Busca por assunto nas perguntas e explicações.
+- [ ] Meta diária opcional e leve (por exemplo, 5 perguntas), sem culpa se não cumprir.
+- [ ] Mais conquistas do Curió além das penas, como selos por tema concluído.
+- [ ] Contribuição aberta: guia e modelo de deck para outras pessoas enviarem perguntas por pull request.
+- [ ] Ajustes de leitura: tamanho de letra e fonte para dislexia, além do modo escuro.
+- [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
 - [x] Primeiros decks de Ciências, História, Geografia e Linguagem (8 perguntas cada, em `content/<tema>/`). Todos os 7 temas agora têm conteúdo e saíram de "em breve". Build passando. Os fatos ainda entram na revisão de fatos.
@@ -52,3 +65,4 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [x] Fase 3: Curió em SVG com volume e contorno quente, quatro reações (esperando, feliz, consolando, comemorando), animações de personagem com versão para movimento reduzido e favicon só com a cabeça.
 - [x] Cartas com o mesmo desenho: pergunta, alternativas e palco sempre na mesma posição, carta da altura da tela.
 - [x] Fase 4: celebrações. Penas caindo em 3, 5, 10 e a cada 10 acertos seguidos; marcos de 3, 7, 14, 30, 50 e 100 dias com a pílula brilhando; versão para movimento reduzido; asa do Curió comemorando refinada.
+- [x] Mais decks: hoje cada tema tem 1 deck de 8 perguntas. A meta é de 20 a 50 perguntas por deck e mais de um deck por tema.
