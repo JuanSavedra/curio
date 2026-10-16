@@ -1,0 +1,97 @@
+title: Curiosidades da natureza
+subtopic: Natureza
+questions:
+  - id: liquid-metal
+    prompt: Qual metal é líquido na temperatura ambiente?
+    choices:
+      - Chumbo
+      - Alumínio
+      - Mercúrio
+      - Ferro
+    answer: Mercúrio
+    explanation: >-
+      O mercúrio derrete a cerca de -39 °C, então fica líquido no dia a dia. Por isso
+      era usado em termômetros antigos, embora seja tóxico.
+
+  - id: octopus-hearts
+    prompt: Quantos corações tem um polvo?
+    choices:
+      - Um
+      - Dois
+      - Três
+      - Oito
+    answer: Três
+    explanation: >-
+      Dois corações levam o sangue às brânquias e um o leva ao resto do corpo. E o
+      sangue do polvo é azul, por causa do cobre.
+
+  - id: photosynthesis-gas
+    prompt: Que gás as plantas absorvem do ar para fazer fotossíntese?
+    choices:
+      - Gás carbônico
+      - Oxigênio
+      - Nitrogênio
+      - Hélio
+    answer: Gás carbônico
+    explanation: >-
+      Com a luz do Sol, elas usam gás carbônico e água para fabricar açúcar, e liberam
+      oxigênio no processo.
+
+  - id: biggest-organ
+    prompt: Qual é o maior órgão do corpo humano?
+    choices:
+      - O fígado
+      - A pele
+      - O pulmão
+      - O intestino
+    answer: A pele
+    explanation: >-
+      A pele de um adulto cobre quase 2 m². Ela protege o corpo, ajuda a controlar a
+      temperatura e nos dá o tato.
+
+  - id: blue-sky
+    prompt: Por que o céu durante o dia é azul?
+    choices:
+      - Ele reflete o mar
+      - O ar é azul
+      - A luz azul se espalha mais
+      - O Sol é azul
+    answer: A luz azul se espalha mais
+    explanation: >-
+      A atmosfera espalha a luz azul do Sol bem mais que as outras cores. Por isso ela
+      chega aos nossos olhos vinda de todo o céu.
+
+  - id: fastest-animal
+    prompt: Qual é o animal mais rápido do mundo?
+    choices:
+      - Guepardo
+      - Avestruz
+      - Cavalo
+      - Falcão-peregrino
+    answer: Falcão-peregrino
+    explanation: >-
+      Mergulhando, o falcão-peregrino passa de 300 km/h. O guepardo é o mais rápido em
+      terra, com cerca de 100 km/h.
+
+  - id: adult-bones
+    prompt: Quantos ossos tem um adulto?
+    choices:
+      - '106'
+      - '206'
+      - '306'
+      - '406'
+    answer: '206'
+    explanation: >-
+      Os bebês nascem com cerca de 300 ossos. Vários se juntam durante o crescimento,
+      até sobrarem 206.
+
+  - id: air-gas
+    prompt: Qual gás existe em maior quantidade no ar que respiramos?
+    choices:
+      - Oxigênio
+      - Gás carbônico
+      - Nitrogênio
+    answer: Nitrogênio
+    explanation: >-
+      O ar tem cerca de 78% de nitrogênio e só 21% de oxigênio, que é o gás que o corpo
+      aproveita para viver.

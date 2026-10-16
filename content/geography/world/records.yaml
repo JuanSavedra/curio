@@ -1,0 +1,96 @@
+title: Recordes do planeta
+subtopic: Mundo
+questions:
+  - id: biggest-country
+    prompt: Qual é o maior país do mundo em área?
+    choices:
+      - Canadá
+      - China
+      - Rússia
+      - Brasil
+    answer: Rússia
+    explanation: >-
+      A Rússia tem mais de 17 milhões de km² e atravessa 11 fusos horários.
+
+  - id: biggest-river
+    prompt: Qual rio leva mais água ao mar no mundo?
+    choices:
+      - Nilo
+      - Amazonas
+      - Mississippi
+      - Yangtzé
+    answer: Amazonas
+    explanation: >-
+      O Amazonas despeja nos oceanos cerca de um quinto de toda a água doce que os rios
+      do planeta levam ao mar.
+
+  - id: australia-capital
+    prompt: Qual é a capital da Austrália?
+    choices:
+      - Sydney
+      - Melbourne
+      - Perth
+      - Camberra
+    answer: Camberra
+    explanation: >-
+      Sydney é mais famosa, mas a capital é Camberra. Ela foi planejada no início do
+      século XX para acabar com a disputa entre Sydney e Melbourne.
+
+  - id: biggest-ocean
+    prompt: Qual é o maior oceano da Terra?
+    choices:
+      - Atlântico
+      - Pacífico
+      - Índico
+      - Ártico
+    answer: Pacífico
+    explanation: >-
+      O Pacífico cobre quase um terço da superfície da Terra, mais do que toda a terra
+      firme somada.
+
+  - id: brazil-states
+    prompt: Quantos estados tem o Brasil?
+    choices:
+      - '24'
+      - '26'
+      - '27'
+      - '28'
+    answer: '26'
+    explanation: >-
+      São 26 estados mais o Distrito Federal, onde fica Brasília. Juntos formam 27
+      unidades da federação.
+
+  - id: highest-peak
+    prompt: Qual é o ponto mais alto da Terra?
+    choices:
+      - Monte Everest
+      - K2
+      - Kilimanjaro
+      - Aconcágua
+    answer: Monte Everest
+    explanation: >-
+      O Everest, no Himalaia, tem cerca de 8.849 metros acima do nível do mar. E ainda
+      sobe alguns milímetros por ano.
+
+  - id: biggest-population
+    prompt: Qual país tem a maior população do mundo?
+    choices:
+      - China
+      - Estados Unidos
+      - Índia
+      - Indonésia
+    answer: Índia
+    explanation: >-
+      A Índia passou a China por volta de 2023 e tem mais de 1,4 bilhão de habitantes.
+
+  - id: biggest-hot-desert
+    prompt: Qual é o maior deserto quente do mundo?
+    choices:
+      - Gobi
+      - Kalahari
+      - Atacama
+      - Saara
+    answer: Saara
+    explanation: >-
+      O Saara, no norte da África, é quase do tamanho dos Estados Unidos. O maior de
+      todos é a Antártida, que é um deserto de gelo.

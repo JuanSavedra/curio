@@ -1,0 +1,93 @@
+title: Curiosidades do português
+subtopic: Língua portuguesa
+questions:
+  - id: alphabet-size
+    prompt: Quantas letras tem o alfabeto português?
+    choices:
+      - '23'
+      - '25'
+      - '26'
+      - '28'
+    answer: '26'
+    explanation: >-
+      Com o Acordo Ortográfico, as letras k, w e y entraram oficialmente no alfabeto,
+      que passou de 23 para 26 letras.
+
+  - id: there-was
+    prompt: Qual frase está correta?
+    choices:
+      - Haviam muitas pessoas na fila.
+      - Havia muitas pessoas na fila.
+    answer: Havia muitas pessoas na fila.
+    explanation: >-
+      Haver, no sentido de existir, não vai para o plural: havia, houve, haverá. Quem
+      varia é "existir": existiam muitas pessoas.
+
+  - id: palindrome
+    prompt: Qual destas palavras é um palíndromo?
+    choices:
+      - Casa
+      - Livro
+      - Mesa
+      - Arara
+    answer: Arara
+    explanation: >-
+      Um palíndromo se lê igual nos dois sentidos. Arara, ovo, radar e osso são
+      exemplos.
+
+  - id: tupi-word
+    prompt: De qual língua vem a palavra "abacaxi"?
+    choices:
+      - Árabe
+      - Tupi
+      - Latim
+      - Inglês
+    answer: Tupi
+    explanation: >-
+      Vem do tupi e quer dizer algo como "fruta cheirosa". Do tupi também vêm mandioca,
+      jabuticaba e tatu.
+
+  - id: citizen-plural
+    prompt: Qual é o plural de "cidadão"?
+    choices:
+      - Cidadões
+      - Cidadães
+      - Cidadãos
+    answer: Cidadãos
+    explanation: >-
+      Palavras em -ão fazem plural em -ões, -ães ou -ãos. "Cidadão" é do grupo do -ãos,
+      como mão e irmão.
+
+  - id: exception-spelling
+    prompt: Qual destas palavras está escrita corretamente?
+    choices:
+      - Esceção
+      - Excessão
+      - Exceção
+      - Exseção
+    answer: Exceção
+    explanation: >-
+      Exceção vem do verbo excetuar, com "c" e "ç". Já "excesso", de exceder, é outra
+      palavra e leva "ss".
+
+  - id: metaphor
+    prompt: Em "a vida é uma montanha-russa", o que há?
+    choices:
+      - Uma rima
+      - Uma metáfora
+      - Uma pergunta
+      - Um trava-língua
+    answer: Uma metáfora
+    explanation: >-
+      A vida não é uma montanha-russa de verdade. A metáfora liga duas coisas pela
+      semelhança, sem usar "como".
+
+  - id: mal-or-mau
+    prompt: 'Complete: "Dormi ___ esta noite."'
+    choices:
+      - mau
+      - mal
+    answer: mal
+    explanation: >-
+      "Mal" é o contrário de "bem": dormi mal. "Mau" é o contrário de "bom": mau humor,
+      mau aluno.

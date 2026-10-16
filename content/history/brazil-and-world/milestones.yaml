@@ -1,0 +1,98 @@
+title: Marcos da história
+subtopic: Brasil e mundo
+questions:
+  - id: first-president
+    prompt: Quem foi o primeiro presidente do Brasil?
+    choices:
+      - Getúlio Vargas
+      - Dom Pedro II
+      - Juscelino Kubitschek
+      - Deodoro da Fonseca
+    answer: Deodoro da Fonseca
+    explanation: >-
+      Deodoro proclamou a República em 1889 e chefiou o governo provisório. Dom Pedro II
+      foi o último imperador do país.
+
+  - id: independence-year
+    prompt: Em que ano o Brasil declarou independência?
+    choices:
+      - '1500'
+      - '1808'
+      - '1822'
+      - '1889'
+    answer: '1822'
+    explanation: >-
+      Dom Pedro I proclamou a Independência às margens do rio Ipiranga, em 7 de setembro
+      de 1822.
+
+  - id: pyramids
+    prompt: Qual civilização construiu as pirâmides de Gizé?
+    choices:
+      - Romana
+      - Maia
+      - Egípcia
+      - Grega
+    answer: Egípcia
+    explanation: >-
+      Os egípcios as ergueram há mais de 4.500 anos como túmulos de faraós. A Grande
+      Pirâmide é a única das sete maravilhas antigas ainda de pé.
+
+  - id: cabral
+    prompt: Quem chegou ao Brasil em 1500 com uma frota de navios?
+    choices:
+      - Pedro Álvares Cabral
+      - Cristóvão Colombo
+      - Vasco da Gama
+      - Dom Pedro I
+    answer: Pedro Álvares Cabral
+    explanation: >-
+      A frota de Cabral avistou o Monte Pascoal, na Bahia, em abril de 1500. Ela estava
+      a caminho da Índia.
+
+  - id: moon-landing
+    prompt: Em que ano um ser humano pisou na Lua pela primeira vez?
+    choices:
+      - '1959'
+      - '1969'
+      - '1979'
+      - '1989'
+    answer: '1969'
+    explanation: >-
+      Em 20 de julho de 1969, Neil Armstrong e Buzz Aldrin pisaram na Lua, na missão
+      Apollo 11, e milhões de pessoas viram pela TV.
+
+  - id: olympic-origin
+    prompt: Em qual país nasceram os Jogos Olímpicos da Antiguidade?
+    choices:
+      - Itália
+      - Egito
+      - Turquia
+      - Grécia
+    answer: Grécia
+    explanation: >-
+      Começaram em Olímpia, por volta de 776 a.C., em homenagem a Zeus. A tradição só
+      voltou em 1896, em Atenas.
+
+  - id: pompeii
+    prompt: Qual cidade foi coberta de cinzas pelo vulcão Vesúvio no ano 79?
+    choices:
+      - Roma
+      - Pompeia
+      - Atenas
+      - Cartago
+    answer: Pompeia
+    explanation: >-
+      As cinzas cobriram Pompeia e conservaram casas, objetos e até pães, o que nos
+      deixa ver como era a vida dos romanos.
+
+  - id: golden-law
+    prompt: Em que ano foi assinada a Lei Áurea, que acabou com a escravidão?
+    choices:
+      - '1822'
+      - '1850'
+      - '1888'
+      - '1889'
+    answer: '1888'
+    explanation: >-
+      A princesa Isabel assinou a lei em 13 de maio de 1888. O Brasil foi o último país
+      das Américas a abolir a escravidão.
