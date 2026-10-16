@@ -4,8 +4,8 @@ Feed de perguntas e respostas em português que troca o scroll de vídeos curtos
 
 ## Leia antes de qualquer trabalho
 
-1. **`PRODUCT.md`**: público, propósito, personalidade, anti-referências, princípios e acessibilidade (WCAG 2.2 AA).
-2. **`DESIGN.md`**: identidade visual ("O Ninho Cantante"), regras de cor, tipografia, movimento e a lista de Do's and Don'ts. **As regras são estritas: não as contorne.** Se uma tarefa entrar em conflito com elas, pergunte antes.
+1. **`docs/PRODUCT.md`**: público, propósito, personalidade, anti-referências, princípios e acessibilidade (WCAG 2.2 AA).
+2. **`docs/DESIGN.md`**: identidade visual ("O Ninho Cantante"), regras de cor, tipografia, movimento e a lista de Do's and Don'ts. **As regras são estritas: não as contorne.** Se uma tarefa entrar em conflito com elas, pergunte antes.
 3. **`README.md`**: a ideia e a stack em linguagem de usuário.
 
 Os dois `.md` de regras têm títulos de seção em inglês (exigidos pelo formato) e conteúdo em português. Mantenha assim.
@@ -17,7 +17,7 @@ Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/s
 - Carregue o contexto com `node .agents/skills/impeccable/scripts/load-context.mjs`.
 - O registro é **product**. Carregue `reference/product.md` e a referência do subcomando em uso.
 - **Ordem obrigatória:** `shape` (briefing confirmado pelo usuário) antes de `craft` (código). Nunca implemente uma tela sem briefing confirmado.
-- O `DESIGN.md` está em **modo seed**: cores exatas e fonte ainda não foram escolhidas (`[to be resolved during implementation]`). Elas são definidas no primeiro `craft`, respeitando as regras do arquivo. Depois que houver código, rode `document` de novo para registrar os tokens reais.
+- O `docs/DESIGN.md` está em **modo seed**: cores exatas e fonte ainda não foram escolhidas (`[to be resolved during implementation]`). Elas são definidas no primeiro `craft`, respeitando as regras do arquivo. Depois que houver código, rode `document` de novo para registrar os tokens reais.
 
 ## Stack e decisões técnicas
 
@@ -38,7 +38,7 @@ Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/s
 
 ## Convenções
 
-- Textos da interface em **português do Brasil**, com o tom definido em `PRODUCT.md` (amigo curioso, acolhedor, nunca professor nem vendedor).
+- Textos da interface em **português do Brasil**, com o tom definido em `docs/PRODUCT.md` (amigo curioso, acolhedor, nunca professor nem vendedor).
 - **Sem travessão (—) nem `--`** em textos da interface ou da documentação.
 - Nome do pacote npm: `curio` (sem acento). Nome de exibição: **Curiô**.
 - **Commits:** o usuário faz os commits. Não faça commit. Ao fim de cada etapa, sugira uma mensagem no padrão Conventional Commits em pt-BR.
@@ -53,9 +53,9 @@ Fases de criação da interface:
 4. ✅ **Celebrações:** penas (`Feathers.tsx`) em acertos seguidos e marcos de dias. O som ficou para uma etapa própria.
 5. ✅ **Temas e progresso:** tela de temas (`src/components/topics/`, rotas `/temas` e `/temas/<slug>`), ícone de cada tema em `Icons.tsx` e tela de tema concluído (`TopicComplete.tsx`). O feed aceita `?tema=`, `?deck=` e `?rever=1` (nomes definidos em `FEED_QUERY`, em `src/lib/routes.ts`).
 6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
-7. **Registro:** `impeccable document` para tirar o DESIGN.md do modo seed.
+7. **Registro:** `impeccable document` para tirar o `docs/DESIGN.md` do modo seed.
 
-A lista detalhada do que falta está em **`TODO.md`**. Atualize-a ao fim de cada etapa.
+A lista detalhada do que falta está em **`docs/TODO.md`**. Atualize-a ao fim de cada etapa.
 
 Conteúdo: use `$...$` (KaTeX) só para fórmulas de verdade (frações, raízes, potências, π). Números e sequências vão como texto comum.
 

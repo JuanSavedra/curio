@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    "dist": true,
+    ".astro": true,
+    "package-lock.json": true,
+    "skills-lock.json": true,
+    ".agents": true
+  }
+}
