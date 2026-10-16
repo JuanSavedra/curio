@@ -1,0 +1,98 @@
+title: Estrelas e galáxias
+subtopic: Estrelas e galáxias
+questions:
+  - id: nearest-star
+    prompt: Qual é a estrela mais próxima da Terra?
+    choices:
+      - Sirius
+      - Próxima Centauri
+      - O Sol
+      - Betelgeuse
+    answer: O Sol
+    explanation: >-
+      O Sol está a cerca de 150 milhões de km. Fora ele, a estrela mais próxima é Próxima
+      Centauri, a mais de 4 anos-luz daqui.
+
+  - id: our-galaxy
+    prompt: Como se chama a galáxia onde fica o Sistema Solar?
+    choices:
+      - Andrômeda
+      - Via Láctea
+      - Órion
+      - Cruzeiro do Sul
+    answer: Via Láctea
+    explanation: >-
+      A Via Láctea tem centenas de bilhões de estrelas. O Sol é só uma delas, num dos
+      braços em espiral.
+
+  - id: light-year
+    prompt: O que é um ano-luz?
+    choices:
+      - Um ano de viagem de uma nave
+      - A distância que a luz percorre em um ano
+      - Uma estrela muito antiga
+      - O tempo que o Sol leva para girar
+    answer: A distância que a luz percorre em um ano
+    explanation: >-
+      É uma medida de distância, não de tempo. Em um ano a luz percorre quase 9,5 trilhões
+      de km.
+
+  - id: hottest-color
+    prompt: Qual cor indica as estrelas mais quentes?
+    choices:
+      - Vermelha
+      - Amarela
+      - Azul
+      - Laranja
+    answer: Azul
+    explanation: >-
+      As azuis passam de 10.000 °C na superfície. As vermelhas são as mais frias, com cerca
+      de 3.000 °C.
+
+  - id: supernova
+    prompt: Como se chama a explosão de uma estrela gigante no fim da vida?
+    choices:
+      - Eclipse
+      - Aurora
+      - Supernova
+      - Cometa
+    answer: Supernova
+    explanation: >-
+      A supernova espalha pelo espaço elementos como o ferro e o cálcio, que também estão
+      no nosso corpo.
+
+  - id: andromeda
+    prompt: Qual grande galáxia vai se encontrar com a Via Láctea no futuro?
+    choices:
+      - Andrômeda
+      - Sombrero
+      - Redemoinho
+      - Cata-vento
+    answer: Andrômeda
+    explanation: >-
+      Andrômeda está a 2,5 milhões de anos-luz e vem na nossa direção. O encontro deve
+      acontecer daqui a uns 4,5 bilhões de anos.
+
+  - id: shooting-star
+    prompt: O que é uma estrela cadente?
+    choices:
+      - Uma estrela caindo
+      - Um pedaço de rocha queimando na atmosfera
+      - Um planeta distante
+      - Um satélite
+    answer: Um pedaço de rocha queimando na atmosfera
+    explanation: >-
+      É um grão de poeira ou de rocha que queima ao entrar na atmosfera em alta velocidade.
+      O nome certo é meteoro.
+
+  - id: sunlight-time
+    prompt: Quanto tempo a luz do Sol leva para chegar à Terra?
+    choices:
+      - 8 segundos
+      - 8 minutos
+      - 8 horas
+      - 8 dias
+    answer: 8 minutos
+    explanation: >-
+      A luz viaja a cerca de 300 mil km por segundo e leva uns 8 minutos para vir do Sol.
+      Ou seja, vemos o Sol como ele era há 8 minutos.

@@ -4,8 +4,17 @@ import { TOPICS, type Topic } from '../data/topics';
 // Public addresses stay in pt-BR (they are part of what people see and share).
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-/** Query parameter names the feed understands: `/?tema=astronomia`, `/?deck=<id>`, `/?rever=1`. */
-export const FEED_QUERY = { topic: 'tema', deck: 'deck', review: 'rever' } as const;
+/**
+ * Query parameter names the feed understands: `/?tema=astronomia`, `/?subtema=<folder>`, `/?modo=erradas`,
+ * `/?deck=<id>`, `/?rever=1`.
+ */
+export const FEED_QUERY = { topic: 'tema', subtopic: 'subtema', mode: 'modo', deck: 'deck', review: 'rever' } as const;
+
+/** What the feed shows: new questions (default), the ones answered wrong, or the ones already discovered. */
+export type FeedMode = 'new' | 'missed' | 'seen';
+
+/** Public (pt-BR) value of `?modo=` for each mode. `new` has no value: it is the default. */
+export const MODE_SLUGS = { missed: 'erradas', seen: 'vistas' } as const;
 
 interface FeedFilter {
 	topic?: Topic;

@@ -4,6 +4,7 @@ import type { DeckSummary } from '../../lib/types';
 const KEY_SEEN = 'curio:seen';
 const KEY_STREAK = 'curio:streak';
 const KEY_VISITED = 'curio:visited';
+const KEY_MISSED = 'curio:missed';
 const KEY_LAST_TOPIC = 'curio:last-topic';
 
 function read<T>(key: string, fallback: T): T {
@@ -30,6 +31,20 @@ export function markSeen(id: string) {
 	const seen = readSeen();
 	seen.add(id);
 	write(KEY_SEEN, [...seen]);
+}
+
+/** Ids of the questions last answered wrong. Answering one right takes it off the list. */
+export const readMissed = () => new Set(read<string[]>(KEY_MISSED, []));
+
+export function markMissed(id: string) {
+	const missed = readMissed();
+	missed.add(id);
+	write(KEY_MISSED, [...missed]);
+}
+
+export function clearMissed(id: string) {
+	const missed = readMissed();
+	if (missed.delete(id)) write(KEY_MISSED, [...missed]);
 }
 
 export function forgetSeen(prefixes: string[]) {

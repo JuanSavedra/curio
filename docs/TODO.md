@@ -7,6 +7,9 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 ### Pendências da fase 2 (feed)
 - [ ] Testar com leitor de tela de verdade (NVDA no Windows ou TalkBack no Android). Precisa ser feito à mão.
 
+### Filtros do feed (falta conferir no navegador)
+- [ ] Conferir à mão a 320px, 390px e 1280px: segunda fileira de filtros (Novas, Que errei, Que já vi e subtemas), rolagem horizontal no celular, estados vazios de cada modo, `?subtema=` e `?modo=` no endereço, e axe-core. Só o build e o HTML do servidor foram verificados.
+
 ### Fase 5: temas e progresso (falta só conferir à mão)
 - [ ] Conferir a tela de temas, a página de tema e o tema concluído com teclado e leitor de tela de verdade (junto com o teste da fase 2).
 - [ ] Decidir se "Rever" deve guardar que o tema já foi concluído. Hoje rever zera o progresso do deck, e o selo "Concluído" some até terminar de novo.
@@ -36,7 +39,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Funcionar offline (PWA), já que o conteúdo é estático.
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
-- [ ] Filtros no feed além do tema: por subtema, por dificuldade, só o que ainda não vi, só o que errei.
+- [ ] Filtro por dificuldade no feed. Antes é preciso criar o campo `level` nas perguntas (schema em `src/content.config.ts`) e classificar todas as perguntas dos decks. Entra junto com as etiquetas de dificuldade, mais abaixo.
 - [ ] Subtemas navegáveis dentro de cada tema (Matemática → números primos, frações, geometria), com progresso por subtema. Hoje o subtema existe nos arquivos, mas só agrupa as coleções.
 - [ ] Etiquetas de dificuldade nas perguntas (campo opcional no YAML, por exemplo `level`), mostradas de forma discreta na carta e usáveis como filtro. Cuidado para não virar pressão ou ranking.
 - [ ] Referências e vídeos para aprender mais, como campo opcional `learnMore` na pergunta, com links para fontes confiáveis. Links externos abrem em nova aba e nunca são obrigatórios.
@@ -54,6 +57,8 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Filtros do feed: modos **Novas**, **Que errei** (novo `curio:missed` no `localStorage`) e **Que já vi**, e filtro por **subtema** dentro de um tema (aparece quando o tema tem 2 ou mais). Endereços `?subtema=<pasta>` e `?modo=erradas|vistas`. Nas revisões o progresso dos decks não muda e acertos seguidos e penas não contam, mas a sequência de dias sim. Novo deck `astronomy/stars-and-galaxies` para o subtema existir. Código em `Filters.tsx` e `Feed.tsx`.
+- [x] Raiz do projeto enxuta: `PRODUCT.md`, `DESIGN.md` e `TODO.md` foram para `docs/` (o loader do impeccable já procura lá), referências atualizadas no `AGENTS.md` e `.vscode/settings.json` esconde `dist`, `.astro`, `.agents` e os arquivos de lock no explorador.
 - [x] Primeiros decks de Ciências, História, Geografia e Linguagem (8 perguntas cada, em `content/<tema>/`). Todos os 7 temas agora têm conteúdo e saíram de "em breve". Build passando. Os fatos ainda entram na revisão de fatos.
 - [x] `extract` do botão: um componente só em `src/styles/button.css` (`.button`, `.button--quiet`, `.button--outline`), usado pelo feed e pelas telas de tema. O antigo `.next` virou `.button` e o `.skip` virou `.button--quiet`. Sobre a cor de um tema, o botão quieto usa `--quiet-color`, `--quiet-hover-bg` e `--quiet-hover-color`. Conferido por comparação de pixels (13 de 17 telas idênticas) e axe-core sem violações.
 - [x] Idioma do código padronizado em inglês: arquivos, pastas, identificadores, classes e variáveis CSS, chaves do YAML, ids, chaves do `localStorage`, comentários e mensagens de erro de build. Textos da interface, conteúdo das perguntas e endereços públicos seguem em português. Regra e glossário no `AGENTS.md`. Conferido com capturas idênticas antes e depois (a única diferença é a frase de acerto/erro, escolhida por hash do id) e axe-core sem violações.

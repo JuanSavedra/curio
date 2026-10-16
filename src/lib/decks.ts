@@ -22,6 +22,7 @@ export async function listDecks(): Promise<DeckSummary[]> {
 		.map((deck) => ({
 			id: deck.id,
 			topic: topicOfDeck(deck),
+			subtopicId: deck.id.split('/')[1],
 			subtopic: deck.data.subtopic ?? nameFromFolder(deck.id.split('/')[1]),
 			title: deck.data.title,
 			total: deck.data.questions.length,

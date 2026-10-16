@@ -20,6 +20,9 @@ export interface PublishedDeck {
 export interface DeckSummary {
 	id: string;
 	topic: Topic;
+	/** Folder name of the subtopic (used in the address) */
+	subtopicId: string;
+	/** Display name of the subtopic */
 	subtopic: string;
 	title: string;
 	total: number;

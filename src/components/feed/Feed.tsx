@@ -1,17 +1,21 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { TOPICS, TOPIC_IDS, topicFromSlug, topicStyle, type Topic } from '../../data/topics';
-import { FEED_QUERY, deckJsonRoute, topicsRoute } from '../../lib/routes';
+import { FEED_QUERY, MODE_SLUGS, deckJsonRoute, topicsRoute, type FeedMode } from '../../lib/routes';
 import type { DeckSummary, PublishedDeck } from '../../lib/types';
 import { Card, type QueuedQuestion } from './Card';
 import { DAY_MILESTONES, isRunMilestone, type Celebration } from './copy';
 import { Curio } from './Curio';
+import { Filters, type SubtopicOption } from './Filters';
 import { CheckIcon, NoteIcon, RestartIcon, TopicsIcon } from './Icons';
 import {
+	clearMissed,
 	decksProgress,
 	forgetSeen,
 	hasVisited,
+	markMissed,
 	markSeen,
 	markVisited,
+	readMissed,
 	readSeen,
 	readStreak,
 	recordDay,
@@ -26,6 +30,14 @@ type Status = 'loading' | 'ready' | 'failed';
 // How many decks to fetch at once. Keeps the page light even with a lot of content.
 const BATCH = 3;
 
+/** What the feed is showing: a topic (or everything), maybe one subtopic or one deck, and which kind of questions. */
+interface Scope {
+	topic: Filter;
+	subtopic: string | null;
+	deck: DeckSummary | null;
+	mode: FeedMode;
+}
+
 function shuffle<T>(list: T[]): T[] {
 	const copy = [...list];
 	for (let i = copy.length - 1; i > 0; i--) {
@@ -36,9 +48,9 @@ function shuffle<T>(list: T[]): T[] {
 }
 
 // Interleaves the decks so the mixed feed doesn't repeat the same topic back to back.
-function interleave(decks: PublishedDeck[], seen: Set<string>): QueuedQuestion[] {
+function interleave(decks: PublishedDeck[], include: (id: string) => boolean): QueuedQuestion[] {
 	const stacks = decks.map((deck) =>
-		shuffle(deck.questions.filter((q) => !seen.has(q.id))).map((q) => ({ ...q, topic: deck.topic, deckTitle: deck.title })),
+		shuffle(deck.questions.filter((q) => include(q.id))).map((q) => ({ ...q, topic: deck.topic, deckTitle: deck.title })),
 	);
 	const queue: QueuedQuestion[] = [];
 	while (stacks.some((stack) => stack.length)) {
@@ -52,12 +64,22 @@ function interleave(decks: PublishedDeck[], seen: Set<string>): QueuedQuestion[]
 
 const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/** Which questions belong in the queue for a mode. */
+function inclusion(mode: FeedMode): (id: string) => boolean {
+	if (mode === 'new') {
+		const seen = readSeen();
+		return (id) => !seen.has(id);
+	}
+	const ids = mode === 'seen' ? readSeen() : readMissed();
+	return (id) => ids.has(id);
+}
+
 export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const topicsWithContent = TOPIC_IDS.filter((t) => decks.some((d) => d.topic === t));
 
-	const [filter, setFilter] = useState<Filter>('all');
-	// When the person arrives through a deck on a topic page, the feed shows only that deck
-	const [deckFilter, setDeckFilter] = useState<DeckSummary | null>(null);
+	// When the person arrives through a deck on a topic page, `deck` limits the feed to that deck
+	const [scope, setScope] = useState<Scope>({ topic: 'all', subtopic: null, deck: null, mode: 'new' });
+	const { topic: filter, subtopic, deck: deckFilter, mode } = scope;
 	const [status, setStatus] = useState<Status>('loading');
 	const [queue, setQueue] = useState<QueuedQuestion[]>([]);
 	const [pending, setPending] = useState<DeckSummary[]>([]);
@@ -91,13 +113,13 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 
 	// Fetches batches until there are new questions or the decks run out.
 	const nextBatch = useCallback(
-		async (remaining: DeckSummary[]) => {
-			const seen = readSeen();
+		async (remaining: DeckSummary[], batchMode: FeedMode) => {
+			const include = inclusion(batchMode);
 			let fresh: QueuedQuestion[] = [];
 			while (!fresh.length && remaining.length) {
 				const batch = remaining.slice(0, BATCH);
 				remaining = remaining.slice(BATCH);
-				fresh = interleave(await fetchDecks(batch), seen);
+				fresh = interleave(await fetchDecks(batch), include);
 			}
 			return { fresh, remaining };
 		},
@@ -105,14 +127,19 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	);
 
 	const buildQueue = useCallback(
-		async (newFilter: Filter, deck: DeckSummary | null = null) => {
+		async (next: Scope) => {
 			setStatus('loading');
-			setFilter(newFilter);
-			setDeckFilter(deck);
+			setScope(next);
+			setAnswers({});
 			setCurrent(0);
 			try {
-				const candidates = shuffle(deck ? [deck] : decks.filter((d) => newFilter === 'all' || d.topic === newFilter));
-				const { fresh, remaining } = await nextBatch(candidates);
+				const inScope = next.deck
+					? [next.deck]
+					: decks.filter((d) => (next.topic === 'all' || d.topic === next.topic) && (!next.subtopic || d.subtopicId === next.subtopic));
+				// Review modes only fetch the decks that have something to show
+				const ids = next.mode === 'seen' ? readSeen() : next.mode === 'missed' ? readMissed() : null;
+				const withQuestions = ids ? inScope.filter((d) => [...ids].some((id) => id.startsWith(`${d.id}/`))) : inScope;
+				const { fresh, remaining } = await nextBatch(shuffle(withQuestions), next.mode);
 				setQueue(fresh);
 				setPending(remaining);
 				setStatus('ready');
@@ -124,7 +151,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		[decks, nextBatch],
 	);
 
-	// First load: reads local progress and the URL filter (?tema=astronomia, ?deck=<id>, ?rever=1).
+	// First load: reads local progress and the URL filter (?tema=astronomia, ?subtema=<folder>, ?modo=erradas, ?deck=<id>, ?rever=1).
 	useEffect(() => {
 		setStreak(readStreak());
 		setGreet(!hasVisited());
@@ -132,15 +159,20 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		const urlTopic = topicFromSlug(params.get(FEED_QUERY.topic) ?? '');
 		const deck = decks.find((d) => d.id === params.get(FEED_QUERY.deck)) ?? null;
 		const topic: Filter = deck ? deck.topic : urlTopic && topicsWithContent.includes(urlTopic) ? urlTopic : 'all';
+		const urlSubtopic = params.get(FEED_QUERY.subtopic);
+		const subtopic =
+			!deck && topic !== 'all' && decks.some((d) => d.topic === topic && d.subtopicId === urlSubtopic) ? urlSubtopic : null;
+		const urlMode = params.get(FEED_QUERY.mode);
+		const mode: FeedMode = urlMode === MODE_SLUGS.missed ? 'missed' : urlMode === MODE_SLUGS.seen ? 'seen' : 'new';
 
 		// "Rever" comes from the topic pages: forgets only what was asked, once, and cleans the address.
 		if (params.get(FEED_QUERY.review) === '1' && topic !== 'all') {
-			forgetSeen(prefixesOf(topic, deck));
+			forgetSeen(prefixesOf({ topic, subtopic, deck, mode }));
 			params.delete(FEED_QUERY.review);
 			const query = params.toString();
 			history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
 		}
-		void buildQueue(topic, deck);
+		void buildQueue({ topic, subtopic, deck, mode });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -148,7 +180,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	useEffect(() => {
 		if (status !== 'ready' || !pending.length || loadingMore.current || current < queue.length - 3) return;
 		loadingMore.current = true;
-		nextBatch(pending)
+		nextBatch(pending, mode)
 			.then(({ fresh, remaining }) => {
 				setQueue((q) => [...q, ...fresh]);
 				setPending(remaining);
@@ -159,7 +191,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			.finally(() => {
 				loadingMore.current = false;
 			});
-	}, [current, queue.length, pending, status, nextBatch]);
+	}, [current, queue.length, pending, status, mode, nextBatch]);
 
 	// Which card is in the middle of the rail.
 	useEffect(() => {
@@ -200,26 +232,30 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			const question = queue[index];
 			if (!question || answers[question.id] !== undefined) return;
 			setAnswers((a) => ({ ...a, [question.id]: choice }));
-			markSeen(question.id);
+			// Reviewing (missed or seen) doesn't change what was discovered, nor feeds the run of correct answers
+			const reviewing = mode !== 'new';
+			if (!reviewing) markSeen(question.id);
+			if (choice === question.correct) clearMissed(question.id);
+			else markMissed(question.id);
 			writeLastTopic(question.topic);
 			markVisited();
 			setGreet(false);
 
 			const { days, newDay } = recordDay();
 			setStreak(days);
-			run.current = choice === question.correct ? run.current + 1 : 0;
+			if (!reviewing) run.current = choice === question.correct ? run.current + 1 : 0;
 
 			// A day milestone is worth more than a run of correct answers (it's rarer)
 			let celebration: Celebration | undefined;
 			if (newDay && DAY_MILESTONES.includes(days)) {
 				celebration = { kind: 'days', n: days };
 				setStreakGlow((g) => g + 1);
-			} else if (isRunMilestone(run.current)) {
+			} else if (!reviewing && isRunMilestone(run.current)) {
 				celebration = { kind: 'run', n: run.current };
 			}
 			if (celebration) setCelebrations((c) => ({ ...c, [question.id]: celebration }));
 		},
-		[queue, answers],
+		[queue, answers, mode],
 	);
 
 	// Shortcuts: 1 to 4 (or A to D) answer, arrows or J/K switch cards.
@@ -245,30 +281,60 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		return () => window.removeEventListener('keydown', onKey);
 	}, [current, queue, status, answer, goTo]);
 
-	function switchFilter(next: Filter) {
-		if (next === filter && !deckFilter && status === 'ready') return;
+	// Keeps the address in sync with what is on screen (replaceState: filters don't pile up in the history).
+	function writeUrl({ topic, subtopic, deck, mode }: Scope) {
 		const url = new URL(location.href);
-		url.searchParams.delete(FEED_QUERY.deck);
-		url.searchParams.delete(FEED_QUERY.review);
-		if (next === 'all') url.searchParams.delete(FEED_QUERY.topic);
-		else url.searchParams.set(FEED_QUERY.topic, TOPICS[next].slug);
+		for (const name of Object.values(FEED_QUERY)) url.searchParams.delete(name);
+		if (deck) url.searchParams.set(FEED_QUERY.deck, deck.id);
+		else if (topic !== 'all') url.searchParams.set(FEED_QUERY.topic, TOPICS[topic].slug);
+		if (!deck && subtopic) url.searchParams.set(FEED_QUERY.subtopic, subtopic);
+		if (mode !== 'new') url.searchParams.set(FEED_QUERY.mode, MODE_SLUGS[mode]);
 		history.replaceState(null, '', url);
+	}
+
+	function changeScope(next: Scope) {
+		writeUrl(next);
 		void buildQueue(next);
 	}
 
-	function prefixesOf(topic: Filter, deck: DeckSummary | null) {
-		return (deck ? [deck] : decks.filter((d) => topic === 'all' || d.topic === topic)).map((d) => `${d.id}/`);
+	function switchFilter(next: Filter) {
+		if (next === filter && !deckFilter && !subtopic && status === 'ready') return;
+		changeScope({ topic: next, subtopic: null, deck: null, mode });
+	}
+
+	function switchSubtopic(next: string | null) {
+		if (next === subtopic && !deckFilter && status === 'ready') return;
+		changeScope({ topic: filter, subtopic: next, deck: null, mode });
+	}
+
+	function switchMode(next: FeedMode) {
+		if (next === mode && status === 'ready') return;
+		changeScope({ ...scope, mode: next });
+	}
+
+	function prefixesOf({ topic, subtopic, deck }: Scope) {
+		const inScope = deck
+			? [deck]
+			: decks.filter((d) => (topic === 'all' || d.topic === topic) && (!subtopic || d.subtopicId === subtopic));
+		return inScope.map((d) => `${d.id}/`);
 	}
 
 	function reviewAgain() {
-		forgetSeen(prefixesOf(filter, deckFilter));
-		setAnswers({});
-		void buildQueue(filter, deckFilter);
+		forgetSeen(prefixesOf(scope));
+		void buildQueue(scope);
 	}
+
+	const subtopics: SubtopicOption[] = [];
+	if (filter !== 'all') {
+		for (const d of decks) {
+			if (d.topic === filter && !subtopics.some((o) => o.id === d.subtopicId)) subtopics.push({ id: d.subtopicId, name: d.subtopic });
+		}
+	}
+	const subtopicName = subtopics.find((o) => o.id === subtopic)?.name;
 
 	// A topic is only complete when all of its questions were seen (skipping doesn't count).
 	const topicSummary =
-		status === 'ready' && !pending.length && !deckFilter && filter !== 'all'
+		status === 'ready' && !pending.length && !deckFilter && !subtopic && mode === 'new' && filter !== 'all'
 			? decksProgress(
 					readSeen(),
 					decks.filter((d) => d.topic === filter),
@@ -277,6 +343,9 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const topicComplete = topicSummary?.complete ?? false;
 
 	const currentTopic = queue[Math.min(current, queue.length - 1)]?.topic;
+
+	const where = deckFilter ? deckFilter.title : (subtopicName ?? (filter === 'all' ? null : TOPICS[filter].name));
+	const endCopy = endCopyFor(mode, queue.length > 0, where);
 
 	return (
 		<div className="feed" style={currentTopic ? topicStyle(currentTopic) : undefined} data-has-topic={Boolean(currentTopic)}>
@@ -312,6 +381,16 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 					</ul>
 				</nav>
 
+				<Filters
+					mode={mode}
+					onMode={switchMode}
+					subtopics={subtopics}
+					topic={filter}
+					subtopic={subtopic}
+					deckActive={Boolean(deckFilter)}
+					onSubtopic={switchSubtopic}
+				/>
+
 				<div className="topbar__actions">
 					<a className="topics-link" href={topicsRoute()}>
 						<TopicsIcon size={18} />
@@ -345,7 +424,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 							<Curio mood="comforting" size={72} />
 							<h2 className="notice__title">Não consegui carregar as perguntas.</h2>
 							<p>Confira sua conexão com a internet e tente de novo.</p>
-							<button type="button" className="button" onClick={() => buildQueue(filter)}>
+							<button type="button" className="button" onClick={() => buildQueue(scope)}>
 								<RestartIcon />
 								Tentar de novo
 							</button>
@@ -375,31 +454,35 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 				{status === 'ready' && !pending.length && !topicComplete && (
 					<section className="scene scene--end" aria-labelledby="end-title">
 						<div className="notice">
-							<Curio mood="celebrating" size={88} />
+							<Curio mood={endCopy.mood} size={88} />
 							<h2 id="end-title" className="end__title notice__title" tabIndex={-1}>
-								{deckFilter
-									? `Você viu tudo de ${deckFilter.title} por agora.`
-									: filter === 'all'
-										? 'Você já viu todas as perguntas que temos por agora.'
-										: `Você viu tudo de ${TOPICS[filter].name} por agora.`}
+								{endCopy.title}
 							</h2>
-							<p>O Curió está juntando mais curiosidades. Enquanto isso:</p>
-							<ul className="end__options">
-								{topicsWithContent
-									.filter((t) => t !== filter || deckFilter)
-									.map((topic) => (
-										<li key={topic}>
-											<button type="button" className="chip" style={topicStyle(topic)} onClick={() => switchFilter(topic)}>
-												<span className="chip__dot" aria-hidden="true" />
-												{TOPICS[topic].name}
-											</button>
-										</li>
-									))}
-							</ul>
-							<button type="button" className="button button--quiet" onClick={reviewAgain}>
-								<RestartIcon size={18} />
-								Rever as que já respondi
-							</button>
+							<p>{endCopy.text}</p>
+							{mode === 'new' ? (
+								<>
+									<ul className="end__options">
+										{topicsWithContent
+											.filter((t) => t !== filter || deckFilter || subtopic)
+											.map((topic) => (
+												<li key={topic}>
+													<button type="button" className="chip" style={topicStyle(topic)} onClick={() => switchFilter(topic)}>
+														<span className="chip__dot" aria-hidden="true" />
+														{TOPICS[topic].name}
+													</button>
+												</li>
+											))}
+									</ul>
+									<button type="button" className="button button--quiet" onClick={reviewAgain}>
+										<RestartIcon size={18} />
+										Rever as que já respondi
+									</button>
+								</>
+							) : (
+								<button type="button" className="button" onClick={() => switchMode('new')}>
+									Ver perguntas novas
+								</button>
+							)}
 						</div>
 					</section>
 				)}
@@ -412,6 +495,42 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			</main>
 		</div>
 	);
+}
+
+/** Texts of the last screen of the queue. `where` is the deck, subtopic or topic in view (null: everything). */
+function endCopyFor(mode: FeedMode, hadQuestions: boolean, where: string | null) {
+	const here = where ? `de ${where}` : '';
+	if (mode === 'missed') {
+		return hadQuestions
+			? {
+					mood: 'comforting' as const,
+					title: `Essas eram todas as que você errou${where ? ` em ${where}` : ''}.`,
+					text: 'As que você errar de novo continuam guardadas, para tentar mais tarde sem pressa.',
+				}
+			: {
+					mood: 'celebrating' as const,
+					title: `Nenhuma pergunta errada${where ? ` em ${where}` : ''}.`,
+					text: 'Quando você errar uma, ela espera aqui para você tentar de novo sem pressa.',
+				};
+	}
+	if (mode === 'seen') {
+		return hadQuestions
+			? {
+					mood: 'happy' as const,
+					title: `Você releu tudo o que descobriu${where ? ` em ${where}` : ''}.`,
+					text: 'Toda curiosidade que você descobre fica guardada aqui para reler quando quiser.',
+				}
+			: {
+					mood: 'waiting' as const,
+					title: `Ainda não há nada para rever${where ? ` em ${where}` : ''}.`,
+					text: 'As perguntas que você responder aparecem aqui para reler quando quiser.',
+				};
+	}
+	return {
+		mood: 'celebrating' as const,
+		title: where ? `Você viu tudo ${here} por agora.` : 'Você já viu todas as perguntas que temos por agora.',
+		text: 'O Curió está juntando mais curiosidades. Enquanto isso:',
+	};
 }
 
 function Skeleton() {
