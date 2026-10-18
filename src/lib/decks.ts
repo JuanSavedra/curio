@@ -42,6 +42,7 @@ export function publishDeck(deck: CollectionEntry<'decks'>): PublishedDeck {
 			choices: q.choices.map(richText),
 			correct: q.choices.indexOf(q.answer),
 			explanation: richText(q.explanation),
+			...(q.learnMore && { learnMore: q.learnMore }),
 		})),
 	};
 }

@@ -12,6 +12,16 @@ const question = z
 		choices: z.array(z.string().min(1)).min(2).max(4),
 		answer: z.string().min(1),
 		explanation: z.string().min(20, 'Every question needs a real explanation.'),
+		// Optional links to trustworthy sources, shown after the answer
+		learnMore: z
+			.array(
+				z.object({
+					title: z.string().min(2),
+					url: z.string().url().startsWith('https://', 'Use an https link.'),
+				}),
+			)
+			.max(3)
+			.optional(),
 	})
 	.refine((q) => q.choices.includes(q.answer), {
 		message: 'The answer must equal (letter by letter) one of the choices.',

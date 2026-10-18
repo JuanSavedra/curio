@@ -25,6 +25,9 @@ questions:
     explanation: >-
       Cada número é a soma dos dois anteriores: 5 + 8 = 13. É a sequência de Fibonacci,
       que aparece nas espirais das sementes de girassol e das pinhas.
+    learnMore:
+      - title: Sequência de Fibonacci na Wikipédia
+        url: https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci
 
   - id: squares
     level: medium

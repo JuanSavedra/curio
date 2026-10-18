@@ -19,7 +19,6 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Funcionar offline (PWA), já que o conteúdo é estático.
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
-- [ ] Referências e vídeos para aprender mais, como campo opcional `learnMore` na pergunta, com links para fontes confiáveis. Links externos abrem em nova aba e nunca são obrigatórios.
 - [ ] Pergunta do dia: uma pergunta por dia, igual para todo mundo, sem precisar de servidor (escolhida pela data).
 - [ ] Álbum de descobertas: tela com tudo que já descobri, por tema, com as explicações para reler.
 - [ ] Exportar e importar o progresso em um arquivo, para trocar de aparelho sem cadastro.
@@ -33,6 +32,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Referências para aprender mais: campo opcional `learnMore` na pergunta (até 3 itens com `title` e `url` https, validado no schema). Depois de responder, a carta mostra "Quer saber mais?" com os links, que abrem em outra aba e avisam o leitor de tela. Nunca obrigatório. Código em `content.config.ts`, `Card.tsx` e `feed.css`. Só a pergunta `fibonacci` tem link, como exemplo; os outros links entram com a revisão de fatos. Falta conferir à mão a carta com o link a 320px (a explicação fica mais longa).
 - [x] Dificuldade na carta: o nível (Filhote, Curioso ou Explorador) aparece no fim da linha do tema e da coleção, com uma bolinha na cor do nível e o texto ("Nível" só para leitor de tela). Sem número, pontos ou ranking. Código em `Card.tsx` e `feed.css`. Falta conferir à mão o contraste da bolinha sobre cada cor de tema e a quebra de linha a 320px.
 - [x] Revisar o que errei: o modo **Que errei** do feed (barra lateral, grupo "Mostrar") reúne só as perguntas que errei para tentar de novo sem pressa, sem mudar o progresso dos decks. Feito junto com os filtros do feed, em vez de um deck separado.
 - [x] Barra lateral no feed (`Sidebar.tsx`, `sidebar.css`): marca Curiô, filtros de assunto, subtemas, mostrar e dificuldade, e o link para a tela de temas. No celular é uma gaveta aberta pelo botão de menu; a partir de 48rem é uma coluna fixa que pode ser reduzida só ao Curió e às marcas (preferência salva no aparelho). O topo ficou só com o menu, o nome e a sequência de dias. Corrigido junto: os links de pulo da página do tema usavam `.chip`, que só existe no CSS do feed, e ganharam estilo próprio (`.subtopic-link`).

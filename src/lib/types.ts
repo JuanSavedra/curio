@@ -10,6 +10,8 @@ export interface PublishedQuestion {
 	/** Index of the right choice */
 	correct: number;
 	explanation: string;
+	/** Optional links to learn more (open in a new tab) */
+	learnMore?: { title: string; url: string }[];
 }
 
 export interface PublishedDeck {

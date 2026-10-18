@@ -66,6 +66,13 @@ export const ArrowLeftIcon = (p: { size?: number }) => (
 	</Icon>
 );
 
+/** Arrow leaving a box: the link opens in a new tab. */
+export const ExternalIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M14 5h5v5M19 5l-8 8M18 14v3.5A1.5 1.5 0 0 1 16.5 19h-9A1.5 1.5 0 0 1 6 17.5v-9A1.5 1.5 0 0 1 7.5 7H10" />
+	</Icon>
+);
+
 /** Three lines: opens the sidebar on small screens. */
 export const MenuIcon = (p: { size?: number }) => (
 	<Icon {...p}>

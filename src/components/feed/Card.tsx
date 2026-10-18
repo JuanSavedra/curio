@@ -4,7 +4,7 @@ import { TOPICS, topicStyle, type Topic } from '../../data/topics';
 import type { PublishedQuestion } from '../../lib/types';
 import { LETTERS, correctText, daysText, runText, wrongText, type Celebration } from './copy';
 import { Curio } from './Curio';
-import { ArrowDownIcon, CheckIcon, CrossIcon, NoteIcon } from './Icons';
+import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon } from './Icons';
 import { Feathers } from './Feathers';
 
 export interface QueuedQuestion extends PublishedQuestion {
@@ -119,6 +119,22 @@ export function Card({ question, index, choice, celebration, greet, last, onAnsw
 									</p>
 								)}
 								<p className="result__explanation" dangerouslySetInnerHTML={{ __html: question.explanation }} />
+								{question.learnMore && (
+									<div className="result__more">
+										<p className="result__more-title">Quer saber mais?</p>
+										<ul>
+											{question.learnMore.map(({ title, url }) => (
+												<li key={url}>
+													<a href={url} target="_blank" rel="noopener noreferrer">
+														{title}
+														<ExternalIcon size={14} />
+														<span className="sr-only"> (abre em outra aba)</span>
+													</a>
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
 							</div>
 						) : (
 							<div className="waiting">

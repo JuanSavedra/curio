@@ -434,6 +434,36 @@
 	line-height: 1.55;
 }
 
+.result__more {
+	display: grid;
+	gap: var(--space-3xs);
+	font-size: var(--text-sm);
+}
+
+.result__more-title {
+	color: var(--color-text-soft);
+	font-weight: var(--weight-strong);
+}
+
+.result__more ul {
+	display: grid;
+	gap: var(--space-3xs);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.result__more a {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3xs);
+	min-height: 2.75rem;
+	color: var(--plumage);
+	font-weight: var(--weight-medium);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
 .result__milestone {
 	display: flex;
 	align-items: center;
@@ -771,6 +801,7 @@
 	}
 
 	.result__milestone,
+	.result__more,
 	.result__explanation {
 		grid-column: 2;
 	}
