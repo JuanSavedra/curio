@@ -2,6 +2,7 @@ title: Estrelas e galáxias
 subtopic: Estrelas e galáxias
 questions:
   - id: nearest-star
+    level: easy
     prompt: Qual é a estrela mais próxima da Terra?
     choices:
       - Sirius
@@ -14,6 +15,7 @@ questions:
       Centauri, a mais de 4 anos-luz daqui.
 
   - id: our-galaxy
+    level: easy
     prompt: Como se chama a galáxia onde fica o Sistema Solar?
     choices:
       - Andrômeda
@@ -26,6 +28,7 @@ questions:
       braços em espiral.
 
   - id: light-year
+    level: medium
     prompt: O que é um ano-luz?
     choices:
       - Um ano de viagem de uma nave
@@ -38,6 +41,7 @@ questions:
       de km.
 
   - id: hottest-color
+    level: medium
     prompt: Qual cor indica as estrelas mais quentes?
     choices:
       - Vermelha
@@ -50,6 +54,7 @@ questions:
       de 3.000 °C.
 
   - id: supernova
+    level: medium
     prompt: Como se chama a explosão de uma estrela gigante no fim da vida?
     choices:
       - Eclipse
@@ -62,6 +67,7 @@ questions:
       no nosso corpo.
 
   - id: andromeda
+    level: medium
     prompt: Qual grande galáxia vai se encontrar com a Via Láctea no futuro?
     choices:
       - Andrômeda
@@ -74,6 +80,7 @@ questions:
       acontecer daqui a uns 4,5 bilhões de anos.
 
   - id: shooting-star
+    level: easy
     prompt: O que é uma estrela cadente?
     choices:
       - Uma estrela caindo
@@ -86,6 +93,7 @@ questions:
       O nome certo é meteoro.
 
   - id: sunlight-time
+    level: medium
     prompt: Quanto tempo a luz do Sol leva para chegar à Terra?
     choices:
       - 8 segundos

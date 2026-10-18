@@ -210,7 +210,30 @@
 .filters__group {
 	display: flex;
 	flex: none;
+	align-items: center;
 	gap: var(--space-2xs);
+}
+
+/* Names each group, so the rows read as separate controls instead of loose chips */
+.filters__label {
+	padding-right: var(--space-3xs);
+	color: var(--color-text-soft);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-strong);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+/* Dots of the mode and difficulty chips stay in their own color even when chosen (the color is what tells them apart) */
+.chip--tag .chip__dot,
+.chip--tag[aria-pressed='true'] .chip__dot {
+	background: var(--topic-ink);
+	color: var(--nest);
+}
+
+.chip--tag[aria-pressed='true'] {
+	color: var(--plumage);
 }
 
 .filters__group + .filters__group {
@@ -220,12 +243,6 @@
 
 .filters .chip {
 	min-height: 2.5rem;
-}
-
-/* The mode picker is secondary to the topic chips: no box until chosen */
-.chip--mode:not([aria-pressed='true']) {
-	border-color: transparent;
-	background: transparent;
 }
 
 @media (min-width: 48rem) {

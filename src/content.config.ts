@@ -1,11 +1,13 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { LEVEL_IDS } from './data/levels';
 
 // One deck = one file at content/<topic>/<subtopic>/<deck>.yaml
 const question = z
 	.object({
 		id: z.string().regex(/^[a-z0-9-]+$/, 'Use only lowercase letters, numbers and hyphens in the id.'),
+		level: z.enum(LEVEL_IDS),
 		prompt: z.string().min(5),
 		choices: z.array(z.string().min(1)).min(2).max(4),
 		answer: z.string().min(1),

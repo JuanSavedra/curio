@@ -2,6 +2,7 @@ title: Recordes do planeta
 subtopic: Mundo
 questions:
   - id: biggest-country
+    level: easy
     prompt: Qual é o maior país do mundo em área?
     choices:
       - Canadá
@@ -13,6 +14,7 @@ questions:
       A Rússia tem mais de 17 milhões de km² e atravessa 11 fusos horários.
 
   - id: biggest-river
+    level: hard
     prompt: Qual rio leva mais água ao mar no mundo?
     choices:
       - Nilo
@@ -25,6 +27,7 @@ questions:
       do planeta levam ao mar.
 
   - id: australia-capital
+    level: medium
     prompt: Qual é a capital da Austrália?
     choices:
       - Sydney
@@ -37,6 +40,7 @@ questions:
       século XX para acabar com a disputa entre Sydney e Melbourne.
 
   - id: biggest-ocean
+    level: easy
     prompt: Qual é o maior oceano da Terra?
     choices:
       - Atlântico
@@ -49,6 +53,7 @@ questions:
       firme somada.
 
   - id: brazil-states
+    level: easy
     prompt: Quantos estados tem o Brasil?
     choices:
       - '24'
@@ -61,6 +66,7 @@ questions:
       unidades da federação.
 
   - id: highest-peak
+    level: easy
     prompt: Qual é o ponto mais alto da Terra?
     choices:
       - Monte Everest
@@ -73,6 +79,7 @@ questions:
       sobe alguns milímetros por ano.
 
   - id: biggest-population
+    level: medium
     prompt: Qual país tem a maior população do mundo?
     choices:
       - China
@@ -84,6 +91,7 @@ questions:
       A Índia passou a China por volta de 2023 e tem mais de 1,4 bilhão de habitantes.
 
   - id: biggest-hot-desert
+    level: medium
     prompt: Qual é o maior deserto quente do mundo?
     choices:
       - Gobi

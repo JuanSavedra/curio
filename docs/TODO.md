@@ -10,6 +10,10 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 ### Filtros do feed (falta conferir no navegador)
 - [ ] Conferir à mão a 320px, 390px e 1280px: segunda fileira de filtros (Novas, Que errei, Que já vi e subtemas), rolagem horizontal no celular, estados vazios de cada modo, `?subtema=` e `?modo=` no endereço, e axe-core. Só o build e o HTML do servidor foram verificados.
 
+### Filtro por dificuldade (falta conferir no navegador)
+- [ ] Conferir à mão a nova fileira "Dificuldade" a 320px, 390px e 1280px (rolagem horizontal, `?nivel=`, estados vazios, axe-core). Só o build foi verificado.
+- [ ] Revisar a classificação de `level` das 64 perguntas (feita pelo Claude, junto com a revisão de fatos).
+
 ### Fase 5: temas e progresso (falta só conferir à mão)
 - [ ] Conferir a tela de temas, a página de tema e o tema concluído com teclado e leitor de tela de verdade (junto com o teste da fase 2).
 - [ ] Decidir se "Rever" deve guardar que o tema já foi concluído. Hoje rever zera o progresso do deck, e o selo "Concluído" some até terminar de novo.
@@ -39,7 +43,6 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Funcionar offline (PWA), já que o conteúdo é estático.
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
-- [ ] Filtro por dificuldade no feed. Antes é preciso criar o campo `level` nas perguntas (schema em `src/content.config.ts`) e classificar todas as perguntas dos decks. Entra junto com as etiquetas de dificuldade, mais abaixo.
 - [ ] Subtemas navegáveis dentro de cada tema (Matemática → números primos, frações, geometria), com progresso por subtema. Hoje o subtema existe nos arquivos, mas só agrupa as coleções.
 - [ ] Etiquetas de dificuldade nas perguntas (campo opcional no YAML, por exemplo `level`), mostradas de forma discreta na carta e usáveis como filtro. Cuidado para não virar pressão ou ranking.
 - [ ] Referências e vídeos para aprender mais, como campo opcional `learnMore` na pergunta, com links para fontes confiáveis. Links externos abrem em nova aba e nunca são obrigatórios.
@@ -57,6 +60,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Filtro por dificuldade no feed: campo obrigatório `level` (`easy`, `medium`, `hard`) em toda pergunta, mostrado como **Filhote**, **Curioso** e **Explorador** (`src/data/levels.ts`). Nova fileira "Dificuldade" em `Filters.tsx`, endereço `?nivel=filhote|curioso|explorador`, combinável com tema, subtema e modo. As 64 perguntas dos 8 decks foram classificadas. Com um nível ativo, "Rever as que já respondi" some (esquecer é por deck) e o tema não é dado como concluído.
 - [x] Filtros do feed: modos **Novas**, **Que errei** (novo `curio:missed` no `localStorage`) e **Que já vi**, e filtro por **subtema** dentro de um tema (aparece quando o tema tem 2 ou mais). Endereços `?subtema=<pasta>` e `?modo=erradas|vistas`. Nas revisões o progresso dos decks não muda e acertos seguidos e penas não contam, mas a sequência de dias sim. Novo deck `astronomy/stars-and-galaxies` para o subtema existir. Código em `Filters.tsx` e `Feed.tsx`.
 - [x] Raiz do projeto enxuta: `PRODUCT.md`, `DESIGN.md` e `TODO.md` foram para `docs/` (o loader do impeccable já procura lá), referências atualizadas no `AGENTS.md` e `.vscode/settings.json` esconde `dist`, `.astro`, `.agents` e os arquivos de lock no explorador.
 - [x] Primeiros decks de Ciências, História, Geografia e Linguagem (8 perguntas cada, em `content/<tema>/`). Todos os 7 temas agora têm conteúdo e saíram de "em breve". Build passando. Os fatos ainda entram na revisão de fatos.

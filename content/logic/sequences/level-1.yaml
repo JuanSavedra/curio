@@ -2,6 +2,7 @@ title: Sequências e padrões
 subtopic: Sequências
 questions:
   - id: doubling
+    level: easy
     prompt: 'Qual número vem a seguir? 2, 4, 8, 16, …'
     choices:
       - '18'
@@ -14,6 +15,7 @@ questions:
       a base de como os computadores guardam informação.
 
   - id: fibonacci
+    level: medium
     prompt: 'E nesta? 1, 1, 2, 3, 5, 8, …'
     choices:
       - '11'
@@ -25,6 +27,7 @@ questions:
       que aparece nas espirais das sementes de girassol e das pinhas.
 
   - id: squares
+    level: medium
     prompt: 'Qual número continua a sequência? 1, 4, 9, 16, 25, …'
     choices:
       - '30'
@@ -37,6 +40,7 @@ questions:
       cada um como um quadradinho de pontos, e é daí que vem o nome.
 
   - id: skipping-letters
+    level: easy
     prompt: 'Qual letra vem depois? A, C, E, G, …'
     choices:
       - H
@@ -47,6 +51,7 @@ questions:
       A sequência pula uma letra de cada vez: A (pula B), C (pula D), E (pula F), G (pula H), I.
 
   - id: number-initials
+    level: medium
     prompt: 'Que letra continua? U, D, T, Q, C, …'
     choices:
       - S
@@ -58,6 +63,7 @@ questions:
       escondem algo que a gente usa todo dia.
 
   - id: month-initials
+    level: easy
     prompt: 'E esta? J, F, M, A, M, J, …'
     choices:
       - J
@@ -69,6 +75,7 @@ questions:
       continua com A de Agosto.
 
   - id: odd-differences
+    level: hard
     prompt: 'Qual o próximo número? 3, 6, 11, 18, 27, …'
     choices:
       - '36'
@@ -81,6 +88,7 @@ questions:
       então o próximo salto é +11, e 27 + 11 = 38.
 
   - id: look-and-say
+    level: hard
     prompt: 'Desafio: 1, 11, 21, 1211, 111221, …'
     choices:
       - '312211'

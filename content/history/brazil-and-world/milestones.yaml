@@ -2,6 +2,7 @@ title: Marcos da história
 subtopic: Brasil e mundo
 questions:
   - id: first-president
+    level: easy
     prompt: Quem foi o primeiro presidente do Brasil?
     choices:
       - Getúlio Vargas
@@ -14,6 +15,7 @@ questions:
       foi o último imperador do país.
 
   - id: independence-year
+    level: easy
     prompt: Em que ano o Brasil declarou independência?
     choices:
       - '1500'
@@ -26,6 +28,7 @@ questions:
       de 1822.
 
   - id: pyramids
+    level: easy
     prompt: Qual civilização construiu as pirâmides de Gizé?
     choices:
       - Romana
@@ -38,6 +41,7 @@ questions:
       Pirâmide é a única das sete maravilhas antigas ainda de pé.
 
   - id: cabral
+    level: easy
     prompt: Quem chegou ao Brasil em 1500 com uma frota de navios?
     choices:
       - Pedro Álvares Cabral
@@ -50,6 +54,7 @@ questions:
       a caminho da Índia.
 
   - id: moon-landing
+    level: medium
     prompt: Em que ano um ser humano pisou na Lua pela primeira vez?
     choices:
       - '1959'
@@ -62,6 +67,7 @@ questions:
       Apollo 11, e milhões de pessoas viram pela TV.
 
   - id: olympic-origin
+    level: medium
     prompt: Em qual país nasceram os Jogos Olímpicos da Antiguidade?
     choices:
       - Itália
@@ -74,6 +80,7 @@ questions:
       voltou em 1896, em Atenas.
 
   - id: pompeii
+    level: medium
     prompt: Qual cidade foi coberta de cinzas pelo vulcão Vesúvio no ano 79?
     choices:
       - Roma
@@ -86,6 +93,7 @@ questions:
       deixa ver como era a vida dos romanos.
 
   - id: golden-law
+    level: medium
     prompt: Em que ano foi assinada a Lei Áurea, que acabou com a escravidão?
     choices:
       - '1822'

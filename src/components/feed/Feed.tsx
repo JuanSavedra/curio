@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { LEVEL_IDS, LEVELS, levelFromSlug, type Level } from '../../data/levels';
 import { TOPICS, TOPIC_IDS, topicFromSlug, topicStyle, type Topic } from '../../data/topics';
 import { FEED_QUERY, MODE_SLUGS, deckJsonRoute, topicsRoute, type FeedMode } from '../../lib/routes';
-import type { DeckSummary, PublishedDeck } from '../../lib/types';
+import type { DeckSummary, PublishedDeck, PublishedQuestion } from '../../lib/types';
 import { Card, type QueuedQuestion } from './Card';
 import { DAY_MILESTONES, isRunMilestone, type Celebration } from './copy';
 import { Curio } from './Curio';
@@ -36,6 +37,8 @@ interface Scope {
 	subtopic: string | null;
 	deck: DeckSummary | null;
 	mode: FeedMode;
+	/** Only questions of this difficulty (null: all) */
+	level: Level | null;
 }
 
 function shuffle<T>(list: T[]): T[] {
@@ -48,9 +51,9 @@ function shuffle<T>(list: T[]): T[] {
 }
 
 // Interleaves the decks so the mixed feed doesn't repeat the same topic back to back.
-function interleave(decks: PublishedDeck[], include: (id: string) => boolean): QueuedQuestion[] {
+function interleave(decks: PublishedDeck[], include: (question: PublishedQuestion) => boolean): QueuedQuestion[] {
 	const stacks = decks.map((deck) =>
-		shuffle(deck.questions.filter((q) => include(q.id))).map((q) => ({ ...q, topic: deck.topic, deckTitle: deck.title })),
+		shuffle(deck.questions.filter(include)).map((q) => ({ ...q, topic: deck.topic, deckTitle: deck.title })),
 	);
 	const queue: QueuedQuestion[] = [];
 	while (stacks.some((stack) => stack.length)) {
@@ -64,22 +67,18 @@ function interleave(decks: PublishedDeck[], include: (id: string) => boolean): Q
 
 const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/** Which questions belong in the queue for a mode. */
-function inclusion(mode: FeedMode): (id: string) => boolean {
-	if (mode === 'new') {
-		const seen = readSeen();
-		return (id) => !seen.has(id);
-	}
-	const ids = mode === 'seen' ? readSeen() : readMissed();
-	return (id) => ids.has(id);
+/** Which questions belong in the queue for a mode and difficulty. */
+function inclusion(mode: FeedMode, level: Level | null): (question: PublishedQuestion) => boolean {
+	const ids = mode === 'missed' ? readMissed() : readSeen();
+	return (q) => ids.has(q.id) === (mode !== 'new') && (!level || q.level === level);
 }
 
 export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const topicsWithContent = TOPIC_IDS.filter((t) => decks.some((d) => d.topic === t));
 
 	// When the person arrives through a deck on a topic page, `deck` limits the feed to that deck
-	const [scope, setScope] = useState<Scope>({ topic: 'all', subtopic: null, deck: null, mode: 'new' });
-	const { topic: filter, subtopic, deck: deckFilter, mode } = scope;
+	const [scope, setScope] = useState<Scope>({ topic: 'all', subtopic: null, deck: null, mode: 'new', level: null });
+	const { topic: filter, subtopic, deck: deckFilter, mode, level } = scope;
 	const [status, setStatus] = useState<Status>('loading');
 	const [queue, setQueue] = useState<QueuedQuestion[]>([]);
 	const [pending, setPending] = useState<DeckSummary[]>([]);
@@ -113,8 +112,8 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 
 	// Fetches batches until there are new questions or the decks run out.
 	const nextBatch = useCallback(
-		async (remaining: DeckSummary[], batchMode: FeedMode) => {
-			const include = inclusion(batchMode);
+		async (remaining: DeckSummary[], batchMode: FeedMode, batchLevel: Level | null) => {
+			const include = inclusion(batchMode, batchLevel);
 			let fresh: QueuedQuestion[] = [];
 			while (!fresh.length && remaining.length) {
 				const batch = remaining.slice(0, BATCH);
@@ -139,7 +138,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 				// Review modes only fetch the decks that have something to show
 				const ids = next.mode === 'seen' ? readSeen() : next.mode === 'missed' ? readMissed() : null;
 				const withQuestions = ids ? inScope.filter((d) => [...ids].some((id) => id.startsWith(`${d.id}/`))) : inScope;
-				const { fresh, remaining } = await nextBatch(shuffle(withQuestions), next.mode);
+				const { fresh, remaining } = await nextBatch(shuffle(withQuestions), next.mode, next.level);
 				setQueue(fresh);
 				setPending(remaining);
 				setStatus('ready');
@@ -151,7 +150,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		[decks, nextBatch],
 	);
 
-	// First load: reads local progress and the URL filter (?tema=astronomia, ?subtema=<folder>, ?modo=erradas, ?deck=<id>, ?rever=1).
+	// First load: reads local progress and the URL filter (?tema=astronomia, ?subtema=<folder>, ?modo=erradas, ?nivel=filhote, ?deck=<id>, ?rever=1).
 	useEffect(() => {
 		setStreak(readStreak());
 		setGreet(!hasVisited());
@@ -164,15 +163,16 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			!deck && topic !== 'all' && decks.some((d) => d.topic === topic && d.subtopicId === urlSubtopic) ? urlSubtopic : null;
 		const urlMode = params.get(FEED_QUERY.mode);
 		const mode: FeedMode = urlMode === MODE_SLUGS.missed ? 'missed' : urlMode === MODE_SLUGS.seen ? 'seen' : 'new';
+		const level = levelFromSlug(params.get(FEED_QUERY.level));
 
 		// "Rever" comes from the topic pages: forgets only what was asked, once, and cleans the address.
 		if (params.get(FEED_QUERY.review) === '1' && topic !== 'all') {
-			forgetSeen(prefixesOf({ topic, subtopic, deck, mode }));
+			forgetSeen(prefixesOf({ topic, subtopic, deck, mode, level }));
 			params.delete(FEED_QUERY.review);
 			const query = params.toString();
 			history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
 		}
-		void buildQueue({ topic, subtopic, deck, mode });
+		void buildQueue({ topic, subtopic, deck, mode, level });
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -180,7 +180,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	useEffect(() => {
 		if (status !== 'ready' || !pending.length || loadingMore.current || current < queue.length - 3) return;
 		loadingMore.current = true;
-		nextBatch(pending, mode)
+		nextBatch(pending, mode, level)
 			.then(({ fresh, remaining }) => {
 				setQueue((q) => [...q, ...fresh]);
 				setPending(remaining);
@@ -191,7 +191,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			.finally(() => {
 				loadingMore.current = false;
 			});
-	}, [current, queue.length, pending, status, mode, nextBatch]);
+	}, [current, queue.length, pending, status, mode, level, nextBatch]);
 
 	// Which card is in the middle of the rail.
 	useEffect(() => {
@@ -282,13 +282,14 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	}, [current, queue, status, answer, goTo]);
 
 	// Keeps the address in sync with what is on screen (replaceState: filters don't pile up in the history).
-	function writeUrl({ topic, subtopic, deck, mode }: Scope) {
+	function writeUrl({ topic, subtopic, deck, mode, level }: Scope) {
 		const url = new URL(location.href);
 		for (const name of Object.values(FEED_QUERY)) url.searchParams.delete(name);
 		if (deck) url.searchParams.set(FEED_QUERY.deck, deck.id);
 		else if (topic !== 'all') url.searchParams.set(FEED_QUERY.topic, TOPICS[topic].slug);
 		if (!deck && subtopic) url.searchParams.set(FEED_QUERY.subtopic, subtopic);
 		if (mode !== 'new') url.searchParams.set(FEED_QUERY.mode, MODE_SLUGS[mode]);
+		if (level) url.searchParams.set(FEED_QUERY.level, LEVELS[level].slug);
 		history.replaceState(null, '', url);
 	}
 
@@ -299,17 +300,22 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 
 	function switchFilter(next: Filter) {
 		if (next === filter && !deckFilter && !subtopic && status === 'ready') return;
-		changeScope({ topic: next, subtopic: null, deck: null, mode });
+		changeScope({ topic: next, subtopic: null, deck: null, mode, level });
 	}
 
 	function switchSubtopic(next: string | null) {
 		if (next === subtopic && !deckFilter && status === 'ready') return;
-		changeScope({ topic: filter, subtopic: next, deck: null, mode });
+		changeScope({ topic: filter, subtopic: next, deck: null, mode, level });
 	}
 
 	function switchMode(next: FeedMode) {
 		if (next === mode && status === 'ready') return;
 		changeScope({ ...scope, mode: next });
+	}
+
+	function switchLevel(next: Level | null) {
+		if (next === level && status === 'ready') return;
+		changeScope({ ...scope, level: next });
 	}
 
 	function prefixesOf({ topic, subtopic, deck }: Scope) {
@@ -334,7 +340,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 
 	// A topic is only complete when all of its questions were seen (skipping doesn't count).
 	const topicSummary =
-		status === 'ready' && !pending.length && !deckFilter && !subtopic && mode === 'new' && filter !== 'all'
+		status === 'ready' && !pending.length && !deckFilter && !subtopic && !level && mode === 'new' && filter !== 'all'
 			? decksProgress(
 					readSeen(),
 					decks.filter((d) => d.topic === filter),
@@ -344,7 +350,9 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 
 	const currentTopic = queue[Math.min(current, queue.length - 1)]?.topic;
 
-	const where = deckFilter ? deckFilter.title : (subtopicName ?? (filter === 'all' ? null : TOPICS[filter].name));
+	const place = deckFilter ? deckFilter.title : (subtopicName ?? (filter === 'all' ? null : TOPICS[filter].name));
+	const levelText = level ? `nível ${LEVELS[level].name}` : null;
+	const where = place && levelText ? `${place}, ${levelText}` : (place ?? levelText);
 	const endCopy = endCopyFor(mode, queue.length > 0, where);
 
 	return (
@@ -389,6 +397,8 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 					subtopic={subtopic}
 					deckActive={Boolean(deckFilter)}
 					onSubtopic={switchSubtopic}
+					level={level}
+					onLevel={switchLevel}
 				/>
 
 				<div className="topbar__actions">
@@ -473,10 +483,13 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 												</li>
 											))}
 									</ul>
-									<button type="button" className="button button--quiet" onClick={reviewAgain}>
-										<RestartIcon size={18} />
-										Rever as que já respondi
-									</button>
+									{/* Forgetting is per deck, not per difficulty, so it only shows without a difficulty filter */}
+									{!level && (
+										<button type="button" className="button button--quiet" onClick={reviewAgain}>
+											<RestartIcon size={18} />
+											Rever as que já respondi
+										</button>
+									)}
 								</>
 							) : (
 								<button type="button" className="button" onClick={() => switchMode('new')}>

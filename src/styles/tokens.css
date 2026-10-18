@@ -34,6 +34,25 @@
 	--wrong-bg: oklch(0.945 0.025 18);
 	--wrong-ink: oklch(0.46 0.13 18);
 
+	/* Feed modes (filter only): new = yellow, missed = kind coral, seen = green */
+	--mode-new: oklch(0.86 0.13 98);
+	--mode-new-ink: oklch(0.46 0.09 98);
+	--mode-missed: oklch(0.8 0.1 8);
+	--mode-missed-ink: oklch(0.46 0.13 8);
+	--mode-seen: oklch(0.8 0.1 165);
+	--mode-seen-ink: oklch(0.46 0.09 165);
+
+	/*
+	 * Difficulty levels (filter only): green, orange and a kind coral. Same lightness and ink as the topics,
+	 * but their own hues, so they never get confused with a topic color or with the right/wrong answer states.
+	 */
+	--level-easy: oklch(0.8 0.11 140);
+	--level-easy-ink: oklch(0.46 0.11 140);
+	--level-medium: oklch(0.8 0.115 62);
+	--level-medium-ink: oklch(0.46 0.1 62);
+	--level-hard: oklch(0.8 0.105 28);
+	--level-hard-ink: oklch(0.46 0.13 28);
+
 	/*
 	 * Topics: same lightness (0.8) and close chroma, so none shouts louder.
 	 * "ink" is the dark version for text on a light background; "bg" is the soft tint.

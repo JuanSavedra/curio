@@ -2,6 +2,7 @@ title: Planetas e o Sol
 subtopic: Sistema Solar
 questions:
   - id: mars-moons
+    level: medium
     prompt: Quantas luas tem Marte?
     choices:
       - Nenhuma
@@ -14,6 +15,7 @@ questions:
       está se aproximando do planeta e, em uns 50 milhões de anos, deve virar um anel em volta dele.
 
   - id: venus-day
+    level: hard
     prompt: Em Vênus, o que dura mais tempo, um dia ou um ano?
     choices:
       - O dia
@@ -26,6 +28,7 @@ questions:
       lá o Sol nasce a oeste.
 
   - id: hottest-planet
+    level: medium
     prompt: Qual é o planeta mais quente do Sistema Solar?
     choices:
       - Mercúrio
@@ -39,6 +42,7 @@ questions:
       para derreter chumbo.
 
   - id: sunlight
+    level: medium
     prompt: Quanto tempo a luz do Sol leva para chegar até a Terra?
     choices:
       - Cerca de 8 segundos
@@ -51,6 +55,7 @@ questions:
       150 milhões de km até aqui. O Sol que você vê no céu é o Sol de 8 minutos atrás.
 
   - id: saturn-floats
+    level: hard
     prompt: Se existisse uma banheira gigante o bastante, qual destes planetas flutuaria nela?
     choices:
       - Terra
@@ -63,6 +68,7 @@ questions:
       da água. Ele é enorme, mas, comparado ao tamanho, é "levinho" como uma boia.
 
   - id: moon-footprints
+    level: medium
     prompt: As pegadas dos astronautas da Apollo continuam na Lua até hoje. Por quê?
     choices:
       - Lá não há vento nem chuva
@@ -74,6 +80,7 @@ questions:
       muito devagar, com o impacto de micrometeoritos, e devem durar milhões de anos.
 
   - id: great-spot
+    level: medium
     prompt: O que é a Grande Mancha Vermelha de Júpiter?
     choices:
       - Um vulcão
@@ -86,6 +93,7 @@ questions:
       o século 19. Ela vem encolhendo, mas ainda é maior que a Terra inteira.
 
   - id: sun-size
+    level: medium
     prompt: Quantas Terras caberiam dentro do Sol?
     choices:
       - Cerca de 100

@@ -1,8 +1,10 @@
+import type { Level } from '../data/levels';
 import type { Topic } from '../data/topics';
 
 // Shape published at /decks/<id>.json (text already comes as HTML, with KaTeX rendered)
 export interface PublishedQuestion {
 	id: string;
+	level: Level;
 	prompt: string;
 	choices: string[];
 	/** Index of the right choice */

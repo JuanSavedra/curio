@@ -37,6 +37,7 @@ export function publishDeck(deck: CollectionEntry<'decks'>): PublishedDeck {
 		title: deck.data.title,
 		questions: deck.data.questions.map((q) => ({
 			id: `${deck.id}/${q.id}`,
+			level: q.level,
 			prompt: richText(q.prompt),
 			choices: q.choices.map(richText),
 			correct: q.choices.indexOf(q.answer),

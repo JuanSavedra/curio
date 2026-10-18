@@ -2,6 +2,7 @@ title: Curiosidades da natureza
 subtopic: Natureza
 questions:
   - id: liquid-metal
+    level: easy
     prompt: Qual metal é líquido na temperatura ambiente?
     choices:
       - Chumbo
@@ -14,6 +15,7 @@ questions:
       era usado em termômetros antigos, embora seja tóxico.
 
   - id: octopus-hearts
+    level: medium
     prompt: Quantos corações tem um polvo?
     choices:
       - Um
@@ -26,6 +28,7 @@ questions:
       sangue do polvo é azul, por causa do cobre.
 
   - id: photosynthesis-gas
+    level: easy
     prompt: Que gás as plantas absorvem do ar para fazer fotossíntese?
     choices:
       - Gás carbônico
@@ -38,6 +41,7 @@ questions:
       oxigênio no processo.
 
   - id: biggest-organ
+    level: easy
     prompt: Qual é o maior órgão do corpo humano?
     choices:
       - O fígado
@@ -50,6 +54,7 @@ questions:
       temperatura e nos dá o tato.
 
   - id: blue-sky
+    level: medium
     prompt: Por que o céu durante o dia é azul?
     choices:
       - Ele reflete o mar
@@ -62,6 +67,7 @@ questions:
       chega aos nossos olhos vinda de todo o céu.
 
   - id: fastest-animal
+    level: easy
     prompt: Qual é o animal mais rápido do mundo?
     choices:
       - Guepardo
@@ -74,6 +80,7 @@ questions:
       terra, com cerca de 100 km/h.
 
   - id: adult-bones
+    level: medium
     prompt: Quantos ossos tem um adulto?
     choices:
       - '106'
@@ -86,6 +93,7 @@ questions:
       até sobrarem 206.
 
   - id: air-gas
+    level: medium
     prompt: Qual gás existe em maior quantidade no ar que respiramos?
     choices:
       - Oxigênio

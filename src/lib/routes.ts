@@ -6,9 +6,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /**
  * Query parameter names the feed understands: `/?tema=astronomia`, `/?subtema=<folder>`, `/?modo=erradas`,
- * `/?deck=<id>`, `/?rever=1`.
+ * `/?nivel=filhote`, `/?deck=<id>`, `/?rever=1`.
  */
-export const FEED_QUERY = { topic: 'tema', subtopic: 'subtema', mode: 'modo', deck: 'deck', review: 'rever' } as const;
+export const FEED_QUERY = { topic: 'tema', subtopic: 'subtema', mode: 'modo', level: 'nivel', deck: 'deck', review: 'rever' } as const;
 
 /** What the feed shows: new questions (default), the ones answered wrong, or the ones already discovered. */
 export type FeedMode = 'new' | 'missed' | 'seen';

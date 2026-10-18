@@ -2,6 +2,7 @@ title: Números curiosos
 subtopic: Números
 questions:
   - id: zero-even
+    level: medium
     prompt: O zero é par ou ímpar?
     choices:
       - Par
@@ -13,6 +14,7 @@ questions:
       o zero é par. Ele também fica entre −1 e 1, dois ímpares, como todo par.
 
   - id: sum-to-hundred
+    level: medium
     prompt: Quanto dá 1 + 2 + 3 + … + 100?
     choices:
       - '1.000'
@@ -26,6 +28,7 @@ questions:
       esse truque ainda criança, na escola.
 
   - id: root-of-two
+    level: hard
     prompt: Dá para escrever $\sqrt{2}$ como uma fração de dois números inteiros?
     choices:
       - Sim
@@ -37,6 +40,7 @@ questions:
       os seguidores de Pitágoras.
 
   - id: infinite-nines
+    level: hard
     prompt: O número 0,999…, com noves que nunca acabam, é igual a quanto?
     choices:
       - Um pouquinho menos que 1
@@ -48,6 +52,7 @@ questions:
       $1 = 0{,}999\ldots$ São dois jeitos diferentes de escrever o mesmo número.
 
   - id: birthday
+    level: hard
     prompt: Numa sala com 23 pessoas, qual a chance de duas terem o mesmo aniversário?
     choices:
       - Menos de 10%
@@ -59,6 +64,7 @@ questions:
       A chance passa de 50%, e com 70 pessoas já chega a 99,9%. É o famoso paradoxo do aniversário.
 
   - id: folded-paper
+    level: medium
     prompt: Se desse para dobrar uma folha de papel ao meio 42 vezes, até onde chegaria a pilha?
     choices:
       - Até o teto
@@ -71,6 +77,7 @@ questions:
       Na prática, ninguém consegue passar de umas 12 dobras.
 
   - id: what-is-pi
+    level: easy
     prompt: O que é o número $\pi$?
     choices:
       - O contorno de qualquer círculo dividido pelo seu diâmetro
@@ -83,6 +90,7 @@ questions:
       14 de março (3/14, no jeito americano de escrever datas).
 
   - id: which-is-prime
+    level: medium
     prompt: Qual destes números é primo?
     choices:
       - '51'
