@@ -23,14 +23,12 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Exportar e importar o progresso em um arquivo, para trocar de aparelho sem cadastro.
 - [ ] Mais tipos de pergunta: verdadeiro ou falso, ordenar, completar a lacuna, imagem na pergunta.
 - [ ] Imagens e ilustrações nas explicações, sempre com texto alternativo.
-- [ ] Busca por assunto nas perguntas e explicações.
-- [ ] Meta diária opcional e leve (por exemplo, 5 perguntas), sem culpa se não cumprir.
-- [ ] Mais conquistas do Curió além das penas, como selos por tema concluído.
 - [ ] Contribuição aberta: guia e modelo de deck para outras pessoas enviarem perguntas por pull request.
 - [ ] Ajustes de leitura: tamanho de letra e fonte para dislexia, além do modo escuro.
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Selos por tema concluído: seção "Meus selos" no álbum (`Album.tsx`, `album.css`), logo depois da busca, com um selo por tema que tem perguntas. Ganho ao descobrir todas as perguntas do tema (medalha na cor dele, ícone do tema e check); os que faltam aparecem em cinza tracejado com "3 de 16" em texto. Nada de novo no `localStorage`: sai do progresso que já existe, então quem já concluiu um tema já tem o selo. Selos de dias seguidos e selo na tela `/temas` ficaram de fora (o selo "Concluído" de lá já existe). Falta conferir à mão a 320px, 390px e 1280px.
 - [x] Álbum de descobertas: tela `/album` (`src/pages/album/`, `Album.tsx`, `album.css`) com tudo que já foi respondido, em até 4 colunas independentes (3, 2 ou 1 quando não cabem com folga; as colunas seguem a largura da página). Cada tema é uma seção recolhível na cor dele (abre por padrão), com busca por nome do tema logo abaixo do título. Cada descoberta é um cartão que, ao tocar, abre um modal no centro da tela com a pergunta, a resposta certa, a explicação e os links (`<dialog>` nativo: Esc e toque no fundo fecham, o foco volta ao cartão). Só busca os decks que têm descobertas. Tem estado vazio (com convite para começar) e de falha de rede com "Tentar de novo". Link "Meu álbum" no rodapé da barra lateral. Falta conferir à mão a 320px, 390px e 1280px, com teclado e axe-core.
 - [x] Referências para aprender mais: campo opcional `learnMore` na pergunta (até 3 itens com `title` e `url` https, validado no schema). Depois de responder, a carta mostra "Quer saber mais?" com os links, que abrem em outra aba e avisam o leitor de tela. Nunca obrigatório. Código em `content.config.ts`, `Card.tsx` e `feed.css`. Só a pergunta `fibonacci` tem link, como exemplo; os outros links entram com a revisão de fatos. Falta conferir à mão a carta com o link a 320px (a explicação fica mais longa).
 - [x] Dificuldade na carta: o nível (Filhote, Curioso ou Explorador) aparece no fim da linha do tema e da coleção, com uma bolinha na cor do nível e o texto ("Nível" só para leitor de tela). Sem número, pontos ou ranking. Código em `Card.tsx` e `feed.css`. Falta conferir à mão o contraste da bolinha sobre cada cor de tema e a quebra de linha a 320px.

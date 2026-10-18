@@ -98,6 +98,85 @@
 	color: var(--color-text-soft);
 }
 
+.seals {
+	display: grid;
+	gap: var(--space-xs);
+}
+
+.seals__title {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+}
+
+.seals__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+	gap: var(--space-xs);
+	margin: var(--space-2xs) 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.seal {
+	display: grid;
+	justify-items: center;
+	gap: var(--space-3xs);
+	padding: var(--space-sm) var(--space-2xs);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-rest);
+	text-align: center;
+}
+
+/* Not earned yet: a quiet medal, with the progress in text */
+.seal__medal {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 4rem;
+	height: 4rem;
+	border: 2px dashed var(--color-border-strong);
+	border-radius: 50%;
+	background: var(--color-panel);
+	color: var(--color-text-soft);
+}
+
+.seal[data-earned='true'] .seal__medal {
+	border: 3px solid var(--topic-ink);
+	background: var(--topic);
+	color: var(--plumage);
+}
+
+.seal__check {
+	position: absolute;
+	right: -0.25rem;
+	bottom: -0.25rem;
+	display: grid;
+	place-items: center;
+	width: 1.5rem;
+	height: 1.5rem;
+	border: 2px solid var(--nest);
+	border-radius: 50%;
+	background: var(--correct);
+	color: var(--nest);
+}
+
+.seal__name {
+	font-size: var(--text-sm);
+	font-weight: var(--weight-heading);
+	line-height: 1.2;
+}
+
+.seal__state {
+	color: var(--color-text-soft);
+	font-size: var(--text-xs);
+}
+
+.seal[data-earned='true'] .seal__state {
+	color: var(--correct-ink);
+	font-weight: var(--weight-strong);
+}
+
 /* One collapsible section per topic, in the topic's color */
 .album__topics {
 	display: grid;

@@ -3,8 +3,8 @@ import { TOPICS, TOPIC_IDS, topicStyle, type Topic } from '../../data/topics';
 import { deckJsonRoute, feedRoute } from '../../lib/routes';
 import type { DeckSummary, PublishedDeck, PublishedQuestion } from '../../lib/types';
 import { Curio } from '../feed/Curio';
-import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, CheckIcon, CrossIcon, ExternalIcon, SearchIcon } from '../feed/Icons';
-import { readSeen } from '../feed/progress';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, CheckIcon, CrossIcon, ExternalIcon, SearchIcon, TopicIcon } from '../feed/Icons';
+import { decksProgress, readSeen } from '../feed/progress';
 import { TopicBadge } from '../topics/parts';
 import '../topics/topics.css';
 import './album.css';
@@ -33,6 +33,7 @@ const plain = (text: string) => text.normalize('NFD').replace(/\p{M}/gu, '').toL
 /** Everything the person already discovered, by topic, with the explanations to reread. */
 export default function Album({ decks }: { decks: DeckSummary[] }) {
 	const [status, setStatus] = useState<Status>('loading');
+	const [seen, setSeen] = useState<Set<string>>(new Set());
 	const [byTopic, setByTopic] = useState<Map<Topic, Find[]>>(new Map());
 	const [query, setQuery] = useState('');
 	const [columns, setColumns] = useState(1);
@@ -45,6 +46,7 @@ export default function Album({ decks }: { decks: DeckSummary[] }) {
 		setStatus('loading');
 		try {
 			const seen = readSeen();
+			setSeen(seen);
 			const withFinds = decks.filter((d) => [...seen].some((id) => id.startsWith(`${d.id}/`)));
 			const loaded = await Promise.all(
 				withFinds.map(async (summary) => {
@@ -88,6 +90,18 @@ export default function Album({ decks }: { decks: DeckSummary[] }) {
 		const dialog = dialogRef.current;
 		if (opened && dialog && !dialog.open) dialog.showModal();
 	}, [opened]);
+
+	// One seal per topic that has questions; it is earned when every question of the topic was discovered.
+	const seals = useMemo(
+		() =>
+			TOPIC_IDS.flatMap((topic) => {
+				const ofTopic = decks.filter((d) => d.topic === topic);
+				if (!ofTopic.length) return [];
+				return [{ topic, ...decksProgress(seen, ofTopic) }];
+			}),
+		[decks, seen],
+	);
+	const earned = seals.filter((seal) => seal.complete).length;
 
 	const total = useMemo(() => [...byTopic.values()].reduce((sum, list) => sum + list.length, 0), [byTopic]);
 
@@ -139,6 +153,35 @@ export default function Album({ decks }: { decks: DeckSummary[] }) {
 							</button>
 						)}
 					</div>
+				)}
+
+				{status === 'ready' && total > 0 && (
+					<section className="seals" aria-labelledby="seals-title">
+						<h2 id="seals-title" className="seals__title">
+							Meus selos
+						</h2>
+						<p className="album__intro">
+							{earned === 0
+								? 'Descubra todas as perguntas de um tema para ganhar o selo dele.'
+								: `${earned} de ${seals.length} ${seals.length === 1 ? 'selo' : 'selos'} conquistados.`}
+						</p>
+						<ul className="seals__list">
+							{seals.map(({ topic, discovered, total: of, complete }) => (
+								<li key={topic} className="seal" data-earned={complete} style={topicStyle(topic)}>
+									<span className="seal__medal" aria-hidden="true">
+										<TopicIcon topic={topic} size={28} />
+										{complete && (
+											<span className="seal__check">
+												<CheckIcon size={12} />
+											</span>
+										)}
+									</span>
+									<span className="seal__name">{TOPICS[topic].name}</span>
+									<span className="seal__state">{complete ? 'Conquistado' : `${discovered} de ${of}`}</span>
+								</li>
+							))}
+						</ul>
+					</section>
 				)}
 
 				{status === 'loading' && <p className="album__intro">Abrindo o álbum…</p>}
