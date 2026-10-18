@@ -80,6 +80,14 @@ export const AlbumIcon = (p: { size?: number }) => (
 	</Icon>
 );
 
+/** A medal with a ribbon: the seals page. */
+export const SealIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<circle cx="12" cy="9.5" r="5" />
+		<path d="m9 14 -1.5 6 4.5 -2.5 4.5 2.5 -1.5 -6" />
+	</Icon>
+);
+
 /** A magnifying glass: search fields. */
 export const SearchIcon = (p: { size?: number }) => (
 	<Icon {...p}>
