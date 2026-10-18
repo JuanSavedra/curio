@@ -1,0 +1,376 @@
+/* ---------- Album: everything discovered, in independent columns ---------- */
+
+/* Not the .topics layout (that one splits wide screens in two): title on top, columns below */
+.album {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	width: min(100%, 72rem);
+	margin-inline: auto;
+	gap: var(--space-lg);
+	padding-top: var(--space-xs);
+}
+
+.album__title {
+	font-size: var(--text-2xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+}
+
+.album__intro {
+	margin-top: var(--space-2xs);
+	color: var(--color-text-soft);
+}
+
+.masonry {
+	display: grid;
+	grid-template-columns: repeat(var(--columns, 1), minmax(0, 1fr));
+	gap: var(--space-sm);
+	align-items: start;
+}
+
+/* Every column is its own stack: opening a card moves only the cards below it in that column */
+.masonry__column {
+	display: grid;
+	gap: var(--space-sm);
+	align-content: start;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/* Search: sits right under the title */
+.album-search {
+	position: relative;
+	display: flex;
+	align-items: center;
+	max-width: 28rem;
+}
+
+.album-search__icon {
+	position: absolute;
+	left: var(--space-sm);
+	display: grid;
+	color: var(--color-text-soft);
+	pointer-events: none;
+}
+
+.album-search__input {
+	width: 100%;
+	min-height: 3rem;
+	padding: 0 3rem 0 calc(var(--space-sm) + 1.75rem);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	background: var(--color-surface);
+	color: inherit;
+	font: inherit;
+	font-size: var(--text-base);
+}
+
+.album-search__input::placeholder {
+	color: var(--color-text-soft);
+}
+
+.album-search__input:focus-visible {
+	border-color: var(--color-focus);
+}
+
+/* The browser's own clear mark would sit under ours */
+.album-search__input::-webkit-search-cancel-button {
+	display: none;
+}
+
+.album-search__clear {
+	position: absolute;
+	right: var(--space-3xs);
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--color-text-soft);
+	cursor: pointer;
+}
+
+.album-none {
+	color: var(--color-text-soft);
+}
+
+/* One collapsible section per topic, in the topic's color */
+.album__topics {
+	display: grid;
+	gap: var(--space-md);
+}
+
+.album-topic {
+	border-radius: var(--radius-card);
+	background: var(--topic-bg);
+}
+
+.album-topic[open] {
+	padding-bottom: var(--space-md);
+}
+
+.album-topic > .masonry {
+	padding: var(--space-2xs) var(--space-md) 0;
+}
+
+.album-topic__summary {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+	min-height: 3.5rem;
+	padding: var(--space-sm) var(--space-md);
+	border-radius: var(--radius-card);
+	cursor: pointer;
+	list-style: none;
+}
+
+.album-topic__summary::-webkit-details-marker {
+	display: none;
+}
+
+.album-topic__text {
+	display: grid;
+	flex: 1;
+	min-width: 0;
+}
+
+.album-topic__title {
+	font-size: var(--text-lg);
+	font-weight: var(--weight-heading);
+	line-height: 1.2;
+}
+
+.album-topic__count {
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+}
+
+.album-topic__chevron {
+	flex: none;
+	color: var(--color-text-soft);
+	transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.album-topic[open] > .album-topic__summary .album-topic__chevron {
+	transform: rotate(180deg);
+}
+
+.find {
+	display: grid;
+	gap: var(--space-2xs);
+	width: 100%;
+	padding: var(--space-sm);
+	border: 0;
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	box-shadow: var(--shadow-rest);
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+	transition:
+		transform var(--dur-fast) var(--ease-out),
+		box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.find:active {
+	transform: scale(0.98);
+}
+
+@media (hover: hover) {
+	.find:hover {
+		box-shadow: var(--shadow-lift);
+	}
+}
+
+.find__deck {
+	color: var(--color-text-soft);
+	font-size: var(--text-xs);
+	line-height: 1.3;
+}
+
+.find__prompt {
+	font-size: var(--text-base);
+	font-weight: var(--weight-strong);
+	line-height: 1.35;
+}
+
+/* ---------- Dialog: one discovery, open in the middle of the screen ---------- */
+
+.find-dialog {
+	width: min(36rem, calc(100% - 2 * var(--space-sm)));
+	max-height: min(85dvh, 48rem);
+	padding: 0;
+	border: 0;
+	border-radius: var(--radius-card);
+	background: var(--color-surface);
+	color: inherit;
+	box-shadow: var(--shadow-card);
+	overflow: hidden;
+}
+
+.find-dialog[open] {
+	display: flex;
+	animation: find-dialog-in var(--dur-medium) var(--ease-out);
+}
+
+.find-dialog::backdrop {
+	background: oklch(0.25 0.02 40 / 0.5);
+}
+
+@keyframes find-dialog-in {
+	from {
+		opacity: 0;
+		transform: translateY(0.75rem) scale(0.98);
+	}
+}
+
+/* The page behind doesn't scroll while the dialog is open */
+body:has(.find-dialog[open]) {
+	overflow: hidden;
+}
+
+.find-dialog__panel {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 0;
+}
+
+.find-dialog__head {
+	display: grid;
+	gap: var(--space-sm);
+	padding: var(--space-sm) var(--space-md) var(--space-md);
+	background: var(--topic);
+}
+
+.find-dialog__top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-xs);
+}
+
+.find-dialog__topic {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2xs);
+	font-size: var(--text-sm);
+	line-height: 1.3;
+}
+
+.find-dialog__topic strong {
+	font-weight: var(--weight-heading);
+}
+
+.find-dialog__close {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 0;
+	border-radius: 50%;
+	background: var(--nest);
+	color: var(--plumage);
+	cursor: pointer;
+}
+
+.find-dialog__prompt {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+}
+
+.find-dialog__body {
+	display: grid;
+	align-content: start;
+	gap: var(--space-sm);
+	padding: var(--space-md);
+	overflow-y: auto;
+}
+
+.find__answer {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-2xs);
+	width: fit-content;
+	max-width: 100%;
+	padding: var(--space-2xs) var(--space-xs);
+	border-radius: var(--radius-md);
+	background: var(--correct-bg);
+	color: var(--correct-ink);
+	font-weight: var(--weight-strong);
+}
+
+.find__answer svg {
+	flex: none;
+	margin-top: 0.15em;
+}
+
+.find__explanation {
+	line-height: 1.55;
+}
+
+.find__more {
+	display: grid;
+	gap: var(--space-3xs);
+	font-size: var(--text-sm);
+}
+
+.find__more-title {
+	color: var(--color-text-soft);
+	font-weight: var(--weight-strong);
+}
+
+.find__more ul {
+	display: grid;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.find__more a {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-3xs);
+	min-height: 2.75rem;
+	color: var(--plumage);
+	font-weight: var(--weight-medium);
+	text-decoration: underline;
+	text-underline-offset: 0.2em;
+}
+
+.album-empty {
+	display: grid;
+	justify-items: center;
+	gap: var(--space-sm);
+	padding: var(--space-xl) var(--space-sm);
+	text-align: center;
+}
+
+.album-empty__title {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.find-dialog[open] {
+		animation-name: find-dialog-fade;
+	}
+
+	.find:active {
+		transform: none;
+	}
+}
+
+@keyframes find-dialog-fade {
+	from {
+		opacity: 0;
+	}
+}

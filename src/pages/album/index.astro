@@ -1,0 +1,31 @@
+---
+// This folder is named after the public pt-BR address (/album): the folder name IS the URL.
+import Album from '../../components/album/Album';
+import Base from '../../layouts/Base.astro';
+import { listDecks } from '../../lib/decks';
+
+const decks = await listDecks();
+---
+
+<Base
+	title="Meu álbum | Curiô"
+	description="Tudo o que você já descobriu no Curiô, por tema, com as explicações para reler quando quiser."
+	mainId="content"
+	skipText="Ir para o álbum"
+>
+	<Album client:load decks={decks} />
+	<noscript>
+		<p class="no-js">O Curiô precisa de JavaScript ligado para mostrar o álbum.</p>
+	</noscript>
+</Base>
+
+<style>
+	.no-js {
+		position: fixed;
+		inset: auto var(--space-sm) var(--space-sm);
+		padding: var(--space-sm);
+		border-radius: var(--radius-md);
+		background: var(--color-panel);
+		text-align: center;
+	}
+</style>

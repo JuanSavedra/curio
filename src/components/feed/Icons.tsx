@@ -73,6 +73,21 @@ export const ExternalIcon = (p: { size?: number }) => (
 	</Icon>
 );
 
+/** An open book: the album of discoveries. */
+export const AlbumIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M12 7.5C10.5 6 8 5.5 5 5.5v11c3 0 5.5.5 7 2 1.5-1.5 4-2 7-2v-11c-3 0-5.5.5-7 2ZM12 7.5v11" />
+	</Icon>
+);
+
+/** A magnifying glass: search fields. */
+export const SearchIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<circle cx="10.5" cy="10.5" r="5.5" />
+		<path d="m15 15 4.5 4.5" />
+	</Icon>
+);
+
 /** Three lines: opens the sidebar on small screens. */
 export const MenuIcon = (p: { size?: number }) => (
 	<Icon {...p}>

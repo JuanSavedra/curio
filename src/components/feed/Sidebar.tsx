@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { LEVEL_IDS, LEVELS, levelStyle, type Level } from '../../data/levels';
 import { TOPICS, topicStyle, type Topic } from '../../data/topics';
-import { topicsRoute, type FeedMode } from '../../lib/routes';
+import { albumRoute, topicsRoute, type FeedMode } from '../../lib/routes';
 import { Curio } from './Curio';
-import { CheckIcon, CrossIcon, SidebarIcon, TopicIcon, TopicsIcon } from './Icons';
+import { AlbumIcon, CheckIcon, CrossIcon, SidebarIcon, TopicIcon, TopicsIcon } from './Icons';
 import { readSidebarCollapsed, writeSidebarCollapsed } from './progress';
 import './sidebar.css';
 
@@ -253,6 +253,12 @@ export function Sidebar({
 				</nav>
 
 				<div className="sidebar__foot">
+					<a className="side-item" href={albumRoute()} title={collapsed ? 'Meu álbum' : undefined}>
+						<span className="side-item__mark" aria-hidden="true">
+							<AlbumIcon size={20} />
+						</span>
+						<span className="side-item__label">Meu álbum</span>
+					</a>
 					<a className="side-item" href={topicsRoute()} title={collapsed ? 'Ver todos os temas' : undefined}>
 						<span className="side-item__mark" aria-hidden="true">
 							<TopicsIcon size={20} />

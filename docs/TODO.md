@@ -20,7 +20,6 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
 - [ ] Pergunta do dia: uma pergunta por dia, igual para todo mundo, sem precisar de servidor (escolhida pela data).
-- [ ] Álbum de descobertas: tela com tudo que já descobri, por tema, com as explicações para reler.
 - [ ] Exportar e importar o progresso em um arquivo, para trocar de aparelho sem cadastro.
 - [ ] Mais tipos de pergunta: verdadeiro ou falso, ordenar, completar a lacuna, imagem na pergunta.
 - [ ] Imagens e ilustrações nas explicações, sempre com texto alternativo.
@@ -32,6 +31,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Álbum de descobertas: tela `/album` (`src/pages/album/`, `Album.tsx`, `album.css`) com tudo que já foi respondido, em até 4 colunas independentes (3, 2 ou 1 quando não cabem com folga; as colunas seguem a largura da página). Cada tema é uma seção recolhível na cor dele (abre por padrão), com busca por nome do tema logo abaixo do título. Cada descoberta é um cartão que, ao tocar, abre um modal no centro da tela com a pergunta, a resposta certa, a explicação e os links (`<dialog>` nativo: Esc e toque no fundo fecham, o foco volta ao cartão). Só busca os decks que têm descobertas. Tem estado vazio (com convite para começar) e de falha de rede com "Tentar de novo". Link "Meu álbum" no rodapé da barra lateral. Falta conferir à mão a 320px, 390px e 1280px, com teclado e axe-core.
 - [x] Referências para aprender mais: campo opcional `learnMore` na pergunta (até 3 itens com `title` e `url` https, validado no schema). Depois de responder, a carta mostra "Quer saber mais?" com os links, que abrem em outra aba e avisam o leitor de tela. Nunca obrigatório. Código em `content.config.ts`, `Card.tsx` e `feed.css`. Só a pergunta `fibonacci` tem link, como exemplo; os outros links entram com a revisão de fatos. Falta conferir à mão a carta com o link a 320px (a explicação fica mais longa).
 - [x] Dificuldade na carta: o nível (Filhote, Curioso ou Explorador) aparece no fim da linha do tema e da coleção, com uma bolinha na cor do nível e o texto ("Nível" só para leitor de tela). Sem número, pontos ou ranking. Código em `Card.tsx` e `feed.css`. Falta conferir à mão o contraste da bolinha sobre cada cor de tema e a quebra de linha a 320px.
 - [x] Revisar o que errei: o modo **Que errei** do feed (barra lateral, grupo "Mostrar") reúne só as perguntas que errei para tentar de novo sem pressa, sem mudar o progresso dos decks. Feito junto com os filtros do feed, em vez de um deck separado.
