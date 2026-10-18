@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { LEVELS } from '../../data/levels';
 import { TOPICS, topicStyle, type Topic } from '../../data/topics';
 import type { PublishedQuestion } from '../../lib/types';
 import { LETTERS, correctText, daysText, runText, wrongText, type Celebration } from './copy';
@@ -52,6 +53,12 @@ export function Card({ question, index, choice, celebration, greet, last, onAnsw
 						<span className="card__topic-name">{TOPICS[question.topic].name}</span>
 						<span aria-hidden="true"> · </span>
 						<span className="card__deck">{question.deckTitle}</span>
+						<span aria-hidden="true"> · </span>
+						<span className="card__level">
+							<span className="card__level-dot" data-level={question.level} aria-hidden="true" />
+							<span className="sr-only">Nível </span>
+							{LEVELS[question.level].name}
+						</span>
 					</p>
 					<h2
 						id={promptId}

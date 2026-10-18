@@ -181,6 +181,30 @@
 	font-weight: var(--weight-medium);
 }
 
+.card__level {
+	white-space: nowrap;
+}
+
+/* The ring in the card's light color keeps the dot readable over any topic color */
+.card__level-dot {
+	display: inline-block;
+	width: 0.75rem;
+	height: 0.75rem;
+	margin-right: var(--space-3xs);
+	border: 2px solid var(--nest);
+	border-radius: 50%;
+	background: var(--level-medium-ink);
+	vertical-align: -0.0625rem;
+}
+
+.card__level-dot[data-level='easy'] {
+	background: var(--level-easy-ink);
+}
+
+.card__level-dot[data-level='hard'] {
+	background: var(--level-hard-ink);
+}
+
 .card__topic-name {
 	font-weight: var(--weight-heading);
 }

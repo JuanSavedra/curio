@@ -2,43 +2,12 @@
 
 Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda tarefa de interface segue o fluxo do impeccable: `shape` (briefing confirmado) antes de `craft`.
 
-## Agora
-
-### Pendências da fase 2 (feed)
-- [ ] Testar com leitor de tela de verdade (NVDA no Windows ou TalkBack no Android). Precisa ser feito à mão.
-
-### Filtros do feed (falta conferir no navegador)
-- [ ] Conferir à mão a 320px, 390px e 1280px: segunda fileira de filtros (Novas, Que errei, Que já vi e subtemas), rolagem horizontal no celular, estados vazios de cada modo, `?subtema=` e `?modo=` no endereço, e axe-core. Só o build e o HTML do servidor foram verificados.
-
-### Filtro por dificuldade (falta conferir no navegador)
-- [ ] Conferir à mão a nova fileira "Dificuldade" a 320px, 390px e 1280px (rolagem horizontal, `?nivel=`, estados vazios, axe-core). Só o build foi verificado.
-- [ ] Revisar a classificação de `level` das 64 perguntas (feita pelo Claude, junto com a revisão de fatos).
-
-### Subtemas na página do tema (falta conferir no navegador)
-- [ ] Conferir a 320px, 390px e 1280px o cabeçalho de cada subtema (progresso, "Começar/Continuar/Rever"), a fileira de links de pulo e `?subtema=` + `?rever=1` vindo da página do tema. Só o build foi verificado.
-
-### Barra lateral do feed (falta conferir no navegador)
-- [ ] Conferir a 320px, 390px e 1280px: gaveta no celular (abrir, fechar com Esc, toque no fundo e ao escolher um filtro, foco indo e voltando ao botão de menu), coluna fixa expandida e reduzida (só o Curió e as marcas, nome como dica), preferência salva em `curio:sidebar-collapsed`, rolagem da lista quando há muitos subtemas, e axe-core. Só o build e o HTML do servidor foram verificados.
-- [ ] Testar a barra lateral com teclado e leitor de tela de verdade (junto com o teste da fase 2).
-
-### Fase 5: temas e progresso (falta só conferir à mão)
-- [ ] Conferir a tela de temas, a página de tema e o tema concluído com teclado e leitor de tela de verdade (junto com o teste da fase 2).
-- [ ] Decidir se "Rever" deve guardar que o tema já foi concluído. Hoje rever zera o progresso do deck, e o selo "Concluído" some até terminar de novo.
-
-## Depois
-
 ### Som
 - [ ] `shape` do som: quais sons, quando tocam, onde fica o controle.
 - [ ] Canto curto do Curió no acerto e nas celebrações, desligado por padrão, com controle visível e preferência salva.
 
 ### Conteúdo
 - [ ] Revisão de fatos de todos os decks.
-
-### Fase 6: ninho à noite e acabamento
-- [ ] Modo escuro seguindo a preferência do sistema (quase-preto quente, nunca `#000`).
-- [ ] Ajuste do Curió para fundo escuro.
-- [ ] `impeccable audit`: acessibilidade, desempenho, responsivo.
-- [ ] `impeccable polish`.
 
 ### Fase 7: registro e publicação
 - [ ] `impeccable document` para tirar o DESIGN.md do modo seed com os tokens reais.
@@ -50,9 +19,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Funcionar offline (PWA), já que o conteúdo é estático.
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
-- [ ] Etiquetas de dificuldade nas perguntas (campo opcional no YAML, por exemplo `level`), mostradas de forma discreta na carta e usáveis como filtro. Cuidado para não virar pressão ou ranking.
 - [ ] Referências e vídeos para aprender mais, como campo opcional `learnMore` na pergunta, com links para fontes confiáveis. Links externos abrem em nova aba e nunca são obrigatórios.
-- [ ] Revisar o que errei: um deck só com as perguntas que errei, para tentar de novo sem pressa.
 - [ ] Pergunta do dia: uma pergunta por dia, igual para todo mundo, sem precisar de servidor (escolhida pela data).
 - [ ] Álbum de descobertas: tela com tudo que já descobri, por tema, com as explicações para reler.
 - [ ] Exportar e importar o progresso em um arquivo, para trocar de aparelho sem cadastro.
@@ -66,6 +33,8 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Dificuldade na carta: o nível (Filhote, Curioso ou Explorador) aparece no fim da linha do tema e da coleção, com uma bolinha na cor do nível e o texto ("Nível" só para leitor de tela). Sem número, pontos ou ranking. Código em `Card.tsx` e `feed.css`. Falta conferir à mão o contraste da bolinha sobre cada cor de tema e a quebra de linha a 320px.
+- [x] Revisar o que errei: o modo **Que errei** do feed (barra lateral, grupo "Mostrar") reúne só as perguntas que errei para tentar de novo sem pressa, sem mudar o progresso dos decks. Feito junto com os filtros do feed, em vez de um deck separado.
 - [x] Barra lateral no feed (`Sidebar.tsx`, `sidebar.css`): marca Curiô, filtros de assunto, subtemas, mostrar e dificuldade, e o link para a tela de temas. No celular é uma gaveta aberta pelo botão de menu; a partir de 48rem é uma coluna fixa que pode ser reduzida só ao Curió e às marcas (preferência salva no aparelho). O topo ficou só com o menu, o nome e a sequência de dias. Corrigido junto: os links de pulo da página do tema usavam `.chip`, que só existe no CSS do feed, e ganharam estilo próprio (`.subtopic-link`).
 - [x] Subtemas navegáveis: na página `/temas/<tema>` cada subtema abre com barra e contagem próprias e um botão Começar/Continuar/Rever que leva ao feed com `?subtema=` (só quando tem 2 ou mais coleções), e uma fileira de links pula para cada subtema (quando o tema tem 2 ou mais). Sem páginas novas. Código em `TopicPage.tsx`.
 - [x] Filtro por dificuldade no feed: campo obrigatório `level` (`easy`, `medium`, `hard`) em toda pergunta, mostrado como **Filhote**, **Curioso** e **Explorador** (`src/data/levels.ts`). Nova fileira "Dificuldade" em `Filters.tsx`, endereço `?nivel=filhote|curioso|explorador`, combinável com tema, subtema e modo. As 64 perguntas dos 8 decks foram classificadas. Com um nível ativo, "Rever as que já respondi" some (esquecer é por deck) e o tema não é dado como concluído.
