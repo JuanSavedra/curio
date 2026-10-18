@@ -88,3 +88,78 @@ button {
 		scroll-behavior: auto !important;
 	}
 }
+
+/* ---------- Page transition: an iris that opens over the brand rust ---------- */
+/* Cross-document view transition (no JS). Browsers without support just navigate, as before. */
+
+@view-transition {
+	navigation: auto;
+}
+
+/* Radius of the circle that reveals the new page */
+@property --iris {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 0px;
+}
+
+/* Behind both pages: the rust that fills the screen between the old page and the new one */
+::view-transition-group(root) {
+	background: var(--rust);
+	animation-duration: 1000ms;
+}
+
+/* The old page shrinks away and the screen turns rust (0 to 300ms) */
+::view-transition-old(root) {
+	animation: iris-old 300ms cubic-bezier(0.4, 0, 0.6, 1) both;
+}
+
+/* Then the new page opens through a soft-edged circle growing from the middle (250 to 1000ms) */
+::view-transition-new(root) {
+	animation: iris-new 750ms cubic-bezier(0.65, 0, 0.35, 1) 250ms both;
+	mask-image: radial-gradient(circle at 50% 50%, #000 calc(var(--iris) - 5rem), transparent var(--iris));
+}
+
+@keyframes iris-old {
+	to {
+		opacity: 0;
+		transform: scale(0.94);
+	}
+}
+
+@keyframes iris-new {
+	from {
+		--iris: 0px;
+	}
+	to {
+		--iris: 90vmax;
+	}
+}
+
+/* Reduced motion: a short fade, no moving shapes */
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(root) {
+		background: none;
+	}
+
+	::view-transition-old(root) {
+		animation: iris-fade-out 150ms linear both;
+	}
+
+	::view-transition-new(root) {
+		animation: iris-fade-in 150ms linear both;
+		mask-image: none;
+	}
+
+	@keyframes iris-fade-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes iris-fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+}
