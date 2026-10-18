@@ -188,7 +188,7 @@
 	.sidebar {
 		position: static;
 		z-index: auto;
-		width: 17rem;
+		width: var(--sidebar-w, 17rem);
 		transform: none;
 		visibility: visible;
 		transition: none;
@@ -200,10 +200,6 @@
 	}
 
 	/* Reduced: only the bird, and each item shows just its mark (the name stays for screen readers and as a tooltip) */
-	.sidebar[data-collapsed='true'] {
-		width: 4.75rem;
-	}
-
 	.sidebar[data-collapsed='true'] .sidebar__head {
 		flex-direction: column;
 		justify-content: center;

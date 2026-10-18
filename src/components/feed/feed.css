@@ -2,6 +2,8 @@
 
 .feed {
 	--current-bg: var(--topic-bg, var(--color-bg));
+	/* Width of the sidebar column; the reduced one is narrower (from 48rem) */
+	--sidebar-w: 17rem;
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
 	/* One row fixed to the screen: without it the row grows with the cards and the whole page scrolls */
@@ -10,6 +12,10 @@
 	overflow: hidden;
 	background-color: var(--current-bg);
 	transition: background-color var(--dur-slow) var(--ease-out);
+}
+
+.feed:has(.sidebar[data-collapsed='true']) {
+	--sidebar-w: 4.75rem;
 }
 
 .feed__main {
@@ -813,6 +819,16 @@
 
 	.feed .button:not(.button--quiet) {
 		min-width: 14rem;
+	}
+}
+
+/*
+ * With room to spare, the cards stay centered on the screen (not on what is left of it beside the sidebar):
+ * the rail gives back the sidebar's width on the right. Narrower than this, the card just centers in the free space.
+ */
+@media (min-width: 76rem) {
+	.rail {
+		padding-right: var(--sidebar-w);
 	}
 }
 
