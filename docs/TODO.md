@@ -14,6 +14,13 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Conferir à mão a nova fileira "Dificuldade" a 320px, 390px e 1280px (rolagem horizontal, `?nivel=`, estados vazios, axe-core). Só o build foi verificado.
 - [ ] Revisar a classificação de `level` das 64 perguntas (feita pelo Claude, junto com a revisão de fatos).
 
+### Subtemas na página do tema (falta conferir no navegador)
+- [ ] Conferir a 320px, 390px e 1280px o cabeçalho de cada subtema (progresso, "Começar/Continuar/Rever"), a fileira de links de pulo e `?subtema=` + `?rever=1` vindo da página do tema. Só o build foi verificado.
+
+### Barra lateral do feed (falta conferir no navegador)
+- [ ] Conferir a 320px, 390px e 1280px: gaveta no celular (abrir, fechar com Esc, toque no fundo e ao escolher um filtro, foco indo e voltando ao botão de menu), coluna fixa expandida e reduzida (só o Curió e as marcas, nome como dica), preferência salva em `curio:sidebar-collapsed`, rolagem da lista quando há muitos subtemas, e axe-core. Só o build e o HTML do servidor foram verificados.
+- [ ] Testar a barra lateral com teclado e leitor de tela de verdade (junto com o teste da fase 2).
+
 ### Fase 5: temas e progresso (falta só conferir à mão)
 - [ ] Conferir a tela de temas, a página de tema e o tema concluído com teclado e leitor de tela de verdade (junto com o teste da fase 2).
 - [ ] Decidir se "Rever" deve guardar que o tema já foi concluído. Hoje rever zera o progresso do deck, e o selo "Concluído" some até terminar de novo.
@@ -43,7 +50,6 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Funcionar offline (PWA), já que o conteúdo é estático.
 - [ ] Desafios com tempo, sempre opcionais.
 - [ ] Compartilhar uma pergunta com alguém.
-- [ ] Subtemas navegáveis dentro de cada tema (Matemática → números primos, frações, geometria), com progresso por subtema. Hoje o subtema existe nos arquivos, mas só agrupa as coleções.
 - [ ] Etiquetas de dificuldade nas perguntas (campo opcional no YAML, por exemplo `level`), mostradas de forma discreta na carta e usáveis como filtro. Cuidado para não virar pressão ou ranking.
 - [ ] Referências e vídeos para aprender mais, como campo opcional `learnMore` na pergunta, com links para fontes confiáveis. Links externos abrem em nova aba e nunca são obrigatórios.
 - [ ] Revisar o que errei: um deck só com as perguntas que errei, para tentar de novo sem pressa.
@@ -60,6 +66,8 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Outros idiomas para a interface e as perguntas, se um dia fizer sentido.
 
 ## Feito
+- [x] Barra lateral no feed (`Sidebar.tsx`, `sidebar.css`): marca Curiô, filtros de assunto, subtemas, mostrar e dificuldade, e o link para a tela de temas. No celular é uma gaveta aberta pelo botão de menu; a partir de 48rem é uma coluna fixa que pode ser reduzida só ao Curió e às marcas (preferência salva no aparelho). O topo ficou só com o menu, o nome e a sequência de dias. Corrigido junto: os links de pulo da página do tema usavam `.chip`, que só existe no CSS do feed, e ganharam estilo próprio (`.subtopic-link`).
+- [x] Subtemas navegáveis: na página `/temas/<tema>` cada subtema abre com barra e contagem próprias e um botão Começar/Continuar/Rever que leva ao feed com `?subtema=` (só quando tem 2 ou mais coleções), e uma fileira de links pula para cada subtema (quando o tema tem 2 ou mais). Sem páginas novas. Código em `TopicPage.tsx`.
 - [x] Filtro por dificuldade no feed: campo obrigatório `level` (`easy`, `medium`, `hard`) em toda pergunta, mostrado como **Filhote**, **Curioso** e **Explorador** (`src/data/levels.ts`). Nova fileira "Dificuldade" em `Filters.tsx`, endereço `?nivel=filhote|curioso|explorador`, combinável com tema, subtema e modo. As 64 perguntas dos 8 decks foram classificadas. Com um nível ativo, "Rever as que já respondi" some (esquecer é por deck) e o tema não é dado como concluído.
 - [x] Filtros do feed: modos **Novas**, **Que errei** (novo `curio:missed` no `localStorage`) e **Que já vi**, e filtro por **subtema** dentro de um tema (aparece quando o tema tem 2 ou mais). Endereços `?subtema=<pasta>` e `?modo=erradas|vistas`. Nas revisões o progresso dos decks não muda e acertos seguidos e penas não contam, mas a sequência de dias sim. Novo deck `astronomy/stars-and-galaxies` para o subtema existir. Código em `Filters.tsx` e `Feed.tsx`.
 - [x] Raiz do projeto enxuta: `PRODUCT.md`, `DESIGN.md` e `TODO.md` foram para `docs/` (o loader do impeccable já procura lá), referências atualizadas no `AGENTS.md` e `.vscode/settings.json` esconde `dist`, `.astro`, `.agents` e os arquivos de lock no explorador.

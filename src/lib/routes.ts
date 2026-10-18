@@ -18,14 +18,16 @@ export const MODE_SLUGS = { missed: 'erradas', seen: 'vistas' } as const;
 
 interface FeedFilter {
 	topic?: Topic;
+	subtopic?: string;
 	deck?: string;
 	/** Forget what was seen in the topic (or deck) before starting */
 	review?: boolean;
 }
 
-export function feedRoute({ topic, deck, review }: FeedFilter = {}) {
+export function feedRoute({ topic, subtopic, deck, review }: FeedFilter = {}) {
 	const query = new URLSearchParams();
 	if (topic) query.set(FEED_QUERY.topic, TOPICS[topic].slug);
+	if (subtopic) query.set(FEED_QUERY.subtopic, subtopic);
 	if (deck) query.set(FEED_QUERY.deck, deck);
 	if (review) query.set(FEED_QUERY.review, '1');
 	const text = query.toString();

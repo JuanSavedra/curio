@@ -5,6 +5,7 @@ const KEY_SEEN = 'curio:seen';
 const KEY_STREAK = 'curio:streak';
 const KEY_VISITED = 'curio:visited';
 const KEY_MISSED = 'curio:missed';
+const KEY_SIDEBAR = 'curio:sidebar-collapsed';
 const KEY_LAST_TOPIC = 'curio:last-topic';
 
 function read<T>(key: string, fallback: T): T {
@@ -71,6 +72,9 @@ export function decksProgress(seen: Set<string>, decks: DeckSummary[]): DecksPro
 	const discovered = decks.reduce((sum, d) => sum + discoveredInDeck(seen, d.id, d.total), 0);
 	return { total, discovered, complete: total > 0 && discovered >= total };
 }
+
+export const readSidebarCollapsed = () => read(KEY_SIDEBAR, false);
+export const writeSidebarCollapsed = (collapsed: boolean) => write(KEY_SIDEBAR, collapsed);
 
 export const readLastTopic = () => read<string | null>(KEY_LAST_TOPIC, null);
 export const writeLastTopic = (topic: string) => write(KEY_LAST_TOPIC, topic);

@@ -10,10 +10,13 @@ import './topics.css';
 
 type Status = 'new' | 'in-progress' | 'done';
 
-const statusOf = (discovered: number, total: number): Status =>
-	discovered >= total ? 'done' : discovered > 0 ? 'in-progress' : 'new';
+const statusOf = (discovered: number, total: number): Status => (discovered >= total ? 'done' : discovered > 0 ? 'in-progress' : 'new');
 
-const ACTION_LABEL: Record<Status, string> = { new: 'Começar', 'in-progress': 'Continuar', done: 'Rever' };
+const ACTION_LABEL: Record<Status, string> = {
+	new: 'Começar',
+	'in-progress': 'Continuar',
+	done: 'Rever',
+};
 
 export default function TopicPage({ topic, decks }: { topic: Topic; decks: DeckSummary[] }) {
 	// Progress lives on the device. Until it is read, the count and actions stay reserved (no flash of the wrong text).
@@ -25,9 +28,17 @@ export default function TopicPage({ topic, decks }: { topic: Topic; decks: DeckS
 
 	// Groups by subtopic, keeping the order in which they appear.
 	const groups = useMemo(() => {
-		const map = new Map<string, DeckSummary[]>();
-		for (const deck of decks) map.set(deck.subtopic, [...(map.get(deck.subtopic) ?? []), deck]);
-		return [...map];
+		const map = new Map<string, { id: string; name: string; decks: DeckSummary[] }>();
+		for (const deck of decks) {
+			const group = map.get(deck.subtopicId) ?? {
+				id: deck.subtopicId,
+				name: deck.subtopic,
+				decks: [],
+			};
+			group.decks.push(deck);
+			map.set(deck.subtopicId, group);
+		}
+		return [...map.values()];
 	}, [decks]);
 
 	return (
@@ -70,49 +81,98 @@ export default function TopicPage({ topic, decks }: { topic: Topic; decks: DeckS
 					</div>
 				</section>
 
+				{groups.length > 1 && (
+					<nav className="subtopic-nav" aria-label="Subtemas">
+						<ul>
+							{groups.map(({ id, name }) => (
+								<li key={id}>
+									<a className="subtopic-link" href={`#subtopic-${id}`}>
+										<span className="subtopic-link__dot" aria-hidden="true" />
+										{name}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				)}
+
 				<div className="groups">
-					{groups.map(([subtopic, list], i) => (
-						<section key={subtopic} className="group" aria-labelledby={`subtopic-${i}`}>
-							<h2 id={`subtopic-${i}`} className="section-title">
-								{subtopic}
-							</h2>
-							<ul className="decks">
-								{list.map((deck) => {
-									const discovered = seen ? discoveredInDeck(seen, deck.id, deck.total) : 0;
-									const deckStatus = statusOf(discovered, deck.total);
-									return (
-										<li key={deck.id} className="deck" data-state={deckStatus}>
-											<div className="deck__text">
-												<h3 className="deck__title">{deck.title}</h3>
-												<div data-ready={seen !== null} className="deck__state">
-													<ProgressBar value={discovered / deck.total} />
-													<p className="deck__meta">
-														{deckStatus === 'done' && (
-															<span className="done-badge">
-																<CheckIcon size={14} />
-																Concluído
-															</span>
-														)}
-														<span>{discovered > 0 ? discoveredCount(discovered, deck.total) : questionCount(deck.total)}</span>
-													</p>
+					{groups.map(({ id, name, decks: list }) => {
+						const progress = decksProgress(seen ?? new Set(), list);
+						const groupStatus = statusOf(progress.discovered, progress.total);
+						return (
+							<section key={id} id={`subtopic-${id}`} className="group" aria-labelledby={`subtopic-title-${id}`}>
+								<header className="group__head">
+									<div className="group__text">
+										<h2 id={`subtopic-title-${id}`} className="group__title">
+											{name}
+										</h2>
+										<div className="group__state" data-ready={seen !== null}>
+											<ProgressBar value={progress.total ? progress.discovered / progress.total : 0} />
+											<p className="deck__meta">
+												{groupStatus === 'done' && (
+													<span className="done-badge">
+														<CheckIcon size={14} />
+														Concluído
+													</span>
+												)}
+												<span>
+													{progress.discovered > 0 ? discoveredCount(progress.discovered, progress.total) : questionCount(progress.total)}
+												</span>
+											</p>
+										</div>
+									</div>
+									{list.length > 1 && (
+										<div className="group__action" data-ready={seen !== null}>
+											<a
+												className="button button--outline"
+												href={feedRoute(groupStatus === 'done' ? { topic, subtopic: id, review: true } : { topic, subtopic: id })}
+												aria-label={`${ACTION_LABEL[groupStatus]} ${name}`}
+											>
+												{ACTION_LABEL[groupStatus]}
+												{groupStatus === 'done' ? <RestartIcon /> : <ArrowRightIcon />}
+											</a>
+										</div>
+									)}
+								</header>
+								<ul className="decks">
+									{list.map((deck) => {
+										const discovered = seen ? discoveredInDeck(seen, deck.id, deck.total) : 0;
+										const deckStatus = statusOf(discovered, deck.total);
+										return (
+											<li key={deck.id} className="deck" data-state={deckStatus}>
+												<div className="deck__text">
+													<h3 className="deck__title">{deck.title}</h3>
+													<div data-ready={seen !== null} className="deck__state">
+														<ProgressBar value={discovered / deck.total} />
+														<p className="deck__meta">
+															{deckStatus === 'done' && (
+																<span className="done-badge">
+																	<CheckIcon size={14} />
+																	Concluído
+																</span>
+															)}
+															<span>{discovered > 0 ? discoveredCount(discovered, deck.total) : questionCount(deck.total)}</span>
+														</p>
+													</div>
 												</div>
-											</div>
-											<div className="deck__action" data-ready={seen !== null}>
-												<a
-													className={`button${deckStatus === 'done' ? ' button--outline' : ''}`}
-													href={feedRoute(deckStatus === 'done' ? { deck: deck.id, review: true } : { deck: deck.id })}
-													aria-label={`${ACTION_LABEL[deckStatus]} ${deck.title}`}
-												>
-													{ACTION_LABEL[deckStatus]}
-													{deckStatus === 'done' ? <RestartIcon /> : <ArrowRightIcon />}
-												</a>
-											</div>
-										</li>
-									);
-								})}
-							</ul>
-						</section>
-					))}
+												<div className="deck__action" data-ready={seen !== null}>
+													<a
+														className={`button${deckStatus === 'done' ? ' button--outline' : ''}`}
+														href={feedRoute(deckStatus === 'done' ? { deck: deck.id, review: true } : { deck: deck.id })}
+														aria-label={`${ACTION_LABEL[deckStatus]} ${deck.title}`}
+													>
+														{ACTION_LABEL[deckStatus]}
+														{deckStatus === 'done' ? <RestartIcon /> : <ArrowRightIcon />}
+													</a>
+												</div>
+											</li>
+										);
+									})}
+								</ul>
+							</section>
+						);
+					})}
 				</div>
 			</main>
 		</div>

@@ -1,0 +1,262 @@
+/* ---------- Sidebar: brand, navigation and filters ---------- */
+/* Mobile: a drawer opened by the menu button. From 48rem: fixed column, expanded or reduced to icons. */
+
+.sidebar {
+	position: fixed;
+	inset: 0 auto 0 0;
+	z-index: 20;
+	display: flex;
+	flex-direction: column;
+	width: min(18rem, 86vw);
+	background: var(--color-surface);
+	border-right: 2px solid var(--color-border);
+	transform: translateX(-100%);
+	visibility: hidden;
+	transition:
+		transform var(--dur-medium) var(--ease-out),
+		visibility 0s linear var(--dur-medium);
+}
+
+.sidebar[data-open='true'] {
+	transform: none;
+	visibility: visible;
+	transition-delay: 0s;
+}
+
+.scrim {
+	position: fixed;
+	inset: 0;
+	z-index: 19;
+	background: oklch(0.25 0.02 40 / 0.45);
+}
+
+.sidebar__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-2xs);
+	min-height: 4.25rem;
+	padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-sm);
+}
+
+/* The brand is also the h1 in the top bar, so this copy is decorative */
+.sidebar__brand {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2xs);
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+	letter-spacing: -0.01em;
+	line-height: 1;
+}
+
+.sidebar__button {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--color-text-soft);
+	cursor: pointer;
+	transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+@media (hover: hover) {
+	.sidebar__button:hover {
+		background: var(--color-panel);
+	}
+}
+
+.sidebar__nav {
+	display: grid;
+	flex: 1;
+	align-content: start;
+	gap: var(--space-md);
+	padding: 0 var(--space-xs) var(--space-sm);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.side-group {
+	display: grid;
+	gap: var(--space-3xs);
+}
+
+.side-label {
+	padding: 0 var(--space-xs) var(--space-3xs);
+	color: var(--color-text-soft);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-strong);
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+}
+
+.side-item {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+	width: 100%;
+	min-height: 2.75rem;
+	padding: 0 var(--space-xs) 0 var(--space-2xs);
+	border: 2px solid transparent;
+	border-radius: var(--radius-md);
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	text-align: left;
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		transform var(--dur-fast) var(--ease-out),
+		background-color var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out);
+}
+
+.side-item:active {
+	transform: scale(0.97);
+}
+
+.side-item[aria-pressed='true'] {
+	border-color: var(--topic-ink);
+	background: var(--topic);
+	color: var(--plumage);
+	font-weight: var(--weight-strong);
+}
+
+@media (hover: hover) {
+	.side-item:not([aria-pressed='true']):hover {
+		background: var(--color-panel);
+	}
+}
+
+/* Fixed slot, so every label lines up whatever the mark is */
+.side-item__mark {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 1.75rem;
+	height: 1.75rem;
+}
+
+/* Topic and subtopic marks: a circle in the topic color with the icon or the initial */
+.side-item__mark--filled {
+	border-radius: 50%;
+	background: var(--topic);
+	color: var(--plumage);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-heading);
+	line-height: 1;
+}
+
+.side-item[aria-pressed='true'] .side-item__mark--filled {
+	background: var(--nest);
+}
+
+/* Mode and difficulty marks: a dot that keeps its own color even when chosen */
+.side-item__dot {
+	display: grid;
+	place-items: center;
+	width: 1.125rem;
+	height: 1.125rem;
+	border-radius: 50%;
+	background: var(--topic-ink);
+	color: var(--nest);
+}
+
+.side-item__label {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.sidebar__foot {
+	padding: var(--space-xs);
+	border-top: 2px solid var(--color-border);
+}
+
+/* "Todos", "Todas" and "Tudo" are not a topic: neutral colors (the page would lend them the card's) */
+.side-item--neutral {
+	--topic: var(--color-panel);
+	--topic-ink: var(--plumage);
+}
+
+@media (min-width: 48rem) {
+	.sidebar {
+		position: static;
+		z-index: auto;
+		width: 17rem;
+		transform: none;
+		visibility: visible;
+		transition: none;
+	}
+
+	.scrim,
+	.sidebar__close {
+		display: none;
+	}
+
+	/* Reduced: only the bird, and each item shows just its mark (the name stays for screen readers and as a tooltip) */
+	.sidebar[data-collapsed='true'] {
+		width: 4.75rem;
+	}
+
+	.sidebar[data-collapsed='true'] .sidebar__head {
+		flex-direction: column;
+		justify-content: center;
+		padding: var(--space-xs) 0;
+	}
+
+	.sidebar[data-collapsed='true'] .sidebar__brand span,
+	.sidebar[data-collapsed='true'] .side-item__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+	}
+
+	.sidebar[data-collapsed='true'] .sidebar__nav {
+		gap: var(--space-xs);
+		padding: 0 var(--space-xs) var(--space-sm);
+	}
+
+	.sidebar[data-collapsed='true'] .side-label {
+		display: none;
+	}
+
+	.sidebar[data-collapsed='true'] .side-group + .side-group {
+		padding-top: var(--space-xs);
+		border-top: 2px solid var(--color-border);
+	}
+
+	.sidebar[data-collapsed='true'] .side-item {
+		justify-content: center;
+		padding: 0;
+	}
+}
+
+@media (max-width: 47.99rem) {
+	.sidebar__toggle {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sidebar {
+		transition: visibility 0s linear var(--dur-medium);
+	}
+
+	.sidebar[data-open='true'] {
+		transition-delay: 0s;
+	}
+
+	.side-item:active {
+		transform: none;
+	}
+}

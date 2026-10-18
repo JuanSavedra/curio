@@ -66,6 +66,21 @@ export const ArrowLeftIcon = (p: { size?: number }) => (
 	</Icon>
 );
 
+/** Three lines: opens the sidebar on small screens. */
+export const MenuIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M4 7h16M4 12h16M4 17h16" />
+	</Icon>
+);
+
+/** A panel with a side column: reduces or expands the sidebar. */
+export const SidebarIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<rect x="4" y="5" width="16" height="14" rx="3.5" />
+		<path d="M9.5 5v14" />
+	</Icon>
+);
+
 /** Four rounded corners: the door to the topics screen. */
 export const TopicsIcon = (p: { size?: number }) => (
 	<Icon {...p}>

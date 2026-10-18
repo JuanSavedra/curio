@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { LEVEL_IDS, LEVELS, levelFromSlug, type Level } from '../../data/levels';
 import { TOPICS, TOPIC_IDS, topicFromSlug, topicStyle, type Topic } from '../../data/topics';
-import { FEED_QUERY, MODE_SLUGS, deckJsonRoute, topicsRoute, type FeedMode } from '../../lib/routes';
+import { FEED_QUERY, MODE_SLUGS, deckJsonRoute, type FeedMode } from '../../lib/routes';
 import type { DeckSummary, PublishedDeck, PublishedQuestion } from '../../lib/types';
 import { Card, type QueuedQuestion } from './Card';
 import { DAY_MILESTONES, isRunMilestone, type Celebration } from './copy';
 import { Curio } from './Curio';
-import { Filters, type SubtopicOption } from './Filters';
-import { CheckIcon, NoteIcon, RestartIcon, TopicsIcon } from './Icons';
+import { MenuIcon, NoteIcon, RestartIcon } from './Icons';
 import {
 	clearMissed,
 	decksProgress,
@@ -22,6 +21,7 @@ import {
 	recordDay,
 	writeLastTopic,
 } from './progress';
+import { Sidebar, type SubtopicOption } from './Sidebar';
 import { TopicComplete } from './TopicComplete';
 import './feed.css';
 
@@ -53,7 +53,11 @@ function shuffle<T>(list: T[]): T[] {
 // Interleaves the decks so the mixed feed doesn't repeat the same topic back to back.
 function interleave(decks: PublishedDeck[], include: (question: PublishedQuestion) => boolean): QueuedQuestion[] {
 	const stacks = decks.map((deck) =>
-		shuffle(deck.questions.filter(include)).map((q) => ({ ...q, topic: deck.topic, deckTitle: deck.title })),
+		shuffle(deck.questions.filter(include)).map((q) => ({
+			...q,
+			topic: deck.topic,
+			deckTitle: deck.title,
+		})),
 	);
 	const queue: QueuedQuestion[] = [];
 	while (stacks.some((stack) => stack.length)) {
@@ -77,7 +81,13 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const topicsWithContent = TOPIC_IDS.filter((t) => decks.some((d) => d.topic === t));
 
 	// When the person arrives through a deck on a topic page, `deck` limits the feed to that deck
-	const [scope, setScope] = useState<Scope>({ topic: 'all', subtopic: null, deck: null, mode: 'new', level: null });
+	const [scope, setScope] = useState<Scope>({
+		topic: 'all',
+		subtopic: null,
+		deck: null,
+		mode: 'new',
+		level: null,
+	});
 	const { topic: filter, subtopic, deck: deckFilter, mode, level } = scope;
 	const [status, setStatus] = useState<Status>('loading');
 	const [queue, setQueue] = useState<QueuedQuestion[]>([]);
@@ -89,12 +99,34 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const [celebrations, setCelebrations] = useState<Record<string, Celebration>>({});
 	// Changes at every day milestone so the pill glows again
 	const [streakGlow, setStreakGlow] = useState(0);
+	// Sidebar drawer (small screens)
+	const [menuOpen, setMenuOpen] = useState(false);
+	const menuButtonRef = useRef<HTMLButtonElement>(null);
 	// Correct answers in a row in this session. A wrong answer restarts silently; skipping doesn't count.
 	const run = useRef(0);
 
 	const railRef = useRef<HTMLElement>(null);
 	const cache = useRef(new Map<string, PublishedDeck>());
 	const loadingMore = useRef(false);
+
+	const closeMenu = useCallback(() => {
+		setMenuOpen(false);
+		menuButtonRef.current?.focus();
+	}, []);
+
+	// Esc closes the drawer; widening the window turns it into the fixed column
+	useEffect(() => {
+		if (!menuOpen) return;
+		const onKey = (e: KeyboardEvent) => e.key === 'Escape' && closeMenu();
+		const wide = matchMedia('(min-width: 48rem)');
+		const onWide = () => wide.matches && setMenuOpen(false);
+		window.addEventListener('keydown', onKey);
+		wide.addEventListener('change', onWide);
+		return () => {
+			window.removeEventListener('keydown', onKey);
+			wide.removeEventListener('change', onWide);
+		};
+	}, [menuOpen, closeMenu]);
 
 	const fetchDecks = useCallback(async (list: DeckSummary[]) => {
 		return Promise.all(
@@ -159,8 +191,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		const deck = decks.find((d) => d.id === params.get(FEED_QUERY.deck)) ?? null;
 		const topic: Filter = deck ? deck.topic : urlTopic && topicsWithContent.includes(urlTopic) ? urlTopic : 'all';
 		const urlSubtopic = params.get(FEED_QUERY.subtopic);
-		const subtopic =
-			!deck && topic !== 'all' && decks.some((d) => d.topic === topic && d.subtopicId === urlSubtopic) ? urlSubtopic : null;
+		const subtopic = !deck && topic !== 'all' && decks.some((d) => d.topic === topic && d.subtopicId === urlSubtopic) ? urlSubtopic : null;
 		const urlMode = params.get(FEED_QUERY.mode);
 		const mode: FeedMode = urlMode === MODE_SLUGS.missed ? 'missed' : urlMode === MODE_SLUGS.seen ? 'seen' : 'new';
 		const level = levelFromSlug(params.get(FEED_QUERY.level));
@@ -223,7 +254,10 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		const rail = railRef.current;
 		const target = rail?.querySelector<HTMLElement>(`.scene[data-index="${index}"]`) ?? rail?.querySelector<HTMLElement>('.scene--end');
 		if (!target) return;
-		target.scrollIntoView({ block: 'start', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+		target.scrollIntoView({
+			block: 'start',
+			behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+		});
 		target.querySelector<HTMLElement>('.card__prompt, .end__title')?.focus({ preventScroll: true });
 	}, []);
 
@@ -319,9 +353,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	}
 
 	function prefixesOf({ topic, subtopic, deck }: Scope) {
-		const inScope = deck
-			? [deck]
-			: decks.filter((d) => (topic === 'all' || d.topic === topic) && (!subtopic || d.subtopicId === subtopic));
+		const inScope = deck ? [deck] : decks.filter((d) => (topic === 'all' || d.topic === topic) && (!subtopic || d.subtopicId === subtopic));
 		return inScope.map((d) => `${d.id}/`);
 	}
 
@@ -357,155 +389,137 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 
 	return (
 		<div className="feed" style={currentTopic ? topicStyle(currentTopic) : undefined} data-has-topic={Boolean(currentTopic)}>
-			<header className="topbar">
-				<h1 className="brand">
-					<Curio size={34} still />
-					<span>Curiô</span>
-				</h1>
+			<Sidebar
+				topics={topicsWithContent}
+				topic={filter}
+				onTopic={switchFilter}
+				mode={mode}
+				onMode={switchMode}
+				level={level}
+				onLevel={switchLevel}
+				subtopics={subtopics}
+				subtopic={subtopic}
+				deckActive={Boolean(deckFilter)}
+				onSubtopic={switchSubtopic}
+				open={menuOpen}
+				onClose={closeMenu}
+			/>
 
-				<nav className="chips" aria-label="Temas">
-					<ul>
-						<li>
-							<button type="button" className="chip chip--all" aria-pressed={filter === 'all'} onClick={() => switchFilter('all')}>
-								Tudo
-							</button>
-						</li>
-						{topicsWithContent.map((topic) => (
-							<li key={topic}>
-								<button
-									type="button"
-									className="chip"
-									style={topicStyle(topic)}
-									aria-pressed={filter === topic}
-									onClick={() => switchFilter(topic)}
-								>
-									<span className="chip__dot" aria-hidden="true">
-										{filter === topic && <CheckIcon size={12} />}
-									</span>
-									{TOPICS[topic].name}
-								</button>
-							</li>
-						))}
-					</ul>
-				</nav>
-
-				<Filters
-					mode={mode}
-					onMode={switchMode}
-					subtopics={subtopics}
-					topic={filter}
-					subtopic={subtopic}
-					deckActive={Boolean(deckFilter)}
-					onSubtopic={switchSubtopic}
-					level={level}
-					onLevel={switchLevel}
-				/>
-
-				<div className="topbar__actions">
-					<a className="topics-link" href={topicsRoute()}>
-						<TopicsIcon size={18} />
-						<span>Temas</span>
-					</a>
+			{/* inert: while the drawer is open the cards behind it can't be reached by keyboard */}
+			<div className="feed__main" inert={menuOpen}>
+				<header className="topbar">
+					<button
+						ref={menuButtonRef}
+						type="button"
+						className="menu-button"
+						aria-label="Abrir o menu"
+						aria-expanded={menuOpen}
+						aria-controls="sidebar"
+						onClick={() => setMenuOpen(true)}
+					>
+						<MenuIcon size={22} />
+					</button>
+					<h1 className="brand">
+						<Curio size={34} still />
+						<span>Curiô</span>
+					</h1>
+					<span className="topbar__spacer" />
 					{streak > 0 && (
-						<p
-							key={streakGlow}
-							className={`streak${streakGlow ? ' streak--milestone' : ''}`}
-							title="Dias seguidos respondendo perguntas"
-						>
+						<p key={streakGlow} className={`streak${streakGlow ? ' streak--milestone' : ''}`} title="Dias seguidos respondendo perguntas">
 							<NoteIcon size={18} />
 							<span>{streak === 1 ? '1 dia' : `${streak} dias`}</span>
 							<span className="sr-only"> seguidos</span>
 						</p>
 					)}
-				</div>
-			</header>
+				</header>
 
-			<main id="questions" className="rail" ref={railRef} aria-busy={status === 'loading'}>
-				{status === 'loading' && (
-					<div className="scene">
-						<p className="sr-only">Carregando perguntas…</p>
-						<Skeleton />
-					</div>
-				)}
-
-				{status === 'failed' && (
-					<section className="scene scene--notice">
-						<div className="notice">
-							<Curio mood="comforting" size={72} />
-							<h2 className="notice__title">Não consegui carregar as perguntas.</h2>
-							<p>Confira sua conexão com a internet e tente de novo.</p>
-							<button type="button" className="button" onClick={() => buildQueue(scope)}>
-								<RestartIcon />
-								Tentar de novo
-							</button>
+				<main id="questions" className="rail" ref={railRef} aria-busy={status === 'loading'}>
+					{status === 'loading' && (
+						<div className="scene">
+							<p className="sr-only">Carregando perguntas…</p>
+							<Skeleton />
 						</div>
-					</section>
-				)}
+					)}
 
-				{status === 'ready' &&
-					queue.map((question, i) => (
-						<Card
-							key={question.id}
-							question={question}
-							index={i}
-							choice={answers[question.id]}
-							celebration={celebrations[question.id]}
-							greet={greet && i === 0}
-							last={i === queue.length - 1}
-							onAnswer={answer}
-							onAdvance={(index) => goTo(index + 1)}
-						/>
-					))}
-
-				{topicComplete && filter !== 'all' && topicSummary && (
-					<TopicComplete topic={filter} total={topicSummary.total} onReview={reviewAgain} />
-				)}
-
-				{status === 'ready' && !pending.length && !topicComplete && (
-					<section className="scene scene--end" aria-labelledby="end-title">
-						<div className="notice">
-							<Curio mood={endCopy.mood} size={88} />
-							<h2 id="end-title" className="end__title notice__title" tabIndex={-1}>
-								{endCopy.title}
-							</h2>
-							<p>{endCopy.text}</p>
-							{mode === 'new' ? (
-								<>
-									<ul className="end__options">
-										{topicsWithContent
-											.filter((t) => t !== filter || deckFilter || subtopic)
-											.map((topic) => (
-												<li key={topic}>
-													<button type="button" className="chip" style={topicStyle(topic)} onClick={() => switchFilter(topic)}>
-														<span className="chip__dot" aria-hidden="true" />
-														{TOPICS[topic].name}
-													</button>
-												</li>
-											))}
-									</ul>
-									{/* Forgetting is per deck, not per difficulty, so it only shows without a difficulty filter */}
-									{!level && (
-										<button type="button" className="button button--quiet" onClick={reviewAgain}>
-											<RestartIcon size={18} />
-											Rever as que já respondi
-										</button>
-									)}
-								</>
-							) : (
-								<button type="button" className="button" onClick={() => switchMode('new')}>
-									Ver perguntas novas
+					{status === 'failed' && (
+						<section className="scene scene--notice">
+							<div className="notice">
+								<Curio mood="comforting" size={72} />
+								<h2 className="notice__title">Não consegui carregar as perguntas.</h2>
+								<p>Confira sua conexão com a internet e tente de novo.</p>
+								<button type="button" className="button" onClick={() => buildQueue(scope)}>
+									<RestartIcon />
+									Tentar de novo
 								</button>
-							)}
-						</div>
-					</section>
-				)}
+							</div>
+						</section>
+					)}
 
-				{status === 'ready' && pending.length > 0 && (
-					<section className="scene scene--end" aria-label="Carregando mais perguntas">
-						<Skeleton />
-					</section>
-				)}
-			</main>
+					{status === 'ready' &&
+						queue.map((question, i) => (
+							<Card
+								key={question.id}
+								question={question}
+								index={i}
+								choice={answers[question.id]}
+								celebration={celebrations[question.id]}
+								greet={greet && i === 0}
+								last={i === queue.length - 1}
+								onAnswer={answer}
+								onAdvance={(index) => goTo(index + 1)}
+							/>
+						))}
+
+					{topicComplete && filter !== 'all' && topicSummary && (
+						<TopicComplete topic={filter} total={topicSummary.total} onReview={reviewAgain} />
+					)}
+
+					{status === 'ready' && !pending.length && !topicComplete && (
+						<section className="scene scene--end" aria-labelledby="end-title">
+							<div className="notice">
+								<Curio mood={endCopy.mood} size={88} />
+								<h2 id="end-title" className="end__title notice__title" tabIndex={-1}>
+									{endCopy.title}
+								</h2>
+								<p>{endCopy.text}</p>
+								{mode === 'new' ? (
+									<>
+										<ul className="end__options">
+											{topicsWithContent
+												.filter((t) => t !== filter || deckFilter || subtopic)
+												.map((topic) => (
+													<li key={topic}>
+														<button type="button" className="chip" style={topicStyle(topic)} onClick={() => switchFilter(topic)}>
+															<span className="chip__dot" aria-hidden="true" />
+															{TOPICS[topic].name}
+														</button>
+													</li>
+												))}
+										</ul>
+										{/* Forgetting is per deck, not per difficulty, so it only shows without a difficulty filter */}
+										{!level && (
+											<button type="button" className="button button--quiet" onClick={reviewAgain}>
+												<RestartIcon size={18} />
+												Rever as que já respondi
+											</button>
+										)}
+									</>
+								) : (
+									<button type="button" className="button" onClick={() => switchMode('new')}>
+										Ver perguntas novas
+									</button>
+								)}
+							</div>
+						</section>
+					)}
+
+					{status === 'ready' && pending.length > 0 && (
+						<section className="scene scene--end" aria-label="Carregando mais perguntas">
+							<Skeleton />
+						</section>
+					)}
+				</main>
+			</div>
 		</div>
 	);
 }

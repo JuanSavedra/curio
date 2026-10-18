@@ -375,6 +375,80 @@
 	gap: var(--space-lg);
 }
 
+/* Each subtopic opens with its own progress and a shortcut to play only it */
+.group {
+	--track: var(--down);
+	scroll-margin-top: var(--space-md);
+}
+
+.group__head {
+	display: grid;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-xs);
+}
+
+.group__text,
+.group__state {
+	display: grid;
+	gap: var(--space-2xs);
+}
+
+.group__title {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.2;
+}
+
+.group .done-badge {
+	background: var(--correct-bg);
+}
+
+.subtopic-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2xs);
+	margin: 0 0 var(--space-md);
+	padding: 0;
+	list-style: none;
+}
+
+/* Pill link to a subtopic (the feed's .chip lives in feed.css, which this page doesn't load) */
+.subtopic-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2xs);
+	min-height: 2.75rem;
+	padding: 0 var(--space-sm) 0 var(--space-xs);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	background: var(--color-surface);
+	color: inherit;
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	text-decoration: none;
+	white-space: nowrap;
+}
+
+.subtopic-link__dot {
+	width: 1.125rem;
+	height: 1.125rem;
+	border-radius: 50%;
+	background: var(--topic);
+}
+
+@media (hover: hover) {
+	.subtopic-link:hover {
+		border-color: var(--topic-ink);
+	}
+}
+
+@media (min-width: 40rem) {
+	.group__head {
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: end;
+	}
+}
+
 .decks {
 	display: grid;
 	gap: var(--space-xs);

@@ -1,28 +1,32 @@
-/* ---------- Structure: fixed top bar + rail of snapping cards ---------- */
+/* ---------- Structure: sidebar + (top bar and rail of snapping cards) ---------- */
 
 .feed {
 	--current-bg: var(--topic-bg, var(--color-bg));
 	display: grid;
-	grid-template-rows: auto 1fr;
+	grid-template-columns: minmax(0, 1fr);
+	/* One row fixed to the screen: without it the row grows with the cards and the whole page scrolls */
+	grid-template-rows: minmax(0, 1fr);
 	height: 100dvh;
+	overflow: hidden;
 	background-color: var(--current-bg);
 	transition: background-color var(--dur-slow) var(--ease-out);
 }
 
-.topbar {
+.feed__main {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto;
-	grid-template-areas:
-		'brand actions'
-		'chips chips'
-		'filters filters';
+	grid-template-rows: auto minmax(0, 1fr);
+	min-width: 0;
+	min-height: 0;
+}
+
+.topbar {
+	display: flex;
 	align-items: center;
-	gap: var(--space-2xs) var(--space-sm);
+	gap: var(--space-2xs);
 	padding: var(--space-xs) var(--space-sm) var(--space-2xs);
 }
 
 .brand {
-	grid-area: brand;
 	min-height: 2.75rem;
 	display: flex;
 	align-items: center;
@@ -33,59 +37,26 @@
 	line-height: 1;
 }
 
-.topbar__actions {
-	grid-area: actions;
-	display: flex;
-	align-items: center;
-	gap: var(--space-2xs);
+/* Pushes the streak to the right edge */
+.topbar__spacer {
+	flex: 1;
 }
 
-/* Door to the topics screen: same shape as the chips, no topic color */
-.topics-link {
-	display: inline-flex;
-	align-items: center;
-	gap: var(--space-2xs);
-	min-height: 2.75rem;
-	padding: 0 var(--space-sm) 0 var(--space-xs);
+.menu-button {
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
 	border: 2px solid var(--color-border);
-	border-radius: var(--radius-pill);
+	border-radius: 50%;
 	background: var(--color-surface);
 	color: inherit;
-	font-size: var(--text-sm);
-	font-weight: var(--weight-medium);
-	text-decoration: none;
-	transition:
-		transform var(--dur-fast) var(--ease-out),
-		border-color var(--dur-fast) var(--ease-out);
+	cursor: pointer;
+	transition: transform var(--dur-fast) var(--ease-out);
 }
 
-.topics-link:active {
-	transform: scale(0.96);
-}
-
-/* Very narrow screens: icon only (the name stays for screen readers) */
-@media (max-width: 24rem) {
-	.topics-link {
-		justify-content: center;
-		width: 2.75rem;
-		padding: 0;
-	}
-
-	.topics-link span {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-	}
-}
-
-@media (hover: hover) {
-	.topics-link:hover {
-		border-color: var(--plumage-soft);
-	}
+.menu-button:active {
+	transform: scale(0.94);
 }
 
 .streak {
@@ -102,27 +73,7 @@
 	white-space: nowrap;
 }
 
-/* ---------- Topic chips ---------- */
-
-.chips {
-	grid-area: chips;
-	min-width: 0;
-	margin: 0 calc(var(--space-sm) * -1);
-}
-
-.chips ul {
-	display: flex;
-	gap: var(--space-2xs);
-	margin: 0;
-	padding: var(--space-3xs) var(--space-sm);
-	list-style: none;
-	overflow-x: auto;
-	scrollbar-width: none;
-}
-
-.chips ul::-webkit-scrollbar {
-	display: none;
-}
+/* ---------- Topic chips (end of the queue: where to go next) ---------- */
 
 .chip {
 	display: inline-flex;
@@ -143,10 +94,6 @@
 		border-color var(--dur-fast) var(--ease-out);
 }
 
-.chip--all {
-	padding-left: var(--space-sm);
-}
-
 .chip__dot {
 	display: grid;
 	place-items: center;
@@ -161,95 +108,9 @@
 	transform: scale(0.96);
 }
 
-.chip[aria-pressed='true'] {
-	border-color: var(--topic-ink);
-	background: var(--topic);
-	color: var(--plumage);
-	font-weight: var(--weight-strong);
-}
-
-.chip[aria-pressed='true'] .chip__dot {
-	background: var(--nest);
-}
-
-/* "Tudo" is not a topic, so it takes no topic color (it would inherit the current card's) */
-.chip--all[aria-pressed='true'] {
-	border-color: var(--plumage);
-	background: var(--plumage);
-	color: var(--nest);
-}
-
 @media (hover: hover) {
 	.chip:hover {
 		border-color: var(--topic-ink);
-	}
-
-	.chip--all:hover {
-		border-color: var(--plumage-soft);
-	}
-}
-
-/* ---------- Filters: what to show (new, missed, seen) and the subtopic ---------- */
-
-.filters {
-	grid-area: filters;
-	display: flex;
-	align-items: center;
-	gap: var(--space-sm);
-	min-width: 0;
-	margin: 0 calc(var(--space-sm) * -1);
-	padding: var(--space-3xs) var(--space-sm);
-	overflow-x: auto;
-	scrollbar-width: none;
-}
-
-.filters::-webkit-scrollbar {
-	display: none;
-}
-
-.filters__group {
-	display: flex;
-	flex: none;
-	align-items: center;
-	gap: var(--space-2xs);
-}
-
-/* Names each group, so the rows read as separate controls instead of loose chips */
-.filters__label {
-	padding-right: var(--space-3xs);
-	color: var(--color-text-soft);
-	font-size: var(--text-xs);
-	font-weight: var(--weight-strong);
-	letter-spacing: 0.02em;
-	text-transform: uppercase;
-	white-space: nowrap;
-}
-
-/* Dots of the mode and difficulty chips stay in their own color even when chosen (the color is what tells them apart) */
-.chip--tag .chip__dot,
-.chip--tag[aria-pressed='true'] .chip__dot {
-	background: var(--topic-ink);
-	color: var(--nest);
-}
-
-.chip--tag[aria-pressed='true'] {
-	color: var(--plumage);
-}
-
-.filters__group + .filters__group {
-	padding-left: var(--space-sm);
-	border-left: 2px solid var(--color-border);
-}
-
-.filters .chip {
-	min-height: 2.5rem;
-}
-
-@media (min-width: 48rem) {
-	.filters {
-		justify-content: safe center;
-		margin: 0;
-		padding: var(--space-3xs);
 	}
 }
 
@@ -260,6 +121,12 @@
 	overscroll-behavior: contain;
 	scroll-snap-type: y mandatory;
 	scroll-behavior: smooth;
+	/* Cards change by swipe, wheel, keys or the Próxima button: the bar would only add clutter */
+	scrollbar-width: none;
+}
+
+.rail::-webkit-scrollbar {
+	display: none;
 }
 
 .scene {
@@ -807,22 +674,29 @@
 /* ---------- Desktop and tablet ---------- */
 
 @media (min-width: 48rem) {
+	.feed {
+		grid-template-columns: auto minmax(0, 1fr);
+	}
+
 	.topbar {
-		grid-template-columns: auto 1fr auto;
-		grid-template-areas:
-			'brand chips actions'
-			'filters filters filters';
-		gap: var(--space-xs) var(--space-md);
-		padding: var(--space-sm) var(--space-lg);
+		justify-content: flex-end;
+		padding: var(--space-sm) var(--space-lg) 0;
 	}
 
-	.chips {
-		margin: 0;
+	/* The name moves to the sidebar; the h1 stays for screen readers */
+	.topbar .brand {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
 	}
 
-	.chips ul {
-		justify-content: center;
-		padding: var(--space-3xs);
+	.topbar__spacer,
+	.menu-button {
+		display: none;
 	}
 
 	.scene {
@@ -942,10 +816,6 @@
 	.complete__content {
 		transform: none;
 		transition: opacity var(--dur-slow) ease-out 150ms;
-	}
-
-	.topics-link:active {
-		transform: none;
 	}
 
 	.streak--milestone {

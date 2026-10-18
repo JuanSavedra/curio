@@ -48,7 +48,7 @@ Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/s
 Fases de criação da interface:
 
 1. ✅ **Fundação visual:** tokens em `src/styles/tokens.css` (paleta OKLCH com contraste AA verificado, fonte Parkinsans servida pelo próprio site, escala, espaço, movimento).
-2. ✅ **Feed de perguntas** (`src/components/feed/`): feed misto com filtro por tema, uma carta por tela com encaixe, palco do Curió, explicação, atalhos de teclado. Decks de exemplo em `content/`.
+2. ✅ **Feed de perguntas** (`src/components/feed/`): feed misto com barra lateral de filtros (tema, subtema, modo e dificuldade), uma carta por tela com encaixe, palco do Curió, explicação, atalhos de teclado. Decks de exemplo em `content/`.
 3. ✅ **O Curió** (`src/components/feed/Curio.tsx` e `curio.css`): quatro reações e animações de personagem.
 4. ✅ **Celebrações:** penas (`Feathers.tsx`) em acertos seguidos e marcos de dias. O som ficou para uma etapa própria.
 5. ✅ **Temas e progresso:** tela de temas (`src/components/topics/`, rotas `/temas` e `/temas/<slug>`), ícone de cada tema em `Icons.tsx` e tela de tema concluído (`TopicComplete.tsx`). O feed aceita `?tema=`, `?subtema=`, `?modo=erradas|vistas`, `?deck=` e `?rever=1` (nomes definidos em `FEED_QUERY`, em `src/lib/routes.ts`).
