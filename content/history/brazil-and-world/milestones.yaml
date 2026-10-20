@@ -11,8 +11,14 @@ questions:
       - Deodoro da Fonseca
     answer: Deodoro da Fonseca
     explanation: >-
-      Deodoro proclamou a República em 1889 e chefiou o governo provisório. Dom Pedro II
-      foi o último imperador do país.
+      Deodoro liderou a proclamação da República em 1889, chefiou o governo provisório e,
+      em 1891, foi eleito pelo Congresso o primeiro presidente. Dom Pedro II foi o último
+      imperador do país.
+    learnMore:
+      - title: Câmara dos Deputados, a 1ª República
+        url: https://www2.camara.leg.br/a-camara/conheca/historia/Ex_presidentesCD_Republica/republica1.html
+      - title: Arquivo Nacional, Manuel Deodoro da Fonseca
+        url: https://mapa.an.gov.br/index.php/component/content/article?id=738
 
   - id: independence-year
     level: easy
@@ -24,8 +30,11 @@ questions:
       - '1889'
     answer: '1822'
     explanation: >-
-      Dom Pedro I proclamou a Independência às margens do rio Ipiranga, em 7 de setembro
-      de 1822.
+      O príncipe regente Dom Pedro, que logo seria o imperador Dom Pedro I, proclamou a
+      Independência às margens do riacho Ipiranga, em 7 de setembro de 1822.
+    learnMore:
+      - title: Assembleia Legislativa de São Paulo, a Independência do Brasil
+        url: https://www.al.sp.gov.br/noticia/?id=427247
 
   - id: pyramids
     level: easy
@@ -39,6 +48,11 @@ questions:
     explanation: >-
       Os egípcios as ergueram há mais de 4.500 anos como túmulos de faraós. A Grande
       Pirâmide é a única das sete maravilhas antigas ainda de pé.
+    learnMore:
+      - title: Britannica, a Grande Pirâmide de Gizé
+        url: https://www.britannica.com/place/Great-Pyramid-of-Giza
+      - title: World History Encyclopedia, a Grande Pirâmide
+        url: https://www.worldhistory.org/Great_Pyramid_of_Giza/
 
   - id: cabral
     level: easy
@@ -50,8 +64,13 @@ questions:
       - Dom Pedro I
     answer: Pedro Álvares Cabral
     explanation: >-
-      A frota de Cabral avistou o Monte Pascoal, na Bahia, em abril de 1500. Ela estava
+      A frota de Cabral avistou o Monte Pascoal, na Bahia, em 22 de abril de 1500. Ela estava
       a caminho da Índia.
+    learnMore:
+      - title: Britannica, Pedro Álvares Cabral
+        url: https://www.britannica.com/biography/Pedro-Alvares-Cabral
+      - title: Ministério do Turismo, Porto Seguro, o marco zero do Brasil
+        url: https://www.gov.br/turismo/pt-br/assuntos/noticias/caminhos-do-bicentenario-porto-seguro-ba-o-marco-zero-do-brasil
 
   - id: moon-landing
     level: medium
@@ -64,7 +83,12 @@ questions:
     answer: '1969'
     explanation: >-
       Em 20 de julho de 1969, Neil Armstrong e Buzz Aldrin pisaram na Lua, na missão
-      Apollo 11, e milhões de pessoas viram pela TV.
+      Apollo 11, e centenas de milhões de pessoas viram pela TV.
+    learnMore:
+      - title: NASA, 20 de julho de 1969, um salto gigante
+        url: https://www.nasa.gov/history/july-20-1969-one-giant-leap-for-mankind/
+      - title: Museu do Ar e do Espaço (Smithsonian), como vimos os primeiros passos
+        url: https://airandspace.si.edu/stories/editorial/how-we-saw-armstrongs-first-steps
 
   - id: olympic-origin
     level: medium
@@ -78,6 +102,11 @@ questions:
     explanation: >-
       Começaram em Olímpia, por volta de 776 a.C., em homenagem a Zeus. A tradição só
       voltou em 1896, em Atenas.
+    learnMore:
+      - title: Britannica, quando começaram os Jogos Olímpicos
+        url: https://www.britannica.com/question/When-did-the-Olympic-Games-start
+      - title: Comitê Olímpico Internacional, Atenas 1896
+        url: https://www.olympics.com/ioc/news/athens-1896-the-revival-of-the-olympic-games
 
   - id: pompeii
     level: medium
@@ -91,6 +120,11 @@ questions:
     explanation: >-
       As cinzas cobriram Pompeia e conservaram casas, objetos e até pães, o que nos
       deixa ver como era a vida dos romanos.
+    learnMore:
+      - title: Britannica, Pompeia
+        url: https://www.britannica.com/place/Pompeii
+      - title: National Geographic, o pão de 2.000 anos de Pompeia
+        url: https://www.nationalgeographic.com/magazine/article/re-creating-2000-year-old-bread-found-in-pompeii-post-vesuvius
 
   - id: golden-law
     level: medium
@@ -102,5 +136,10 @@ questions:
       - '1889'
     answer: '1888'
     explanation: >-
-      A princesa Isabel assinou a lei em 13 de maio de 1888. O Brasil foi o último país
-      das Américas a abolir a escravidão.
+      A princesa Isabel, regente no lugar do pai, assinou a lei em 13 de maio de 1888. O
+      Brasil foi o último país das Américas a abolir a escravidão.
+    learnMore:
+      - title: Senado, a Lei Áurea foi aprovada em 5 dias
+        url: https://www12.senado.leg.br/noticias/especiais/arquivo-s/senado-e-camara-aprovaram-lei-aurea-em-5-dias/senado-e-camara-aprovaram-lei-aurea-em-5-dias
+      - title: Arquivo Nacional, a Lei Áurea
+        url: https://www.gov.br/arquivonacional/pt-br/canais_atendimento/imprensa/copy_of_noticias/voce-sabia-que-a-lei-aurea-faz-parte-do-acervo-do-arquivo-nacional

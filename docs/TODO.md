@@ -7,7 +7,7 @@ Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda 
 - [ ] Canto curto do Curió no acerto e nas celebrações, desligado por padrão, com controle visível e preferência salva.
 
 ### Conteúdo
-- [ ] Revisão de fatos de todos os decks, um tema por vez, com fontes confiáveis em `learnMore` (até 3 links https por pergunta). Feitos: astronomia, ciências, geografia. Faltam: história, linguagem, matemática, lógica.
+- [ ] Revisão de fatos de todos os decks, um tema por vez, com fontes confiáveis em `learnMore` (até 3 links https por pergunta). Feitos: astronomia, ciências, geografia, história. Faltam: linguagem, matemática, lógica.
   - Astronomia tem a pergunta da luz do Sol repetida (`sunlight` e `sunlight-time`): decidir qual trocar por uma pergunta nova.
 
 ### Fase 7: registro e publicação
