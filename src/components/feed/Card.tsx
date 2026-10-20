@@ -4,7 +4,7 @@ import { TOPICS, topicStyle, type Topic } from '../../data/topics';
 import type { PublishedQuestion } from '../../lib/types';
 import { LETTERS, correctText, daysText, runText, timeUpText, wrongText, type Celebration } from './copy';
 import { Curio } from './Curio';
-import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon, TimerIcon } from './Icons';
+import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon, SunIcon, TimerIcon } from './Icons';
 import { Feathers } from './Feathers';
 import { ShareButton } from './ShareButton';
 
@@ -21,6 +21,8 @@ interface Props {
 	greet: boolean;
 	/** Someone sent this question through a link: the Curió says so while it waits */
 	invited?: boolean;
+	/** This is the question of the day: a badge on the card, and the Curió says everyone gets it today */
+	daily?: boolean;
 	last: boolean;
 	onAnswer: (index: number, choice: number) => void;
 	onAdvance: (index: number) => void;
@@ -43,6 +45,7 @@ export function Card({
 	celebration,
 	greet,
 	invited = false,
+	daily = false,
 	last,
 	onAnswer,
 	onAdvance,
@@ -60,9 +63,11 @@ export function Card({
 	// What the Curió says while the card waits for an answer
 	const speech = invited
 		? `${greet ? 'Oi! Eu sou o Curió. ' : ''}Uma pessoa separou esta pergunta para você. Será que você sabe?`
-		: greet
-			? 'Oi! Eu sou o Curió. Responda o que souber. O que não souber, a gente descobre junto.'
-			: null;
+		: daily
+			? `${greet ? 'Oi! Eu sou o Curió. ' : ''}Esta é a pergunta do dia: todo mundo recebe a mesma hoje. Será que você sabe?`
+			: greet
+				? 'Oi! Eu sou o Curió. Responda o que souber. O que não souber, a gente descobre junto.'
+				: null;
 
 	// After answering: shows the explanation and moves focus to "Próxima".
 	useEffect(() => {
@@ -84,9 +89,23 @@ export function Card({
 			<article className="card">
 				<header className="card__head">
 					<p className="card__topic">
+						{/* The badge takes the deck name's place, so the head keeps the same height on every card */}
+						{daily && (
+							<>
+								<span className="card__daily">
+									<SunIcon size={14} />
+									Pergunta do dia
+								</span>
+								<span className="sr-only">. </span>
+							</>
+						)}
 						<span className="card__topic-name">{TOPICS[question.topic].name}</span>
-						<span aria-hidden="true"> · </span>
-						<span className="card__deck">{question.deckTitle}</span>
+						{!daily && (
+							<>
+								<span aria-hidden="true"> · </span>
+								<span className="card__deck">{question.deckTitle}</span>
+							</>
+						)}
 						<span aria-hidden="true"> · </span>
 						<span className="card__level">
 							<span className="card__level-dot" data-level={question.level} aria-hidden="true" />

@@ -7,6 +7,7 @@ const KEY_VISITED = 'curio:visited';
 const KEY_MISSED = 'curio:missed';
 const KEY_SIDEBAR = 'curio:sidebar-collapsed';
 const KEY_LAST_TOPIC = 'curio:last-topic';
+const KEY_DAILY = 'curio:daily';
 
 function read<T>(key: string, fallback: T): T {
 	try {
@@ -79,6 +80,13 @@ export const writeSidebarCollapsed = (collapsed: boolean) => write(KEY_SIDEBAR, 
 export const readLastTopic = () => read<string | null>(KEY_LAST_TOPIC, null);
 export const writeLastTopic = (topic: string) => write(KEY_LAST_TOPIC, topic);
 
+/**
+ * The last day (local, `YYYY-MM-DD`) the question of the day was dealt with: answered, or passed over.
+ * Only that one date: it is not a history and not a streak, so missing days costs nothing.
+ */
+export const readDailyDay = () => read<string | null>(KEY_DAILY, null);
+export const writeDailyDay = (day: string) => write(KEY_DAILY, day);
+
 export const hasVisited = () => read(KEY_VISITED, false);
 export const markVisited = () => write(KEY_VISITED, true);
 
@@ -87,7 +95,7 @@ interface Streak {
 	lastDay: string;
 }
 
-const localDay = (date: Date) =>
+export const localDay = (date: Date) =>
 	`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 
 /** Consecutive days with at least one answer. Breaking the streak just starts over, no guilt. */

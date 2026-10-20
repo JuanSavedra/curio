@@ -204,3 +204,11 @@ export const ShareIcon = (p: { size?: number }) => (
 		<path d="m8.2 10.8 7.1-3.6M8.2 13.2l7.1 3.6" />
 	</Icon>
 );
+
+/** Sun: the question of the day */
+export const SunIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<circle cx="12" cy="12" r="4" />
+		<path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8" />
+	</Icon>
+);

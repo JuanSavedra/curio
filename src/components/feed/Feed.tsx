@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { LEVEL_IDS, LEVELS, levelFromSlug, type Level } from '../../data/levels';
 import { TOPICS, TOPIC_IDS, topicFromSlug, topicStyle, type Topic } from '../../data/topics';
 import { FEED_QUERY, MODE_SLUGS, deckJsonRoute, type FeedMode } from '../../lib/routes';
+import { pickDailyDeck, pickDailyQuestion } from '../../lib/daily';
 import { shuffle } from '../../lib/shuffle';
 import type { DeckSummary, PublishedDeck, PublishedQuestion } from '../../lib/types';
 import { Card, type QueuedQuestion } from './Card';
@@ -16,11 +17,14 @@ import {
 	hasVisited,
 	markMissed,
 	markSeen,
+	localDay,
 	markVisited,
+	readDailyDay,
 	readMissed,
 	readSeen,
 	readStreak,
 	recordDay,
+	writeDailyDay,
 	writeLastTopic,
 } from './progress';
 import { Sidebar, type SubtopicOption } from './Sidebar';
@@ -33,6 +37,9 @@ type Status = 'loading' | 'ready' | 'failed';
 
 // How many decks to fetch at once. Keeps the page light even with a lot of content.
 const BATCH = 3;
+
+/** A question that goes first: one someone shared through a link, or the question of the day. */
+type Pin = { kind: 'shared'; deck: DeckSummary; id: string } | { kind: 'daily'; deck: DeckSummary; day: string };
 
 /** What the feed is showing: a topic (or everything), maybe one subtopic or one deck, and which kind of questions. */
 interface Scope {
@@ -92,6 +99,8 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const [greet, setGreet] = useState(false);
 	// The first card came from a link someone shared
 	const [invited, setInvited] = useState(false);
+	// Id of the question of the day when it is the first card
+	const [dailyId, setDailyId] = useState<string | null>(null);
 	const notice = useNotice();
 	const [celebrations, setCelebrations] = useState<Record<string, Celebration>>({});
 	// Changes at every day milestone so the pill glows again
@@ -155,7 +164,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	);
 
 	const buildQueue = useCallback(
-		async (next: Scope, shared?: { deck: DeckSummary; id: string }) => {
+		async (next: Scope, pin?: Pin) => {
 			setStatus('loading');
 			setScope(next);
 			setAnswers({});
@@ -168,15 +177,16 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 				const ids = next.mode === 'seen' ? readSeen() : next.mode === 'missed' ? readMissed() : null;
 				const withQuestions = ids ? inScope.filter((d) => [...ids].some((id) => id.startsWith(`${d.id}/`))) : inScope;
 				const { fresh, remaining } = await nextBatch(shuffle(withQuestions), next.mode, next.level);
-				// A shared question goes first, even if it was already answered; a bad id is simply ignored
+				// A pinned question goes first, even if it was already answered; a bad shared id is simply ignored
 				let pinned: QueuedQuestion | undefined;
-				if (shared) {
-					const [deck] = await fetchDecks([shared.deck]);
-					const question = deck.questions.find((q) => q.id === shared.id);
+				if (pin) {
+					const [deck] = await fetchDecks([pin.deck]);
+					const question = pin.kind === 'shared' ? deck.questions.find((q) => q.id === pin.id) : pickDailyQuestion(deck.questions, pin.day);
 					if (question) pinned = { ...question, topic: deck.topic, deckTitle: deck.title };
 				}
 				setQueue(pinned ? [pinned, ...fresh.filter((q) => q.id !== pinned.id)] : fresh);
-				setInvited(Boolean(pinned));
+				setInvited(pin?.kind === 'shared' && Boolean(pinned));
+				setDailyId(pin?.kind === 'daily' && pinned ? pinned.id : null);
 				setPending(remaining);
 				setStatus('ready');
 				railRef.current?.scrollTo({ top: 0 });
@@ -216,9 +226,21 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			const query = params.toString();
 			history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
 		}
-		void buildQueue({ topic, subtopic, deck, mode, level }, sharedId && sharedDeck ? { deck: sharedDeck, id: sharedId } : undefined);
+		// The question of the day goes first, once a day, in the plain feed (someone who picked a topic or a mode gets what they picked)
+		const today = localDay(new Date());
+		const plainFeed = topic === 'all' && !subtopic && !deck && mode === 'new' && !level;
+		const dailyDeck = plainFeed && readDailyDay() !== today ? pickDailyDeck(decks, today) : undefined;
+		const pin: Pin | undefined =
+			sharedId && sharedDeck ? { kind: 'shared', deck: sharedDeck, id: sharedId } : dailyDeck ? { kind: 'daily', deck: dailyDeck, day: today } : undefined;
+		void buildQueue({ topic, subtopic, deck, mode, level }, pin);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// The question of the day is dealt with once it is answered or the person moves on to the next card.
+	// From then on the feed opens without it for the rest of the day (and nobody is nagged if they skip it).
+	useEffect(() => {
+		if (dailyId && (answers[dailyId] !== undefined || current > 0)) writeDailyDay(localDay(new Date()));
+	}, [dailyId, answers, current]);
 
 	// Near the end of the queue, quietly fetches the next batch.
 	useEffect(() => {
@@ -480,6 +502,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 								celebration={celebrations[question.id]}
 								greet={greet && i === 0}
 								invited={invited && i === 0}
+								daily={question.id === dailyId}
 								onNotice={notice.say}
 								last={i === queue.length - 1}
 								onAnswer={answer}
