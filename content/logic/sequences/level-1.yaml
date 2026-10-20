@@ -13,6 +13,11 @@ questions:
     explanation: >-
       Cada número é o dobro do anterior: 16 × 2 = 32. Essas são as potências de 2,
       a base de como os computadores guardam informação.
+    learnMore:
+      - title: Britannica, código binário
+        url: https://www.britannica.com/technology/binary-code
+      - title: Wolfram MathWorld, sistema binário
+        url: https://mathworld.wolfram.com/Binary.html
 
   - id: fibonacci
     level: medium
@@ -24,8 +29,12 @@ questions:
     answer: '13'
     explanation: >-
       Cada número é a soma dos dois anteriores: 5 + 8 = 13. É a sequência de Fibonacci,
-      que aparece nas espirais das sementes de girassol e das pinhas.
+      que aparece com frequência nas espirais das sementes de girassol e das pinhas.
     learnMore:
+      - title: Plus Maths (Universidade de Cambridge), girassóis e espirais
+        url: https://plus.maths.org/content/sunflowers
+      - title: Estudo de ciência cidadã que contou espirais de girassóis (PMC)
+        url: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4892450/
       - title: Sequência de Fibonacci na Wikipédia
         url: https://pt.wikipedia.org/wiki/Sequ%C3%AAncia_de_Fibonacci
 
@@ -41,6 +50,11 @@ questions:
     explanation: >-
       São os quadrados: $1^2, 2^2, 3^2, 4^2, 5^2$. O próximo é $6^2 = 36$. Dá para desenhar
       cada um como um quadradinho de pontos, e é daí que vem o nome.
+    learnMore:
+      - title: Britannica, números quadrados
+        url: https://www.britannica.com/science/square-number
+      - title: Wolfram MathWorld, números quadrados
+        url: https://mathworld.wolfram.com/SquareNumber.html
 
   - id: skipping-letters
     level: easy
@@ -89,6 +103,11 @@ questions:
     explanation: >-
       Olhe para a distância entre os números: +3, +5, +7, +9. São os ímpares em ordem,
       então o próximo salto é +11, e 27 + 11 = 38.
+    learnMore:
+      - title: Wolfram MathWorld, diferença finita
+        url: https://mathworld.wolfram.com/FiniteDifference.html
+      - title: Britannica, gnômon (os ímpares formam os quadrados)
+        url: https://www.britannica.com/science/gnomon-geometry
 
   - id: look-and-say
     level: hard
@@ -102,3 +121,8 @@ questions:
       Cada termo descreve o anterior em voz alta. "1" tem um 1, então vira 11. "11" tem dois 1,
       vira 21. Lendo 111221: três 1, dois 2, um 1, ou seja, 312211. É a sequência
       "olhe e diga", estudada pelo matemático John Conway.
+    learnMore:
+      - title: OEIS, a sequência olhe e diga
+        url: https://oeis.org/A005150
+      - title: Wolfram MathWorld, a constante de Conway
+        url: https://mathworld.wolfram.com/ConwaysConstant.html
