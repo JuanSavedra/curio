@@ -6,9 +6,17 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /**
  * Query parameter names the feed understands: `/?tema=astronomia`, `/?subtema=<folder>`, `/?modo=erradas`,
- * `/?nivel=filhote`, `/?deck=<id>`, `/?rever=1`.
+ * `/?nivel=filhote`, `/?deck=<id>`, `/?rever=1`, and `/?pergunta=<id>` (a shared question, shown first).
  */
-export const FEED_QUERY = { topic: 'tema', subtopic: 'subtema', mode: 'modo', level: 'nivel', deck: 'deck', review: 'rever' } as const;
+export const FEED_QUERY = {
+	topic: 'tema',
+	subtopic: 'subtema',
+	mode: 'modo',
+	level: 'nivel',
+	deck: 'deck',
+	review: 'rever',
+	question: 'pergunta',
+} as const;
 
 /** What the feed shows: new questions (default), the ones answered wrong, or the ones already discovered. */
 export type FeedMode = 'new' | 'missed' | 'seen';
@@ -36,6 +44,12 @@ export function feedRoute({ topic, subtopic, deck, review }: FeedFilter = {}) {
 
 export const albumRoute = () => `${base}/album/`;
 export const sealsRoute = () => `${base}/selos/`;
+/**
+ * Address that opens the feed on one question. The id (`<topic>/<subtopic>/<deck>/<question>`) only has
+ * lowercase letters, numbers, hyphens and slashes, so it goes as it is. Renaming a question id breaks the links already sent.
+ */
+export const sharedQuestionRoute = (id: string) => `${base}/?${FEED_QUERY.question}=${id}`;
+
 export const challengeRoute = () => `${base}/desafio/`;
 export const topicsRoute = () => `${base}/temas/`;
 export const topicRoute = (topic: Topic) => `${base}/temas/${TOPICS[topic].slug}/`;

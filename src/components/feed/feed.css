@@ -531,6 +531,87 @@
 	}
 }
 
+/* ---------- Share button (top right of the card's head) and notices ---------- */
+
+/* Room for the button, so the topic line never runs under it */
+.card__topic {
+	padding-right: 3.25rem;
+}
+
+.card__share {
+	position: absolute;
+	top: var(--space-xs);
+	right: var(--space-xs);
+	display: grid;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border: 0;
+	border-radius: 50%;
+	background: var(--nest);
+	color: var(--plumage);
+	cursor: pointer;
+	transition:
+		transform var(--dur-fast) var(--ease-out),
+		box-shadow var(--dur-medium) var(--ease-out);
+}
+
+@media (hover: hover) {
+	.card__share:hover {
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-lift);
+	}
+}
+
+.card__share:active {
+	transform: scale(0.94);
+	box-shadow: none;
+}
+
+/* The default focus color can vanish on a topic's color: the card uses its dark ink instead */
+.card__share:focus-visible {
+	outline: 3px solid var(--plumage);
+	outline-offset: 2px;
+}
+
+/* Above the card's footer, so "Próxima" stays reachable while it shows */
+.toast-region {
+	position: fixed;
+	inset: auto 0 calc(6.5rem + env(safe-area-inset-bottom, 0px));
+	z-index: 30;
+	display: grid;
+	justify-items: center;
+	padding-inline: var(--space-sm);
+	pointer-events: none;
+}
+
+.toast {
+	margin: 0;
+	padding: var(--space-xs) var(--space-md);
+	border-radius: var(--radius-pill);
+	background: var(--plumage);
+	color: var(--nest);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-strong);
+	text-align: center;
+	box-shadow: var(--shadow-lift);
+	/* Fades in, stays, fades out: the same 2.5s the component waits before removing it */
+	animation: toast 2.5s ease-out both;
+}
+
+@keyframes toast {
+	0% {
+		opacity: 0;
+	}
+	8%,
+	85% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
 /* ---------- Streak pill: glows once at a milestone ---------- */
 
 .streak--milestone {
@@ -779,6 +860,11 @@
 		padding: var(--space-lg);
 	}
 
+	.card__share {
+		top: var(--space-sm);
+		right: var(--space-sm);
+	}
+
 	.card__prompt {
 		font-size: var(--text-2xl);
 	}
@@ -845,13 +931,16 @@
 	}
 
 	.choice,
-	.chip {
+	.chip,
+	.card__share {
 		transition-property: background-color, border-color, color, box-shadow;
 	}
 
 	.choice[data-state='open']:hover,
 	.choice[data-state='open']:active,
-	.chip:active {
+	.chip:active,
+	.card__share:hover,
+	.card__share:active {
 		transform: none;
 	}
 

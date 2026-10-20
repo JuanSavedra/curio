@@ -52,13 +52,15 @@ Fases de criação da interface:
 2. ✅ **Feed de perguntas** (`src/components/feed/`): feed misto com barra lateral de filtros (tema, subtema, modo e dificuldade), uma carta por tela com encaixe, palco do Curió, explicação, atalhos de teclado. Decks de exemplo em `content/`.
 3. ✅ **O Curió** (`src/components/feed/Curio.tsx` e `curio.css`): quatro reações e animações de personagem.
 4. ✅ **Celebrações:** penas (`Feathers.tsx`) em acertos seguidos e marcos de dias. O som ficou para uma etapa própria.
-5. ✅ **Temas e progresso:** tela de temas (`src/components/topics/`, rotas `/temas` e `/temas/<slug>`) e álbum de descobertas (`src/components/album/`, rota `/album`), ícone de cada tema em `Icons.tsx` e tela de tema concluído (`TopicComplete.tsx`). O feed aceita `?tema=`, `?subtema=`, `?modo=erradas|vistas`, `?deck=` e `?rever=1` (nomes definidos em `FEED_QUERY`, em `src/lib/routes.ts`).
+5. ✅ **Temas e progresso:** tela de temas (`src/components/topics/`, rotas `/temas` e `/temas/<slug>`) e álbum de descobertas (`src/components/album/`, rota `/album`), ícone de cada tema em `Icons.tsx` e tela de tema concluído (`TopicComplete.tsx`). O feed aceita `?tema=`, `?subtema=`, `?modo=erradas|vistas`, `?deck=`, `?rever=1` e `?pergunta=<id>` (uma pergunta compartilhada, mostrada primeiro; nomes definidos em `FEED_QUERY`, em `src/lib/routes.ts`).
 6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
 7. **Registro:** `impeccable document` para tirar o `docs/DESIGN.md` do modo seed.
 
 Extras já feitos fora das fases: **Desafio com tempo** (`src/components/challenge/`, rota `/desafio/`, opcional e sem punição, ver `docs/TODO.md`) e **funcionar offline** (ver "Offline (PWA)" acima).
 
 A lista detalhada do que falta está em **`docs/TODO.md`**. Atualize-a ao fim de cada etapa.
+
+**Não renomeie o `id` de uma pergunta, nem mude o nome ou a pasta de um deck:** os links já compartilhados (`/?pergunta=<tema>/<subtema>/<deck>/<id>`) e o progresso guardado nos aparelhos dependem desses ids.
 
 Conteúdo: use `$...$` (KaTeX) só para fórmulas de verdade (frações, raízes, potências, π). Números e sequências vão como texto comum.
 

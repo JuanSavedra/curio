@@ -6,6 +6,7 @@ import { LETTERS, correctText, daysText, runText, timeUpText, wrongText, type Ce
 import { Curio } from './Curio';
 import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon, TimerIcon } from './Icons';
 import { Feathers } from './Feathers';
+import { ShareButton } from './ShareButton';
 
 export interface QueuedQuestion extends PublishedQuestion {
 	topic: Topic;
@@ -18,9 +19,13 @@ interface Props {
 	choice: number | undefined;
 	celebration: Celebration | undefined;
 	greet: boolean;
+	/** Someone sent this question through a link: the Curió says so while it waits */
+	invited?: boolean;
 	last: boolean;
 	onAnswer: (index: number, choice: number) => void;
 	onAdvance: (index: number) => void;
+	/** Says something at the foot of the screen (the share button uses it) */
+	onNotice: (text: string) => void;
 	/** Challenge only: the time ran out, so the answer and the explanation show without counting as a mistake */
 	timedOut?: boolean;
 	/** Challenge only: the choices can't be picked right now (paused) */
@@ -37,9 +42,11 @@ export function Card({
 	choice,
 	celebration,
 	greet,
+	invited = false,
 	last,
 	onAnswer,
 	onAdvance,
+	onNotice,
 	timedOut = false,
 	locked = false,
 	canSkip = true,
@@ -50,6 +57,12 @@ export function Card({
 	const nextRef = useRef<HTMLButtonElement>(null);
 	const resultRef = useRef<HTMLDivElement>(null);
 	const promptId = `prompt-${index}`;
+	// What the Curió says while the card waits for an answer
+	const speech = invited
+		? `${greet ? 'Oi! Eu sou o Curió. ' : ''}Uma pessoa separou esta pergunta para você. Será que você sabe?`
+		: greet
+			? 'Oi! Eu sou o Curió. Responda o que souber. O que não souber, a gente descobre junto.'
+			: null;
 
 	// After answering: shows the explanation and moves focus to "Próxima".
 	useEffect(() => {
@@ -87,6 +100,7 @@ export function Card({
 						tabIndex={-1}
 						dangerouslySetInnerHTML={{ __html: question.prompt }}
 					/>
+					<ShareButton question={question} onNotice={onNotice} />
 				</header>
 
 				<div className="card__body">
@@ -161,10 +175,8 @@ export function Card({
 							</div>
 						) : (
 							<div className="waiting">
-								<Curio size={greet ? 52 : 44} />
-								{greet && (
-									<p className="speech">Oi! Eu sou o Curió. Responda o que souber. O que não souber, a gente descobre junto.</p>
-								)}
+								<Curio size={speech ? 52 : 44} />
+								{speech && <p className="speech">{speech}</p>}
 							</div>
 						)}
 					</div>

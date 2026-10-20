@@ -194,3 +194,13 @@ export const PlusIcon = (p: { size?: number }) => (
 		<path d="M12 5.5v13M5.5 12h13" />
 	</Icon>
 );
+
+/** Share: three dots joined by two lines */
+export const ShareIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<circle cx="6" cy="12" r="2.5" />
+		<circle cx="17.5" cy="6" r="2.5" />
+		<circle cx="17.5" cy="18" r="2.5" />
+		<path d="m8.2 10.8 7.1-3.6M8.2 13.2l7.1 3.6" />
+	</Icon>
+);

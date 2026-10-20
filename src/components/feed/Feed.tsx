@@ -8,6 +8,7 @@ import { Card, type QueuedQuestion } from './Card';
 import { DAY_MILESTONES, isRunMilestone, type Celebration } from './copy';
 import { Curio } from './Curio';
 import { MenuIcon, NoteIcon, RestartIcon } from './Icons';
+import { Notice, useNotice } from './Notice';
 import {
 	clearMissed,
 	decksProgress,
@@ -89,6 +90,9 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	const [current, setCurrent] = useState(0);
 	const [streak, setStreak] = useState(0);
 	const [greet, setGreet] = useState(false);
+	// The first card came from a link someone shared
+	const [invited, setInvited] = useState(false);
+	const notice = useNotice();
 	const [celebrations, setCelebrations] = useState<Record<string, Celebration>>({});
 	// Changes at every day milestone so the pill glows again
 	const [streakGlow, setStreakGlow] = useState(0);
@@ -151,7 +155,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 	);
 
 	const buildQueue = useCallback(
-		async (next: Scope) => {
+		async (next: Scope, shared?: { deck: DeckSummary; id: string }) => {
 			setStatus('loading');
 			setScope(next);
 			setAnswers({});
@@ -164,7 +168,15 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 				const ids = next.mode === 'seen' ? readSeen() : next.mode === 'missed' ? readMissed() : null;
 				const withQuestions = ids ? inScope.filter((d) => [...ids].some((id) => id.startsWith(`${d.id}/`))) : inScope;
 				const { fresh, remaining } = await nextBatch(shuffle(withQuestions), next.mode, next.level);
-				setQueue(fresh);
+				// A shared question goes first, even if it was already answered; a bad id is simply ignored
+				let pinned: QueuedQuestion | undefined;
+				if (shared) {
+					const [deck] = await fetchDecks([shared.deck]);
+					const question = deck.questions.find((q) => q.id === shared.id);
+					if (question) pinned = { ...question, topic: deck.topic, deckTitle: deck.title };
+				}
+				setQueue(pinned ? [pinned, ...fresh.filter((q) => q.id !== pinned.id)] : fresh);
+				setInvited(Boolean(pinned));
 				setPending(remaining);
 				setStatus('ready');
 				railRef.current?.scrollTo({ top: 0 });
@@ -172,10 +184,10 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 				setStatus('failed');
 			}
 		},
-		[decks, nextBatch],
+		[decks, nextBatch, fetchDecks],
 	);
 
-	// First load: reads local progress and the URL filter (?tema=astronomia, ?subtema=<folder>, ?modo=erradas, ?nivel=filhote, ?deck=<id>, ?rever=1).
+	// First load: reads local progress and the URL filter (?tema=astronomia, ?subtema=<folder>, ?modo=erradas, ?nivel=filhote, ?deck=<id>, ?rever=1, ?pergunta=<id>).
 	useEffect(() => {
 		setStreak(readStreak());
 		setGreet(!hasVisited());
@@ -196,7 +208,15 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			const query = params.toString();
 			history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
 		}
-		void buildQueue({ topic, subtopic, deck, mode, level });
+		// A shared question (?pergunta=<id>) opens first; the address is cleaned so a reload gives the normal feed.
+		const sharedId = params.get(FEED_QUERY.question);
+		const sharedDeck = sharedId ? decks.find((d) => sharedId.startsWith(`${d.id}/`)) : undefined;
+		if (sharedId) {
+			params.delete(FEED_QUERY.question);
+			const query = params.toString();
+			history.replaceState(null, '', `${location.pathname}${query ? `?${query}` : ''}`);
+		}
+		void buildQueue({ topic, subtopic, deck, mode, level }, sharedId && sharedDeck ? { deck: sharedDeck, id: sharedId } : undefined);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -206,7 +226,8 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 		loadingMore.current = true;
 		nextBatch(pending, mode, level)
 			.then(({ fresh, remaining }) => {
-				setQueue((q) => [...q, ...fresh]);
+				// The shared question may come around again inside a batch
+				setQueue((q) => [...q, ...fresh.filter((f) => !q.some((known) => known.id === f.id))]);
 				setPending(remaining);
 			})
 			.catch(() => {
@@ -267,6 +288,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			writeLastTopic(question.topic);
 			markVisited();
 			setGreet(false);
+			setInvited(false);
 
 			const { days, newDay } = recordDay();
 			setStreak(days);
@@ -457,6 +479,8 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 								choice={answers[question.id]}
 								celebration={celebrations[question.id]}
 								greet={greet && i === 0}
+								invited={invited && i === 0}
+								onNotice={notice.say}
 								last={i === queue.length - 1}
 								onAnswer={answer}
 								onAdvance={(index) => goTo(index + 1)}
@@ -513,6 +537,7 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 					)}
 				</main>
 			</div>
+			<Notice text={notice.text} />
 		</div>
 	);
 }

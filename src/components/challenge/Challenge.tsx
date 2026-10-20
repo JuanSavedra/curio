@@ -6,6 +6,7 @@ import type { DeckSummary, PublishedDeck } from '../../lib/types';
 import { Card, type QueuedQuestion } from '../feed/Card';
 import { Curio } from '../feed/Curio';
 import { ArrowLeftIcon, RestartIcon } from '../feed/Icons';
+import { Notice, useNotice } from '../feed/Notice';
 import { clearMissed, markMissed, markSeen, markVisited, readSeen, recordDay, writeLastTopic } from '../feed/progress';
 import { Skeleton } from '../feed/Skeleton';
 import '../feed/feed.css';
@@ -37,6 +38,7 @@ export default function Challenge({ decks }: { decks: DeckSummary[] }) {
 	// True after the first round: the setup screen then moves the focus to its title
 	const [cameBack, setCameBack] = useState(false);
 
+	const notice = useNotice();
 	const cache = useRef(new Map<string, PublishedDeck>());
 	const stageRef = useRef<HTMLElement>(null);
 
@@ -252,8 +254,10 @@ export default function Challenge({ decks }: { decks: DeckSummary[] }) {
 					lastLabel="Ver o resultado"
 					onAnswer={answer}
 					onAdvance={advance}
+					onNotice={notice.say}
 				/>
 			</main>
+			<Notice text={notice.text} />
 		</div>
 	);
 }
