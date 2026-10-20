@@ -13,6 +13,9 @@ questions:
     explanation: >-
       O mercúrio derrete a cerca de -39 °C, então fica líquido no dia a dia. Por isso
       era usado em termômetros antigos, embora seja tóxico.
+    learnMore:
+      - title: Britannica, mercúrio
+        url: https://www.britannica.com/science/mercury-chemical-element
 
   - id: octopus-hearts
     level: medium
@@ -26,6 +29,11 @@ questions:
     explanation: >-
       Dois corações levam o sangue às brânquias e um o leva ao resto do corpo. E o
       sangue do polvo é azul, por causa do cobre.
+    learnMore:
+      - title: Britannica, cefalópodes
+        url: https://www.britannica.com/animal/cephalopod/Form-and-function
+      - title: National Geographic, por que o sangue dos animais tem tantas cores
+        url: https://www.nationalgeographic.com/animals/article/animal-blood-comes-in-a-rainbow-of-colors
 
   - id: photosynthesis-gas
     level: easy
@@ -39,6 +47,9 @@ questions:
     explanation: >-
       Com a luz do Sol, elas usam gás carbônico e água para fabricar açúcar, e liberam
       oxigênio no processo.
+    learnMore:
+      - title: National Geographic, fotossíntese
+        url: https://education.nationalgeographic.org/resource/photosynthesis/
 
   - id: biggest-organ
     level: easy
@@ -50,8 +61,13 @@ questions:
       - O intestino
     answer: A pele
     explanation: >-
-      A pele de um adulto cobre quase 2 m². Ela protege o corpo, ajuda a controlar a
+      A pele de um adulto cobre de 1,5 a 2 m². Ela protege o corpo, ajuda a controlar a
       temperatura e nos dá o tato.
+    learnMore:
+      - title: Cleveland Clinic, pele
+        url: https://my.clevelandclinic.org/health/body/10978-skin
+      - title: Revisão científica sobre a pele (PMC)
+        url: https://pmc.ncbi.nlm.nih.gov/articles/PMC4403087/
 
   - id: blue-sky
     level: medium
@@ -65,6 +81,9 @@ questions:
     explanation: >-
       A atmosfera espalha a luz azul do Sol bem mais que as outras cores. Por isso ela
       chega aos nossos olhos vinda de todo o céu.
+    learnMore:
+      - title: NASA Space Place, por que o céu é azul
+        url: https://spaceplace.nasa.gov/blue-sky/en/
 
   - id: fastest-animal
     level: easy
@@ -78,6 +97,11 @@ questions:
     explanation: >-
       Mergulhando, o falcão-peregrino passa de 300 km/h. O guepardo é o mais rápido em
       terra, com cerca de 100 km/h.
+    learnMore:
+      - title: Britannica, falcão-peregrino
+        url: https://www.britannica.com/animal/peregrine-falcon
+      - title: Britannica, os animais mais rápidos da Terra
+        url: https://www.britannica.com/list/the-fastest-animals-on-earth
 
   - id: adult-bones
     level: medium
@@ -89,8 +113,13 @@ questions:
       - '406'
     answer: '206'
     explanation: >-
-      Os bebês nascem com cerca de 300 ossos. Vários se juntam durante o crescimento,
+      Os bebês nascem com entre 270 e 300 ossos. Vários se juntam durante o crescimento,
       até sobrarem 206.
+    learnMore:
+      - title: Cleveland Clinic, ossos do corpo humano
+        url: https://my.clevelandclinic.org/health/body/25176-bones
+      - title: Cleveland Clinic, quantos ossos tem um bebê
+        url: https://health.clevelandclinic.org/how-many-bones-does-a-baby-have
 
   - id: air-gas
     level: medium
@@ -103,3 +132,6 @@ questions:
     explanation: >-
       O ar tem cerca de 78% de nitrogênio e só 21% de oxigênio, que é o gás que o corpo
       aproveita para viver.
+    learnMore:
+      - title: NOAA, a atmosfera
+        url: https://www.noaa.gov/jetstream/atmosphere
