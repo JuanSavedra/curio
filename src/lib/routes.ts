@@ -50,6 +50,7 @@ export const sealsRoute = () => `${base}/selos/`;
  */
 export const sharedQuestionRoute = (id: string) => `${base}/?${FEED_QUERY.question}=${id}`;
 
+export const progressRoute = () => `${base}/progresso/`;
 export const challengeRoute = () => `${base}/desafio/`;
 export const topicsRoute = () => `${base}/temas/`;
 export const topicRoute = (topic: Topic) => `${base}/temas/${TOPICS[topic].slug}/`;

@@ -1,0 +1,31 @@
+---
+// This folder is named after the public pt-BR address (/progresso): the folder name IS the URL.
+import Progress from '../../components/progress/Progress';
+import Base from '../../layouts/Base.astro';
+import { listDecks } from '../../lib/decks';
+
+const decks = await listDecks();
+---
+
+<Base
+	title="Meu progresso | Curiô"
+	description="Guarde seu progresso em um arquivo e traga para outro aparelho, sem cadastro. Fica tudo só com você."
+	mainId="content"
+	skipText="Ir para o progresso"
+>
+	<Progress client:load decks={decks} />
+	<noscript>
+		<p class="no-js">O Curiô precisa de JavaScript ligado para guardar e trazer o progresso.</p>
+	</noscript>
+</Base>
+
+<style>
+	.no-js {
+		position: fixed;
+		inset: auto var(--space-sm) var(--space-sm);
+		padding: var(--space-sm);
+		border-radius: var(--radius-md);
+		background: var(--color-panel);
+		text-align: center;
+	}
+</style>

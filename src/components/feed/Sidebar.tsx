@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { LEVEL_IDS, LEVELS, levelStyle, type Level } from '../../data/levels';
 import { TOPICS, topicStyle, type Topic } from '../../data/topics';
-import { albumRoute, challengeRoute, sealsRoute, topicsRoute, type FeedMode } from '../../lib/routes';
+import { albumRoute, challengeRoute, progressRoute, sealsRoute, topicsRoute, type FeedMode } from '../../lib/routes';
 import { Curio } from './Curio';
-import { AlbumIcon, CheckIcon, CrossIcon, SealIcon, SidebarIcon, TimerIcon, TopicIcon, TopicsIcon } from './Icons';
+import { AlbumIcon, CheckIcon, CrossIcon, SealIcon, SidebarIcon, TimerIcon, TopicIcon, TopicsIcon, TransferIcon } from './Icons';
 import { readSidebarCollapsed, writeSidebarCollapsed } from './progress';
 import './sidebar.css';
 
@@ -270,6 +270,12 @@ export function Sidebar({
 							<SealIcon size={20} />
 						</span>
 						<span className="side-item__label">Meus selos</span>
+					</a>
+					<a className="side-item" href={progressRoute()} title={collapsed ? 'Meu progresso' : undefined}>
+						<span className="side-item__mark" aria-hidden="true">
+							<TransferIcon size={20} />
+						</span>
+						<span className="side-item__label">Meu progresso</span>
 					</a>
 					<a className="side-item" href={topicsRoute()} title={collapsed ? 'Ver todos os temas' : undefined}>
 						<span className="side-item__mark" aria-hidden="true">

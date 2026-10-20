@@ -90,7 +90,7 @@ export const writeDailyDay = (day: string) => write(KEY_DAILY, day);
 export const hasVisited = () => read(KEY_VISITED, false);
 export const markVisited = () => write(KEY_VISITED, true);
 
-interface Streak {
+export interface Streak {
 	days: number;
 	lastDay: string;
 }
@@ -115,4 +115,41 @@ export function recordDay(): { days: number; newDay: boolean } {
 	const days = readStreak() + 1;
 	write(KEY_STREAK, { days, lastDay: today });
 	return { days, newDay: true };
+}
+
+/** The raw streak record, even when it has lapsed (`readStreak` hides a lapsed one). Used to export and to merge. */
+export const readStreakRecord = () => read<Streak | null>(KEY_STREAK, null);
+
+/** Everything that is the person's (not the device's) and travels in the progress file. */
+export interface ProgressData {
+	seen: string[];
+	missed: string[];
+	streak: Streak | null;
+	daily: string | null;
+	visited: boolean;
+}
+
+export const readProgress = (): ProgressData => ({
+	seen: [...readSeen()],
+	missed: [...readMissed()],
+	streak: readStreakRecord(),
+	daily: readDailyDay(),
+	visited: hasVisited(),
+});
+
+/**
+ * Writes a whole progress at once (importing a file). Unlike the other writers, it says whether it worked:
+ * the person has to know if the browser blocked the storage.
+ */
+export function writeProgress(progress: ProgressData): boolean {
+	try {
+		localStorage.setItem(KEY_SEEN, JSON.stringify(progress.seen));
+		localStorage.setItem(KEY_MISSED, JSON.stringify(progress.missed));
+		if (progress.streak) localStorage.setItem(KEY_STREAK, JSON.stringify(progress.streak));
+		if (progress.daily) localStorage.setItem(KEY_DAILY, JSON.stringify(progress.daily));
+		if (progress.visited) localStorage.setItem(KEY_VISITED, JSON.stringify(true));
+		return true;
+	} catch {
+		return false;
+	}
 }

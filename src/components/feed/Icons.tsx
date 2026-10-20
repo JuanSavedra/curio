@@ -212,3 +212,22 @@ export const SunIcon = (p: { size?: number }) => (
 		<path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M18.7 5.3l-1.8 1.8M7.1 16.9l-1.8 1.8" />
 	</Icon>
 );
+
+/** Two arrows going opposite ways: moving progress between devices */
+export const TransferIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4" />
+	</Icon>
+);
+
+export const DownloadIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M12 4v11M7 11l5 5 5-5M5 20h14" />
+	</Icon>
+);
+
+export const UploadIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M12 16V5M7 9l5-5 5 5M5 20h14" />
+	</Icon>
+);

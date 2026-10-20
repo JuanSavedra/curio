@@ -24,7 +24,7 @@ Todo trabalho de interface segue o skill **impeccable**, que está em `.agents/s
 - **Astro 7** (site estático) com **ilhas React 19**, usadas apenas onde há estado (o player do quiz).
 - **Conteúdo:** perguntas em arquivos YAML/MD no repositório, agrupadas em **decks** de cerca de 20 a 50 perguntas por arquivo, organizados em `content/<topic>/<subtopic>/<deck>.yaml` (pastas em inglês, como `content/astronomy/solar-system/basics.yaml`). Cada arquivo tem `title`, `subtopic` (opcional, o nome de exibição) e `questions`, e cada pergunta tem `id`, `level` (`easy`, `medium` ou `hard`; na interface Filhote, Curioso e Explorador), `prompt`, `choices`, `answer`, `explanation` e, se quiser, `learnMore` (até 3 links `title` + `url` https para fontes confiáveis). São validadas com Content Collections + Zod em `src/content.config.ts`. Toda pergunta tem uma **explicação obrigatória**.
 - **Fórmulas:** KaTeX renderizado no build.
-- **Progresso e sequência de dias:** `localStorage`. Não há backend. Se um dia houver, só plano gratuito (Supabase, Cloudflare D1).
+- **Progresso e sequência de dias:** `localStorage`. Não há backend. O que é da pessoa (e não do aparelho) viaja no arquivo de progresso da tela `/progresso/`: se criar uma chave nova de progresso, inclua-a em `ProgressData` (`src/components/feed/progress.ts`) e em `src/components/progress/file.ts`, e suba `FILE_VERSION` se o formato mudar. Se um dia houver, só plano gratuito (Supabase, Cloudflare D1).
 - **Offline (PWA):** o site inteiro é guardado no aparelho por um service worker gerado no build (`src/integrations/offline.ts` e `sw.template.js`, sem dependências), então arquivo novo em `public/` ou página nova já entram sozinhos. Não coloque arquivos grandes ou desnecessários em `dist/`, porque todos são baixados na primeira visita. Atualizações assumem só na visita seguinte.
 - **Hospedagem:** Cloudflare Pages (gratuito). **Limite de 20.000 arquivos por deploy:** nunca gere uma página ou um JSON por pergunta. Gere páginas por tema/deck e JSON agrupado por deck.
 
@@ -56,7 +56,7 @@ Fases de criação da interface:
 6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
 7. **Registro:** `impeccable document` para tirar o `docs/DESIGN.md` do modo seed.
 
-Extras já feitos fora das fases: **Desafio com tempo** (`src/components/challenge/`, rota `/desafio/`, opcional e sem punição, ver `docs/TODO.md`) e **funcionar offline** (ver "Offline (PWA)" acima).
+Extras já feitos fora das fases: **Desafio com tempo** (`src/components/challenge/`, rota `/desafio/`, opcional e sem punição, ver `docs/TODO.md`), **funcionar offline** (ver "Offline (PWA)" acima), **compartilhar uma pergunta**, **pergunta do dia** e **guardar e trazer o progresso** (`/progresso/`).
 
 A lista detalhada do que falta está em **`docs/TODO.md`**. Atualize-a ao fim de cada etapa.
 

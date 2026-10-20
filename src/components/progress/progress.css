@@ -1,0 +1,168 @@
+/* ---------- /progresso/: save the progress in a file, bring it back on another device ---------- */
+
+/* The outline button's hover uses the topic's colors; this page has none, so it borrows neutral ones */
+.progress-page {
+	--topic-ink: var(--plumage);
+	--topic-bg: var(--color-panel);
+}
+
+.progress {
+	display: grid;
+	gap: var(--space-lg);
+	width: min(100%, 36rem);
+	margin: var(--space-md) auto 0;
+}
+
+.progress__hero {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.progress__title {
+	font-size: var(--text-3xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.1;
+	letter-spacing: -0.015em;
+}
+
+.progress__intro {
+	margin-top: var(--space-3xs);
+	color: var(--color-text-soft);
+}
+
+.step {
+	display: grid;
+	gap: var(--space-xs);
+}
+
+.step__head {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.step__num {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: var(--rust-light);
+	color: var(--rust-strong);
+	font-weight: var(--weight-heading);
+}
+
+.step__title {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.2;
+}
+
+.step__text {
+	max-width: 65ch;
+	margin: 0;
+}
+
+.step__text--soft {
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+}
+
+/*
+ * The status line stays in the page even when empty (a live region has to exist before it speaks),
+ * but takes no room: the negative margin cancels the grid gap above it.
+ */
+.step__text--soft:empty {
+	height: 0;
+	margin-top: calc(-1 * var(--space-xs));
+}
+
+.step__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-xs);
+}
+
+.progress .button:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+/* ---------- Panels: what the file has, the result, a problem (inline, never a modal) ---------- */
+
+.panel {
+	position: relative;
+	display: grid;
+	gap: var(--space-xs);
+	margin-top: var(--space-2xs);
+	padding: var(--space-md);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	animation: panel-in var(--dur-medium) var(--ease-out-expo);
+}
+
+.panel p {
+	margin: 0;
+	max-width: 65ch;
+}
+
+.panel:focus-visible {
+	outline-offset: 4px;
+}
+
+.panel__row {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.panel__row .curio {
+	flex: none;
+}
+
+.panel__title {
+	font-size: var(--text-lg);
+	font-weight: var(--weight-heading);
+	line-height: 1.25;
+}
+
+.panel__note {
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+}
+
+.panel__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-xs);
+	margin-top: var(--space-2xs);
+}
+
+/* Feathers fall from the top of the panel, like on the summary of a challenge */
+.panel__feathers {
+	position: absolute;
+	inset: 0 0 auto;
+	height: 0;
+}
+
+.panel__feathers .feathers {
+	inset: 0 0 auto;
+}
+
+@keyframes panel-in {
+	from {
+		opacity: 0;
+		transform: translateY(0.5rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.panel {
+		animation: fade-in var(--dur-medium) ease-out;
+	}
+}
