@@ -12,6 +12,11 @@ questions:
     answer: Rússia
     explanation: >-
       A Rússia tem mais de 17 milhões de km² e atravessa 11 fusos horários.
+    learnMore:
+      - title: Britannica, Rússia
+        url: https://www.britannica.com/place/Russia
+      - title: CIA World Factbook, Rússia
+        url: https://www.cia.gov/the-world-factbook/about/archives/2022/countries/russia
 
   - id: biggest-river
     level: hard
@@ -23,8 +28,13 @@ questions:
       - Yangtzé
     answer: Amazonas
     explanation: >-
-      O Amazonas despeja nos oceanos cerca de um quinto de toda a água doce que os rios
-      do planeta levam ao mar.
+      O Amazonas despeja nos oceanos algo entre 15% e 20% de toda a água doce que os rios
+      do planeta levam ao mar, mais do que os nove maiores rios seguintes juntos.
+    learnMore:
+      - title: Britannica, fatos sobre o rio Amazonas
+        url: https://www.britannica.com/facts/Amazon-River
+      - title: NASA, a foz do Amazonas
+        url: https://science.nasa.gov/photojournal/mouth-of-the-amazon/
 
   - id: australia-capital
     level: medium
@@ -38,6 +48,11 @@ questions:
     explanation: >-
       Sydney é mais famosa, mas a capital é Camberra. Ela foi planejada no início do
       século XX para acabar com a disputa entre Sydney e Melbourne.
+    learnMore:
+      - title: Autoridade da Capital Nacional da Austrália, a escolha do local e do nome
+        url: https://www.nca.gov.au/education/canberras-history/siting-and-naming-canberra
+      - title: Museu Nacional da Austrália, a fundação de Camberra
+        url: https://www.nma.gov.au/defining-moments/resources/founding-of-canberra
 
   - id: biggest-ocean
     level: easy
@@ -51,6 +66,9 @@ questions:
     explanation: >-
       O Pacífico cobre quase um terço da superfície da Terra, mais do que toda a terra
       firme somada.
+    learnMore:
+      - title: NOAA, o tamanho do oceano Pacífico
+        url: https://oceanexplorer.noaa.gov/ocean-fact/pacific-size/
 
   - id: brazil-states
     level: easy
@@ -64,6 +82,9 @@ questions:
     explanation: >-
       São 26 estados mais o Distrito Federal, onde fica Brasília. Juntos formam 27
       unidades da federação.
+    learnMore:
+      - title: IBGE Educa, divisão político-administrativa e regional
+        url: https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/18310-divisao-politico-administrativa-e-regional.html
 
   - id: highest-peak
     level: easy
@@ -77,6 +98,11 @@ questions:
     explanation: >-
       O Everest, no Himalaia, tem cerca de 8.849 metros acima do nível do mar. E ainda
       sobe alguns milímetros por ano.
+    learnMore:
+      - title: National Geographic, a nova altura do Everest
+        url: https://www.nationalgeographic.com/science/article/new-height-of-mount-everest-announced-by-china-and-nepal
+      - title: NOAA, o ponto mais distante do centro da Terra
+        url: https://oceanservice.noaa.gov/facts/highestpoint.html
 
   - id: biggest-population
     level: medium
@@ -89,6 +115,9 @@ questions:
     answer: Índia
     explanation: >-
       A Índia passou a China por volta de 2023 e tem mais de 1,4 bilhão de habitantes.
+    learnMore:
+      - title: ONU, a Índia ultrapassa a China
+        url: https://desapublications.un.org/policy-briefs/un-desa-policy-brief-no-153-india-overtakes-china-worlds-most-populous-country
 
   - id: biggest-hot-desert
     level: medium
@@ -102,3 +131,6 @@ questions:
     explanation: >-
       O Saara, no norte da África, é quase do tamanho dos Estados Unidos. O maior de
       todos é a Antártida, que é um deserto de gelo.
+    learnMore:
+      - title: Britannica, os maiores desertos do mundo
+        url: https://www.britannica.com/topic/worlds-largest-deserts-2225895
