@@ -13,6 +13,11 @@ questions:
     explanation: >-
       Com o Acordo Ortográfico, as letras k, w e y entraram oficialmente no alfabeto,
       que passou de 23 para 26 letras.
+    learnMore:
+      - title: Academia Brasileira de Letras, as novas letras K, W e Y
+        url: https://academia.org.br/artigos/novas-letras-k-w-e-y
+      - title: CPLP, o texto do Acordo Ortográfico
+        url: https://www.cplp.org/Files/Filer/cplp/Acordos/maisAcordos/AcordoOrtogrLinguaPortug.pdf
 
   - id: there-was
     level: hard
@@ -24,6 +29,11 @@ questions:
     explanation: >-
       Haver, no sentido de existir, não vai para o plural: havia, houve, haverá. Quem
       varia é "existir": existiam muitas pessoas.
+    learnMore:
+      - title: Ciberdúvidas, o uso impessoal do verbo haver
+        url: https://ciberduvidas.iscte-iul.pt/artigos/rubricas/idioma/o-uso-impessoal-do-verbo-haver/6119
+      - title: Ciberdúvidas, "havia várias pessoas" e não "houveram"
+        url: https://ciberduvidas.iscte-iul.pt/artigos/rubricas/pelourinho/havia-varias-pessoas-e-nao-houveram-varias-pessoas/3244
 
   - id: palindrome
     level: medium
@@ -37,6 +47,11 @@ questions:
     explanation: >-
       Um palíndromo se lê igual nos dois sentidos. Arara, ovo, radar e osso são
       exemplos.
+    learnMore:
+      - title: Ciberdúvidas, palíndromo
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/palindromo/14629
+      - title: Pesquisa Escolar (Fundaj), palíndromos
+        url: https://pesquisaescolar.fundaj.gov.br/pt-br/artigo/palindromos/
 
   - id: tupi-word
     level: easy
@@ -48,8 +63,16 @@ questions:
       - Inglês
     answer: Tupi
     explanation: >-
-      Vem do tupi e quer dizer algo como "fruta cheirosa". Do tupi também vêm mandioca,
-      jabuticaba e tatu.
+      Vem do tupi. A explicação mais conhecida diz que quer dizer "fruta que recende", de
+      cheiro forte, mas alguns pesquisadores duvidam e acham que o nome veio de um povo
+      indígena. Do tupi também vêm mandioca, jabuticaba e tatu.
+    learnMore:
+      - title: Academia Brasileira de Letras, palavras de origem tupi
+        url: https://www.academia.org.br/artigos/tupi-or-not-tupi
+      - title: Dicio, abacaxi
+        url: https://www.dicio.com.br/abacaxi/
+      - title: Revista Filologia e Linguística Portuguesa (USP), a etimologia de abacaxi
+        url: https://revistas.usp.br/flp/en/article/view/166154
 
   - id: citizen-plural
     level: hard
@@ -62,6 +85,11 @@ questions:
     explanation: >-
       Palavras em -ão fazem plural em -ões, -ães ou -ãos. "Cidadão" é do grupo do -ãos,
       como mão e irmão.
+    learnMore:
+      - title: Academia Brasileira de Letras, plural das palavras em -ão
+        url: https://academia.org.br/artigos/plural-das-palavras-em-ao
+      - title: Ciberdúvidas, plural de palavras terminadas em -ão
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/plural-de-palavras-terminadas-em-ao/3824
 
   - id: exception-spelling
     level: hard
@@ -73,8 +101,13 @@ questions:
       - Exseção
     answer: Exceção
     explanation: >-
-      Exceção vem do verbo excetuar, com "c" e "ç". Já "excesso", de exceder, é outra
+      Exceção é da família de excetuar, com "c" e "ç". Já "excesso", de exceder, é outra
       palavra e leva "ss".
+    learnMore:
+      - title: Dicio, exceção ou excessão
+        url: https://www.dicio.com.br/excecao-ou-excessao/
+      - title: Priberam, excesso
+        url: https://dicionario.priberam.org/excesso
 
   - id: metaphor
     level: medium
@@ -88,6 +121,11 @@ questions:
     explanation: >-
       A vida não é uma montanha-russa de verdade. A metáfora liga duas coisas pela
       semelhança, sem usar "como".
+    learnMore:
+      - title: Portal do Professor (MEC), metáforas
+        url: https://portaldoprofessor.mec.gov.br/fichaTecnicaAula.html?aula=16274
+      - title: Prefeitura de Goiânia, comparação e metáfora
+        url: https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/lingua-portuguesa-figuras-de-palavras-comparacao-e-metafora/
 
   - id: mal-or-mau
     level: hard
@@ -99,3 +137,8 @@ questions:
     explanation: >-
       "Mal" é o contrário de "bem": dormi mal. "Mau" é o contrário de "bom": mau humor,
       mau aluno.
+    learnMore:
+      - title: Ciberdúvidas, mal, mau e bem
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/mal-mau-e-bem/19858
+      - title: Ciberdúvidas, bem e bom, mal e mau
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/bem--bom-mal--mau/4127
