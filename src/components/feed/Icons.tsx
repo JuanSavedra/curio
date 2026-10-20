@@ -168,3 +168,29 @@ const TOPIC_ICONS: Record<Topic, ReactNode> = {
 export const TopicIcon = ({ topic, size }: { topic: Topic; size?: number }) => (
 	<Icon size={size}>{TOPIC_ICONS[topic]}</Icon>
 );
+
+/** Stopwatch: the challenge and its clock */
+export const TimerIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<circle cx="12" cy="13.5" r="7.5" />
+		<path d="M12 9.5v4l2.5 1.5M9.5 3h5" />
+	</Icon>
+);
+
+export const PauseIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M9 6.5v11M15 6.5v11" />
+	</Icon>
+);
+
+export const PlayIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M8.5 6v12l9.5-6z" />
+	</Icon>
+);
+
+export const PlusIcon = (p: { size?: number }) => (
+	<Icon {...p}>
+		<path d="M12 5.5v13M5.5 12h13" />
+	</Icon>
+);

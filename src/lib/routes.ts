@@ -36,6 +36,7 @@ export function feedRoute({ topic, subtopic, deck, review }: FeedFilter = {}) {
 
 export const albumRoute = () => `${base}/album/`;
 export const sealsRoute = () => `${base}/selos/`;
+export const challengeRoute = () => `${base}/desafio/`;
 export const topicsRoute = () => `${base}/temas/`;
 export const topicRoute = (topic: Topic) => `${base}/temas/${TOPICS[topic].slug}/`;
 export const deckJsonRoute = (id: string) => `${base}/decks/${id}.json`;

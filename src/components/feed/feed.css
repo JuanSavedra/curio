@@ -245,6 +245,11 @@
 	background: var(--color-surface);
 }
 
+/* Same height as the quiet "skip" button, for a card that can't be skipped (challenge) */
+.card__foot-space {
+	height: 2.75rem;
+}
+
 /* Gradient that warns when content is passing under the footer */
 .card__foot::before {
 	content: '';
@@ -339,14 +344,14 @@
 }
 
 @media (hover: hover) {
-	.choice[data-state='open']:hover {
+	.choice[data-state='open']:not([aria-disabled]):hover {
 		transform: translateY(-2px);
 		border-color: var(--topic-ink);
 		box-shadow: var(--shadow-lift);
 	}
 }
 
-.choice[data-state='open']:active {
+.choice[data-state='open']:not([aria-disabled]):active {
 	transform: translateY(1px);
 	box-shadow: none;
 }

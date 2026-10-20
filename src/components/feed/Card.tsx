@@ -2,9 +2,9 @@ import { useEffect, useRef } from 'react';
 import { LEVELS } from '../../data/levels';
 import { TOPICS, topicStyle, type Topic } from '../../data/topics';
 import type { PublishedQuestion } from '../../lib/types';
-import { LETTERS, correctText, daysText, runText, wrongText, type Celebration } from './copy';
+import { LETTERS, correctText, daysText, runText, timeUpText, wrongText, type Celebration } from './copy';
 import { Curio } from './Curio';
-import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon } from './Icons';
+import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon, TimerIcon } from './Icons';
 import { Feathers } from './Feathers';
 
 export interface QueuedQuestion extends PublishedQuestion {
@@ -21,10 +21,31 @@ interface Props {
 	last: boolean;
 	onAnswer: (index: number, choice: number) => void;
 	onAdvance: (index: number) => void;
+	/** Challenge only: the time ran out, so the answer and the explanation show without counting as a mistake */
+	timedOut?: boolean;
+	/** Challenge only: the choices can't be picked right now (paused) */
+	locked?: boolean;
+	/** The feed lets you skip a question; a challenge round doesn't */
+	canSkip?: boolean;
+	/** Label of the main button on the last card */
+	lastLabel?: string;
 }
 
-export function Card({ question, index, choice, celebration, greet, last, onAnswer, onAdvance }: Props) {
-	const answered = choice !== undefined;
+export function Card({
+	question,
+	index,
+	choice,
+	celebration,
+	greet,
+	last,
+	onAnswer,
+	onAdvance,
+	timedOut = false,
+	locked = false,
+	canSkip = true,
+	lastLabel = 'Continuar',
+}: Props) {
+	const answered = choice !== undefined || timedOut;
 	const gotItRight = choice === question.correct;
 	const nextRef = useRef<HTMLButtonElement>(null);
 	const resultRef = useRef<HTMLDivElement>(null);
@@ -78,8 +99,8 @@ export function Card({ question, index, choice, celebration, greet, last, onAnsw
 										type="button"
 										className="choice"
 										data-state={state}
-										aria-disabled={answered || undefined}
-										onClick={() => !answered && onAnswer(index, i)}
+										aria-disabled={answered || locked || undefined}
+										onClick={() => !answered && !locked && onAnswer(index, i)}
 									>
 										<span className="choice__mark" aria-hidden="true">
 											{state === 'correct' ? <CheckIcon size={18} /> : state === 'wrong' ? <CrossIcon size={16} /> : LETTERS[i]}
@@ -97,18 +118,20 @@ export function Card({ question, index, choice, celebration, greet, last, onAnsw
 					{/* The Curió's stage, always right below the choices: he waits here and then reacts with the explanation */}
 					<div role="status" aria-live="polite" className="stage">
 						{answered ? (
-							<div className="result" data-correct={gotItRight} ref={resultRef}>
+							<div className="result" data-correct={timedOut ? 'none' : gotItRight} ref={resultRef}>
 								{celebration && <Feathers />}
 								<div className="result__row">
-									<Curio mood={celebration ? 'celebrating' : gotItRight ? 'happy' : 'comforting'} size={60} />
+									<Curio mood={timedOut ? 'waiting' : celebration ? 'celebrating' : gotItRight ? 'happy' : 'comforting'} size={60} />
 									<p className="result__title">
-										{gotItRight ? <CheckIcon /> : <CrossIcon size={18} />}
+										{timedOut ? <TimerIcon size={20} /> : gotItRight ? <CheckIcon /> : <CrossIcon size={18} />}
 										<span>
-											{celebration?.kind === 'run'
-												? runText(celebration.n)
-												: gotItRight
-													? correctText(question.id)
-													: wrongText(question.id, question.correct)}
+											{timedOut
+												? timeUpText(question.correct)
+												: celebration?.kind === 'run'
+													? runText(celebration.n)
+													: gotItRight
+														? correctText(question.id)
+														: wrongText(question.id, question.correct)}
 										</span>
 									</p>
 								</div>
@@ -150,13 +173,16 @@ export function Card({ question, index, choice, celebration, greet, last, onAnsw
 				<footer className="card__foot">
 					{answered ? (
 						<button type="button" className="button" ref={nextRef} onClick={() => onAdvance(index)}>
-							{last ? 'Continuar' : 'Próxima'}
+							{last ? lastLabel : 'Próxima'}
 							<ArrowDownIcon />
 						</button>
-					) : (
+					) : canSkip ? (
 						<button type="button" className="button button--quiet" onClick={() => onAdvance(index)}>
 							Pular esta
 						</button>
+					) : (
+						// Keeps the footer's height, so the card doesn't jump when "Próxima" shows up
+						<span className="card__foot-space" aria-hidden="true" />
 					)}
 				</footer>
 			</article>

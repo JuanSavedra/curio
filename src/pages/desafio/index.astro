@@ -1,0 +1,31 @@
+---
+// This folder is named after the public pt-BR address (/desafio): the folder name IS the URL.
+import Challenge from '../../components/challenge/Challenge';
+import Base from '../../layouts/Base.astro';
+import { listDecks } from '../../lib/decks';
+
+const decks = await listDecks();
+---
+
+<Base
+	title="Desafio | Curiô"
+	description="Uma rodada de perguntas com um relógio calmo: dá para pausar, pedir mais tempo e, se o tempo acabar, a gente descobre a resposta junto."
+	mainId="content"
+	skipText="Ir para o desafio"
+>
+	<Challenge client:load decks={decks} />
+	<noscript>
+		<p class="no-js">O Curiô precisa de JavaScript ligado para mostrar o desafio.</p>
+	</noscript>
+</Base>
+
+<style>
+	.no-js {
+		position: fixed;
+		inset: auto var(--space-sm) var(--space-sm);
+		padding: var(--space-sm);
+		border-radius: var(--radius-md);
+		background: var(--color-panel);
+		text-align: center;
+	}
+</style>

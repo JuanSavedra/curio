@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { LEVEL_IDS, LEVELS, levelFromSlug, type Level } from '../../data/levels';
 import { TOPICS, TOPIC_IDS, topicFromSlug, topicStyle, type Topic } from '../../data/topics';
 import { FEED_QUERY, MODE_SLUGS, deckJsonRoute, type FeedMode } from '../../lib/routes';
+import { shuffle } from '../../lib/shuffle';
 import type { DeckSummary, PublishedDeck, PublishedQuestion } from '../../lib/types';
 import { Card, type QueuedQuestion } from './Card';
 import { DAY_MILESTONES, isRunMilestone, type Celebration } from './copy';
@@ -22,6 +23,7 @@ import {
 	writeLastTopic,
 } from './progress';
 import { Sidebar, type SubtopicOption } from './Sidebar';
+import { Skeleton } from './Skeleton';
 import { TopicComplete } from './TopicComplete';
 import './feed.css';
 
@@ -39,15 +41,6 @@ interface Scope {
 	mode: FeedMode;
 	/** Only questions of this difficulty (null: all) */
 	level: Level | null;
-}
-
-function shuffle<T>(list: T[]): T[] {
-	const copy = [...list];
-	for (let i = copy.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[copy[i], copy[j]] = [copy[j], copy[i]];
-	}
-	return copy;
 }
 
 // Interleaves the decks so the mixed feed doesn't repeat the same topic back to back.
@@ -560,19 +553,3 @@ function endCopyFor(mode: FeedMode, hadQuestions: boolean, where: string | null)
 	};
 }
 
-function Skeleton() {
-	return (
-		<div className="card card--skeleton" aria-hidden="true">
-			<div className="card__head">
-				<span className="skeleton-bar skeleton-bar--short" />
-				<span className="skeleton-bar" />
-				<span className="skeleton-bar skeleton-bar--medium" />
-			</div>
-			<div className="card__body">
-				{[0, 1, 2, 3].map((i) => (
-					<span key={i} className="skeleton-bar skeleton-bar--tall" />
-				))}
-			</div>
-		</div>
-	);
-}

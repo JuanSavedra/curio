@@ -1,0 +1,535 @@
+/* ---------- Setup, loading and summary: a reading column, like the album ---------- */
+
+.challenge {
+	display: grid;
+	gap: var(--space-md);
+	width: min(100%, 36rem);
+	margin: var(--space-md) auto 0;
+}
+
+.challenge__hero {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+}
+
+.challenge__title {
+	font-size: var(--text-3xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.1;
+	letter-spacing: -0.015em;
+}
+
+.challenge__title:focus-visible,
+.summary__title:focus-visible {
+	outline-offset: 6px;
+	border-radius: 0.25rem;
+}
+
+.challenge__intro {
+	font-size: var(--text-lg);
+	font-weight: var(--weight-medium);
+}
+
+.challenge__note {
+	color: var(--color-text-soft);
+}
+
+.challenge__actions {
+	display: grid;
+	justify-items: center;
+	gap: var(--space-2xs);
+}
+
+.challenge__skeleton .card {
+	min-height: 30rem;
+}
+
+/* ---------- Setup: topic and time choices (native radios, styled like the chips) ---------- */
+
+.setup__group {
+	display: grid;
+	gap: var(--space-xs);
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.setup__legend {
+	margin-bottom: var(--space-2xs);
+	padding: 0;
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-strong);
+}
+
+.setup__options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2xs);
+}
+
+.setup__options--time {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.setup__count {
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+}
+
+.pick {
+	position: relative;
+	display: inline-flex;
+}
+
+/* The real radio covers the chip: the whole thing is the touch target, and the keyboard works as in any radio group */
+.pick input {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.pick__face {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2xs);
+	min-height: 2.75rem;
+	padding: 0 var(--space-sm) 0 var(--space-xs);
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-pill);
+	background: var(--color-surface);
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	white-space: nowrap;
+	transition:
+		background-color var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out);
+}
+
+.pick__dot {
+	display: grid;
+	place-items: center;
+	width: 1.125rem;
+	height: 1.125rem;
+	border-radius: 50%;
+	background: var(--topic);
+	color: var(--plumage);
+}
+
+/* The check says "chosen" in a shape, not only in color */
+.pick__check {
+	display: none;
+	place-items: center;
+	width: 1.125rem;
+	height: 1.125rem;
+	border-radius: 50%;
+	background: var(--topic-ink, var(--plumage));
+	color: var(--nest);
+}
+
+.pick input:checked + .pick__face {
+	border-color: var(--topic-ink, var(--plumage));
+	background: var(--topic-bg, var(--color-panel));
+	font-weight: var(--weight-strong);
+}
+
+.pick input:checked + .pick__face .pick__check {
+	display: grid;
+}
+
+.pick input:focus-visible + .pick__face {
+	outline: 3px solid var(--color-focus);
+	outline-offset: 2px;
+}
+
+@media (hover: hover) {
+	.pick input:not(:checked):hover + .pick__face {
+		border-color: var(--topic-ink, var(--color-border-strong));
+	}
+}
+
+.pick--time {
+	display: flex;
+}
+
+.pick--time .pick__face {
+	position: relative;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0;
+	min-height: 4.5rem;
+	padding: var(--space-2xs);
+	border-radius: var(--radius-md);
+	text-align: center;
+}
+
+.pick--time .pick__check {
+	position: absolute;
+	top: 0.375rem;
+	right: 0.375rem;
+}
+
+.pick__time {
+	font-size: var(--text-xl);
+	font-weight: var(--weight-heading);
+	font-variant-numeric: tabular-nums;
+	line-height: 1.2;
+}
+
+.pick__name {
+	color: var(--color-text-soft);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-medium);
+}
+
+.challenge__actions .button:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+/* ---------- Round: the feed's card under a slim bar and the clock ---------- */
+
+.challenge-round {
+	display: grid;
+	/* minmax(0, ...): the column never grows past the screen because of the clock row */
+	grid-template-columns: minmax(0, 1fr);
+	grid-template-rows: auto auto minmax(0, 1fr);
+	height: 100dvh;
+	overflow: hidden;
+	background-color: var(--topic-bg, var(--color-bg));
+	transition: background-color var(--dur-slow) var(--ease-out);
+}
+
+.challenge-round__bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-xs);
+	padding: var(--space-2xs) var(--space-sm) 0 var(--space-3xs);
+}
+
+.challenge-round__bar .back-link {
+	white-space: nowrap;
+}
+
+.challenge-round__count {
+	font-size: var(--text-sm);
+	font-weight: var(--weight-medium);
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+}
+
+.challenge-round__stage {
+	min-height: 0;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-width: none;
+}
+
+.challenge-round__stage::-webkit-scrollbar {
+	display: none;
+}
+
+/* ---------- The clock: a ring that empties, the seconds in numbers, pause and more time ---------- */
+
+.clock {
+	display: flex;
+	align-items: center;
+	gap: var(--space-xs);
+	padding: var(--space-3xs) var(--space-xs) var(--space-2xs);
+}
+
+.clock__face {
+	position: relative;
+	flex: none;
+	width: 3.25rem;
+	height: 3.25rem;
+}
+
+.clock__ring {
+	width: 100%;
+	height: 100%;
+	transform: rotate(-90deg);
+}
+
+.clock__track,
+.clock__arc {
+	fill: none;
+	stroke-width: 4;
+}
+
+.clock__track {
+	stroke: var(--nest);
+}
+
+/* One step per second with a linear glide in between: it empties smoothly without ever feeling like a countdown bar */
+.clock__arc {
+	stroke: var(--plumage);
+	stroke-linecap: round;
+	stroke-dasharray: var(--ring);
+	stroke-dashoffset: calc(var(--ring) * (1 - var(--fraction)));
+	transition:
+		stroke-dashoffset 1s linear,
+		stroke var(--dur-slow) var(--ease-out),
+		opacity var(--dur-medium) var(--ease-out);
+}
+
+/* A round cap on an empty arc would leave a dot behind */
+.clock[data-empty='true'] .clock__arc {
+	opacity: 0;
+}
+
+/* The last seconds turn warm: rust, never red, and never flashing */
+.clock[data-low='true'] .clock__arc {
+	stroke: var(--rust);
+}
+
+.clock[data-low='true'] .clock__number {
+	color: var(--rust-strong);
+}
+
+.clock[data-paused='true'] .clock__arc {
+	opacity: 0.4;
+}
+
+.clock__number {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	font-size: var(--text-base);
+	font-weight: var(--weight-heading);
+	font-variant-numeric: tabular-nums;
+	transition: color var(--dur-slow) var(--ease-out);
+}
+
+.clock__status {
+	margin: 0;
+	font-size: var(--text-sm);
+	font-weight: var(--weight-strong);
+}
+
+/* The unit only fits beside the ring from this width; before it, the ring's number carries it (and screen readers hear "segundos") */
+.clock__unit {
+	display: none;
+	color: var(--color-text-soft);
+	font-weight: var(--weight-medium);
+}
+
+@media (min-width: 26rem) {
+	.clock__unit {
+		display: inline;
+	}
+}
+
+/* On very narrow screens some texts only fit for screen readers: "Continuar" and the dimmed ring already say "paused", and "Sair" is enough to see */
+@media (max-width: 23.99rem) {
+	.clock__status,
+	.narrow-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+	}
+}
+
+.clock__actions {
+	display: flex;
+	gap: var(--space-2xs);
+	margin-left: auto;
+}
+
+/* Tighter than the feed's chips so "Continuar" and "15 s" fit beside the ring at 320px */
+.clock .chip {
+	padding: 0 var(--space-xs) 0 var(--space-2xs);
+}
+
+.clock .chip:disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
+@media (min-width: 48rem) {
+	.challenge-round__bar,
+	.clock {
+		width: min(36rem, calc(100% - 2 * var(--space-lg)));
+		margin-inline: auto;
+		padding-inline: 0;
+	}
+
+	.challenge-round__bar {
+		padding-top: var(--space-sm);
+	}
+}
+
+/* ---------- Summary ---------- */
+
+.summary__hero {
+	position: relative;
+	display: grid;
+	justify-items: center;
+	gap: var(--space-xs);
+	padding: var(--space-md) 0 var(--space-xs);
+	text-align: center;
+}
+
+.summary__feathers {
+	position: absolute;
+	inset: 0 0 auto;
+	height: 0;
+}
+
+.summary__feathers .feathers {
+	inset: 0 0 auto;
+}
+
+.summary__title {
+	font-size: var(--text-2xl);
+	font-weight: var(--weight-heading);
+	line-height: 1.15;
+	letter-spacing: -0.015em;
+}
+
+.summary__text {
+	font-weight: var(--weight-medium);
+}
+
+.summary__note {
+	max-width: 32ch;
+	color: var(--color-text-soft);
+	font-size: var(--text-sm);
+}
+
+.review__heading {
+	margin-bottom: var(--space-xs);
+	font-size: var(--text-lg);
+	font-weight: var(--weight-heading);
+}
+
+.review {
+	display: grid;
+	gap: var(--space-2xs);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.review__item {
+	border: 2px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: var(--color-surface);
+	overflow: clip;
+}
+
+.review__summary {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-xs);
+	min-height: 2.75rem;
+	padding: var(--space-xs) 2.5rem var(--space-xs) var(--space-xs);
+	list-style: none;
+	cursor: pointer;
+	transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.review__summary::-webkit-details-marker {
+	display: none;
+}
+
+/* The disclosure arrow (turns with transform only) */
+.review__summary::after {
+	content: '';
+	position: absolute;
+	top: 1.2rem;
+	right: var(--space-sm);
+	width: 0.6rem;
+	height: 0.6rem;
+	border-right: 2px solid var(--color-text-soft);
+	border-bottom: 2px solid var(--color-text-soft);
+	transform: rotate(45deg);
+	transition: transform var(--dur-fast) var(--ease-out);
+}
+
+details[open] > .review__summary::after {
+	transform: translateY(0.2rem) rotate(-135deg);
+}
+
+@media (hover: hover) {
+	.review__summary:hover {
+		background: var(--color-panel);
+	}
+}
+
+.review__mark {
+	display: grid;
+	flex: none;
+	place-items: center;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	background: var(--color-panel);
+	color: var(--color-text);
+}
+
+.review__mark[data-status='correct'] {
+	background: var(--correct);
+	color: var(--nest);
+}
+
+.review__mark[data-status='wrong'] {
+	background: var(--wrong);
+	color: var(--nest);
+}
+
+.review__main {
+	display: grid;
+	gap: 0.125rem;
+}
+
+.review__topic {
+	color: var(--topic-ink);
+	font-size: var(--text-xs);
+	font-weight: var(--weight-strong);
+}
+
+.review__prompt {
+	font-weight: var(--weight-medium);
+	line-height: 1.35;
+}
+
+.review__body {
+	display: grid;
+	gap: var(--space-2xs);
+	padding: 0 var(--space-xs) var(--space-xs) calc(var(--space-xs) * 2 + 2rem);
+	font-size: var(--text-sm);
+	line-height: 1.5;
+}
+
+.review__body p {
+	margin: 0;
+}
+
+.review__explanation {
+	max-width: 65ch;
+}
+
+/* ---------- Reduced motion: the ring and the arrow just change, they don't glide ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.clock__arc,
+	.review__summary::after,
+	.pick__face {
+		transition: none;
+	}
+}

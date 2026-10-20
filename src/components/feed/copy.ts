@@ -46,3 +46,6 @@ export const daysText = (n: number) => DAY_MESSAGES[n];
 export const correctText = (id: string) => CORRECT_MESSAGES[stableIndex(id, CORRECT_MESSAGES.length)];
 export const wrongText = (id: string, correctIndex: number) =>
 	WRONG_MESSAGES[stableIndex(id, WRONG_MESSAGES.length)](LETTERS[correctIndex]);
+
+/** The challenge's clock ran out: no blame, the answer comes with the explanation. */
+export const timeUpText = (correctIndex: number) => `O tempo acabou, sem problema. A certa é a ${LETTERS[correctIndex]}.`;

@@ -56,6 +56,8 @@ Fases de criação da interface:
 6. **Ninho à noite e acabamento:** modo escuro, `audit`, `polish`.
 7. **Registro:** `impeccable document` para tirar o `docs/DESIGN.md` do modo seed.
 
+Extras já feitos fora das fases: **Desafio com tempo** (`src/components/challenge/`, rota `/desafio/`, opcional e sem punição, ver `docs/TODO.md`) e **funcionar offline** (ver "Offline (PWA)" acima).
+
 A lista detalhada do que falta está em **`docs/TODO.md`**. Atualize-a ao fim de cada etapa.
 
 Conteúdo: use `$...$` (KaTeX) só para fórmulas de verdade (frações, raízes, potências, π). Números e sequências vão como texto comum.
