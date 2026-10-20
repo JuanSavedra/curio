@@ -13,6 +13,11 @@ questions:
     explanation: >-
       O Sol está a cerca de 150 milhões de km. Fora ele, a estrela mais próxima é Próxima
       Centauri, a mais de 4 anos-luz daqui.
+    learnMore:
+      - title: NASA, fatos sobre o Sol
+        url: https://science.nasa.gov/sun/facts/
+      - title: NASA, a estrela vizinha mais próxima
+        url: https://imagine.gsfc.nasa.gov/features/cosmic/nearest_star_info.html
 
   - id: our-galaxy
     level: easy
@@ -26,6 +31,9 @@ questions:
     explanation: >-
       A Via Láctea tem centenas de bilhões de estrelas. O Sol é só uma delas, num dos
       braços em espiral.
+    learnMore:
+      - title: NASA, a nossa galáxia, a Via Láctea
+        url: https://science.nasa.gov/universe/exoplanets/our-milky-way-galaxy-how-big-is-space/
 
   - id: light-year
     level: medium
@@ -39,6 +47,9 @@ questions:
     explanation: >-
       É uma medida de distância, não de tempo. Em um ano a luz percorre quase 9,5 trilhões
       de km.
+    learnMore:
+      - title: NASA Space Place, o que é um ano-luz
+        url: https://spaceplace.nasa.gov/light-year/en/
 
   - id: hottest-color
     level: medium
@@ -52,6 +63,9 @@ questions:
     explanation: >-
       As azuis passam de 10.000 °C na superfície. As vermelhas são as mais frias, com cerca
       de 3.000 °C.
+    learnMore:
+      - title: NASA, cores e temperaturas das estrelas
+        url: https://imagine.gsfc.nasa.gov/ask_astro/stars.html
 
   - id: supernova
     level: medium
@@ -65,10 +79,15 @@ questions:
     explanation: >-
       A supernova espalha pelo espaço elementos como o ferro e o cálcio, que também estão
       no nosso corpo.
+    learnMore:
+      - title: NASA, o cálcio vem das estrelas
+        url: https://imagine.gsfc.nasa.gov/educators/calcium/got_calcium_litho.html
+      - title: Chandra (NASA), supernovas e seus restos
+        url: https://chandra.harvard.edu/resources/illustrations/supernova.html
 
   - id: andromeda
     level: medium
-    prompt: Qual grande galáxia vai se encontrar com a Via Láctea no futuro?
+    prompt: Qual grande galáxia vizinha está se aproximando da Via Láctea?
     choices:
       - Andrômeda
       - Sombrero
@@ -76,8 +95,15 @@ questions:
       - Cata-vento
     answer: Andrômeda
     explanation: >-
-      Andrômeda está a 2,5 milhões de anos-luz e vem na nossa direção. O encontro deve
-      acontecer daqui a uns 4,5 bilhões de anos.
+      Andrômeda está a 2,5 milhões de anos-luz e vem na nossa direção. Por muito tempo se
+      previu uma colisão daqui a 4,5 bilhões de anos, mas medições novas mostraram que isso
+      é incerto: dependendo do estudo, a chance de elas se fundirem fica entre 50% e 90%, e
+      só deve acontecer daqui a mais de 6 bilhões de anos.
+    learnMore:
+      - title: NASA, Andrômeda
+        url: https://science.nasa.gov/universe/galaxies/andromeda/
+      - title: Universidade de Durham, a colisão é mesmo certa?
+        url: https://dur.ac.uk/news-events/latest-news/2025/06/new-study-casts-doubt-on-the-likelihood-of-milky-way-collision-with-andromeda/
 
   - id: shooting-star
     level: easy
@@ -91,6 +117,9 @@ questions:
     explanation: >-
       É um grão de poeira ou de rocha que queima ao entrar na atmosfera em alta velocidade.
       O nome certo é meteoro.
+    learnMore:
+      - title: NASA, meteoros e meteoritos
+        url: https://science.nasa.gov/solar-system/meteors-meteorites/facts/
 
   - id: sunlight-time
     level: medium
@@ -104,3 +133,6 @@ questions:
     explanation: >-
       A luz viaja a cerca de 300 mil km por segundo e leva uns 8 minutos para vir do Sol.
       Ou seja, vemos o Sol como ele era há 8 minutos.
+    learnMore:
+      - title: NASA, quanto tempo a luz leva (Voyager 1)
+        url: https://science.nasa.gov/mission/voyager/voyager-1/voyager-1-what-is-a-light-day/

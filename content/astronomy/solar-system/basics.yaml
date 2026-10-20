@@ -12,20 +12,29 @@ questions:
     answer: Duas
     explanation: >-
       Marte tem duas luas pequenininhas, Fobos e Deimos ("medo" e "pavor" em grego). Fobos
-      está se aproximando do planeta e, em uns 50 milhões de anos, deve virar um anel em volta dele.
+      está se aproximando do planeta e, em uns 50 milhões de anos, deve bater nele ou se
+      despedaçar e virar um anel.
+    learnMore:
+      - title: NASA, Fobos
+        url: https://science.nasa.gov/mars/moons/phobos/
+      - title: NASA, Deimos
+        url: https://science.nasa.gov/mars/moons/deimos/
 
   - id: venus-day
     level: hard
-    prompt: Em Vênus, o que dura mais tempo, um dia ou um ano?
+    prompt: Em Vênus, o que leva mais tempo, girar uma vez em torno de si mesmo ou dar uma volta completa em torno do Sol?
     choices:
-      - O dia
-      - O ano
-      - Os dois duram o mesmo
-    answer: O dia
+      - Girar em torno de si mesmo
+      - Dar a volta em torno do Sol
+      - Os dois levam o mesmo tempo
+    answer: Girar em torno de si mesmo
     explanation: >-
       Vênus gira tão devagar que uma volta em torno de si leva 243 dias terrestres, mais do que
       os 225 dias da volta completa em torno do Sol. E tem mais: ele gira ao contrário, então
       lá o Sol nasce a oeste.
+    learnMore:
+      - title: NASA, fatos sobre Vênus
+        url: https://science.nasa.gov/venus/facts/
 
   - id: hottest-planet
     level: medium
@@ -40,6 +49,11 @@ questions:
       Mercúrio fica mais perto do Sol, mas quase não tem atmosfera e perde o calor. Vênus é
       coberto de gás carbônico, que prende o calor como uma estufa: passa de 460 °C, o bastante
       para derreter chumbo.
+    learnMore:
+      - title: NASA, fatos sobre Vênus
+        url: https://science.nasa.gov/venus/facts/
+      - title: NASA, fatos sobre Mercúrio
+        url: https://science.nasa.gov/mercury/facts/
 
   - id: sunlight
     level: medium
@@ -53,6 +67,9 @@ questions:
     explanation: >-
       A luz viaja a quase 300 mil km por segundo e leva uns 8 minutos para cruzar os
       150 milhões de km até aqui. O Sol que você vê no céu é o Sol de 8 minutos atrás.
+    learnMore:
+      - title: NASA, quanto tempo a luz leva (Voyager 1)
+        url: https://science.nasa.gov/mission/voyager/voyager-1/voyager-1-what-is-a-light-day/
 
   - id: saturn-floats
     level: hard
@@ -66,6 +83,9 @@ questions:
     explanation: >-
       Saturno é feito quase todo de hidrogênio e hélio, e sua densidade média é menor que a
       da água. Ele é enorme, mas, comparado ao tamanho, é "levinho" como uma boia.
+    learnMore:
+      - title: NASA, fatos sobre Saturno
+        url: https://science.nasa.gov/saturn/facts/
 
   - id: moon-footprints
     level: medium
@@ -77,7 +97,10 @@ questions:
     answer: Lá não há vento nem chuva
     explanation: >-
       Sem atmosfera, não há vento nem água para apagar nada. As pegadas só vão sumindo
-      muito devagar, com o impacto de micrometeoritos, e devem durar milhões de anos.
+      muito devagar, com o impacto de micrometeoritos, e devem durar de 10 a 100 milhões de anos.
+    learnMore:
+      - title: NBC News, os rastros da Apollo não duram para sempre
+        url: https://www.nbcnews.com/news/amp/wbna44421662
 
   - id: great-spot
     level: medium
@@ -89,8 +112,13 @@ questions:
       - Uma cratera
     answer: Uma tempestade
     explanation: >-
-      É uma tempestade gigante, com ventos de mais de 400 km/h, observada sem parar desde
-      o século 19. Ela vem encolhendo, mas ainda é maior que a Terra inteira.
+      É uma tempestade gigante, com ventos que passam de 400 km/h, observada há séculos.
+      Ela vem encolhendo, mas ainda é maior que a Terra inteira.
+    learnMore:
+      - title: NASA, fatos sobre Júpiter
+        url: https://science.nasa.gov/jupiter/jupiter-facts/
+      - title: NASA, a Grande Mancha Vermelha encolhe e cresce
+        url: https://svs.gsfc.nasa.gov/12878
 
   - id: sun-size
     level: medium
@@ -104,3 +132,6 @@ questions:
     explanation: >-
       O diâmetro do Sol é uns 109 vezes o da Terra, e o volume cresce ao cubo: dá cerca de
       1,3 milhão de Terras. Mesmo assim, o Sol é uma estrela de tamanho médio.
+    learnMore:
+      - title: NASA, fatos sobre o Sol
+        url: https://science.nasa.gov/sun/facts/
