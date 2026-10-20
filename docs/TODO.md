@@ -2,10 +2,6 @@
 
 Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda tarefa de interface segue o fluxo do impeccable: `shape` (briefing confirmado) antes de `craft`.
 
-### Som
-- [ ] `shape` do som: quais sons, quando tocam, onde fica o controle.
-- [ ] Canto curto do Curió no acerto e nas celebrações, desligado por padrão, com controle visível e preferência salva.
-
 ### Conteúdo
 - [x] Revisão de fatos de todos os decks, um tema por vez, com fontes confiáveis em `learnMore` (até 3 links https por pergunta). Em lógica, as perguntas de letras, iniciais e meses não têm fato a citar e ficaram sem link.
 

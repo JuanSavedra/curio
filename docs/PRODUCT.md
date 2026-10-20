@@ -31,7 +31,7 @@ O Curiô é um feed de perguntas temáticas (ciências, matemática, raciocínio
 - **Emoções buscadas:** encantamento com a descoberta, conforto de estar num lugar seguro, orgulho de aprender.
 - **Mascote:** o Curió, pássaro brasileiro conhecido pelo canto. É a companhia do usuário: guia, reage e comemora.
 - **Referências:**
-  - **Jogos da Nintendo / Animal Crossing:** acolhimento, sensação de lugar seguro, sons e animações fofas com acabamento impecável, encanto para qualquer idade.
+  - **Jogos da Nintendo / Animal Crossing:** acolhimento, sensação de lugar seguro, animações fofas com acabamento impecável, encanto para qualquer idade.
   - **Duolingo:** mascote expressivo com personalidade, celebrações de acerto, sequência de dias como motivação.
 
 ## Anti-references
@@ -59,4 +59,3 @@ Alvo: **WCAG 2.2 AA completo.**
 - **Acerto e erro nunca indicados só por cor:** sempre acompanhados de ícone, texto ou forma.
 - Alvos de toque de pelo menos 44×44px. Alternativas de resposta grandes e fáceis de acertar com o polegar.
 - Linguagem simples, legível para crianças e idosos. Texto que respeita o zoom do navegador sem quebrar o layout.
-- Som (se existir) é sempre opcional e nunca é a única forma de feedback.
