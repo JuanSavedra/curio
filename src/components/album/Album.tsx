@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { TOPICS, TOPIC_IDS, topicStyle, type Topic } from '../../data/topics';
+import { fillBlank } from '../../lib/question';
 import { deckJsonRoute, feedRoute } from '../../lib/routes';
 import type { DeckSummary, PublishedDeck, PublishedQuestion } from '../../lib/types';
 import { Curio } from '../feed/Curio';
@@ -197,7 +198,7 @@ export default function Album({ decks }: { decks: DeckSummary[] }) {
 													<li key={find.question.id}>
 														<button type="button" className="find" aria-haspopup="dialog" onClick={() => setOpened({ ...find, topic })}>
 															<span className="find__deck">{find.deckTitle}</span>
-															<span className="find__prompt" dangerouslySetInnerHTML={{ __html: find.question.prompt }} />
+															<span className="find__prompt" dangerouslySetInnerHTML={{ __html: fillBlank(find.question.prompt, find.question.choices[find.question.correct]) }} />
 														</button>
 													</li>
 												))}
@@ -234,7 +235,7 @@ export default function Album({ decks }: { decks: DeckSummary[] }) {
 									<CrossIcon size={20} />
 								</button>
 							</div>
-							<h2 id="find-dialog-title" className="find-dialog__prompt" dangerouslySetInnerHTML={{ __html: opened.question.prompt }} />
+							<h2 id="find-dialog-title" className="find-dialog__prompt" dangerouslySetInnerHTML={{ __html: fillBlank(opened.question.prompt, opened.question.choices[opened.question.correct]) }} />
 						</header>
 						<div className="find-dialog__body">
 							<p className="find__answer">

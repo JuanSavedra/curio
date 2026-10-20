@@ -26,3 +26,17 @@ export function richText(text: string): string {
 	}
 	return html + escapeHtml(text.slice(last));
 }
+
+/** The gap of a fill-in-the-blank prompt, as authors write it. */
+export const BLANK_TEXT = '___';
+
+// Formulas are blanked out first, so a "___" inside $...$ never counts as the gap
+const maskFormulas = (text: string) => text.replace(FORMULA, (match) => ' '.repeat(match.length));
+
+export const countBlanks = (text: string) => maskFormulas(text).split(BLANK_TEXT).length - 1;
+
+/** The text before and after the first gap. */
+export function splitBlank(text: string): [string, string] {
+	const at = maskFormulas(text).indexOf(BLANK_TEXT);
+	return [text.slice(0, at), text.slice(at + BLANK_TEXT.length)];
+}

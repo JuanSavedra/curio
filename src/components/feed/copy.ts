@@ -1,3 +1,5 @@
+import type { QuestionType } from '../../lib/types';
+
 // Feed microcopy. Tone: a curious friend who celebrates along and consoles with a curiosity.
 const CORRECT_MESSAGES = ['Isso aí!', 'Acertou em cheio!', 'Mandou bem!', 'Na mosca!', 'Exatamente!'];
 const WRONG_MESSAGES = [
@@ -7,6 +9,17 @@ const WRONG_MESSAGES = [
 ];
 
 export const LETTERS = ['A', 'B', 'C', 'D'];
+
+/** What the round mark of a choice says: A, B, C, D, or V and F for true or false. */
+export const choiceMark = (type: QuestionType, index: number) => (type === 'true-false' ? ['V', 'F'][index] : LETTERS[index]);
+
+// True or false: the answer is a word, not a letter
+const TRUE_FALSE_WORD = ['verdadeiro', 'falso'];
+const WRONG_TRUE_FALSE = [
+	(word: string) => `Quase! Na verdade, é ${word}.`,
+	(word: string) => `Não foi dessa vez. É ${word}.`,
+	(word: string) => `Essa engana, né? É ${word}.`,
+];
 
 // Stable pick per question, so the text doesn't change on every render.
 function stableIndex(id: string, total: number) {
@@ -44,8 +57,13 @@ export const runText = (n: number) => RUN_MESSAGES[n] ?? `${n} seguidas! Que voo
 export const daysText = (n: number) => DAY_MESSAGES[n];
 
 export const correctText = (id: string) => CORRECT_MESSAGES[stableIndex(id, CORRECT_MESSAGES.length)];
-export const wrongText = (id: string, correctIndex: number) =>
-	WRONG_MESSAGES[stableIndex(id, WRONG_MESSAGES.length)](LETTERS[correctIndex]);
+export const wrongText = (id: string, correctIndex: number, type: QuestionType = 'choice') =>
+	type === 'true-false'
+		? WRONG_TRUE_FALSE[stableIndex(id, WRONG_TRUE_FALSE.length)](TRUE_FALSE_WORD[correctIndex])
+		: WRONG_MESSAGES[stableIndex(id, WRONG_MESSAGES.length)](LETTERS[correctIndex]);
 
 /** The challenge's clock ran out: no blame, the answer comes with the explanation. */
-export const timeUpText = (correctIndex: number) => `O tempo acabou, sem problema. A certa é a ${LETTERS[correctIndex]}.`;
+export const timeUpText = (correctIndex: number, type: QuestionType = 'choice') =>
+	type === 'true-false'
+		? `O tempo acabou, sem problema. É ${TRUE_FALSE_WORD[correctIndex]}.`
+		: `O tempo acabou, sem problema. A certa é a ${LETTERS[correctIndex]}.`;

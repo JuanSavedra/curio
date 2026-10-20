@@ -134,3 +134,34 @@ questions:
     learnMore:
       - title: Britannica, os maiores desertos do mundo
         url: https://www.britannica.com/topic/worlds-largest-deserts-2225895
+
+  - id: brazil-borders
+    type: true-false
+    level: hard
+    prompt: O Brasil faz fronteira com todos os países da América do Sul, menos o Chile e o Equador.
+    answer: true
+    explanation: >-
+      O Brasil encosta em 9 países sul-americanos e ainda na Guiana Francesa, que é um
+      território da França. Chile e Equador são os únicos que não têm fronteira com ele.
+    learnMore:
+      - title: Itamaraty, geografia do Brasil
+        url: https://www.gov.br/mre/pt-br/embaixada-bogota/o-brasil/geografia
+      - title: FUNAG, as fronteiras terrestres do Brasil
+        url: https://www.gov.br/funag/pt-br/ipri/arquivos-ipri/arquivos-estatisticas/fronteiras-terrestres-brasil-13052015.pdf
+
+  - id: brazil-ocean
+    type: fill-blank
+    level: easy
+    prompt: O oceano que banha toda a costa do Brasil é o ___.
+    choices:
+      - Atlântico
+      - Pacífico
+      - Índico
+      - Ártico
+    answer: Atlântico
+    explanation: >-
+      A costa brasileira tem mais de 7 mil quilômetros, e toda ela é banhada pelo oceano
+      Atlântico. O Brasil não tem litoral em nenhum outro oceano.
+    learnMore:
+      - title: Itamaraty, geografia do Brasil
+        url: https://www.gov.br/mre/pt-br/embaixada-bogota/o-brasil/geografia

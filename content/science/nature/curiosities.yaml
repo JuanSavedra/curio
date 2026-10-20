@@ -135,3 +135,17 @@ questions:
     learnMore:
       - title: NOAA, a atmosfera
         url: https://www.noaa.gov/jetstream/atmosphere
+
+  - id: bats-blind
+    type: true-false
+    level: easy
+    prompt: Os morcegos são cegos.
+    answer: false
+    explanation: >-
+      Nenhum morcego é cego: todos enxergam. Muitos também usam o eco dos próprios gritos
+      para se guiar no escuro (a ecolocalização), e dali vem o mito.
+    learnMore:
+      - title: Bat Conservation International, "cego como um morcego" não existe
+        url: https://www.batcon.org/blind-as-a-bat-no-such-thing/
+      - title: Serviço de Parques dos EUA, mitos sobre morcegos
+        url: https://www.nps.gov/subjects/bats/myth-busters.htm

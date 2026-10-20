@@ -335,8 +335,10 @@ export default function Feed({ decks }: { decks: DeckSummary[] }) {
 			if (e.altKey || e.ctrlKey || e.metaKey || status !== 'ready') return;
 			if ((e.target as HTMLElement).closest('input, textarea, select, [contenteditable]')) return;
 			const key = e.key.toLowerCase();
-			const choice = '1234'.indexOf(key) >= 0 ? '1234'.indexOf(key) : 'abcd'.indexOf(key);
 			const question = queue[current];
+			// A true-or-false question answers to V and F; the others to A to D
+			const letters = question?.type === 'true-false' ? 'vf' : 'abcd';
+			const choice = '1234'.indexOf(key) >= 0 ? '1234'.indexOf(key) : letters.indexOf(key);
 			if (choice >= 0 && question && choice < question.choices.length) {
 				e.preventDefault();
 				answer(current, choice);

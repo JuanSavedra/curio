@@ -128,8 +128,9 @@ questions:
         url: https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/lingua-portuguesa-figuras-de-palavras-comparacao-e-metafora/
 
   - id: mal-or-mau
+    type: fill-blank
     level: hard
-    prompt: 'Complete: "Dormi ___ esta noite."'
+    prompt: Dormi ___ esta noite.
     choices:
       - mau
       - mal
@@ -142,3 +143,20 @@ questions:
         url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/mal-mau-e-bem/19858
       - title: Ciberdúvidas, bem e bom, mal e mau
         url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/bem--bom-mal--mau/4127
+
+  - id: ha-or-a
+    type: fill-blank
+    level: hard
+    prompt: ___ dois anos eu moro aqui.
+    choices:
+      - Há
+      - A
+    answer: Há
+    explanation: >-
+      Para tempo que já passou, usa-se "há": dá para trocar por "faz" (faz dois anos). O
+      "a" fica para o futuro e para a distância: "daqui a dois anos".
+    learnMore:
+      - title: Ciberdúvidas, "há anos atrás"
+        url: https://ciberduvidas.iscte-iul.pt/artigos/rubricas/idioma/ha-anos-atras/2346
+      - title: Governo do Paraná, dicas de português
+        url: https://efaz.fazenda.pr.gov.br/Pagina/Dicas-de-Portugues-0

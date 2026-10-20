@@ -138,3 +138,36 @@ questions:
         url: https://www.britannica.com/science/prime-number
       - title: NRICH (Universidade de Cambridge), testes de divisibilidade
         url: https://nrich.maths.org/articles/divisibility-tests
+
+  - id: only-even-prime
+    type: true-false
+    level: medium
+    prompt: O 2 é o único número primo par.
+    answer: true
+    explanation: >-
+      Todo número par maior que 2 pode ser dividido por 2, então tem outros divisores além
+      de 1 e dele mesmo, e não é primo. Por isso o 2 é o único primo par.
+    learnMore:
+      - title: Wolfram MathWorld, o primo par
+        url: https://mathworld.wolfram.com/EvenPrime.html
+      - title: Britannica para estudantes, números primos
+        url: https://kids.britannica.com/students/article/prime/651327
+
+  - id: triangle-angles
+    type: fill-blank
+    level: medium
+    prompt: A soma dos ângulos internos de um triângulo é ___ graus.
+    choices:
+      - '90'
+      - '180'
+      - '270'
+      - '360'
+    answer: '180'
+    explanation: >-
+      Em qualquer triângulo, os três ângulos juntos dão 180 graus. Isso vale na geometria
+      plana, a das folhas de papel e do caderno.
+    learnMore:
+      - title: Britannica, triângulo
+        url: https://www.britannica.com/science/triangle-mathematics
+      - title: Wolfram MathWorld, triângulo
+        url: https://mathworld.wolfram.com/Triangle.html

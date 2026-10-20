@@ -143,3 +143,18 @@ questions:
         url: https://www12.senado.leg.br/noticias/especiais/arquivo-s/senado-e-camara-aprovaram-lei-aurea-em-5-dias/senado-e-camara-aprovaram-lei-aurea-em-5-dias
       - title: Arquivo Nacional, a Lei Áurea
         url: https://www.gov.br/arquivonacional/pt-br/canais_atendimento/imprensa/copy_of_noticias/voce-sabia-que-a-lei-aurea-faz-parte-do-acervo-do-arquivo-nacional
+
+  - id: great-wall-moon
+    type: true-false
+    level: medium
+    prompt: Dá para ver a Muralha da China da Lua, a olho nu.
+    answer: false
+    explanation: >-
+      Da Lua não dá para ver nenhuma construção humana. Até da órbita baixa da Terra a
+      Muralha quase não aparece a olho nu, porque tem cor e textura parecidas com as do
+      terreno em volta.
+    learnMore:
+      - title: NASA, a Grande Muralha
+        url: https://www.nasa.gov/image-article/great-wall/
+      - title: Britannica, dá para ver a Muralha da China do espaço?
+        url: https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space

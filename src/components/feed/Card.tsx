@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { LEVELS } from '../../data/levels';
 import { TOPICS, topicStyle, type Topic } from '../../data/topics';
+import { fillBlank } from '../../lib/question';
 import type { PublishedQuestion } from '../../lib/types';
-import { LETTERS, correctText, daysText, runText, timeUpText, wrongText, type Celebration } from './copy';
+import { choiceMark, correctText, daysText, runText, timeUpText, wrongText, type Celebration } from './copy';
 import { Curio } from './Curio';
 import { ArrowDownIcon, CheckIcon, CrossIcon, ExternalIcon, NoteIcon, SunIcon, TimerIcon } from './Icons';
 import { Feathers } from './Feathers';
@@ -60,6 +61,9 @@ export function Card({
 	const nextRef = useRef<HTMLButtonElement>(null);
 	const resultRef = useRef<HTMLDivElement>(null);
 	const promptId = `prompt-${index}`;
+	// A fill-in-the-blank sentence has an empty slot until it is answered, then the right word sits in it (even for a wrong answer)
+	const promptHtml =
+		question.type === 'fill-blank' ? fillBlank(question.prompt, answered ? question.choices[question.correct] : undefined) : question.prompt;
 	// What the Curió says while the card waits for an answer
 	const speech = invited
 		? `${greet ? 'Oi! Eu sou o Curió. ' : ''}Uma pessoa separou esta pergunta para você. Será que você sabe?`
@@ -117,7 +121,7 @@ export function Card({
 						id={promptId}
 						className="card__prompt"
 						tabIndex={-1}
-						dangerouslySetInnerHTML={{ __html: question.prompt }}
+						dangerouslySetInnerHTML={{ __html: promptHtml }}
 					/>
 					<ShareButton question={question} onNotice={onNotice} />
 				</header>
@@ -136,9 +140,9 @@ export function Card({
 										onClick={() => !answered && !locked && onAnswer(index, i)}
 									>
 										<span className="choice__mark" aria-hidden="true">
-											{state === 'correct' ? <CheckIcon size={18} /> : state === 'wrong' ? <CrossIcon size={16} /> : LETTERS[i]}
+											{state === 'correct' ? <CheckIcon size={18} /> : state === 'wrong' ? <CrossIcon size={16} /> : choiceMark(question.type, i)}
 										</span>
-										<span className="sr-only">{LETTERS[i]}: </span>
+										<span className="sr-only">{choiceMark(question.type, i)}: </span>
 										<span className="choice__text" dangerouslySetInnerHTML={{ __html: text }} />
 										{state === 'correct' && <span className="choice__label">Certa</span>}
 										{state === 'wrong' && <span className="choice__label">Sua resposta</span>}
@@ -159,12 +163,12 @@ export function Card({
 										{timedOut ? <TimerIcon size={20} /> : gotItRight ? <CheckIcon /> : <CrossIcon size={18} />}
 										<span>
 											{timedOut
-												? timeUpText(question.correct)
+												? timeUpText(question.correct, question.type)
 												: celebration?.kind === 'run'
 													? runText(celebration.n)
 													: gotItRight
 														? correctText(question.id)
-														: wrongText(question.id, question.correct)}
+														: wrongText(question.id, question.correct, question.type)}
 										</span>
 									</p>
 								</div>

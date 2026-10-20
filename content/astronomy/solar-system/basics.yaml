@@ -135,3 +135,20 @@ questions:
     learnMore:
       - title: NASA, fatos sobre o Sol
         url: https://science.nasa.gov/sun/facts/
+
+  - id: earth-year
+    type: fill-blank
+    level: easy
+    prompt: A Terra leva cerca de ___ dias para dar uma volta em torno do Sol.
+    choices:
+      - '24'
+      - '30'
+      - '365'
+      - '500'
+    answer: '365'
+    explanation: >-
+      Um ano na Terra tem cerca de 365 dias e um quarto. Esse quarto de dia que sobra
+      vira o 29 de fevereiro, que aparece a cada 4 anos.
+    learnMore:
+      - title: NASA, fatos sobre a Terra
+        url: https://science.nasa.gov/earth/facts/

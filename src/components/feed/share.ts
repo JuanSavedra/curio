@@ -1,4 +1,5 @@
 import { TOPICS } from '../../data/topics';
+import { BLANK_TEXT } from '../../lib/rich-text';
 import { sharedQuestionRoute } from '../../lib/routes';
 import type { QueuedQuestion } from './Card';
 
@@ -11,10 +12,14 @@ export type ShareResult = 'shared' | 'copied' | 'cancelled' | 'failed';
 export function shareMessage(question: QueuedQuestion): string {
 	const box = document.createElement('div');
 	box.innerHTML = question.prompt;
+	// The gap of a fill-in-the-blank sentence goes as ___
+	for (const gap of box.querySelectorAll('[data-blank]')) gap.replaceWith(BLANK_TEXT);
 	const plain = box.querySelector('.katex') ? '' : (box.textContent ?? '').replace(/\s+/g, ' ').trim();
+	// A statement is not a question, so it opens with "Verdadeiro ou falso?"
+	const opening = question.type === 'true-false' ? 'Verdadeiro ou falso?' : 'Será que você sabe?';
 	return plain
-		? `Será que você sabe? ${plain} Descubra no Curiô:`
-		: `Será que você sabe? Tem uma pergunta de ${TOPICS[question.topic].name} esperando por você no Curiô:`;
+		? `${opening} ${plain} Descubra no Curiô:`
+		: `${opening} Tem uma pergunta de ${TOPICS[question.topic].name} esperando por você no Curiô:`;
 }
 
 /**

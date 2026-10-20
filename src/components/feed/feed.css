@@ -824,6 +824,36 @@
 	}
 }
 
+/* ---------- Fill in the blank: the gap in the sentence ---------- */
+
+/* Empty: an underline where the word goes. It sits on the text's baseline, in the text's own color. */
+.blank {
+	display: inline-block;
+	min-width: 3.5em;
+	height: 0.9em;
+	margin-inline: 0.1em;
+	border-bottom: 0.14em solid currentColor;
+}
+
+/* Answered: the right word, in the "correct" colors (a light pill, so contrast never depends on the topic color) */
+.blank--filled {
+	min-width: 0;
+	height: auto;
+	padding: 0 0.3em;
+	border-bottom: 0;
+	border-radius: 0.35em;
+	background: var(--correct-bg);
+	color: var(--correct-ink);
+	animation: blank-in var(--dur-medium) var(--ease-out-expo);
+}
+
+@keyframes blank-in {
+	from {
+		opacity: 0;
+		transform: translateY(0.3em);
+	}
+}
+
 /* ---------- KaTeX inside text ---------- */
 
 .formula {
@@ -968,6 +998,10 @@
 
 	.speech {
 		animation: fade-in var(--dur-slow) ease-out both;
+	}
+
+	.blank--filled {
+		animation: fade-in var(--dur-medium) ease-out;
 	}
 
 	.choice[data-state='correct'] .choice__mark,

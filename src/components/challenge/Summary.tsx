@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { TOPICS, topicStyle } from '../../data/topics';
+import { fillBlank } from '../../lib/question';
 import { feedRoute } from '../../lib/routes';
 import { Curio } from '../feed/Curio';
 import { Feathers } from '../feed/Feathers';
@@ -91,7 +92,7 @@ export function Summary({ results, onAgain, onChange }: Props) {
 													<span className="sr-only">{STATUS_TEXT[status]}. </span>
 													{TOPICS[question.topic].name}
 												</span>
-												<span className="review__prompt" dangerouslySetInnerHTML={{ __html: question.prompt }} />
+												<span className="review__prompt" dangerouslySetInnerHTML={{ __html: fillBlank(question.prompt, question.choices[question.correct]) }} />
 											</span>
 										</summary>
 										<div className="review__body">
