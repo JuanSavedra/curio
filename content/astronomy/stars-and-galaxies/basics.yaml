@@ -121,18 +121,21 @@ questions:
       - title: NASA, meteoros e meteoritos
         url: https://science.nasa.gov/solar-system/meteors-meteorites/facts/
 
-  - id: sunlight-time
+  - id: brightest-star
     level: medium
-    prompt: Quanto tempo a luz do Sol leva para chegar à Terra?
+    prompt: Qual é a estrela mais brilhante do céu noturno?
     choices:
-      - 8 segundos
-      - 8 minutos
-      - 8 horas
-      - 8 dias
-    answer: 8 minutos
+      - Polaris, a Estrela Polar
+      - Sirius
+      - Betelgeuse
+      - Vega
+    answer: Sirius
     explanation: >-
-      A luz viaja a cerca de 300 mil km por segundo e leva uns 8 minutos para vir do Sol.
-      Ou seja, vemos o Sol como ele era há 8 minutos.
+      Sirius, na constelação do Cão Maior, é a estrela mais brilhante do céu noturno. Ela
+      fica a uns 8,6 anos-luz, e na verdade são duas estrelas: a grande e brilhante e uma
+      companheira bem fraquinha, a Sirius B, a primeira anã branca descoberta.
     learnMore:
-      - title: NASA, quanto tempo a luz leva (Voyager 1)
-        url: https://science.nasa.gov/mission/voyager/voyager-1/voyager-1-what-is-a-light-day/
+      - title: Britannica, Sirius
+        url: https://www.britannica.com/place/Sirius-star
+      - title: NASA, Sirius, a estrela mais brilhante da noite
+        url: https://science.nasa.gov/image-article/apod-1996-september-02-sirius-the-brightest-star-in-the-night/
