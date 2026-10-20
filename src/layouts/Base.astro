@@ -21,11 +21,23 @@ const { title, description, mainId = 'questions', skipText = 'Ir para as pergunt
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#fbf5f2" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
 		<a class="skip-link" href={`#${mainId}`}>{skipText}</a>
 		<slot />
+		<script>
+			// Offline support (see src/integrations/offline.ts). Not registered in dev: it would serve stale files.
+			// If it fails, the site simply works online as before.
+			if ('serviceWorker' in navigator && import.meta.env.PROD) {
+				const base = import.meta.env.BASE_URL;
+				window.addEventListener('load', () => {
+					navigator.serviceWorker.register(`${base}sw.js`, { scope: base }).catch(() => {});
+				});
+			}
+		</script>
 	</body>
 </html>
