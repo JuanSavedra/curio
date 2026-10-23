@@ -1,0 +1,238 @@
+title: Formas e medidas
+subtopic: Geometria
+questions:
+  - id: right-angle
+    type: fill-blank
+    level: easy
+    prompt: Um ângulo reto mede ___ graus.
+    choices:
+      - '45'
+      - '90'
+      - '180'
+      - '360'
+    answer: '90'
+    explanation: >-
+      É o ângulo do canto de uma folha de papel ou de um azulejo quadrado. Uma volta inteira
+      tem 360 graus, então cabem quatro ângulos retos nela.
+    learnMore:
+      - title: Wolfram MathWorld, ângulo reto
+        url: https://mathworld.wolfram.com/RightAngle.html
+
+  - id: equilateral-triangle
+    level: easy
+    prompt: Como se chama o triângulo que tem os três lados do mesmo tamanho?
+    choices:
+      - Retângulo
+      - Isósceles
+      - Equilátero
+      - Escaleno
+    answer: Equilátero
+    explanation: >-
+      "Equi" quer dizer igual, e "látero", lado. Nele os três ângulos também são iguais, de
+      60 graus cada.
+    learnMore:
+      - title: Wolfram MathWorld, triângulo equilátero
+        url: https://mathworld.wolfram.com/EquilateralTriangle.html
+
+  - id: cube-faces
+    level: easy
+    prompt: Quantas faces tem um cubo?
+    choices:
+      - Quatro
+      - Seis
+      - Oito
+      - Doze
+    answer: Seis
+    explanation: >-
+      São seis quadrados iguais, como num dado. O cubo tem ainda 8 cantos (os vértices) e 12
+      arestas.
+    learnMore:
+      - title: Wolfram MathWorld, cubo
+        url: https://mathworld.wolfram.com/Cube.html
+
+  - id: octagon
+    level: easy
+    prompt: Como se chama um polígono de oito lados, o formato da placa de "Pare"?
+    choices:
+      - Hexágono
+      - Heptágono
+      - Octógono
+      - Decágono
+    answer: Octógono
+    explanation: >-
+      "Octo" é oito, como em polvo (octopus, em inglês, por causa dos oito braços). O
+      hexágono tem seis lados, o heptágono sete e o decágono dez.
+    learnMore:
+      - title: Wolfram MathWorld, octógono
+        url: https://mathworld.wolfram.com/Octagon.html
+
+  - id: honeycomb
+    level: medium
+    prompt: Que forma têm as casinhas de um favo de mel?
+    choices:
+      - Quadrado
+      - Triângulo
+      - Hexágono
+      - Círculo
+    answer: Hexágono
+    explanation: >-
+      O hexágono cobre todo o espaço sem buracos e gasta menos parede que qualquer outra
+      divisão em partes iguais. A ideia era antiga, mas só foi provada em 1999, pelo
+      matemático Thomas Hales.
+    learnMore:
+      - title: Wolfram MathWorld, a conjectura do favo de mel
+        url: https://mathworld.wolfram.com/HoneycombConjecture.html
+
+  - id: pythagoras-345
+    level: medium
+    prompt: Num triângulo retângulo, os dois lados menores medem 3 e 4. Quanto mede o maior?
+    choices:
+      - '5'
+      - '6'
+      - '7'
+      - '12'
+    answer: '5'
+    explanation: >-
+      Pelo teorema de Pitágoras, $a^2 + b^2 = c^2$: $3^2 + 4^2 = 9 + 16 = 25$, e 25 é $5^2$.
+      Pedreiros usam esse trio para conferir se um canto está no esquadro.
+    learnMore:
+      - title: Wolfram MathWorld, teorema de Pitágoras
+        url: https://mathworld.wolfram.com/PythagoreanTheorem.html
+
+  - id: quadrilateral-angles
+    type: fill-blank
+    level: medium
+    prompt: A soma dos ângulos internos de qualquer quadrilátero é ___ graus.
+    choices:
+      - '180'
+      - '270'
+      - '360'
+      - '540'
+    answer: '360'
+    explanation: >-
+      Trace uma diagonal e o quadrilátero vira dois triângulos. Cada um soma 180 graus, então
+      o total é 360. No retângulo dá para conferir: são quatro ângulos de 90.
+    learnMore:
+      - title: Wolfram MathWorld, quadrilátero
+        url: https://mathworld.wolfram.com/Quadrilateral.html
+
+  - id: square-is-rectangle
+    type: true-false
+    level: medium
+    prompt: Todo quadrado também é um retângulo.
+    answer: true
+    explanation: >-
+      Retângulo é qualquer quadrilátero com quatro ângulos retos. O quadrado tem isso e
+      ainda os quatro lados iguais: é um retângulo especial. O contrário não vale.
+    learnMore:
+      - title: Wolfram MathWorld, quadrado
+        url: https://mathworld.wolfram.com/Square.html
+
+  - id: floor-tiles
+    level: medium
+    prompt: Com peças todas iguais, de qual destes formatos NÃO dá para cobrir um chão sem deixar buracos?
+    choices:
+      - Triângulo equilátero
+      - Quadrado
+      - Pentágono regular
+      - Hexágono regular
+    answer: Pentágono regular
+    explanation: >-
+      Para fechar sem buracos, os ângulos que se encontram num ponto precisam somar 360
+      graus. O ângulo do pentágono regular é 108 graus, e 360 não se divide por 108. Só
+      triângulos, quadrados e hexágonos regulares conseguem sozinhos.
+    learnMore:
+      - title: Wolfram MathWorld, mosaicos regulares
+        url: https://mathworld.wolfram.com/RegularTessellation.html
+
+  - id: dice-opposite
+    level: medium
+    prompt: Num dado comum de seis faces, quanto somam os números de duas faces opostas?
+    choices:
+      - '6'
+      - '7'
+      - '8'
+      - Depende do dado
+    answer: '7'
+    explanation: >-
+      O 1 fica oposto ao 6, o 2 ao 5 e o 3 ao 4: sempre 7. Dá para conferir com qualquer
+      dado de jogo de tabuleiro.
+    learnMore:
+      - title: Wolfram MathWorld, dados
+        url: https://mathworld.wolfram.com/Dice.html
+
+  - id: circle-area
+    level: medium
+    prompt: Qual fórmula dá a área de um círculo de raio $r$?
+    choices:
+      - $\pi r^2$
+      - $2 \pi r$
+      - $r^2$
+      - $4 r$
+    answer: $\pi r^2$
+    explanation: >-
+      A área é $\pi$ vezes o raio ao quadrado. Já $2 \pi r$ é o contorno, a medida da linha
+      em volta. Um círculo de raio 10 cm tem uns 314 cm² de área.
+    learnMore:
+      - title: Wolfram MathWorld, círculo
+        url: https://mathworld.wolfram.com/Circle.html
+
+  - id: platonic-solids
+    level: hard
+    prompt: Quantos sólidos têm todas as faces iguais e regulares, com o mesmo número delas em cada canto (os sólidos de Platão)?
+    choices:
+      - Três
+      - Cinco
+      - Sete
+      - Infinitos
+    answer: Cinco
+    explanation: >-
+      São o tetraedro, o cubo, o octaedro, o dodecaedro e o icosaedro. Os gregos já tinham
+      provado que não existe um sexto. Muitos dados de RPG têm esses formatos.
+    learnMore:
+      - title: Wolfram MathWorld, sólidos de Platão
+        url: https://mathworld.wolfram.com/PlatonicSolid.html
+
+  - id: soccer-ball
+    level: hard
+    prompt: A bola de futebol clássica, de gomos pretos e brancos, tem quantos pentágonos?
+    choices:
+      - '6'
+      - '12'
+      - '20'
+      - '32'
+    answer: '12'
+    explanation: >-
+      São 12 pentágonos pretos e 20 hexágonos brancos, 32 gomos no total. O desenho ficou
+      famoso com a bola Telstar, da Copa de 1970, a do tri do Brasil.
+    learnMore:
+      - title: Wolfram MathWorld, icosaedro truncado
+        url: https://mathworld.wolfram.com/TruncatedIcosahedron.html
+
+  - id: mobius-strip
+    type: true-false
+    level: hard
+    prompt: Dá para fazer, com uma tira de papel, uma superfície que só tem um lado.
+    answer: true
+    explanation: >-
+      É a fita de Möbius: torça uma ponta da tira meia volta e cole na outra. Passe o dedo
+      pelo meio e você percorre "os dois lados" sem nunca cruzar a borda.
+    learnMore:
+      - title: Wolfram MathWorld, fita de Möbius
+        url: https://mathworld.wolfram.com/MoebiusStrip.html
+
+  - id: golden-ratio
+    level: hard
+    prompt: Divida cada número da sequência de Fibonacci (1, 1, 2, 3, 5, 8, 13, …) pelo anterior. De que número o resultado vai se aproximando?
+    choices:
+      - '1,5'
+      - '1,618…'
+      - '2'
+      - '3,14…'
+    answer: '1,618…'
+    explanation: >-
+      É a razão áurea, $\varphi = \frac{1 + \sqrt{5}}{2}$. Veja: 8 ÷ 5 = 1,6, 13 ÷ 8 = 1,625 e
+      21 ÷ 13 ≈ 1,615. Quanto mais longe na sequência, mais perto de 1,618… fica.
+    learnMore:
+      - title: Wolfram MathWorld, razão áurea
+        url: https://mathworld.wolfram.com/GoldenRatio.html

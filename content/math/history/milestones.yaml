@@ -1,0 +1,251 @@
+title: Números através do tempo
+subtopic: História da matemática
+questions:
+  - id: zero-origin
+    level: medium
+    prompt: Em que lugar o zero passou a ser tratado como um número, com regras para fazer contas?
+    choices:
+      - Grécia
+      - Índia
+      - Roma
+      - Egito
+    answer: Índia
+    explanation: >-
+      No século 7, o matemático indiano Brahmagupta escreveu regras para somar, subtrair e
+      multiplicar com o zero. Antes, ele era no máximo um espaço vazio para marcar uma casa.
+    learnMore:
+      - title: MacTutor, a história do zero
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Zero/
+
+  - id: roman-fifty
+    level: easy
+    prompt: Qual letra vale 50 nos números romanos?
+    choices:
+      - C
+      - D
+      - L
+      - X
+    answer: L
+    explanation: >-
+      I vale 1, V vale 5, X vale 10, L vale 50, C vale 100, D vale 500 e M vale 1.000. Ainda
+      dá para vê-los em relógios, nomes de reis e capítulos de livros.
+    learnMore:
+      - title: Wolfram MathWorld, números romanos
+        url: https://mathworld.wolfram.com/RomanNumerals.html
+
+  - id: roman-zero
+    type: true-false
+    level: medium
+    prompt: Os antigos romanos tinham um símbolo para o zero.
+    answer: false
+    explanation: >-
+      O sistema romano só soma e subtrai letras, e não tem zero. Por isso fazer contas
+      grandes com ele era tão difícil, e o sistema indo-arábico, com zero, acabou tomando
+      o lugar.
+    learnMore:
+      - title: Wolfram MathWorld, números romanos
+        url: https://mathworld.wolfram.com/RomanNumerals.html
+      - title: MacTutor, a história do zero
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Zero/
+
+  - id: fibonacci-numerals
+    level: hard
+    prompt: Quem espalhou pela Europa os algarismos de 0 a 9 que usamos hoje, num livro de 1202?
+    choices:
+      - Fibonacci
+      - Pitágoras
+      - Galileu
+      - Newton
+    answer: Fibonacci
+    explanation: >-
+      Leonardo de Pisa, o Fibonacci, aprendeu os algarismos indo-arábicos viajando pelo norte
+      da África e os explicou no livro Liber Abaci. Foi nesse mesmo livro que apareceu a
+      famosa sequência 1, 1, 2, 3, 5, 8…
+    learnMore:
+      - title: MacTutor, biografia de Fibonacci
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Fibonacci/
+
+  - id: babylon-sixty
+    level: hard
+    prompt: Por que uma hora tem 60 minutos e um minuto, 60 segundos?
+    choices:
+      - Por causa dos babilônios, que contavam de 60 em 60
+      - Porque a Terra gira 60 vezes por dia
+      - Foi escolhido por sorteio
+      - Por causa dos 60 dias de uma estação
+    answer: Por causa dos babilônios, que contavam de 60 em 60
+    explanation: >-
+      Há uns 4 mil anos, os babilônios usavam um sistema de base 60. O 60 é ótimo para
+      dividir: sai inteiro por 2, 3, 4, 5, 6, 10, 12, 15, 20 e 30. Herdamos isso nas horas e
+      nos graus do círculo.
+    learnMore:
+      - title: MacTutor, os números babilônicos
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Babylonian_numerals/
+
+  - id: maya-twenty
+    level: hard
+    prompt: Os maias, da América Central, contavam de quanto em quanto?
+    choices:
+      - De 5 em 5
+      - De 10 em 10
+      - De 20 em 20
+      - De 60 em 60
+    answer: De 20 em 20
+    explanation: >-
+      O sistema maia era de base 20, provavelmente porque se contava nos dedos das mãos e
+      dos pés. E eles também tinham um símbolo para o zero, desenhado como uma concha.
+    learnMore:
+      - title: MacTutor, a matemática maia
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Mayan_mathematics/
+
+  - id: babylonian-pythagoras
+    type: true-false
+    level: hard
+    prompt: A regra do teorema de Pitágoras já era usada antes de Pitágoras nascer.
+    answer: true
+    explanation: >-
+      Tábuas de argila dos babilônios, mais de mil anos mais antigas que Pitágoras, já trazem
+      contas com essa relação entre os lados do triângulo retângulo. O nome ficou com ele
+      porque a tradição grega lhe deu o crédito.
+    learnMore:
+      - title: MacTutor, o teorema de Pitágoras na matemática babilônica
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Babylonian_Pythagoras/
+
+  - id: equals-sign
+    level: medium
+    prompt: Por que o sinal de igual (=) tem dois tracinhos paralelos?
+    choices:
+      - Porque nada é mais igual que duas linhas paralelas
+      - Porque lembra uma balança
+      - Porque era mais fácil de imprimir
+      - Porque representa os dois lados de uma conta
+    answer: Porque nada é mais igual que duas linhas paralelas
+    explanation: >-
+      O galês Robert Recorde inventou o sinal em 1557, cansado de escrever "é igual a". Ele
+      explicou que nenhuma coisa podia ser mais igual que dois tracinhos paralelos.
+    learnMore:
+      - title: MacTutor, biografia de Robert Recorde
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Recorde/
+
+  - id: googol
+    type: fill-blank
+    level: medium
+    prompt: Um googol é o número 1 seguido de ___ zeros.
+    choices:
+      - '10'
+      - '100'
+      - '1.000'
+      - '1 milhão'
+    answer: '100'
+    explanation: >-
+      O nome foi inventado em 1938 por Milton Sirotta, um menino de 9 anos, sobrinho do
+      matemático Edward Kasner. Anos depois, o nome do Google veio de uma brincadeira com
+      essa palavra.
+    learnMore:
+      - title: Wolfram MathWorld, googol
+        url: https://mathworld.wolfram.com/Googol.html
+
+  - id: euclid-elements
+    level: medium
+    prompt: Qual matemático grego escreveu Os Elementos, um dos livros mais usados para ensinar geometria na história?
+    choices:
+      - Arquimedes
+      - Euclides
+      - Aristóteles
+      - Tales
+    answer: Euclides
+    explanation: >-
+      Euclides viveu em Alexandria, no Egito, por volta de 300 a.C. Os Elementos foi usado
+      nas escolas por mais de 2 mil anos, e muito do que se aprende de geometria até hoje
+      vem dele.
+    learnMore:
+      - title: MacTutor, biografia de Euclides
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/
+
+  - id: hypatia
+    level: medium
+    prompt: Quem foi Hipátia de Alexandria?
+    choices:
+      - Uma rainha do Egito
+      - A primeira mulher a contribuir de forma marcante para a matemática
+      - A inventora do ábaco
+      - Uma deusa grega dos números
+    answer: A primeira mulher a contribuir de forma marcante para a matemática
+    explanation: >-
+      Hipátia viveu em Alexandria por volta do ano 400. Era professora de matemática,
+      astronomia e filosofia, e escreveu comentários sobre livros de grandes matemáticos
+      gregos.
+    learnMore:
+      - title: MacTutor, biografia de Hipátia
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Hypatia/
+
+  - id: ada-lovelace
+    level: medium
+    prompt: Quem escreveu o que muitos consideram o primeiro programa de computador, em 1843?
+    choices:
+      - Ada Lovelace
+      - Marie Curie
+      - Alan Turing
+      - Isaac Newton
+    answer: Ada Lovelace
+    explanation: >-
+      Ada Lovelace descreveu como programar a Máquina Analítica, um computador mecânico
+      projetado por Charles Babbage que nunca chegou a ser construído. As notas dela saíram
+      assinadas só com as iniciais, A.A.L.
+    learnMore:
+      - title: MacTutor, biografia de Ada Lovelace
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Lovelace/
+
+  - id: fermat-last-theorem
+    level: hard
+    prompt: O "último teorema de Fermat", anotado na margem de um livro nos anos 1630, levou quanto tempo para ser provado?
+    choices:
+      - Cerca de 10 anos
+      - Cerca de 100 anos
+      - Mais de 350 anos
+      - Nunca foi provado
+    answer: Mais de 350 anos
+    explanation: >-
+      Fermat escreveu que tinha uma prova, mas que a margem era pequena demais para ela.
+      Gerações de matemáticos tentaram até que o inglês Andrew Wiles conseguiu, em 1994.
+    learnMore:
+      - title: MacTutor, o último teorema de Fermat
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Fermat's_last_theorem/
+      - title: MacTutor, biografia de Andrew Wiles
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Wiles/
+
+  - id: artur-avila
+    level: medium
+    prompt: Em 2014, o carioca Artur Avila ganhou o prêmio mais importante da matemática. Qual?
+    choices:
+      - Prêmio Nobel
+      - Medalha Fields
+      - Bola de Ouro
+      - Prêmio Pulitzer
+    answer: Medalha Fields
+    explanation: >-
+      Não existe Nobel de matemática, e a Medalha Fields ocupa esse lugar. Avila foi o
+      primeiro brasileiro a ganhá-la. No mesmo ano, a iraniana
+      Maryam Mirzakhani foi a primeira mulher premiada.
+    learnMore:
+      - title: União Matemática Internacional, Medalhas Fields de 2014
+        url: https://www.mathunion.org/imu-awards/fields-medal/fields-medals-2014
+      - title: MacTutor, biografia de Artur Avila
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Avila/
+
+  - id: malba-tahan
+    level: medium
+    prompt: O Dia Nacional da Matemática, 6 de maio, homenageia qual escritor brasileiro, autor de O Homem que Calculava?
+    choices:
+      - Monteiro Lobato
+      - Malba Tahan
+      - Machado de Assis
+      - Santos Dumont
+    answer: Malba Tahan
+    explanation: >-
+      Malba Tahan era o nome inventado do professor carioca Júlio César de Mello e Souza, que
+      nasceu em 6 de maio. Em O Homem que Calculava, um viajante resolve problemas com
+      contas espertas, e o livro já conquistou gerações de leitores.
+    learnMore:
+      - title: Lei 12.835, de 2013, que cria o Dia Nacional da Matemática
+        url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12835.htm

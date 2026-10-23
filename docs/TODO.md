@@ -3,7 +3,7 @@
 Lista viva do que falta. Marque com `[x]` ao terminar e mova para "Feito". Toda tarefa de interface segue o fluxo do impeccable: `shape` (briefing confirmado) antes de `craft`.
 
 ### Conteúdo
-- [ ] Pelo menos 50 perguntas em cada tema, um tema por vez, todas com fontes em `learnMore`. Feito: **Ciências** (50, em três decks: Natureza com 20, e os novos Corpo humano e Química e física com 15 cada). Faltam Matemática, Raciocínio lógico, História, Geografia, Astronomia e Linguagem.
+- [ ] Pelo menos 50 perguntas em cada tema, um tema por vez, todas com fontes em `learnMore`. Feito: **Ciências** (50, em três decks: Natureza com 20, e os novos Corpo humano e Química e física com 15 cada) e **Matemática** (50: Números com 20, e os novos Geometria e História da matemática com 15 cada). Faltam Raciocínio lógico, História, Geografia, Astronomia e Linguagem.
 - [x] Revisão de fatos de todos os decks, um tema por vez, com fontes confiáveis em `learnMore` (até 3 links https por pergunta). Em lógica, as perguntas de letras, iniciais e meses não têm fato a citar e ficaram sem link.
 
 ### Fase 7: registro e publicação

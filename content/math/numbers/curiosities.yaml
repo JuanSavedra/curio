@@ -171,3 +171,157 @@ questions:
         url: https://www.britannica.com/science/triangle-mathematics
       - title: Wolfram MathWorld, triângulo
         url: https://mathworld.wolfram.com/Triangle.html
+
+  - id: one-not-prime
+    type: true-false
+    level: easy
+    prompt: O número 1 é primo.
+    answer: false
+    explanation: >-
+      Um primo tem exatamente dois divisores: o 1 e ele mesmo. O 1 só tem um divisor, então
+      fica de fora. O primeiro primo é o 2.
+    learnMore:
+      - title: Wolfram MathWorld, número primo
+        url: https://mathworld.wolfram.com/PrimeNumber.html
+
+  - id: primes-never-end
+    type: true-false
+    level: medium
+    prompt: Os números primos acabam em algum momento.
+    answer: false
+    explanation: >-
+      Euclides provou, há mais de 2.300 anos, que sempre existe mais um primo. A ideia:
+      multiplique todos os primos que você conhece e some 1. O resultado não se divide por
+      nenhum deles, então algum primo novo aparece.
+    learnMore:
+      - title: Wolfram MathWorld, teoremas de Euclides
+        url: https://mathworld.wolfram.com/EuclidsTheorems.html
+      - title: MacTutor, a história dos números primos
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Prime_numbers/
+
+  - id: largest-prime
+    level: hard
+    prompt: Em 2024, foi achado o maior número primo conhecido até então. Quantos algarismos ele tem?
+    choices:
+      - Cerca de 410
+      - Cerca de 41 mil
+      - Cerca de 41 milhões
+      - Cerca de 41 bilhões
+    answer: Cerca de 41 milhões
+    explanation: >-
+      É o $2^{136279841} - 1$, com 41.024.320 algarismos. Escrito à mão, encheria milhares de
+      cadernos. Ele foi achado por Luke Durant, com ajuda de muitos computadores trabalhando
+      juntos pela internet.
+    learnMore:
+      - title: GIMPS, anúncio do maior primo conhecido
+        url: https://www.mersenne.org/primes/press/M136279841.html
+
+  - id: perfect-number
+    level: hard
+    prompt: Um número é perfeito quando é igual à soma dos seus divisores, sem contar ele mesmo. Qual destes é perfeito?
+    choices:
+      - '6'
+      - '8'
+      - '10'
+      - '12'
+    answer: '6'
+    explanation: >-
+      Os divisores de 6 (sem ele) são 1, 2 e 3, e 1 + 2 + 3 = 6. O próximo perfeito é o 28.
+      Eles são raros: abaixo de 10.000 só existem quatro (6, 28, 496 e 8.128).
+    learnMore:
+      - title: Wolfram MathWorld, número perfeito
+        url: https://mathworld.wolfram.com/PerfectNumber.html
+
+  - id: divisible-by-nine
+    level: medium
+    prompt: Como saber, sem fazer a conta, se um número é divisível por 9?
+    choices:
+      - Se termina em 9
+      - Se a soma dos algarismos é divisível por 9
+      - Se é ímpar
+      - Se tem 9 algarismos
+    answer: Se a soma dos algarismos é divisível por 9
+    explanation: >-
+      Em 1.836, por exemplo: 1 + 8 + 3 + 6 = 18, que é múltiplo de 9, então 1.836 também é
+      (1.836 = 9 × 204). O mesmo truque vale para o 3.
+    learnMore:
+      - title: NRICH (Universidade de Cambridge), testes de divisibilidade
+        url: https://nrich.maths.org/articles/divisibility-tests
+
+  - id: odd-plus-odd
+    type: true-false
+    level: easy
+    prompt: Somar dois números ímpares sempre dá um número par.
+    answer: true
+    explanation: >-
+      Cada ímpar é um par com uma unidade sobrando. Juntando dois, as duas sobras formam mais
+      um par: 3 + 5 = 8, 7 + 9 = 16.
+    learnMore:
+      - title: Wolfram MathWorld, números ímpares
+        url: https://mathworld.wolfram.com/OddNumber.html
+
+  - id: factorial
+    level: hard
+    prompt: Quanto é 5! (lê-se "cinco fatorial")?
+    choices:
+      - '5'
+      - '25'
+      - '120'
+      - '3.125'
+    answer: '120'
+    explanation: >-
+      O fatorial multiplica todos os números até ele: 5 × 4 × 3 × 2 × 1 = 120. É também o
+      número de jeitos de enfileirar 5 pessoas. Cresce rápido: 10! já passa de 3 milhões.
+    learnMore:
+      - title: Wolfram MathWorld, fatorial
+        url: https://mathworld.wolfram.com/Factorial.html
+
+  - id: divide-by-zero
+    level: medium
+    prompt: Quanto dá 10 dividido por 0?
+    choices:
+      - '0'
+      - '10'
+      - Infinito
+      - Não tem resultado
+    answer: Não tem resultado
+    explanation: >-
+      Dividir é perguntar "que número vezes 0 dá 10?". Nenhum número serve, porque qualquer
+      número vezes 0 dá 0. Por isso a divisão por zero não é definida.
+    learnMore:
+      - title: Wolfram MathWorld, divisão por zero
+        url: https://mathworld.wolfram.com/DivisionbyZero.html
+
+  - id: binary-two
+    type: fill-blank
+    level: hard
+    prompt: No sistema binário, usado pelos computadores, o número 2 se escreve ___.
+    choices:
+      - '2'
+      - '10'
+      - '11'
+      - '01'
+    answer: '10'
+    explanation: >-
+      O binário só tem dois algarismos, 0 e 1. Contando: 1, 10 (dois), 11 (três), 100
+      (quatro). Cada casa vale o dobro da anterior, como as nossas valem dez vezes mais.
+    learnMore:
+      - title: Wolfram MathWorld, binário
+        url: https://mathworld.wolfram.com/Binary.html
+
+  - id: percent-half
+    type: fill-blank
+    level: easy
+    prompt: 50% de qualquer valor é a ___ dele.
+    choices:
+      - metade
+      - terça parte
+      - quarta parte
+      - décima parte
+    answer: metade
+    explanation: >-
+      "Por cento" quer dizer "a cada cem". 50% são 50 de cada 100, ou seja, a metade. Do
+      mesmo jeito, 25% é a quarta parte e 10% é a décima.
+    learnMore:
+      - title: Wolfram MathWorld, porcentagem
+        url: https://mathworld.wolfram.com/Percent.html
