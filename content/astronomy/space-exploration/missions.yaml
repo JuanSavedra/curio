@@ -159,3 +159,161 @@ questions:
     learnMore:
       - title: NASA, missão Perseverance
         url: https://science.nasa.gov/mission/mars-2020-perseverance/
+
+  - id: cosmonaut
+    type: fill-blank
+    level: easy
+    prompt: Os astronautas da Rússia costumam ser chamados de ___.
+    choices:
+      - cosmonautas
+      - argonautas
+      - aeronautas
+      - pilotos solares
+    answer: cosmonautas
+    explanation: >-
+      "Cosmonauta" junta cosmo, o universo, e nauta, navegante. "Astronauta" é parecido:
+      navegante dos astros. As duas palavras falam da mesma profissão.
+    learnMore:
+      - title: Priberam, cosmonauta
+        url: https://dicionario.priberam.org/cosmonauta
+
+  - id: hubble
+    level: medium
+    prompt: Em que ano o telescópio espacial Hubble foi lançado?
+    choices:
+      - '1969'
+      - '1990'
+      - '2010'
+      - '2021'
+    answer: '1990'
+    explanation: >-
+      Lá de cima, sem o ar da Terra atrapalhando, o Hubble tira fotos muito nítidas do
+      universo. Mais de 30 anos depois do lançamento, ele mudou muito do que sabemos sobre o
+      cosmo.
+    learnMore:
+      - title: NASA, telescópio espacial Hubble
+        url: https://science.nasa.gov/mission/hubble/
+
+  - id: james-webb
+    level: medium
+    prompt: O telescópio James Webb, lançado em 2021, enxerga principalmente que tipo de luz?
+    choices:
+      - Infravermelha
+      - Ultravioleta
+      - Raios X
+      - Só a luz que os olhos veem
+    answer: Infravermelha
+    explanation: >-
+      A luz infravermelha atravessa nuvens de poeira e mostra galáxias muito antigas e
+      distantes. O Webb não fica em volta da Terra: ele está a 1,5 milhão de km daqui, em
+      órbita do Sol.
+    learnMore:
+      - title: NASA, telescópio James Webb
+        url: https://science.nasa.gov/mission/webb/
+
+  - id: iss-always-inhabited
+    type: true-false
+    level: medium
+    prompt: Desde novembro de 2000, sempre tem alguém morando na Estação Espacial Internacional.
+    answer: true
+    explanation: >-
+      Há mais de 25 anos, astronautas de vários países se revezam lá em cima, sem pausa.
+      Normalmente vivem na estação umas sete pessoas ao mesmo tempo.
+    learnMore:
+      - title: NASA, a Estação Espacial em números
+        url: https://www.nasa.gov/international-space-station/space-station-facts-and-figures/
+
+  - id: pale-blue-dot
+    level: medium
+    prompt: O que é o "Pálido Ponto Azul", uma foto famosa tirada pela sonda Voyager 1 em 1990?
+    choices:
+      - A Terra vista de muito longe, como um pontinho
+      - Uma estrela recém-descoberta
+      - O planeta Netuno
+      - Uma galáxia azul
+    answer: A Terra vista de muito longe, como um pontinho
+    explanation: >-
+      Bem longe, já depois de Netuno, a Voyager 1 virou a câmera para trás e fotografou a
+      Terra, que apareceu como um pontinho de luz. O astrônomo Carl Sagan deu fama à imagem
+      e escreveu sobre como nosso planeta é pequeno e precioso.
+    learnMore:
+      - title: NASA, Voyager 1
+        url: https://science.nasa.gov/mission/voyager/voyager-1/
+
+  - id: amazonia-1
+    level: medium
+    prompt: O Amazonia-1, lançado em 2021, é o primeiro satélite de observação da Terra feito inteiro no Brasil. Para que ele serve?
+    choices:
+      - Para transmitir canais de TV
+      - Para tirar imagens e ajudar a vigiar o desmatamento
+      - Para levar astronautas brasileiros
+      - Para estudar Marte
+    answer: Para tirar imagens e ajudar a vigiar o desmatamento
+    explanation: >-
+      O satélite foi desenvolvido pelo INPE, com empresas brasileiras. Suas imagens ajudam a
+      acompanhar a floresta amazônica e outros recursos naturais do país.
+    learnMore:
+      - title: Revista Pesquisa FAPESP, a Amazônia no espaço
+        url: https://revistapesquisa.fapesp.br/amazonia-no-espaco/
+
+  - id: first-spacewalk
+    level: hard
+    prompt: Quem foi a primeira pessoa a sair de uma nave e "caminhar" no espaço, em 1965?
+    choices:
+      - Neil Armstrong
+      - Alexei Leonov
+      - Yuri Gagarin
+      - John Glenn
+    answer: Alexei Leonov
+    explanation: >-
+      O russo Alexei Leonov ficou uns 12 minutos do lado de fora, preso à nave por um cabo.
+      Na volta, o traje tinha inchado e ele quase não passou pela porta: teve que soltar um
+      pouco do ar para conseguir entrar.
+    learnMore:
+      - title: Guinness World Records, 1965, a primeira caminhada espacial
+        url: https://www.guinnessworldrecords.com/news/2015/8/60/1965-first-space-walk-392987
+
+  - id: new-horizons
+    level: hard
+    prompt: Qual sonda tirou as primeiras fotos de perto de Plutão, em 2015?
+    choices:
+      - New Horizons
+      - Voyager 2
+      - Hubble
+      - Perseverance
+    answer: New Horizons
+    explanation: >-
+      Depois de uma viagem de nove anos, a New Horizons passou por Plutão e mostrou uma
+      enorme geleira de nitrogênio em forma de coração na superfície dele.
+    learnMore:
+      - title: NASA, New Horizons
+        url: https://science.nasa.gov/mission/new-horizons/
+
+  - id: rosetta-comet
+    level: hard
+    prompt: Em 2014, a missão Rosetta, da Agência Espacial Europeia, foi a primeira a pousar um robô onde?
+    choices:
+      - Num cometa
+      - Em Vênus
+      - No Sol
+      - Num buraco negro
+    answer: Num cometa
+    explanation: >-
+      A Rosetta acompanhou um cometa na viagem em volta do Sol e soltou nele o pequeno robô
+      Philae. Foi a primeira vez que uma nave pousou num cometa.
+    learnMore:
+      - title: Agência Espacial Europeia, a missão Rosetta
+        url: https://www.esa.int/Science_Exploration/Space_Science/Rosetta
+
+  - id: moon-far-side-landing
+    type: true-false
+    level: hard
+    prompt: Nenhuma nave jamais pousou no lado da Lua que fica escondido da Terra.
+    answer: false
+    explanation: >-
+      Em 2019, a missão chinesa Chang'e-4 fez o primeiro pouso no lado oculto da Lua e
+      soltou o jipe-robô Yutu-2. Como esse lado não "enxerga" a Terra, a comunicação passa
+      por um satélite de apoio.
+    learnMore:
+      - title: The Planetary Society, a missão Chang'e-4
+        url: https://www.planetary.org/space-missions/change-4

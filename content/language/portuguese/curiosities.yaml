@@ -50,8 +50,8 @@ questions:
     learnMore:
       - title: Ciberdúvidas, palíndromo
         url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/palindromo/14629
-      - title: Pesquisa Escolar (Fundaj), palíndromos
-        url: https://pesquisaescolar.fundaj.gov.br/pt-br/artigo/palindromos/
+      - title: Priberam, palíndromo
+        url: https://dicionario.priberam.org/pal%C3%ADndromo
 
   - id: tupi-word
     level: easy
@@ -72,7 +72,7 @@ questions:
       - title: Dicio, abacaxi
         url: https://www.dicio.com.br/abacaxi/
       - title: Revista Filologia e Linguística Portuguesa (USP), a etimologia de abacaxi
-        url: https://revistas.usp.br/flp/en/article/view/166154
+        url: https://revistas.usp.br/flp/article/view/166154
 
   - id: citizen-plural
     level: hard
@@ -122,8 +122,8 @@ questions:
       A vida não é uma montanha-russa de verdade. A metáfora liga duas coisas pela
       semelhança, sem usar "como".
     learnMore:
-      - title: Portal do Professor (MEC), metáforas
-        url: https://portaldoprofessor.mec.gov.br/fichaTecnicaAula.html?aula=16274
+      - title: Priberam, metáfora
+        url: https://dicionario.priberam.org/met%C3%A1fora
       - title: Prefeitura de Goiânia, comparação e metáfora
         url: https://sme.goiania.go.gov.br/conexaoescola/ensino_fundamental/lingua-portuguesa-figuras-de-palavras-comparacao-e-metafora/
 
