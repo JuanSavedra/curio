@@ -152,3 +152,175 @@ questions:
     learnMore:
       - title: NASA, fatos sobre a Terra
         url: https://science.nasa.gov/earth/facts/
+
+  - id: planet-count
+    level: easy
+    prompt: Quantos planetas tem o Sistema Solar?
+    choices:
+      - Sete
+      - Oito
+      - Nove
+      - Doze
+    answer: Oito
+    explanation: >-
+      Mercúrio, Vênus, Terra, Marte, Júpiter, Saturno, Urano e Netuno. Até 2006, Plutão era
+      contado como o nono, mas passou a ser chamado de planeta anão.
+    learnMore:
+      - title: NASA, os planetas
+        url: https://science.nasa.gov/solar-system/planets/
+
+  - id: pluto-dwarf
+    type: true-false
+    level: medium
+    prompt: Plutão deixou de ser chamado de planeta porque é pequeno e divide sua órbita com muitos outros objetos.
+    answer: true
+    explanation: >-
+      Em 2006, os astrônomos definiram que um planeta precisa "limpar" o caminho da própria
+      órbita. Plutão é menor que a nossa Lua e vive no Cinturão de Kuiper, cheio de corpos
+      gelados parecidos com ele. Virou planeta anão.
+    learnMore:
+      - title: NASA, fatos sobre Plutão
+        url: https://science.nasa.gov/dwarf-planets/pluto/facts/
+
+  - id: biggest-planet
+    level: easy
+    prompt: Qual é o maior planeta do Sistema Solar?
+    choices:
+      - Saturno
+      - Terra
+      - Júpiter
+      - Netuno
+    answer: Júpiter
+    explanation: >-
+      Júpiter tem mais que o dobro da massa de todos os outros planetas juntos. Caberiam uns
+      1.300 planetas Terra dentro dele.
+    learnMore:
+      - title: NASA, fatos sobre Júpiter
+        url: https://science.nasa.gov/jupiter/jupiter-facts/
+
+  - id: closest-planet
+    level: easy
+    prompt: Qual planeta fica mais perto do Sol?
+    choices:
+      - Vênus
+      - Mercúrio
+      - Marte
+      - Terra
+    answer: Mercúrio
+    explanation: >-
+      Mercúrio é também o menor dos planetas e o mais rápido: dá uma volta no Sol em só 88
+      dias. Como quase não tem ar, de dia fica fervendo e de noite, congelando.
+    learnMore:
+      - title: NASA, fatos sobre Mercúrio
+        url: https://science.nasa.gov/mercury/facts/
+
+  - id: red-planet
+    level: easy
+    prompt: Por que Marte é chamado de planeta vermelho?
+    choices:
+      - Porque é muito quente
+      - Porque o chão tem ferro enferrujado
+      - Porque é coberto de lava
+      - Porque reflete a luz do Sol de um jeito diferente
+    answer: Porque o chão tem ferro enferrujado
+    explanation: >-
+      Os minerais de ferro do solo de Marte enferrujam, como um prego velho, e deixam a poeira
+      avermelhada. Os antigos egípcios já o chamavam de "o vermelho".
+    learnMore:
+      - title: NASA, fatos sobre Marte
+        url: https://science.nasa.gov/mars/facts/
+
+  - id: saturn-rings
+    type: fill-blank
+    level: easy
+    prompt: Os anéis de Saturno são feitos principalmente de pedaços de ___.
+    choices:
+      - gelo
+      - ouro
+      - gás
+      - areia
+    answer: gelo
+    explanation: >-
+      São bilhões de pedaços de gelo e rocha, alguns do tamanho de um grão de poeira e outros
+      do tamanho de uma casa. Júpiter, Urano e Netuno também têm anéis, só que bem mais
+      fracos.
+    learnMore:
+      - title: NASA, fatos sobre Saturno
+        url: https://science.nasa.gov/saturn/facts/
+
+  - id: olympus-mons
+    level: hard
+    prompt: Onde fica o maior vulcão conhecido do Sistema Solar?
+    choices:
+      - Na Terra, no Havaí
+      - Em Marte
+      - Em Vênus
+      - Na Lua
+    answer: Em Marte
+    explanation: >-
+      É o Monte Olimpo, com mais de 20 km de altura, mais que o dobro do Everest. Só a
+      cratera do topo tem uns 25 km de largura e quase 3 km de fundo.
+    learnMore:
+      - title: NASA, Monte Olimpo
+        url: https://science.nasa.gov/mars/olympus-mons/
+
+  - id: uranus-sideways
+    level: hard
+    prompt: O que Urano tem de diferente dos outros planetas?
+    choices:
+      - Ele gira deitado de lado
+      - Ele não tem gravidade
+      - Ele é quadrado
+      - Ele está parado
+    answer: Ele gira deitado de lado
+    explanation: >-
+      O eixo de Urano é tão inclinado que ele parece rolar pela órbita como uma bola. Talvez
+      uma batida com um corpo do tamanho da Terra, há muito tempo, o tenha derrubado.
+    learnMore:
+      - title: NASA, fatos sobre Urano
+        url: https://science.nasa.gov/uranus/facts/
+
+  - id: neptune-winds
+    level: hard
+    prompt: Qual planeta tem os ventos mais rápidos do Sistema Solar?
+    choices:
+      - Terra
+      - Marte
+      - Júpiter
+      - Netuno
+    answer: Netuno
+    explanation: >-
+      Em Netuno, os ventos passam de 2.000 km/h, mais rápido que o som na Terra. É estranho,
+      porque ele é o planeta mais longe do Sol e recebe pouquíssima energia.
+    learnMore:
+      - title: NASA, fatos sobre Netuno
+        url: https://science.nasa.gov/neptune/neptune-facts/
+
+  - id: moon-same-side
+    type: true-false
+    level: medium
+    prompt: Da Terra, vemos sempre o mesmo lado da Lua.
+    answer: true
+    explanation: >-
+      A Lua leva o mesmo tempo para girar em torno de si e para dar a volta na Terra. Por
+      isso a mesma face fica virada para nós. O outro lado só foi fotografado em 1959, por
+      uma sonda.
+    learnMore:
+      - title: NASA, fatos sobre a Lua
+        url: https://science.nasa.gov/moon/facts/
+
+  - id: seasons
+    level: medium
+    prompt: Por que existem as estações do ano?
+    choices:
+      - Porque a Terra fica mais perto e mais longe do Sol
+      - Porque o eixo da Terra é inclinado
+      - Porque o Sol esquenta e esfria
+      - Por causa da Lua
+    answer: Porque o eixo da Terra é inclinado
+    explanation: >-
+      Com a inclinação, cada hemisfério recebe o Sol mais de frente numa época do ano. Prova
+      de que não é a distância: quando é verão no Brasil, é inverno nos Estados Unidos.
+    learnMore:
+      - title: NASA Space Place, o que causa as estações
+        url: https://spaceplace.nasa.gov/seasons/en/

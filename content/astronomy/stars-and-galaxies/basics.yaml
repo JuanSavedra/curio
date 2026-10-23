@@ -139,3 +139,200 @@ questions:
         url: https://www.britannica.com/place/Sirius-star
       - title: NASA, Sirius, a estrela mais brilhante da noite
         url: https://science.nasa.gov/image-article/apod-1996-september-02-sirius-the-brightest-star-in-the-night/
+
+  - id: sun-is-star
+    type: true-false
+    level: easy
+    prompt: O Sol é uma estrela.
+    answer: true
+    explanation: >-
+      O Sol é uma estrela como as que vemos à noite, só que muito mais perto. As outras
+      parecem pontinhos porque estão tão longe que a luz delas leva anos para chegar aqui.
+    learnMore:
+      - title: NASA, fatos sobre o Sol
+        url: https://science.nasa.gov/sun/facts/
+
+  - id: sun-made-of
+    type: fill-blank
+    level: easy
+    prompt: O Sol é feito principalmente de ___.
+    choices:
+      - hidrogênio
+      - fogo
+      - ferro
+      - oxigênio
+    answer: hidrogênio
+    explanation: >-
+      O Sol é quase todo hidrogênio e hélio. No centro dele, o hidrogênio vira hélio e
+      solta a energia que chega até nós como luz e calor. Não é fogo: não há oxigênio
+      queimando.
+    learnMore:
+      - title: NASA, fatos sobre o Sol
+        url: https://science.nasa.gov/sun/facts/
+
+  - id: sun-age
+    level: medium
+    prompt: Qual é a idade aproximada do Sol?
+    choices:
+      - 6 mil anos
+      - 4,6 milhões de anos
+      - 4,6 bilhões de anos
+      - 100 bilhões de anos
+    answer: 4,6 bilhões de anos
+    explanation: >-
+      O Sol se formou há uns 4,6 bilhões de anos, a partir de uma nuvem gigante de gás e
+      poeira que girava. Os planetas nasceram das sobras dessa mesma nuvem.
+    learnMore:
+      - title: NASA, fatos sobre o Sol
+        url: https://science.nasa.gov/sun/facts/
+
+  - id: southern-cross
+    level: easy
+    prompt: Qual constelação aparece no centro da bandeira do Brasil?
+    choices:
+      - Órion
+      - Cruzeiro do Sul
+      - Escorpião
+      - Ursa Maior
+    answer: Cruzeiro do Sul
+    explanation: >-
+      A bandeira mostra o céu do Rio de Janeiro na manhã de 15 de novembro de 1889, dia da
+      proclamação da República. O Cruzeiro do Sul é uma constelação que se vê bem do
+      hemisfério Sul.
+    learnMore:
+      - title: Planalto, Lei 5.700, sobre os símbolos nacionais
+        url: https://www.planalto.gov.br/ccivil_03/leis/l5700.htm
+
+  - id: flag-stars
+    type: fill-blank
+    level: medium
+    prompt: A bandeira do Brasil tem ___ estrelas.
+    choices:
+      - '21'
+      - '26'
+      - '27'
+      - '30'
+    answer: '27'
+    explanation: >-
+      Cada estrela representa um estado, e uma representa o Distrito Federal. Quando surge um
+      estado novo, a lei manda incluir mais uma estrela no céu da bandeira.
+    learnMore:
+      - title: Planalto, Lei 5.700, sobre os símbolos nacionais
+        url: https://www.planalto.gov.br/ccivil_03/leis/l5700.htm
+      - title: Planalto, Lei 8.421, de 1992, que atualizou as estrelas
+        url: https://www.planalto.gov.br/ccivil_03/leis/l8421.htm
+
+  - id: twinkling
+    level: medium
+    prompt: Por que as estrelas parecem piscar no céu?
+    choices:
+      - Elas acendem e apagam
+      - O ar em movimento da Terra desvia a luz delas
+      - Os satélites passam na frente
+      - Os nossos olhos se cansam
+    answer: O ar em movimento da Terra desvia a luz delas
+    explanation: >-
+      A luz das estrelas atravessa camadas de ar que se mexem e mudam de temperatura, e isso
+      a entorta um pouquinho a todo momento. Perto do horizonte, onde há mais ar no caminho,
+      elas piscam mais.
+    learnMore:
+      - title: NASA StarChild, por que as estrelas piscam
+        url: https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question26.html
+
+  - id: visible-stars
+    level: medium
+    prompt: Numa noite limpa e escura, longe das luzes da cidade, mais ou menos quantas estrelas dá para ver a olho nu?
+    choices:
+      - Umas 60
+      - Umas 6.000
+      - Umas 6 milhões
+      - Todas as estrelas da galáxia
+    answer: Umas 6.000
+    explanation: >-
+      Contando o céu todo, os dois hemisférios, são uns 6 mil. A Via Láctea tem centenas de
+      bilhões de estrelas, mas a maioria está longe ou fraca demais para os nossos olhos.
+    learnMore:
+      - title: NASA StarChild, por que as estrelas piscam
+        url: https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question26.html
+
+  - id: big-bang
+    level: medium
+    prompt: Como se chama a ideia científica de como o universo começou, a partir de um estado muito quente e denso?
+    choices:
+      - Big Bang
+      - Buraco negro
+      - Supernova
+      - Via Láctea
+    answer: Big Bang
+    explanation: >-
+      Segundo o Big Bang, o universo era quente e denso e vem se expandindo desde então. Não
+      foi uma explosão num lugar: foi o próprio espaço que começou a crescer.
+    learnMore:
+      - title: NASA, visão geral do universo
+        url: https://science.nasa.gov/universe/overview/
+
+  - id: universe-age
+    level: hard
+    prompt: Qual é a idade aproximada do universo?
+    choices:
+      - 4,6 bilhões de anos
+      - 13,8 bilhões de anos
+      - 100 bilhões de anos
+      - Ele sempre existiu
+    answer: 13,8 bilhões de anos
+    explanation: >-
+      A conta vem da luz mais antiga que existe, um brilho fraquinho que sobrou do começo
+      do universo e foi medido por satélites. O Sol, com 4,6 bilhões de anos, chegou bem
+      depois.
+    learnMore:
+      - title: NASA WMAP, qual a idade do universo
+        url: https://wmap.gsfc.nasa.gov/universe/uni_age.html
+
+  - id: black-hole
+    level: medium
+    prompt: O que é um buraco negro?
+    choices:
+      - Um buraco no espaço vazio
+      - Uma região com gravidade tão forte que nem a luz escapa
+      - Uma estrela apagada que esfriou
+      - Um planeta muito escuro
+    answer: Uma região com gravidade tão forte que nem a luz escapa
+    explanation: >-
+      Muita matéria espremida num espaço pequeno cria uma gravidade enorme. Como nem a luz
+      sai, ele não pode ser visto direto, mas dá para notar o que acontece em volta dele.
+    learnMore:
+      - title: NASA, buracos negros
+        url: https://science.nasa.gov/universe/black-holes/
+
+  - id: black-hole-photo
+    level: hard
+    prompt: Em que ano foi divulgada a primeira imagem de um buraco negro?
+    choices:
+      - '1969'
+      - '1990'
+      - '2019'
+      - Ainda não existe
+    answer: '2019'
+    explanation: >-
+      A imagem mostra a sombra do buraco negro no centro da galáxia M87, cercada por um anel
+      de luz. Para fazê-la, telescópios espalhados pelo mundo trabalharam juntos como se
+      fossem um só, do tamanho da Terra.
+    learnMore:
+      - title: ESO, astrônomos capturam a primeira imagem de um buraco negro
+        url: https://www.eso.org/public/news/eso1907/
+
+  - id: neutron-star
+    level: hard
+    prompt: Um cubinho de açúcar feito do material de uma estrela de nêutrons pesaria, na Terra, mais ou menos quanto?
+    choices:
+      - 1 quilo
+      - 1 tonelada
+      - 1 milhão de toneladas
+      - 1 bilhão de toneladas
+    answer: 1 bilhão de toneladas
+    explanation: >-
+      Estrelas de nêutrons são o que sobra de estrelas gigantes depois de uma supernova. Elas
+      têm mais massa que o Sol espremida numa bola de uns 20 km, do tamanho de uma cidade.
+    learnMore:
+      - title: NASA, estrelas de nêutrons
+        url: https://imagine.gsfc.nasa.gov/science/objects/neutron_stars1.html

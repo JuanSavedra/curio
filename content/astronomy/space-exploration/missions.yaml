@@ -1,0 +1,161 @@
+title: Viagens ao espaço
+subtopic: Exploração espacial
+questions:
+  - id: sputnik
+    level: medium
+    prompt: Qual foi o primeiro satélite artificial a dar voltas na Terra, em 1957?
+    choices:
+      - Sputnik 1
+      - Apollo 11
+      - Hubble
+      - Voyager 1
+    answer: Sputnik 1
+    explanation: >-
+      A União Soviética lançou o Sputnik em 4 de outubro de 1957. Era uma bola de metal do
+      tamanho de uma bola de praia, que mandava um bipe de rádio. Ali começou a corrida
+      espacial.
+    learnMore:
+      - title: NASA, Sputnik e a origem da era espacial
+        url: https://www.nasa.gov/history/sputnik/
+
+  - id: laika
+    level: medium
+    prompt: Quem foi Laika, lançada ao espaço em 1957?
+    choices:
+      - A primeira mulher astronauta
+      - A primeira cadela a dar voltas na Terra
+      - Um robô soviético
+      - O nome de um foguete
+    answer: A primeira cadela a dar voltas na Terra
+    explanation: >-
+      Laika era uma cadela de rua de Moscou e voou na Sputnik 2. Ela foi o primeiro animal
+      em órbita, mas a nave não tinha como voltar, e ela não sobreviveu. Sua viagem mostrou
+      que um ser vivo aguentava o lançamento.
+    learnMore:
+      - title: Scientific American, lembrando a viagem de Laika
+        url: https://www.scientificamerican.com/article/remembering-laika-the-dog-s-trip-to-space-57-years-later/
+
+  - id: gagarin
+    level: easy
+    prompt: Quem foi o primeiro ser humano a ir ao espaço, em 1961?
+    choices:
+      - Neil Armstrong
+      - Yuri Gagarin
+      - Buzz Aldrin
+      - Marcos Pontes
+    answer: Yuri Gagarin
+    explanation: >-
+      O russo Yuri Gagarin deu uma volta completa na Terra a bordo da Vostok 1, em 12 de
+      abril de 1961. A viagem toda durou 108 minutos.
+    learnMore:
+      - title: NASA, Yuri Gagarin, o primeiro humano no espaço
+        url: https://science.nasa.gov/resource/yuri-gagarin-first-human-in-space
+
+  - id: tereshkova
+    type: fill-blank
+    level: medium
+    prompt: A primeira mulher a ir ao espaço, em 1963, foi a russa Valentina ___.
+    choices:
+      - Tereshkova
+      - Gagarina
+      - Curie
+      - Lovelace
+    answer: Tereshkova
+    explanation: >-
+      Valentina Tereshkova voou sozinha na Vostok 6 e passou quase três dias em órbita. Antes,
+      ela era operária numa fábrica de tecidos e saltava de paraquedas por hobby.
+    learnMore:
+      - title: Agência Espacial Europeia, a primeira mulher no espaço
+        url: https://esa.int/About_Us/ESA_history/50_years_of_humans_in_space/First_woman_in_space_Valentina
+
+  - id: moon-walkers
+    level: hard
+    prompt: Quantas pessoas já andaram na Lua?
+    choices:
+      - '2'
+      - '6'
+      - '12'
+      - '24'
+    answer: '12'
+    explanation: >-
+      Foram 12 astronautas americanos, em seis missões Apollo, de 1969 a 1972. Depois disso,
+      ninguém mais pisou lá.
+    learnMore:
+      - title: NASA, as missões Apollo
+        url: https://www.nasa.gov/the-apollo-program/
+
+  - id: marcos-pontes
+    level: medium
+    prompt: Quem foi o primeiro astronauta brasileiro a ir ao espaço, em 2006?
+    choices:
+      - Santos-Dumont
+      - Marcos Pontes
+      - César Lattes
+      - Ayrton Senna
+    answer: Marcos Pontes
+    explanation: >-
+      O tenente-coronel da Aeronáutica Marcos Pontes passou uma semana na Estação Espacial
+      Internacional. A missão se chamou Centenário, em homenagem aos 100 anos do voo do
+      14-bis.
+    learnMore:
+      - title: Agência FAPESP, tem brasileiro no espaço
+        url: https://agencia.fapesp.br/tem-brasileiro-no-espaco/5281
+
+  - id: iss-orbit
+    type: true-false
+    level: medium
+    prompt: A Estação Espacial Internacional dá uma volta completa na Terra a cada uns 90 minutos.
+    answer: true
+    explanation: >-
+      Ela viaja a uns 28 mil km/h, cerca de 400 km acima de nós. Assim, os astronautas veem uns
+      16 nasceres e pores do sol por dia. Às vezes dá até para vê-la cruzando o céu à noite.
+    learnMore:
+      - title: NASA, a Estação Espacial em números
+        url: https://www.nasa.gov/international-space-station/space-station-facts-and-figures/
+
+  - id: floating-gravity
+    type: true-false
+    level: hard
+    prompt: Os astronautas flutuam na estação espacial porque lá em cima não existe gravidade.
+    answer: false
+    explanation: >-
+      A gravidade lá ainda é quase 90% da que sentimos aqui. Eles flutuam porque a estação e
+      tudo dentro dela estão caindo em volta da Terra o tempo todo, rápido o bastante para
+      nunca chegar ao chão.
+    learnMore:
+      - title: NASA, o que é microgravidade
+        url: https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/
+
+  - id: voyager-1
+    level: hard
+    prompt: Qual é o objeto feito por humanos que está mais longe da Terra?
+    choices:
+      - O telescópio Hubble
+      - A sonda Voyager 1
+      - A Estação Espacial Internacional
+      - O robô Perseverance
+    answer: A sonda Voyager 1
+    explanation: >-
+      Lançada em 1977, a Voyager 1 passou por Júpiter e Saturno e, em 2012, saiu da bolha do
+      Sol para o espaço entre as estrelas. Ela leva um disco de ouro com sons e imagens da
+      Terra.
+    learnMore:
+      - title: NASA, Voyager 1
+        url: https://science.nasa.gov/mission/voyager/voyager-1/
+
+  - id: perseverance
+    level: medium
+    prompt: Como se chama o robô da NASA que explora Marte desde 2021 e levou junto um pequeno helicóptero?
+    choices:
+      - Curiosity
+      - Perseverance
+      - Sputnik
+      - Hubble
+    answer: Perseverance
+    explanation: >-
+      O Perseverance procura sinais de vida antiga em Marte e guarda amostras de rocha. O
+      helicóptero Ingenuity, que veio com ele, foi a primeira máquina a voar com motor em
+      outro planeta.
+    learnMore:
+      - title: NASA, missão Perseverance
+        url: https://science.nasa.gov/mission/mars-2020-perseverance/
