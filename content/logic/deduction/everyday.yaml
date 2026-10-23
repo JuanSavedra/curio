@@ -1,0 +1,233 @@
+title: Lógica do dia a dia
+subtopic: Dedução
+questions:
+  - id: curio-syllogism
+    type: fill-blank
+    level: easy
+    prompt: Todos os curiós são pássaros, e todos os pássaros têm penas. Então, todos os curiós têm ___.
+    choices:
+      - penas
+      - escamas
+      - pelos
+      - asas de morcego
+    answer: penas
+    explanation: >-
+      Se o grupo dos curiós está dentro do grupo dos pássaros, tudo que vale para todos os
+      pássaros vale para os curiós. Esse jeito de raciocinar, o silogismo, foi estudado por
+      Aristóteles há uns 2.300 anos.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, a lógica de Aristóteles
+        url: https://plato.stanford.edu/entries/aristotle-logic/
+
+  - id: height-order
+    level: easy
+    prompt: Ana é mais alta que Bia, e Bia é mais alta que Carla. Quem é a mais baixa das três?
+    choices:
+      - Ana
+      - Bia
+      - Carla
+      - Não dá para saber
+    answer: Carla
+    explanation: >-
+      Se Ana passa Bia e Bia passa Carla, então Ana também passa Carla. "Ser mais alto" é uma
+      relação transitiva: ela passa adiante, como numa fila em ordem de altura.
+    learnMore:
+      - title: Wolfram MathWorld, relação transitiva
+        url: https://mathworld.wolfram.com/Transitive.html
+
+  - id: and-statement
+    type: true-false
+    level: easy
+    prompt: 'A frase "O Sol é uma estrela e a Lua é um planeta" é verdadeira.'
+    answer: false
+    explanation: >-
+      Uma frase com "e" só é verdadeira se as duas partes forem. O Sol é mesmo uma estrela,
+      mas a Lua é um satélite, não um planeta. Basta uma parte falsa para a frase toda ser
+      falsa.
+    learnMore:
+      - title: Wolfram MathWorld, o conectivo E
+        url: https://mathworld.wolfram.com/AND.html
+
+  - id: inclusive-or
+    level: medium
+    prompt: 'Na lógica, a frase "Vou à praia ou ao cinema" continua verdadeira se eu for aos dois?'
+    choices:
+      - Sim
+      - Não
+    answer: Sim
+    explanation: >-
+      Na lógica, o "ou" só é falso quando nenhuma das partes acontece. No dia a dia muitas
+      vezes usamos o "ou" querendo dizer "um ou outro, não os dois", mas esse é outro "ou",
+      o exclusivo.
+    learnMore:
+      - title: Wolfram MathWorld, o conectivo OU
+        url: https://mathworld.wolfram.com/OR.html
+
+  - id: affirming-consequent
+    type: true-false
+    level: medium
+    prompt: '"Todo cachorro é um animal. Rex é um animal. Logo, Rex é um cachorro." Esse raciocínio está correto.'
+    answer: false
+    explanation: >-
+      Rex pode ser um gato, um cavalo ou um peixe: todos são animais. Saber que todo cachorro
+      é animal não diz que todo animal é cachorro. Esse erro tem nome: afirmar o consequente.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, falácias
+        url: https://plato.stanford.edu/entries/fallacies/
+
+  - id: modus-tollens
+    level: medium
+    prompt: '"Se chover, a rua fica molhada." Hoje a rua está seca. O que dá para concluir?'
+    choices:
+      - Que choveu
+      - Que não choveu
+      - Que vai chover
+      - Nada
+    answer: Que não choveu
+    explanation: >-
+      Se a chuva sempre molha a rua e a rua está seca, a chuva não veio. Atenção para o
+      contrário: rua molhada não prova chuva, porque alguém pode ter lavado a calçada.
+    learnMore:
+      - title: Wolfram MathWorld, modus tollens
+        url: https://mathworld.wolfram.com/ModusTollens.html
+
+  - id: negation-all
+    level: hard
+    prompt: 'Qual frase é o contrário exato (a negação) de "Todos os alunos passaram"?'
+    choices:
+      - Nenhum aluno passou
+      - Pelo menos um aluno não passou
+      - Alguns alunos passaram
+      - Todos os alunos reprovaram
+    answer: Pelo menos um aluno não passou
+    explanation: >-
+      Para "todos passaram" ser falso, basta um aluno ter ficado de fora. "Nenhum passou" é
+      exagero: também nega a frase, mas não é o único jeito. Os lógicos organizam isso num
+      desenho chamado quadrado das oposições.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, o quadrado das oposições
+        url: https://plato.stanford.edu/entries/square/
+
+  - id: wason-cards
+    level: hard
+    prompt: 'Quatro cartas têm uma letra de um lado e um número do outro. Você vê A, K, 4 e 7. Regra: "se há vogal de um lado, há número par do outro". Quais cartas precisa virar para testar a regra?'
+    choices:
+      - Só a A
+      - A e 4
+      - A e 7
+      - Todas
+    answer: A e 7
+    explanation: >-
+      A A precisa ter número par atrás. A 7 não pode ter vogal atrás. Já a 4 não importa: a
+      regra não diz o que fica atrás de um número par. Nesse teste, criado por Peter Wason
+      em 1966, a maioria das pessoas erra.
+    learnMore:
+      - title: Wikipédia, tarefa de seleção de Wason
+        url: https://pt.wikipedia.org/wiki/Tarefa_de_sele%C3%A7%C3%A3o_de_Wason
+
+  - id: ten-days-later
+    level: medium
+    prompt: Se hoje é segunda-feira, que dia da semana será daqui a 10 dias?
+    choices:
+      - Terça-feira
+      - Quarta-feira
+      - Quinta-feira
+      - Sexta-feira
+    answer: Quinta-feira
+    explanation: >-
+      A cada 7 dias, a semana se repete. Daqui a 7 dias é segunda de novo, e faltam mais 3:
+      terça, quarta, quinta. Ou seja, só importa o resto de 10 ÷ 7, que é 3.
+    learnMore:
+      - title: Wolfram MathWorld, congruência
+        url: https://mathworld.wolfram.com/Congruence.html
+
+  - id: necessary-sufficient
+    level: hard
+    prompt: No Brasil, é preciso ter 18 anos para tirar carteira de motorista. Então, ter 18 anos basta para tirar a carteira?
+    choices:
+      - Sim, basta
+      - Não, é preciso, mas não basta
+      - Não precisa ter 18 anos
+    answer: Não, é preciso, mas não basta
+    explanation: >-
+      Ter 18 anos é uma condição necessária: sem ela, não tem carteira. Mas não é suficiente,
+      porque também é preciso saber ler, fazer exames e passar nas provas.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, condições necessárias e suficientes
+        url: https://plato.stanford.edu/entries/necessary-sufficient/
+
+  - id: ice-cream-drownings
+    level: medium
+    prompt: Nos meses em que se vende mais sorvete, também acontecem mais afogamentos. Isso mostra que sorvete causa afogamento?
+    choices:
+      - Sim, os números provam
+      - Não, o calor aumenta as duas coisas
+      - Sim, mas só em crianças
+    answer: Não, o calor aumenta as duas coisas
+    explanation: >-
+      No calor, mais gente toma sorvete e mais gente vai nadar. Duas coisas que sobem juntas
+      podem ter uma terceira causa por trás, ou ser pura coincidência. Correlação não é
+      causa.
+    learnMore:
+      - title: Tyler Vigen, correlações sem sentido
+        url: https://www.tylervigen.com/spurious-correlations
+
+  - id: gamblers-fallacy
+    type: true-false
+    level: medium
+    prompt: Se uma moeda honesta deu cara 5 vezes seguidas, a próxima jogada tem mais chance de dar coroa.
+    answer: false
+    explanation: >-
+      A moeda não tem memória: cada jogada continua sendo meio a meio. Achar que "agora tem
+      que dar coroa" é tão comum que tem nome, a falácia do apostador.
+    learnMore:
+      - title: Wikipédia, falácia do apostador
+        url: https://pt.wikipedia.org/wiki/Fal%C3%A1cia_do_apostador
+
+  - id: ad-hominem
+    level: medium
+    prompt: 'Alguém diz "Não ligue para a ideia dele sobre economia de água, ele nem terminou a escola". Que erro de raciocínio é esse?'
+    choices:
+      - Atacar a pessoa em vez da ideia
+      - Generalizar a partir de um caso só
+      - Concluir sem dados
+    answer: Atacar a pessoa em vez da ideia
+    explanation: >-
+      A ideia pode ser boa ou ruim, e isso não depende da escola de quem falou. Rebater
+      alguém atacando a pessoa, e não o argumento, se chama "ad hominem", "contra a pessoa"
+      em latim.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, falácias
+        url: https://plato.stanford.edu/entries/fallacies/
+
+  - id: who-ate-the-cake
+    level: hard
+    prompt: 'Um de três amigos comeu o bolo. Ana: "Foi o Beto." Beto: "Não fui eu." Caio: "Não fui eu." Só um deles diz a verdade. Quem comeu?'
+    choices:
+      - Ana
+      - Beto
+      - Caio
+    answer: Caio
+    explanation: >-
+      Teste cada um. Se foi Ana, Beto e Caio dizem a verdade: dois, não serve. Se foi Beto,
+      Ana e Caio dizem a verdade: dois de novo. Se foi Caio, só Beto diz a verdade. Enigmas
+      assim foram popularizados pelo lógico Raymond Smullyan.
+    learnMore:
+      - title: MacTutor, biografia de Raymond Smullyan
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Smullyan/
+
+  - id: heads-and-legs
+    level: medium
+    prompt: Num quintal há galinhas e cachorros. Ao todo são 5 cabeças e 14 patas. Quantos cachorros há?
+    choices:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+    answer: '2'
+    explanation: >-
+      Imagine todos como galinhas: 5 × 2 = 10 patas. Sobram 4 patas, e cada cachorro tem 2 a
+      mais que uma galinha, então são 2 cachorros (e 3 galinhas). Conferindo: 8 + 6 = 14.
+    learnMore:
+      - title: Wolfram MathWorld, sistemas de equações lineares
+        url: https://mathworld.wolfram.com/LinearSystemofEquations.html

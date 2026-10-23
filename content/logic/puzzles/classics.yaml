@@ -1,0 +1,248 @@
+title: Enigmas clássicos
+subtopic: Enigmas
+questions:
+  - id: tangram
+    level: easy
+    prompt: Quantas peças tem um tangram, o quebra-cabeça chinês de formar figuras?
+    choices:
+      - Cinco
+      - Sete
+      - Nove
+      - Doze
+    answer: Sete
+    explanation: >-
+      São sete peças: cinco triângulos, um quadrado e um paralelogramo. Juntas elas formam
+      um quadrado, e com elas dá para montar milhares de figuras, de gatos a barcos.
+    learnMore:
+      - title: Wolfram MathWorld, tangram
+        url: https://mathworld.wolfram.com/Tangram.html
+
+  - id: sudoku
+    level: easy
+    prompt: Num sudoku comum, o que precisa aparecer em cada linha, coluna e quadrado 3 × 3?
+    choices:
+      - Os números de 1 a 9, sem repetir
+      - Só números pares
+      - Números que somem 100
+      - As letras de A a I, em ordem
+    answer: Os números de 1 a 9, sem repetir
+    explanation: >-
+      E nenhuma conta é necessária: os números poderiam ser trocados por cores ou símbolos.
+      O sudoku é um jogo de lógica pura, de eliminar possibilidades.
+    learnMore:
+      - title: Wolfram MathWorld, sudoku
+        url: https://mathworld.wolfram.com/Sudoku.html
+
+  - id: river-crossing
+    level: medium
+    prompt: Um homem precisa atravessar um rio com um lobo, uma cabra e um repolho. O barco só leva ele e mais um. O lobo come a cabra e a cabra come o repolho, se ficarem sozinhos. O que ele leva primeiro?
+    choices:
+      - O lobo
+      - A cabra
+      - O repolho
+      - Não tem solução
+    answer: A cabra
+    explanation: >-
+      Lobo e repolho podem ficar juntos. Ele leva a cabra, volta, leva o lobo, traz a cabra
+      de volta, leva o repolho e por fim busca a cabra. O enigma aparece num livro de
+      Alcuíno de York, escrito por volta do ano 800.
+    learnMore:
+      - title: MacTutor, os enigmas de Alcuíno
+        url: https://mathshistory.st-andrews.ac.uk/HistTopics/Alcuin_book/
+
+  - id: socks-drawer
+    level: medium
+    prompt: Numa gaveta escura há meias pretas e brancas misturadas. Quantas você precisa tirar, no mínimo, para ter certeza de formar um par da mesma cor?
+    choices:
+      - Duas
+      - Três
+      - Quatro
+      - Onze
+    answer: Três
+    explanation: >-
+      Com duas, pode sair uma de cada cor. Mas com três, como só existem duas cores, pelo
+      menos duas vão ser iguais. É o princípio da casa dos pombos: mais pombos que casas,
+      e alguma casa fica com dois.
+    learnMore:
+      - title: Wolfram MathWorld, princípio da casa dos pombos
+        url: https://mathworld.wolfram.com/DirichletsBoxPrinciple.html
+
+  - id: four-colors
+    level: easy
+    prompt: Qual é o menor número de cores que basta para pintar qualquer mapa sem que dois vizinhos fiquem com a mesma cor?
+    choices:
+      - Três
+      - Quatro
+      - Cinco
+      - Depende do mapa
+    answer: Quatro
+    explanation: >-
+      Quatro cores sempre bastam, por mais complicado que seja o mapa. A prova só saiu nos
+      anos 1970, e foi uma das primeiras na matemática a precisar de um computador para
+      conferir milhares de casos.
+    learnMore:
+      - title: Wolfram MathWorld, teorema das quatro cores
+        url: https://mathworld.wolfram.com/Four-ColorTheorem.html
+
+  - id: handshakes
+    level: medium
+    prompt: Cinco amigos se encontram e cada um aperta a mão de cada outro uma vez. Quantos apertos de mão acontecem?
+    choices:
+      - '5'
+      - '10'
+      - '20'
+      - '25'
+    answer: '10'
+    explanation: >-
+      Cada pessoa aperta 4 mãos, o que daria 5 × 4 = 20. Mas assim cada aperto foi contado
+      duas vezes, uma por pessoa. Então são 20 ÷ 2 = 10.
+    learnMore:
+      - title: NRICH (Universidade de Cambridge), apertos de mão
+        url: https://nrich.maths.org/problems/handshakes
+
+  - id: magic-square
+    type: fill-blank
+    level: medium
+    prompt: Num quadrado mágico 3 × 3 com os números de 1 a 9, cada linha, coluna e diagonal soma ___.
+    choices:
+      - '12'
+      - '15'
+      - '18'
+      - '45'
+    answer: '15'
+    explanation: >-
+      De 1 a 9 a soma é 45. Divididos em 3 linhas iguais, dá 45 ÷ 3 = 15 para cada uma. Um
+      exemplo de linha: 2, 7 e 6.
+    learnMore:
+      - title: Wolfram MathWorld, quadrado mágico
+        url: https://mathworld.wolfram.com/MagicSquare.html
+
+  - id: achilles-tortoise
+    level: medium
+    prompt: Aquiles corre atrás de uma tartaruga que saiu na frente. Quando ele chega aonde ela estava, ela já andou mais um pouco, e assim para sempre. Ele a alcança?
+    choices:
+      - Sim, alcança
+      - Não, nunca
+      - Só se ela parar
+    answer: Sim, alcança
+    explanation: >-
+      É um paradoxo de Zenão, de 2.500 anos atrás. São infinitos trechos, mas cada vez
+      menores, e eles somam uma distância finita, percorrida num tempo finito. A matemática
+      das somas infinitas explica isso.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, paradoxos de Zenão
+        url: https://plato.stanford.edu/entries/paradox-zeno/
+
+  - id: konigsberg
+    type: true-false
+    level: medium
+    prompt: Na antiga cidade de Königsberg, dava para fazer um passeio cruzando cada uma das 7 pontes exatamente uma vez.
+    answer: false
+    explanation: >-
+      Leonhard Euler provou em 1736 que é impossível: cada pedaço de terra tinha um número
+      ímpar de pontes, e um passeio assim aceita no máximo dois pontos com número ímpar. A
+      ideia deu origem à teoria dos grafos.
+    learnMore:
+      - title: Wolfram MathWorld, o problema das pontes de Königsberg
+        url: https://mathworld.wolfram.com/KoenigsbergBridgeProblem.html
+
+  - id: bat-and-ball
+    level: hard
+    prompt: Um taco e uma bola custam R\$ 1,10 juntos. O taco custa R\$ 1,00 a mais que a bola. Quanto custa a bola?
+    choices:
+      - R\$ 0,05
+      - R\$ 0,10
+      - R\$ 0,15
+      - R\$ 1,00
+    answer: R\$ 0,05
+    explanation: >-
+      O "R\$ 0,10" vem rápido à cabeça, mas aí o taco custaria R\$ 1,10 e o total seria
+      R\$ 1,20. Com a bola a R\$ 0,05, o taco sai R\$ 1,05, e os dois dão R\$ 1,10. A pergunta
+      faz parte de um teste famoso sobre pensar antes de responder.
+    learnMore:
+      - title: Shane Frederick, reflexão cognitiva e tomada de decisão (AEA)
+        url: https://www.aeaweb.org/articles?id=10.1257/089533005775196732
+
+  - id: monty-hall
+    level: hard
+    prompt: Num programa, há três portas e um carro atrás de uma. Você escolhe uma, e o apresentador, que sabe onde está o carro, abre outra vazia. Vale a pena trocar de porta?
+    choices:
+      - Sim, trocar dobra a chance
+      - Não, ficar é melhor
+      - Tanto faz, fica meio a meio
+    answer: Sim, trocar dobra a chance
+    explanation: >-
+      Sua primeira escolha acerta 1 vez em 3. Nas outras 2 vezes em 3, o carro está numa das
+      portas que sobraram, e o apresentador acaba de mostrar qual delas está vazia. Trocando,
+      você ganha 2 vezes em 3.
+    learnMore:
+      - title: Wolfram MathWorld, o problema de Monty Hall
+        url: https://mathworld.wolfram.com/MontyHallProblem.html
+
+  - id: tower-of-hanoi
+    level: hard
+    prompt: Na Torre de Hanói com 3 discos, qual é o menor número de movimentos para passar a pilha para outra haste, sem nunca pôr um disco maior sobre um menor?
+    choices:
+      - '3'
+      - '5'
+      - '7'
+      - '9'
+    answer: '7'
+    explanation: >-
+      Para $n$ discos, o mínimo é $2^n - 1$: com 3, são 7. Uma lenda fala de monges movendo
+      64 discos de ouro. Mesmo com um movimento por segundo, levaria centenas de bilhões
+      de anos.
+    learnMore:
+      - title: Wolfram MathWorld, Torre de Hanói
+        url: https://mathworld.wolfram.com/TowerofHanoi.html
+
+  - id: knights-and-knaves
+    level: hard
+    prompt: Numa ilha, os cavaleiros sempre dizem a verdade e os patifes sempre mentem. Quem poderia dizer "Eu sou um patife"?
+    choices:
+      - Um cavaleiro
+      - Um patife
+      - Ninguém da ilha
+    answer: Ninguém da ilha
+    explanation: >-
+      Um cavaleiro estaria mentindo, e ele não mente. Um patife estaria dizendo a verdade, e
+      ele não fala a verdade. Essa ilha foi criada pelo lógico Raymond Smullyan, autor de
+      livros cheios de enigmas assim.
+    learnMore:
+      - title: MacTutor, biografia de Raymond Smullyan
+        url: https://mathshistory.st-andrews.ac.uk/Biographies/Smullyan/
+
+  - id: barber-paradox
+    level: hard
+    prompt: Numa vila, o barbeiro faz a barba de todos que não fazem a própria barba, e só deles. Quem faz a barba do barbeiro?
+    choices:
+      - Ele mesmo
+      - Outro barbeiro
+      - A pergunta não tem resposta possível
+    answer: A pergunta não tem resposta possível
+    explanation: >-
+      Se ele faz a própria barba, não poderia fazê-la. Se não faz, então teria que fazer. É
+      uma versão do paradoxo de Russell, que abalou os fundamentos da matemática no começo
+      do século 20.
+    learnMore:
+      - title: Enciclopédia Stanford de Filosofia, o paradoxo de Russell
+        url: https://plato.stanford.edu/entries/russell-paradox/
+
+  - id: gods-number
+    level: hard
+    prompt: Qualquer cubo mágico embaralhado pode ser resolvido em, no máximo, quantos movimentos?
+    choices:
+      - '7'
+      - '20'
+      - '100'
+      - '1.000'
+    answer: '20'
+    explanation: >-
+      O cubo tem mais de 43 quintilhões de posições, e mesmo assim 20 movimentos sempre
+      bastam. Isso foi provado em 2010 com anos de tempo de computador doados pelo Google,
+      e o número ganhou o apelido de "número de Deus".
+    learnMore:
+      - title: Cube20, o número de Deus é 20
+        url: https://www.cube20.org/
+      - title: Wolfram MathWorld, cubo mágico
+        url: https://mathworld.wolfram.com/RubiksCube.html

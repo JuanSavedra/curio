@@ -126,3 +126,203 @@ questions:
         url: https://oeis.org/A005150
       - title: Wolfram MathWorld, a constante de Conway
         url: https://mathworld.wolfram.com/ConwaysConstant.html
+
+  - id: minus-three
+    level: easy
+    prompt: 'Qual número vem a seguir? 20, 17, 14, 11, …'
+    choices:
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+    answer: '8'
+    explanation: >-
+      A cada passo, tira-se 3: 11 − 3 = 8. Quando o salto é sempre o mesmo, a sequência se
+      chama progressão aritmética.
+    learnMore:
+      - title: Wolfram MathWorld, progressão aritmética
+        url: https://mathworld.wolfram.com/ArithmeticProgression.html
+
+  - id: plus-three
+    type: fill-blank
+    level: easy
+    prompt: 'Complete a sequência: 2, 5, 8, ___, 14.'
+    choices:
+      - '9'
+      - '10'
+      - '11'
+      - '12'
+    answer: '11'
+    explanation: >-
+      Cada número é o anterior mais 3: 8 + 3 = 11, e 11 + 3 = 14 confere com o número que
+      vem depois da lacuna.
+    learnMore:
+      - title: Wolfram MathWorld, progressão aritmética
+        url: https://mathworld.wolfram.com/ArithmeticProgression.html
+
+  - id: times-three
+    level: easy
+    prompt: 'E agora? 1, 3, 9, 27, …'
+    choices:
+      - '30'
+      - '36'
+      - '54'
+      - '81'
+    answer: '81'
+    explanation: >-
+      Aqui não se soma, se multiplica: cada número é o anterior vezes 3, e 27 × 3 = 81.
+      Quando o salto é uma multiplicação, a sequência se chama progressão geométrica.
+    learnMore:
+      - title: Wolfram MathWorld, sequência geométrica
+        url: https://mathworld.wolfram.com/GeometricSequence.html
+
+  - id: weekday-initials
+    level: easy
+    prompt: 'Que letra completa? S, T, Q, Q, S, S, …'
+    choices:
+      - S
+      - D
+      - T
+    answer: D
+    explanation: >-
+      Segunda, Terça, Quarta, Quinta, Sexta, Sábado… e Domingo. O português é uma das poucas
+      línguas que numeram os dias: "segunda-feira" vem de "secunda feria", do latim usado
+      nas igrejas.
+    learnMore:
+      - title: Wikipédia, semana (a origem dos nomes dos dias)
+        url: https://pt.wikipedia.org/wiki/Semana
+
+  - id: triangular
+    level: medium
+    prompt: 'Qual número continua? 1, 3, 6, 10, 15, …'
+    choices:
+      - '18'
+      - '20'
+      - '21'
+      - '25'
+    answer: '21'
+    explanation: >-
+      Os saltos crescem: +2, +3, +4, +5, então vem +6. São os números triangulares, que dá
+      para arrumar em triângulo, como os 10 pinos do boliche.
+    learnMore:
+      - title: Wolfram MathWorld, números triangulares
+        url: https://mathworld.wolfram.com/TriangularNumber.html
+      - title: OEIS, números triangulares
+        url: https://oeis.org/A000217
+
+  - id: primes-sequence
+    level: medium
+    prompt: 'Qual número vem depois? 2, 3, 5, 7, 11, 13, …'
+    choices:
+      - '15'
+      - '16'
+      - '17'
+      - '19'
+    answer: '17'
+    explanation: >-
+      São os números primos, que só se dividem por 1 e por eles mesmos. O 15 (3 × 5) e o 16
+      (2 × 8) ficam de fora, e o próximo primo é o 17.
+    learnMore:
+      - title: OEIS, os números primos
+        url: https://oeis.org/A000040
+
+  - id: clock-hours
+    level: medium
+    prompt: 'Num relógio de ponteiros, que hora vem a seguir? 3, 6, 9, 12, 3, …'
+    choices:
+      - '6'
+      - '12'
+      - '15'
+      - '18'
+    answer: '6'
+    explanation: >-
+      O relógio anda de 3 em 3 horas, mas depois do 12 ele recomeça: 12 + 3 dá 3, e 3 + 3 dá
+      6. Essa conta que dá a volta tem nome, aritmética modular.
+    learnMore:
+      - title: Wolfram MathWorld, aritmética modular
+        url: https://mathworld.wolfram.com/ModularArithmetic.html
+
+  - id: squares-parity
+    type: true-false
+    level: medium
+    prompt: 'Na sequência 1, 4, 9, 16, 25, 36, …, os números se alternam entre ímpar e par.'
+    answer: true
+    explanation: >-
+      São os quadrados de 1, 2, 3, 4… Um ímpar vezes ele mesmo dá ímpar, e um par vezes ele
+      mesmo dá par. Como os números de base se alternam, os quadrados também.
+    learnMore:
+      - title: Wolfram MathWorld, números quadrados
+        url: https://mathworld.wolfram.com/SquareNumber.html
+
+  - id: cubes
+    level: hard
+    prompt: 'E esta? 1, 8, 27, 64, …'
+    choices:
+      - '81'
+      - '100'
+      - '125'
+      - '128'
+    answer: '125'
+    explanation: >-
+      São os cubos: $1^3, 2^3, 3^3, 4^3$, e o próximo é $5^3 = 5 \times 5 \times 5 = 125$. É
+      quantos cubinhos cabem num cubo de 5 de lado.
+    learnMore:
+      - title: Wolfram MathWorld, números cúbicos
+        url: https://mathworld.wolfram.com/CubicNumber.html
+      - title: OEIS, os cubos
+        url: https://oeis.org/A000578
+
+  - id: hanoi-moves
+    level: hard
+    prompt: 'Qual o próximo? 1, 3, 7, 15, 31, …'
+    choices:
+      - '47'
+      - '62'
+      - '63'
+      - '64'
+    answer: '63'
+    explanation: >-
+      Cada número é o dobro do anterior mais 1: 31 × 2 + 1 = 63. Ou, olhando de outro jeito,
+      uma potência de 2 menos 1. É também o menor número de movimentos para resolver a Torre
+      de Hanói com 1, 2, 3, 4, 5 e 6 discos.
+    learnMore:
+      - title: OEIS, a sequência 2 elevado a n, menos 1
+        url: https://oeis.org/A000225
+      - title: Wolfram MathWorld, Torre de Hanói
+        url: https://mathworld.wolfram.com/TowerofHanoi.html
+
+  - id: pizza-cuts
+    type: fill-blank
+    level: hard
+    prompt: 'Complete: 1, 2, 4, 7, 11, ___, 22.'
+    choices:
+      - '14'
+      - '15'
+      - '16'
+      - '18'
+    answer: '16'
+    explanation: >-
+      Os saltos são +1, +2, +3, +4, +5, +6. Essa sequência conta o maior número de pedaços
+      em que dá para cortar uma pizza com 0, 1, 2, 3… cortes retos, sem precisar que os
+      pedaços sejam iguais.
+    learnMore:
+      - title: OEIS, a sequência do cozinheiro preguiçoso
+        url: https://oeis.org/A000124
+      - title: Wolfram MathWorld, divisão do círculo por retas
+        url: https://mathworld.wolfram.com/CircleDivisionbyLines.html
+
+  - id: alternating-steps
+    level: hard
+    prompt: 'Qual o próximo número? 10, 7, 11, 8, 12, 9, …'
+    choices:
+      - '6'
+      - '10'
+      - '13'
+      - '14'
+    answer: '13'
+    explanation: >-
+      Os saltos se alternam: −3, +4, −3, +4, −3. O próximo é +4, e 9 + 4 = 13. Outro jeito de
+      ver: são duas sequências misturadas, 10, 11, 12, 13 e 7, 8, 9.
+    learnMore:
+      - title: Wolfram MathWorld, diferença finita
+        url: https://mathworld.wolfram.com/FiniteDifference.html
