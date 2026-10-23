@@ -1,0 +1,254 @@
+title: Quem inventou isso?
+subtopic: Invenções
+questions:
+  - id: telephone
+    level: easy
+    prompt: Quem registrou a patente do telefone, em 1876?
+    choices:
+      - Thomas Edison
+      - Alexander Graham Bell
+      - Santos-Dumont
+      - Isaac Newton
+    answer: Alexander Graham Bell
+    explanation: >-
+      Bell era professor de pessoas surdas e estudava como o som viaja. No mesmo ano da
+      patente, ele mostrou o aparelho numa grande exposição nos Estados Unidos.
+    learnMore:
+      - title: Britannica, Alexander Graham Bell
+        url: https://www.britannica.com/biography/Alexander-Graham-Bell
+
+  - id: vaccine-cow
+    type: fill-blank
+    level: easy
+    prompt: A palavra "vacina" vem do latim "vacca", que quer dizer ___.
+    choices:
+      - vaca
+      - remédio
+      - agulha
+      - saúde
+    answer: vaca
+    explanation: >-
+      Em 1796, o médico inglês Edward Jenner usou o pus de uma doença leve das vacas para
+      proteger um menino da varíola. Deu certo, e a ideia virou a primeira vacina. A varíola
+      foi declarada erradicada em 1980.
+    learnMore:
+      - title: Britannica, Edward Jenner
+        url: https://www.britannica.com/biography/Edward-Jenner
+      - title: CDC, a história da varíola
+        url: https://www.cdc.gov/smallpox/about/history.html
+
+  - id: china-invention
+    level: easy
+    prompt: Qual destas invenções veio da China antiga?
+    choices:
+      - A bússola
+      - O telefone
+      - A lâmpada
+      - O avião
+    answer: A bússola
+    explanation: >-
+      Os chineses perceberam que uma agulha magnetizada aponta sempre para o norte e a
+      usaram para se orientar. Depois a bússola ajudou os navegadores a cruzar oceanos.
+    learnMore:
+      - title: Britannica, bússola
+        url: https://www.britannica.com/technology/compass-navigational-instrument
+
+  - id: paper
+    level: medium
+    prompt: Em que lugar o papel foi inventado, há quase 2 mil anos?
+    choices:
+      - Egito
+      - China
+      - Grécia
+      - Índia
+    answer: China
+    explanation: >-
+      A tradição chinesa dá o crédito a Cai Lun, um funcionário da corte, por volta do ano
+      105. O papel era feito de cascas de árvore, trapos e redes de pesca velhas. O papiro
+      dos egípcios é outra coisa: são tiras de planta prensadas.
+    learnMore:
+      - title: Britannica, Cai Lun
+        url: https://www.britannica.com/biography/Cai-Lun
+
+  - id: gutenberg
+    level: medium
+    prompt: O que Johannes Gutenberg criou, por volta de 1450, que mudou a forma de fazer livros?
+    choices:
+      - A caneta esferográfica
+      - A prensa de tipos móveis
+      - O papel
+      - A máquina de escrever
+    answer: A prensa de tipos móveis
+    explanation: >-
+      Com letrinhas de metal que podiam ser rearranjadas, dava para imprimir muitas cópias de
+      um texto. Antes, cada livro era copiado à mão. A Bíblia de Gutenberg é um dos primeiros
+      livros impressos assim na Europa.
+    learnMore:
+      - title: Britannica, Johannes Gutenberg
+        url: https://www.britannica.com/biography/Johannes-Gutenberg
+
+  - id: santos-dumont
+    level: medium
+    prompt: Em 1906, em Paris, o brasileiro Santos-Dumont voou diante de uma multidão. Qual era o nome do avião?
+    choices:
+      - 14-bis
+      - Demoiselle
+      - Flyer
+      - Concorde
+    answer: 14-bis
+    explanation: >-
+      O 14-bis decolou sozinho, sem ajuda de trilhos ou catapulta, e o voo foi registrado
+      oficialmente. Os irmãos Wright tinham voado em 1903, nos Estados Unidos, longe do
+      público, e por isso até hoje se discute quem foi o primeiro. O Demoiselle foi outro
+      avião de Santos-Dumont, feito depois.
+    learnMore:
+      - title: Britannica, Alberto Santos-Dumont
+        url: https://www.britannica.com/biography/Alberto-Santos-Dumont
+
+  - id: braille
+    level: medium
+    prompt: Quantos anos tinha Louis Braille quando inventou o sistema de leitura com pontinhos em relevo?
+    choices:
+      - '15'
+      - '30'
+      - '45'
+      - '60'
+    answer: '15'
+    explanation: >-
+      Louis Braille ficou cego ainda criança e, aos 15 anos, criou um alfabeto de pontos que
+      se lê com a ponta dos dedos. Ele se inspirou num código militar de "escrita noturna".
+      O braile é usado no mundo todo até hoje.
+    learnMore:
+      - title: Fundação Americana para Cegos, o que é o braile
+        url: https://www.afb.org/blindness-and-low-vision/braille/what-braille
+
+  - id: pasteur
+    type: fill-blank
+    level: medium
+    prompt: O leite "pasteurizado" leva esse nome por causa do cientista francês Louis ___.
+    choices:
+      - Pasteur
+      - Braille
+      - Lumière
+      - Curie
+    answer: Pasteur
+    explanation: >-
+      Pasteur mostrou que micróbios estragam bebidas e alimentos, e que um aquecimento na
+      medida certa os elimina sem estragar o sabor. Ele também criou a vacina contra a raiva.
+    learnMore:
+      - title: Instituto Pasteur, a história de Louis Pasteur
+        url: https://www.pasteur.fr/en/institut-pasteur/history
+
+  - id: velcro
+    level: medium
+    prompt: O velcro foi inventado depois que um engenheiro suíço observou o quê?
+    choices:
+      - Carrapichos grudados no pelo do cachorro
+      - Uma aranha tecendo a teia
+      - Um polvo grudado num vidro
+      - Ventosas de uma lagartixa
+    answer: Carrapichos grudados no pelo do cachorro
+    explanation: >-
+      Voltando de uma caminhada, George de Mestral olhou um carrapicho no microscópio e viu
+      que ele tinha ganchinhos que prendiam em laços de tecido e pelo. Copiar a natureza
+      assim tem nome: biomimética.
+    learnMore:
+      - title: Lemelson-MIT, George de Mestral
+        url: https://lemelson.mit.edu/resources/george-de-mestral
+
+  - id: penicillin
+    type: true-false
+    level: medium
+    prompt: A penicilina, o primeiro antibiótico, foi descoberta por acaso.
+    answer: true
+    explanation: >-
+      Em 1928, Alexander Fleming notou que um mofo tinha crescido numa placa esquecida no
+      laboratório, e que em volta dele as bactérias morriam. O remédio salvou milhões de
+      vidas e lhe deu o Nobel em 1945.
+    learnMore:
+      - title: Prêmio Nobel, biografia de Alexander Fleming
+        url: https://www.nobelprize.org/prizes/medicine/1945/fleming/biographical/
+
+  - id: world-wide-web
+    level: medium
+    prompt: Quem inventou a World Wide Web, o "www" dos endereços da internet, em 1989?
+    choices:
+      - Bill Gates
+      - Steve Jobs
+      - Tim Berners-Lee
+      - Ada Lovelace
+    answer: Tim Berners-Lee
+    explanation: >-
+      O cientista britânico trabalhava no CERN, um laboratório de física na Suíça, e queria
+      um jeito fácil de compartilhar documentos com links. Ele escreveu o primeiro site e o
+      primeiro navegador, e não cobrou nada pela ideia.
+    learnMore:
+      - title: W3C, biografia de Tim Berners-Lee
+        url: https://www.w3.org/People/Berners-Lee/
+
+  - id: first-photo
+    level: hard
+    prompt: A fotografia mais antiga que se conhece, feita na França em 1827, precisou de quanto tempo de exposição à luz?
+    choices:
+      - Um segundo
+      - Alguns minutos
+      - Vários dias
+      - Um ano
+    answer: Vários dias
+    explanation: >-
+      Joseph Nicéphore Niépce deixou uma placa coberta de betume na janela, dentro de uma
+      câmara escura. Depois de dias de sol, apareceu a vista do quintal. Hoje a foto fica num
+      museu do Texas.
+    learnMore:
+      - title: Harry Ransom Center (Universidade do Texas), a heliografia de Niépce
+        url: https://www.hrc.utexas.edu/niepce-heliograph/
+
+  - id: x-rays
+    level: hard
+    prompt: O físico Wilhelm Röntgen descobriu, em 1895, um tipo de raio que atravessa o corpo. Como ele o chamou?
+    choices:
+      - Raios X
+      - Raios gama
+      - Raios laser
+      - Raios ultravioleta
+    answer: Raios X
+    explanation: >-
+      Ele usou o "X" porque não sabia o que eram aqueles raios, como o x de uma conta que
+      ainda não se conhece. A descoberta deu a Röntgen o primeiro Nobel de Física, em 1901.
+    learnMore:
+      - title: Prêmio Nobel, biografia de Wilhelm Röntgen
+        url: https://www.nobelprize.org/prizes/physics/1901/rontgen/biographical/
+
+  - id: microwave-oven
+    level: hard
+    prompt: Como surgiu a ideia do forno de micro-ondas?
+    choices:
+      - Um chocolate derreteu no bolso, perto de um radar
+      - Uma comida esquentou perto de uma TV
+      - Astronautas precisavam de comida quente
+      - Um cientista tentava fazer gelo
+    answer: Um chocolate derreteu no bolso, perto de um radar
+    explanation: >-
+      Nos anos 1940, o americano Percy Spencer trabalhava com aparelhos de radar e percebeu
+      que as micro-ondas esquentavam a comida. Da observação nasceu um novo jeito de
+      cozinhar.
+    learnMore:
+      - title: Britannica, forno de micro-ondas
+        url: https://www.britannica.com/technology/microwave-oven
+
+  - id: eniac-programmers
+    level: hard
+    prompt: O ENIAC, um dos primeiros computadores eletrônicos, apresentado em 1946, foi programado por quem?
+    choices:
+      - Por um robô
+      - Por seis mulheres matemáticas
+      - Pelo exército inteiro
+      - Ele não precisava de programa
+    answer: Por seis mulheres matemáticas
+    explanation: >-
+      As seis programavam a máquina ligando cabos e chaves, e prepararam a demonstração que
+      impressionou a imprensa. Ficaram esquecidas por muito tempo e só décadas depois foram
+      reconhecidas como as "Seis do ENIAC".
+    learnMore:
+      - title: Penn Engineering, a história do ENIAC
+        url: https://www.seas.upenn.edu/about/history-heritage/eniac/

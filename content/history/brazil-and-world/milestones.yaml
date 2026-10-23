@@ -158,3 +158,186 @@ questions:
         url: https://www.nasa.gov/image-article/great-wall/
       - title: Britannica, dá para ver a Muralha da China do espaço?
         url: https://www.britannica.com/question/Can-you-see-the-Great-Wall-of-China-from-space
+
+  - id: columbus
+    level: easy
+    prompt: Em que ano Cristóvão Colombo chegou à América?
+    choices:
+      - '1492'
+      - '1500'
+      - '1550'
+      - '1620'
+    answer: '1492'
+    explanation: >-
+      Colombo navegava para o oeste tentando chegar à Ásia, às "Índias". Ele achou que tinha
+      conseguido, e por isso os povos que viviam aqui foram chamados de índios. Oito anos
+      depois, Cabral chegaria ao Brasil.
+    learnMore:
+      - title: Britannica, Cristóvão Colombo
+        url: https://www.britannica.com/biography/Christopher-Columbus
+
+  - id: titanic
+    type: true-false
+    level: easy
+    prompt: O Titanic afundou na sua primeira viagem.
+    answer: true
+    explanation: >-
+      O navio saiu da Inglaterra rumo a Nova York em abril de 1912, bateu num iceberg no
+      quinto dia de viagem e afundou no Atlântico Norte. Mais de 1.500 pessoas morreram.
+    learnMore:
+      - title: Britannica, Titanic
+        url: https://www.britannica.com/topic/Titanic
+
+  - id: brasilia
+    level: easy
+    prompt: Em que ano Brasília foi inaugurada?
+    choices:
+      - '1922'
+      - '1945'
+      - '1960'
+      - '1988'
+    answer: '1960'
+    explanation: >-
+      Brasília foi construída do zero, no meio do país, em menos de quatro anos, no governo
+      de Juscelino Kubitschek. O plano é do urbanista Lúcio Costa, e os prédios, do
+      arquiteto Oscar Niemeyer.
+    learnMore:
+      - title: UNESCO, Brasília, Patrimônio Mundial
+        url: https://whc.unesco.org/en/list/445
+
+  - id: first-capital
+    level: medium
+    prompt: Qual foi a primeira capital do Brasil?
+    choices:
+      - Rio de Janeiro
+      - Salvador
+      - São Paulo
+      - Recife
+    answer: Salvador
+    explanation: >-
+      Salvador foi a capital de 1549 a 1763. Depois veio o Rio de Janeiro, até 1960, quando
+      a capital passou para Brasília.
+    learnMore:
+      - title: UNESCO, Centro Histórico de Salvador
+        url: https://whc.unesco.org/en/list/309
+
+  - id: tiradentes
+    level: medium
+    prompt: O feriado de 21 de abril lembra quem?
+    choices:
+      - Pedro Álvares Cabral
+      - Tiradentes
+      - Dom Pedro I
+      - Princesa Isabel
+    answer: Tiradentes
+    explanation: >-
+      Joaquim José da Silva Xavier, o Tiradentes, participou da Inconfidência Mineira, um
+      plano para tornar Minas Gerais independente de Portugal. Ele foi executado no Rio de
+      Janeiro em 21 de abril de 1792.
+    learnMore:
+      - title: Tribunal Regional Federal da 6ª Região, a memória de Tiradentes
+        url: https://portal.trf6.jus.br/21-de-abril-a-memoria-de-tiradentes-e-o-compromisso-com-a-justica/
+
+  - id: women-vote
+    level: hard
+    prompt: Em que ano as mulheres conquistaram, por lei, o direito de votar no Brasil?
+    choices:
+      - '1889'
+      - '1932'
+      - '1964'
+      - '1988'
+    answer: '1932'
+    explanation: >-
+      O Código Eleitoral de 1932 garantiu o voto feminino, depois de anos de luta de
+      sufragistas como Bertha Lutz. No ano seguinte, a médica Carlota Pereira de Queirós
+      foi eleita a primeira deputada federal do país.
+    learnMore:
+      - title: Senado Federal, exposição sobre o voto feminino (PDF)
+        url: https://www2.senado.leg.br/jspui/bitstream/id/557596/1/Paineis_Exposicao_Voto_Feminino_2019.pdf
+
+  - id: constitution-1988
+    type: fill-blank
+    level: medium
+    prompt: A Constituição em vigor no Brasil, apelidada de Constituição Cidadã, é de ___.
+    choices:
+      - '1946'
+      - '1967'
+      - '1988'
+      - '2002'
+    answer: '1988'
+    explanation: >-
+      Ela foi escrita depois do fim da ditadura militar e garantiu direitos como o voto
+      direto, a saúde pública pelo SUS e a educação como direito de todos.
+    learnMore:
+      - title: Planalto, Constituição da República Federativa do Brasil de 1988
+        url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+
+  - id: electronic-ballot
+    level: medium
+    prompt: Em que ano a urna eletrônica foi usada pela primeira vez numa eleição no Brasil?
+    choices:
+      - '1985'
+      - '1996'
+      - '2008'
+      - '2014'
+    answer: '1996'
+    explanation: >-
+      Nas eleições municipais de 1996, cerca de um terço dos eleitores já votou na urna
+      eletrônica. Em 2000, ela chegou ao país inteiro e as cédulas de papel ficaram para
+      trás.
+    learnMore:
+      - title: TSE, urna eletrônica 25 anos
+        url: https://www.tse.jus.br/comunicacao/noticias/2021/Maio/urna-eletronica-25-anos-lancado-em-1996-equipamento-e-o-protagonista-da-maior-eleicao-informatizada-do-mundo
+
+  - id: french-revolution
+    level: medium
+    prompt: Que grande acontecimento começou com a tomada da Bastilha, em Paris, em 1789?
+    choices:
+      - A Revolução Francesa
+      - A Primeira Guerra Mundial
+      - A Revolução Industrial
+      - O Renascimento
+    answer: A Revolução Francesa
+    explanation: >-
+      A Bastilha era uma prisão que simbolizava o poder do rei. Sua queda, em 14 de julho de
+      1789, virou o feriado nacional da França, e o lema da revolução, "liberdade, igualdade,
+      fraternidade", ficou famoso no mundo todo.
+    learnMore:
+      - title: Britannica, Revolução Francesa
+        url: https://www.britannica.com/event/French-Revolution
+
+  - id: berlin-wall
+    level: medium
+    prompt: Em que ano caiu o Muro de Berlim, que dividia a cidade em duas?
+    choices:
+      - '1945'
+      - '1961'
+      - '1989'
+      - '2001'
+    answer: '1989'
+    explanation: >-
+      O muro foi erguido em 1961 e separou famílias por 28 anos. Na noite de 9 de novembro
+      de 1989, a fronteira foi aberta e as pessoas começaram a derrubá-lo. Um ano depois, a
+      Alemanha voltou a ser um país só.
+    learnMore:
+      - title: Memorial do Muro de Berlim
+        url: https://www.berliner-mauer-gedenkstaette.de/en/
+      - title: Britannica, Muro de Berlim
+        url: https://www.britannica.com/topic/Berlin-Wall
+
+  - id: mandela
+    level: medium
+    prompt: Nelson Mandela passou 27 anos preso e depois foi eleito presidente de qual país?
+    choices:
+      - Quênia
+      - África do Sul
+      - Nigéria
+      - Egito
+    answer: África do Sul
+    explanation: >-
+      Mandela lutou contra o apartheid, a lei que separava as pessoas pela cor da pele. Saiu
+      da prisão em 1990, ganhou o Nobel da Paz em 1993 e, em 1994, virou o primeiro
+      presidente eleito pelo voto de todos os sul-africanos.
+    learnMore:
+      - title: Fundação Nelson Mandela, biografia
+        url: https://www.nelsonmandela.org/biography

@@ -1,0 +1,243 @@
+title: Povos antigos
+subtopic: Mundo antigo
+questions:
+  - id: mummies
+    level: easy
+    prompt: Por que os antigos egípcios transformavam os mortos em múmias?
+    choices:
+      - Para assustar ladrões
+      - Para conservar o corpo para a vida após a morte
+      - Porque não havia cemitérios
+      - Para estudar o corpo humano
+    answer: Para conservar o corpo para a vida após a morte
+    explanation: >-
+      Os egípcios acreditavam que a alma precisaria do corpo depois da morte. Por isso
+      secavam o corpo com sal, o envolviam em faixas de linho e o guardavam com objetos para
+      a outra vida.
+    learnMore:
+      - title: World History Encyclopedia, múmia
+        url: https://www.worldhistory.org/Mummy/
+
+  - id: colosseum
+    level: easy
+    prompt: Para que era usado o Coliseu, na Roma antiga?
+    choices:
+      - Para corridas de barco
+      - Para lutas de gladiadores e outros espetáculos
+      - Como palácio do imperador
+      - Como mercado de comida
+    answer: Para lutas de gladiadores e outros espetáculos
+    explanation: >-
+      O Coliseu foi aberto no ano 80 e cabiam umas 50 mil pessoas. Além dos gladiadores,
+      havia caçadas a animais selvagens. Ele está de pé até hoje, no centro de Roma.
+    learnMore:
+      - title: World History Encyclopedia, Coliseu
+        url: https://www.worldhistory.org/Colosseum/
+
+  - id: romulus-remus
+    type: fill-blank
+    level: easy
+    prompt: Segundo a lenda, Roma foi fundada pelos irmãos gêmeos Rômulo e ___.
+    choices:
+      - Remo
+      - Júlio
+      - Augusto
+      - Nero
+    answer: Remo
+    explanation: >-
+      A lenda conta que os bebês foram jogados no rio Tibre, salvos por uma loba que os
+      amamentou e depois criados por um pastor. A loba com os gêmeos virou símbolo de Roma.
+    learnMore:
+      - title: World History Encyclopedia, Rômulo e Remo
+        url: https://www.worldhistory.org/Romulus_and_Remus/
+
+  - id: cuneiform
+    level: medium
+    prompt: Onde nasceu uma das primeiras escritas do mundo, feita com marcas em tábuas de barro?
+    choices:
+      - Na Mesopotâmia
+      - Na China
+      - Na Grécia
+      - No Brasil
+    answer: Na Mesopotâmia
+    explanation: >-
+      Os sumérios, na Mesopotâmia (onde hoje fica o Iraque), apertavam a ponta de um junco
+      no barro mole. As marcas em forma de cunha deram o nome: escrita cuneiforme. No começo,
+      ela servia para contar grãos e animais.
+    learnMore:
+      - title: World History Encyclopedia, escrita cuneiforme
+        url: https://www.worldhistory.org/cuneiform/
+
+  - id: cleopatra-time
+    type: true-false
+    level: hard
+    prompt: A rainha Cleópatra viveu mais perto, no tempo, da chegada do homem à Lua do que da construção da Grande Pirâmide.
+    answer: true
+    explanation: >-
+      A Grande Pirâmide foi erguida por volta de 2560 a.C. Cleópatra morreu em 30 a.C., uns
+      2.500 anos depois. Da morte dela até a Apollo 11, em 1969, passaram uns 2.000 anos.
+    learnMore:
+      - title: World History Encyclopedia, Cleópatra VII
+        url: https://www.worldhistory.org/Cleopatra_VII/
+      - title: Britannica, a Grande Pirâmide de Gizé
+        url: https://www.britannica.com/place/Great-Pyramid-of-Giza
+
+  - id: rosetta-stone
+    level: hard
+    prompt: Por que a Pedra de Roseta, achada no Egito em 1799, é tão famosa?
+    choices:
+      - Ela é feita de ouro puro
+      - Ela ajudou a decifrar os hieróglifos
+      - Ela marcava o túmulo de um faraó
+      - Ela é o objeto mais antigo do mundo
+    answer: Ela ajudou a decifrar os hieróglifos
+    explanation: >-
+      A pedra tem o mesmo texto escrito em hieróglifos, em outra escrita egípcia e em grego
+      antigo. Comparando as versões, o francês Jean-François Champollion conseguiu ler os
+      hieróglifos em 1822.
+    learnMore:
+      - title: Museu Britânico, tudo sobre a Pedra de Roseta
+        url: https://www.britishmuseum.org/blog/everything-you-ever-wanted-know-about-rosetta-stone
+
+  - id: machu-picchu
+    level: medium
+    prompt: Qual povo construiu Machu Picchu, a cidade no alto das montanhas do Peru?
+    choices:
+      - Astecas
+      - Maias
+      - Incas
+      - Romanos
+    answer: Incas
+    explanation: >-
+      Machu Picchu fica a mais de 2 mil metros de altitude, nos Andes. As pedras dos muros
+      foram cortadas e encaixadas com tanta precisão que dispensam argamassa.
+    learnMore:
+      - title: UNESCO, Machu Picchu
+        url: https://whc.unesco.org/en/list/274
+
+  - id: tenochtitlan
+    level: hard
+    prompt: Qual cidade de hoje foi construída sobre as ruínas de Tenochtitlán, a capital dos astecas?
+    choices:
+      - Lima
+      - Cidade do México
+      - Buenos Aires
+      - Havana
+    answer: Cidade do México
+    explanation: >-
+      Tenochtitlán ficava numa ilha no meio de um lago, com canais e pontes. Os espanhóis a
+      destruíram no século 16 e ergueram a Cidade do México em cima dela.
+    learnMore:
+      - title: UNESCO, Centro Histórico da Cidade do México
+        url: https://whc.unesco.org/en/list/412
+
+  - id: terracotta-army
+    level: medium
+    prompt: O exército de terracota, com milhares de soldados de barro em tamanho real, foi feito para quem?
+    choices:
+      - Para o primeiro imperador da China
+      - Para um faraó do Egito
+      - Para Alexandre, o Grande
+      - Para um rei do Japão
+    answer: Para o primeiro imperador da China
+    explanation: >-
+      Os soldados foram enterrados junto ao túmulo de Qin Shi Huang, há mais de 2.200 anos,
+      para protegê-lo depois da morte. O sítio só foi descoberto em 1974, e ainda há
+      estátuas por desenterrar.
+    learnMore:
+      - title: UNESCO, Mausoléu do Primeiro Imperador Qin
+        url: https://whc.unesco.org/en/list/441
+
+  - id: phoenician-alphabet
+    level: hard
+    prompt: O alfabeto grego, avô do nosso, foi adaptado do alfabeto de qual povo?
+    choices:
+      - Fenícios
+      - Egípcios
+      - Chineses
+      - Vikings
+    answer: Fenícios
+    explanation: >-
+      Os fenícios eram comerciantes do Mediterrâneo e usavam um alfabeto de 22 letras, só de
+      consoantes. Os gregos o adaptaram e acrescentaram as vogais. Do grego veio o alfabeto
+      dos romanos, que é o que usamos.
+    learnMore:
+      - title: World History Encyclopedia, alfabeto grego
+        url: https://www.worldhistory.org/Greek_Alphabet/
+
+  - id: hammurabi
+    level: hard
+    prompt: O Código de Hamurábi, um dos conjuntos de leis escritas mais antigos, ficou famoso por qual regra?
+    choices:
+      - Olho por olho, dente por dente
+      - Todos são iguais perante a lei
+      - Ninguém pode ser preso sem julgamento
+      - Quem rouba deve trabalhar para a vítima
+    answer: Olho por olho, dente por dente
+    explanation: >-
+      Hamurábi foi um rei da Babilônia, há uns 3.750 anos. Suas leis foram gravadas numa
+      pedra para todos verem, e muitas punições eram iguais ao dano causado.
+    learnMore:
+      - title: World History Encyclopedia, Código de Hamurábi
+        url: https://www.worldhistory.org/Code_of_Hammurabi/
+
+  - id: library-alexandria
+    level: medium
+    prompt: Em qual país de hoje ficava a famosa Biblioteca de Alexandria?
+    choices:
+      - Grécia
+      - Itália
+      - Egito
+      - Turquia
+    answer: Egito
+    explanation: >-
+      Ela foi criada pelos reis gregos que governavam o Egito depois de Alexandre, o Grande,
+      e virou a biblioteca mais famosa da Antiguidade, com milhares de rolos de papiro.
+    learnMore:
+      - title: World History Encyclopedia, Biblioteca de Alexandria
+        url: https://www.worldhistory.org/Library_of_Alexandria/
+
+  - id: marajoara
+    level: hard
+    prompt: Os marajoaras, que viveram na ilha de Marajó séculos antes de 1500, são conhecidos hoje por quê?
+    choices:
+      - Pelas pirâmides de pedra
+      - Pela cerâmica decorada
+      - Pelos navios de madeira
+      - Pela escrita em papiro
+    answer: Pela cerâmica decorada
+    explanation: >-
+      Eles faziam vasos, urnas e estatuetas de barro com desenhos detalhados, muitos entre os
+      séculos 7 e 12. Peças marajoaras estão em museus como o Museu Paraense Emílio Goeldi,
+      em Belém.
+    learnMore:
+      - title: Museu Paraense Emílio Goeldi, estudo sobre a cerâmica marajoara
+        url: https://repositorio.museu-goeldi.br/handle/mgoeldi/2309
+
+  - id: viking-horns
+    type: true-false
+    level: medium
+    prompt: Os vikings usavam capacetes com chifres nas batalhas.
+    answer: false
+    explanation: >-
+      Nenhum capacete viking com chifres foi encontrado. A imagem nasceu no século 19, com
+      pinturas e figurinos de ópera, e pegou. Chifres seriam um estorvo numa luta.
+    learnMore:
+      - title: Smithsonian Magazine, os vikings usavam capacetes com chifres?
+        url: https://www.smithsonianmag.com/history/did-vikings-really-wear-horned-helmets-180976284/
+
+  - id: july-caesar
+    level: medium
+    prompt: O mês de julho recebeu esse nome em homenagem a quem?
+    choices:
+      - Júlio César
+      - Júpiter
+      - Juno
+      - Juliano, o Apóstata
+    answer: Júlio César
+    explanation: >-
+      Júlio César reformou o calendário romano, e o mês em que ele nasceu ganhou seu nome.
+      Pouco depois, agosto foi batizado em homenagem ao imperador Augusto.
+    learnMore:
+      - title: Britannica, julho
+        url: https://www.britannica.com/topic/July
