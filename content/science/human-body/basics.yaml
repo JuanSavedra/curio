@@ -1,0 +1,246 @@
+title: Como o corpo funciona
+subtopic: Corpo humano
+questions:
+  - id: heart-chambers
+    level: medium
+    prompt: Em quantas partes (as câmaras) o coração humano é dividido por dentro?
+    choices:
+      - Duas
+      - Três
+      - Quatro
+      - Seis
+    answer: Quatro
+    explanation: >-
+      São dois átrios em cima, que recebem o sangue, e dois ventrículos embaixo, que o
+      empurram para fora. Válvulas entre elas funcionam como portas que só abrem para um
+      lado.
+    learnMore:
+      - title: Cleveland Clinic, coração
+        url: https://my.clevelandclinic.org/health/body/21704-heart
+
+  - id: smallest-bone
+    level: hard
+    prompt: Onde fica o menor osso do corpo humano?
+    choices:
+      - No dedo mindinho do pé
+      - Na orelha, por dentro
+      - No nariz
+      - No pulso
+    answer: Na orelha, por dentro
+    explanation: >-
+      É o estribo, que tem uns 3 milímetros e fica dentro do ouvido. Junto com outros dois
+      ossinhos, ele passa as vibrações do som do tímpano para o ouvido interno.
+    learnMore:
+      - title: Britannica, estribo
+        url: https://www.britannica.com/science/stapes
+
+  - id: biggest-bone
+    level: medium
+    prompt: Qual é o maior osso do corpo humano?
+    choices:
+      - Fêmur
+      - Úmero
+      - Coluna
+      - Crânio
+    answer: Fêmur
+    explanation: >-
+      O fêmur é o osso da coxa: o mais longo e o mais forte do corpo. Num adulto ele tem
+      uns 45 centímetros e aguenta muitas vezes o peso de quem o carrega.
+    learnMore:
+      - title: Cleveland Clinic, fêmur
+        url: https://my.clevelandclinic.org/health/body/22503-femur
+
+  - id: blood-red
+    level: medium
+    prompt: O que deixa o sangue vermelho?
+    choices:
+      - A hemoglobina, que tem ferro
+      - A água do corpo
+      - O açúcar que comemos
+      - A luz que bate na pele
+    answer: A hemoglobina, que tem ferro
+    explanation: >-
+      A hemoglobina fica nos glóbulos vermelhos e leva o oxigênio dos pulmões para o corpo.
+      O ferro dentro dela é o que dá a cor vermelha.
+    learnMore:
+      - title: Britannica, hemoglobina
+        url: https://www.britannica.com/science/hemoglobin
+
+  - id: tongue-map
+    type: true-false
+    level: medium
+    prompt: Cada parte da língua sente um sabor diferente, como o doce na ponta e o amargo no fundo.
+    answer: false
+    explanation: >-
+      O "mapa da língua" é um mito que veio de uma tradução mal entendida de um estudo de
+      1901. As papilas que sentem os sabores estão espalhadas pela língua toda.
+    learnMore:
+      - title: Live Science, o mito do mapa da língua
+        url: https://www.livescience.com/7113-tongue-map-tasteless-myth-debunked.html
+      - title: Britannica, papila gustativa
+        url: https://www.britannica.com/science/taste-bud
+
+  - id: umami
+    level: hard
+    prompt: Qual destes é um dos cinco gostos básicos, identificado por um cientista japonês?
+    choices:
+      - Picante
+      - Umami
+      - Gelado
+      - Crocante
+    answer: Umami
+    explanation: >-
+      Além de doce, salgado, azedo e amargo, existe o umami, o gosto "saboroso" de caldos,
+      queijos e tomate maduro. Kikunae Ikeda o identificou em 1908. Picante não é gosto: é
+      uma sensação de ardor.
+    learnMore:
+      - title: Britannica, umami
+        url: https://www.britannica.com/science/umami
+
+  - id: body-water
+    level: medium
+    prompt: Quanto do corpo de um adulto é água?
+    choices:
+      - Cerca de 10%
+      - Cerca de 30%
+      - Cerca de 60%
+      - Cerca de 90%
+    answer: Cerca de 60%
+    explanation: >-
+      Até 60% do corpo de um adulto é água. Um bebê tem ainda mais, perto de 78% ao nascer.
+      Por isso beber água todo dia faz tanta diferença.
+    learnMore:
+      - title: USGS, a água no corpo humano
+        url: https://www.usgs.gov/special-topics/water-science-school/science/water-you-water-and-human-body
+
+  - id: brain-neurons
+    level: hard
+    prompt: Quantos neurônios tem, mais ou menos, um cérebro humano?
+    choices:
+      - 86 mil
+      - 86 milhões
+      - 86 bilhões
+      - 86 trilhões
+    answer: 86 bilhões
+    explanation: >-
+      A conta foi feita pela neurocientista brasileira Suzana Herculano-Houzel, que
+      dissolveu cérebros e contou os núcleos das células. Antes, se falava em 100 bilhões
+      sem medição de verdade.
+    learnMore:
+      - title: Herculano-Houzel, o cérebro humano em números (Frontiers)
+        url: https://www.frontiersin.org/articles/10.3389/neuro.09.031.2009/full
+
+  - id: baby-teeth
+    type: fill-blank
+    level: easy
+    prompt: Uma criança tem ___ dentes de leite.
+    choices:
+      - '10'
+      - '20'
+      - '32'
+      - '40'
+    answer: '20'
+    explanation: >-
+      Os 20 dentes de leite já estão escondidos na gengiva quando o bebê nasce e começam a
+      aparecer por volta dos 6 meses. Depois, dão lugar a até 32 dentes permanentes.
+    learnMore:
+      - title: MouthHealthy (Associação Dentária Americana), dentes de leite
+        url: https://www.mouthhealthy.org/all-topics-a-z/baby-teeth
+
+  - id: universal-donor
+    level: hard
+    prompt: Qual tipo de sangue pode ser doado para qualquer pessoa, numa transfusão de glóbulos vermelhos?
+    choices:
+      - A positivo
+      - B negativo
+      - AB positivo
+      - O negativo
+    answer: O negativo
+    explanation: >-
+      O sangue O negativo não tem as marcas (A, B e Rh) que o corpo de quem recebe poderia
+      atacar. Por isso ele é usado em emergências, quando não dá tempo de saber o tipo da
+      pessoa.
+    learnMore:
+      - title: Cruz Vermelha Americana, tipos de sangue
+        url: https://www.redcrossblood.org/donate-blood/blood-types.html
+
+  - id: keratin
+    type: fill-blank
+    level: medium
+    prompt: Unhas e cabelos são feitos de uma proteína chamada ___.
+    choices:
+      - queratina
+      - cálcio
+      - insulina
+      - clorofila
+    answer: queratina
+    explanation: >-
+      A queratina também forma a camada de fora da pele. É a mesma proteína dos chifres,
+      dos cascos e das penas dos animais.
+    learnMore:
+      - title: Cleveland Clinic, queratina
+        url: https://my.clevelandclinic.org/health/body/23204-keratin
+
+  - id: kidneys
+    level: easy
+    prompt: Qual órgão filtra o sangue e produz a urina?
+    choices:
+      - O fígado
+      - O rim
+      - O coração
+      - O estômago
+    answer: O rim
+    explanation: >-
+      Os dois rins têm o tamanho de um punho fechado. Eles tiram do sangue o que o corpo não
+      quer, guardam o que serve, e passam todo o sangue pelo filtro em mais ou menos uma
+      hora.
+    learnMore:
+      - title: Cleveland Clinic, rins
+        url: https://my.clevelandclinic.org/health/body/21824-kidney
+
+  - id: small-intestine
+    level: medium
+    prompt: Esticado, qual é o comprimento aproximado do intestino delgado de um adulto?
+    choices:
+      - Cerca de 50 centímetros
+      - Cerca de 2 metros
+      - Cerca de 6 metros
+      - Cerca de 30 metros
+    answer: Cerca de 6 metros
+    explanation: >-
+      O intestino delgado tem uns 6 a 7 metros, todo enrolado na barriga. Ele é fino, da
+      grossura de um dedo, e é ali que o corpo absorve a maior parte do que comemos.
+    learnMore:
+      - title: Cleveland Clinic, intestino delgado
+        url: https://my.clevelandclinic.org/health/body/22135-small-intestine
+
+  - id: knuckle-cracking
+    type: true-false
+    level: easy
+    prompt: Estalar os dedos causa artrite.
+    answer: false
+    explanation: >-
+      O estalo vem de bolhas de gás no líquido das juntas. Os estudos não acharam ligação
+      com artrite: um médico estalou só os dedos da mão esquerda por mais de 60 anos e não
+      viu diferença entre elas.
+    learnMore:
+      - title: Harvard Health, estalar os dedos causa artrite?
+        url: https://www.health.harvard.edu/pain/does-cracking-knuckles-cause-arthritis
+      - title: Prêmio Ig Nobel de Medicina 2009, Donald Unger
+        url: https://improbable.com/ig/winners/
+
+  - id: hiccup-diaphragm
+    level: hard
+    prompt: Qual músculo, que fica embaixo dos pulmões, se contrai de repente e causa o soluço?
+    choices:
+      - Diafragma
+      - Bíceps
+      - Coração
+      - Abdômen
+    answer: Diafragma
+    explanation: >-
+      O diafragma puxa o ar para dentro a cada respiração. No soluço, ele se contrai sem
+      aviso e as cordas vocais se fecham logo em seguida: daí vem o "hic".
+    learnMore:
+      - title: Cleveland Clinic, soluço
+        url: https://my.clevelandclinic.org/health/diseases/17672-hiccups

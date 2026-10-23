@@ -149,3 +149,173 @@ questions:
         url: https://www.batcon.org/blind-as-a-bat-no-such-thing/
       - title: Serviço de Parques dos EUA, mitos sobre morcegos
         url: https://www.nps.gov/subjects/bats/myth-busters.htm
+
+  - id: tallest-animal
+    level: easy
+    prompt: Qual é o animal mais alto do mundo?
+    choices:
+      - Elefante
+      - Girafa
+      - Avestruz
+      - Camelo
+    answer: Girafa
+    explanation: >-
+      Uma girafa adulta pode passar de 5 metros de altura, quase o dobro de uma porta. E
+      mesmo com aquele pescoço enorme, ela tem só sete vértebras nele, como a gente.
+    learnMore:
+      - title: Britannica, girafa
+        url: https://www.britannica.com/animal/giraffe
+
+  - id: blue-whale
+    level: easy
+    prompt: Qual é o maior animal que já existiu na Terra, contando até os dinossauros?
+    choices:
+      - Tiranossauro
+      - Baleia-azul
+      - Elefante-africano
+      - Tubarão-baleia
+    answer: Baleia-azul
+    explanation: >-
+      A baleia-azul passa de 30 metros e pode pesar mais de 150 toneladas. Nenhum dinossauro
+      conhecido chegou a tanto, e ela ainda vive nos oceanos hoje.
+    learnMore:
+      - title: NOAA Fisheries, baleia-azul
+        url: https://www.fisheries.noaa.gov/species/blue-whale
+
+  - id: spider-legs
+    level: easy
+    prompt: Quantas patas tem uma aranha?
+    choices:
+      - Seis
+      - Oito
+      - Dez
+      - Doze
+    answer: Oito
+    explanation: >-
+      Aranhas têm oito patas e não são insetos: são aracnídeos, como os escorpiões. Os
+      insetos, como formigas e abelhas, têm seis.
+    learnMore:
+      - title: Britannica, aranha
+        url: https://www.britannica.com/animal/spider-arachnid
+
+  - id: penguin-bird
+    type: true-false
+    level: easy
+    prompt: O pinguim é uma ave, mesmo sem saber voar.
+    answer: true
+    explanation: >-
+      O pinguim tem penas, bico e bota ovos, como toda ave. As asas viraram nadadeiras:
+      ele não voa no ar, mas "voa" debaixo d'água.
+    learnMore:
+      - title: Britannica, pinguim
+        url: https://www.britannica.com/animal/penguin
+
+  - id: tardigrade
+    level: hard
+    prompt: Qual animalzinho, menor que 1 milímetro, já sobreviveu do lado de fora de uma nave, no espaço?
+    choices:
+      - Formiga
+      - Pulga
+      - Tardígrado
+      - Barata
+    answer: Tardígrado
+    explanation: >-
+      O tardígrado, o "urso-d'água", seca, se encolhe e quase para de viver quando o
+      ambiente fica ruim. Assim ele aguenta frio extremo, falta de água e até o vácuo do
+      espaço, como mostrou um experimento em 2007.
+    learnMore:
+      - title: Britannica, tardígrado
+        url: https://www.britannica.com/animal/tardigrade
+
+  - id: honey-forever
+    type: true-false
+    level: medium
+    prompt: Mel bem fechado pode durar milhares de anos sem estragar.
+    answer: true
+    explanation: >-
+      O mel tem pouquíssima água e é ácido, então micróbios não conseguem viver nele.
+      Arqueólogos já acharam potes de mel ainda comestível em tumbas do Egito antigo.
+    learnMore:
+      - title: Smithsonian Magazine, por que o mel não estraga
+        url: https://www.smithsonianmag.com/science-nature/the-science-behind-honeys-eternal-shelf-life-1218690/
+
+  - id: bamboo-grass
+    level: medium
+    prompt: O bambu, uma das plantas que crescem mais rápido no mundo, é parente de qual destas?
+    choices:
+      - Pinheiro
+      - Grama
+      - Cacto
+      - Samambaia
+    answer: Grama
+    explanation: >-
+      Apesar de parecer árvore, o bambu é uma gramínea, da mesma família da grama, do milho
+      e do arroz. Algumas espécies crescem quase um metro em um só dia.
+    learnMore:
+      - title: Britannica, bambu
+        url: https://www.britannica.com/plant/bamboo
+
+  - id: chlorophyll
+    type: fill-blank
+    level: easy
+    prompt: As folhas das plantas são verdes por causa da ___.
+    choices:
+      - clorofila
+      - seiva
+      - celulose
+      - glicose
+    answer: clorofila
+    explanation: >-
+      A clorofila captura a luz do Sol para a fotossíntese. Ela aproveita bem a luz azul e
+      a vermelha e devolve a verde, que é a cor que chega aos nossos olhos.
+    learnMore:
+      - title: Britannica, clorofila
+        url: https://www.britannica.com/science/chlorophyll
+
+  - id: flamingo-pink
+    level: medium
+    prompt: Por que os flamingos são cor-de-rosa?
+    choices:
+      - Por causa da comida
+      - Por causa do sol forte
+      - Já nascem assim
+      - Para assustar predadores
+    answer: Por causa da comida
+    explanation: >-
+      Os flamingos comem algas e pequenos camarões cheios de pigmento. Os filhotes nascem
+      com penugem branca e vão ficando cor-de-rosa com os anos, conforme se alimentam.
+    learnMore:
+      - title: Zoológico Nacional Smithsonian, flamingo
+        url: https://nationalzoo.si.edu/animals/american-flamingo
+
+  - id: shark-skeleton
+    level: hard
+    prompt: Do que é feito o esqueleto de um tubarão?
+    choices:
+      - Osso, como o nosso
+      - Cartilagem
+      - Concha
+      - Ele não tem esqueleto
+    answer: Cartilagem
+    explanation: >-
+      O esqueleto do tubarão é de cartilagem, o mesmo material flexível da ponta do nosso
+      nariz e das orelhas. Ele é mais leve que osso e ajuda o tubarão a nadar com agilidade.
+    learnMore:
+      - title: Britannica, tubarão
+        url: https://www.britannica.com/animal/shark
+
+  - id: earth-water
+    level: medium
+    prompt: Quanto da superfície da Terra é coberto por água?
+    choices:
+      - Cerca de 30%
+      - Cerca de 50%
+      - Cerca de 70%
+      - Cerca de 90%
+    answer: Cerca de 70%
+    explanation: >-
+      Cerca de 71% da superfície é água, e quase toda ela está nos oceanos, salgada. A água
+      doce de rios e lagos é só uma pontinha desse total.
+    learnMore:
+      - title: USGS, quanta água existe na Terra
+        url: https://www.usgs.gov/special-topics/water-science-school/science/how-much-water-there-earth

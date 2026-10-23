@@ -1,0 +1,244 @@
+title: Matéria e energia
+subtopic: Química e física
+questions:
+  - id: water-boils
+    type: fill-blank
+    level: easy
+    prompt: Ao nível do mar, a água ferve a ___ °C.
+    choices:
+      - '50'
+      - '100'
+      - '150'
+      - '200'
+    answer: '100'
+    explanation: >-
+      No alto de uma montanha, onde o ar pesa menos, a água ferve antes dos 100 °C. Por
+      isso cozinhar macarrão lá em cima demora mais.
+    learnMore:
+      - title: Britannica, ponto de ebulição
+        url: https://www.britannica.com/science/boiling-point
+
+  - id: water-molecule
+    level: easy
+    prompt: Uma molécula de água é formada por quais átomos?
+    choices:
+      - Dois de hidrogênio e um de oxigênio
+      - Um de hidrogênio e dois de oxigênio
+      - Um de carbono e dois de oxigênio
+      - Dois de nitrogênio
+    answer: Dois de hidrogênio e um de oxigênio
+    explanation: >-
+      É daí que vem o nome H₂O: H de hidrogênio, que aparece duas vezes, e O de oxigênio.
+      Os dois hidrogênios se prendem ao oxigênio formando um V.
+    learnMore:
+      - title: Britannica, água
+        url: https://www.britannica.com/science/water
+
+  - id: ice-floats
+    level: medium
+    prompt: Por que o gelo boia na água?
+    choices:
+      - Porque tem ar preso dentro
+      - Porque é mais leve que a água, para o mesmo tamanho
+      - Porque está mais frio
+      - Ele não boia, afunda devagar
+    answer: Porque é mais leve que a água, para o mesmo tamanho
+    explanation: >-
+      Quase toda substância fica mais compacta ao congelar, mas a água faz o contrário: ela
+      se espalha e ocupa mais espaço. Por isso lagos congelam só por cima e os peixes
+      continuam nadando embaixo.
+    learnMore:
+      - title: USGS, densidade da água
+        url: https://www.usgs.gov/special-topics/water-science-school/science/water-density
+
+  - id: sound-in-space
+    type: true-false
+    level: easy
+    prompt: No espaço, daria para ouvir o barulho de uma explosão.
+    answer: false
+    explanation: >-
+      O som é uma vibração que precisa de algo para viajar, como o ar ou a água. O espaço é
+      quase vazio, então lá fora as explosões acontecem em silêncio total.
+    learnMore:
+      - title: Britannica, som
+        url: https://www.britannica.com/science/sound-physics
+
+  - id: thunder-after-lightning
+    level: medium
+    prompt: Por que vemos o relâmpago antes de ouvir o trovão?
+    choices:
+      - O trovão acontece depois do raio
+      - A luz viaja muito mais rápido que o som
+      - Os olhos são mais rápidos que os ouvidos
+      - As nuvens seguram o som
+    answer: A luz viaja muito mais rápido que o som
+    explanation: >-
+      A luz chega quase na hora, e o som leva uns 3 segundos para andar 1 quilômetro. Conte
+      os segundos entre o clarão e o trovão e divida por 3: é mais ou menos a distância do
+      raio, em quilômetros.
+    learnMore:
+      - title: Serviço Nacional de Meteorologia dos EUA, trovão
+        url: https://www.weather.gov/safety/lightning-science-thunder
+
+  - id: lightning-hot
+    type: true-false
+    level: hard
+    prompt: Um raio esquenta o ar mais do que a temperatura da superfície do Sol.
+    answer: true
+    explanation: >-
+      Um raio aquece o ar por onde passa a quase 28.000 °C, umas cinco vezes a superfície
+      do Sol. O ar se expande de repente, e esse estrondo é o trovão.
+    learnMore:
+      - title: Serviço Nacional de Meteorologia dos EUA, a temperatura de um raio
+        url: https://www.weather.gov/safety/lightning-temperature
+
+  - id: gold-symbol
+    level: medium
+    prompt: Qual é o símbolo químico do ouro?
+    choices:
+      - Go
+      - Or
+      - Au
+      - Ag
+    answer: Au
+    explanation: >-
+      Vem de "aurum", ouro em latim. Ag é a prata, de "argentum", palavra que também deu
+      nome à Argentina.
+    learnMore:
+      - title: Royal Society of Chemistry, ouro
+        url: https://www.rsc.org/periodic-table/element/79/gold
+
+  - id: lightest-element
+    level: medium
+    prompt: Qual é o elemento químico mais leve que existe?
+    choices:
+      - Hélio
+      - Hidrogênio
+      - Oxigênio
+      - Carbono
+    answer: Hidrogênio
+    explanation: >-
+      O hidrogênio é o primeiro da tabela periódica e também o mais comum do universo. O Sol
+      e as outras estrelas são feitos principalmente dele.
+    learnMore:
+      - title: Royal Society of Chemistry, hidrogênio
+        url: https://www.rsc.org/periodic-table/element/1/hydrogen
+
+  - id: diamond-carbon
+    level: medium
+    prompt: O diamante é feito do mesmo elemento que qual destas coisas?
+    choices:
+      - O grafite do lápis
+      - O vidro
+      - O sal
+      - A areia
+    answer: O grafite do lápis
+    explanation: >-
+      Diamante e grafite são feitos só de carbono. A diferença está no jeito como os átomos
+      se encaixam: no diamante a trama é firme, por isso ele é tão duro; no grafite são
+      camadas que deslizam e soltam no papel.
+    learnMore:
+      - title: Royal Society of Chemistry, carbono
+        url: https://www.rsc.org/periodic-table/element/6/carbon
+      - title: Britannica, diamante
+        url: https://www.britannica.com/topic/diamond-gemstone
+
+  - id: magnet-poles
+    type: fill-blank
+    level: easy
+    prompt: Em dois ímãs, os polos ___ se atraem.
+    choices:
+      - opostos
+      - iguais
+    answer: opostos
+    explanation: >-
+      O polo norte de um ímã puxa o polo sul do outro, e dois polos iguais se empurram. A
+      agulha da bússola é um ímã que se alinha com o magnetismo da própria Terra.
+    learnMore:
+      - title: Britannica, magnetismo
+        url: https://www.britannica.com/science/magnetism
+
+  - id: white-light
+    level: medium
+    prompt: O que acontece quando a luz branca do Sol passa por um prisma de vidro?
+    choices:
+      - Ela some
+      - Ela se separa nas cores do arco-íris
+      - Ela fica toda azul
+      - Ela vira calor
+    answer: Ela se separa nas cores do arco-íris
+    explanation: >-
+      A luz branca é a mistura de todas as cores, e cada cor se curva um pouco diferente no
+      vidro. Isaac Newton mostrou isso em 1665. O arco-íris é a mesma coisa, só que nas
+      gotas de chuva.
+    learnMore:
+      - title: NASA, luz visível
+        url: https://science.nasa.gov/ems/09_visiblelight/
+
+  - id: feather-hammer
+    level: hard
+    prompt: Na Lua, um astronauta soltou um martelo e uma pena ao mesmo tempo. O que aconteceu?
+    choices:
+      - O martelo caiu primeiro
+      - A pena caiu primeiro
+      - Os dois chegaram juntos ao chão
+      - A pena ficou flutuando
+    answer: Os dois chegaram juntos ao chão
+    explanation: >-
+      Foi David Scott, na missão Apollo 15, em 1971. Sem ar para frear a pena, os dois caem
+      do mesmo jeito, como Galileu tinha previsto séculos antes. Na Terra, é o ar que deixa
+      a pena para trás.
+    learnMore:
+      - title: NASA, o martelo e a pena da Apollo 15
+        url: https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html
+
+  - id: dry-ice
+    level: hard
+    prompt: Do que é feito o gelo-seco, aquele que solta fumaça branca?
+    choices:
+      - Água muito gelada
+      - Gás carbônico congelado
+      - Nitrogênio líquido
+      - Sal congelado
+    answer: Gás carbônico congelado
+    explanation: >-
+      O gelo-seco fica a cerca de -78 °C e não derrete: passa direto de sólido para gás, o
+      que se chama sublimação. A "fumaça" é o vapor de água do ar que condensa com o frio.
+    learnMore:
+      - title: Britannica, gás carbônico
+        url: https://www.britannica.com/science/carbon-dioxide
+
+  - id: rust
+    level: medium
+    prompt: A ferrugem aparece quando o ferro fica em contato com o quê?
+    choices:
+      - Com a luz
+      - Com o oxigênio e a água
+      - Com o calor
+      - Com outros metais
+    answer: Com o oxigênio e a água
+    explanation: >-
+      O ferro reage com o oxigênio, e a umidade acelera tudo. É por isso que portões perto
+      da praia enferrujam tão rápido: o sal da maresia ajuda a reação.
+    learnMore:
+      - title: Britannica, corrosão
+        url: https://www.britannica.com/science/corrosion
+
+  - id: table-salt
+    type: fill-blank
+    level: medium
+    prompt: O sal de cozinha é formado por sódio e ___.
+    choices:
+      - cloro
+      - ferro
+      - flúor
+      - cálcio
+    answer: cloro
+    explanation: >-
+      O nome químico do sal é cloreto de sódio. Sozinhos, o sódio é um metal que reage com
+      violência na água e o cloro é um gás venenoso, mas juntos viram o tempero do dia a dia.
+    learnMore:
+      - title: Britannica, sal
+        url: https://www.britannica.com/science/salt
+      - title: Royal Society of Chemistry, sódio
+        url: https://www.rsc.org/periodic-table/element/11/sodium
