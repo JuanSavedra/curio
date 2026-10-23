@@ -1,0 +1,244 @@
+title: De onde vêm as palavras
+subtopic: Origem das palavras
+questions:
+  - id: xara
+    type: fill-blank
+    level: easy
+    prompt: Uma pessoa que tem o mesmo nome que você é seu ___.
+    choices:
+      - xará
+      - primo
+      - sócio
+      - vizinho
+    answer: xará
+    explanation: >-
+      "Xará" é uma palavra que veio do tupi, como tantas outras do nosso dia a dia: pipoca,
+      jacaré, capivara, mingau.
+    learnMore:
+      - title: Priberam, xará
+        url: https://dicionario.priberam.org/xar%C3%A1
+
+  - id: football-english
+    level: easy
+    prompt: A palavra "futebol" veio de qual língua?
+    choices:
+      - Inglês
+      - Espanhol
+      - Italiano
+      - Alemão
+    answer: Inglês
+    explanation: >-
+      Vem de "football", "bola no pé". Junto com o esporte, vieram outras palavras inglesas
+      que viraram português: gol (goal) e pênalti (penalty).
+    learnMore:
+      - title: Priberam, futebol
+        url: https://dicionario.priberam.org/futebol
+
+  - id: arabic-al
+    level: medium
+    prompt: Açúcar, alface e almofada vieram de qual língua?
+    choices:
+      - Árabe
+      - Grego
+      - Tupi
+      - Japonês
+    answer: Árabe
+    explanation: >-
+      Os árabes viveram na Península Ibérica por cerca de 800 anos e deixaram muitas
+      palavras. Uma pista: várias começam com "al", que era o artigo "o" em árabe.
+    learnMore:
+      - title: Priberam, açúcar
+        url: https://dicionario.priberam.org/a%C3%A7%C3%BAcar
+      - title: Priberam, almofada
+        url: https://dicionario.priberam.org/almofada
+
+  - id: kimbundu-words
+    level: medium
+    prompt: Moleque, caçula e quitanda vieram do quimbundo. Onde se fala essa língua?
+    choices:
+      - Em Angola, na África
+      - Na Índia
+      - No Japão
+      - Na Itália
+    answer: Em Angola, na África
+    explanation: >-
+      Africanos escravizados trazidos ao Brasil, muitos de Angola, deixaram suas línguas no
+      nosso português. "Caçula" vem de "kasule", o último filho, e "moleque", de "muleke",
+      menino.
+    learnMore:
+      - title: Priberam, caçula
+        url: https://dicionario.priberam.org/ca%C3%A7ula
+      - title: Priberam, moleque
+        url: https://dicionario.priberam.org/moleque
+
+  - id: abajur-french
+    level: medium
+    prompt: Abajur, sutiã e bufê vieram de qual língua?
+    choices:
+      - Inglês
+      - Francês
+      - Alemão
+      - Russo
+    answer: Francês
+    explanation: >-
+      O português escreveu do seu jeito o som de palavras francesas: "abat-jour" virou
+      abajur, "soutien" virou sutiã e "buffet" virou bufê.
+    learnMore:
+      - title: Priberam, abajur
+        url: https://dicionario.priberam.org/abajur
+
+  - id: tchau-italian
+    level: medium
+    prompt: De qual língua veio o "tchau" que usamos para nos despedir?
+    choices:
+      - Italiano
+      - Francês
+      - Inglês
+      - Tupi
+    answer: Italiano
+    explanation: >-
+      Vem do italiano "ciao", que lá serve tanto para chegar quanto para ir embora. Aqui ele
+      ficou só para a despedida.
+    learnMore:
+      - title: Priberam, tchau
+        url: https://dicionario.priberam.org/tchau
+
+  - id: onibus-latin
+    type: true-false
+    level: medium
+    prompt: A palavra "ônibus" veio do inglês.
+    answer: false
+    explanation: >-
+      Vem do latim "omnibus", que quer dizer "para todos". Faz sentido: é um transporte em
+      que qualquer pessoa pode subir.
+    learnMore:
+      - title: Priberam, ônibus
+        url: https://dicionario.priberam.org/%C3%B4nibus
+
+  - id: anniversary
+    type: fill-blank
+    level: medium
+    prompt: '"Aniversário" vem do latim e quer dizer "o que volta todo ___".'
+    choices:
+      - ano
+      - mês
+      - dia
+      - século
+    answer: ano
+    explanation: >-
+      Vem de "anniversarius", de "annus", ano. A mesma raiz aparece em anual e em anuário.
+    learnMore:
+      - title: Priberam, aniversário
+        url: https://dicionario.priberam.org/anivers%C3%A1rio
+
+  - id: brazil-name
+    level: medium
+    prompt: De onde vem o nome "Brasil"?
+    choices:
+      - Do pau-brasil, árvore de madeira cor de brasa
+      - De um navegador chamado Brasil
+      - De uma palavra tupi que quer dizer praia
+      - De uma cidade de Portugal
+    answer: Do pau-brasil, árvore de madeira cor de brasa
+    explanation: >-
+      O pau-brasil tem a madeira avermelhada, cor de brasa, e dela se fazia tinta. A árvore
+      foi tão explorada que deu nome à terra inteira.
+    learnMore:
+      - title: Priberam, brasil
+        url: https://dicionario.priberam.org/brasil
+
+  - id: chocolate-nahuatl
+    level: hard
+    prompt: A palavra "chocolate" vem do náuatle, a língua dos astecas. O que queria dizer a palavra original?
+    choices:
+      - Água amarga
+      - Doce dos deuses
+      - Feijão marrom
+      - Ouro escuro
+    answer: Água amarga
+    explanation: >-
+      Os astecas tomavam o cacau como uma bebida amarga, sem açúcar. Os espanhóis levaram a
+      palavra para a Europa, e de lá ela chegou ao português.
+    learnMore:
+      - title: Priberam, chocolate
+        url: https://dicionario.priberam.org/chocolate
+
+  - id: pipoca-tupi
+    level: hard
+    prompt: A palavra "pipoca" veio de qual língua?
+    choices:
+      - Tupi
+      - Inglês
+      - Árabe
+      - Latim
+    answer: Tupi
+    explanation: >-
+      Vem do tupi "pi'poka". Dela nasceu o verbo "pipocar", que usamos para coisas que
+      estouram ou aparecem de repente.
+    learnMore:
+      - title: Priberam, pipoca
+        url: https://dicionario.priberam.org/pipoca
+
+  - id: dinosaur-greek
+    level: hard
+    prompt: '"Dinossauro" vem do grego. O que quer dizer "dino"?'
+    choices:
+      - Grande
+      - Terrível
+      - Antigo
+      - Rápido
+    answer: Terrível
+    explanation: >-
+      Dinossauro é "lagarto terrível": "deinós" é terrível e "sauros" é lagarto. O nome foi
+      criado no século 19, quando os primeiros fósseis foram estudados.
+    learnMore:
+      - title: Priberam, dinossauro
+        url: https://dicionario.priberam.org/dinossauro
+
+  - id: planet-greek
+    level: hard
+    prompt: '"Planeta" vem de uma palavra grega que quer dizer…'
+    choices:
+      - Redondo
+      - Errante, que vagueia
+      - Brilhante
+      - Distante
+    answer: Errante, que vagueia
+    explanation: >-
+      Os gregos viam que alguns "astros" mudavam de lugar entre as estrelas fixas, noite após
+      noite. Chamaram esses viajantes de planetas.
+    learnMore:
+      - title: Priberam, planeta
+        url: https://dicionario.priberam.org/planeta
+
+  - id: algarismo-name
+    level: hard
+    prompt: A palavra "algarismo" vem do nome de quem?
+    choices:
+      - De um matemático árabe do século 9
+      - De um rei de Portugal
+      - De um deus grego
+      - De um navegador espanhol
+    answer: De um matemático árabe do século 9
+    explanation: >-
+      O nome vem de al-Khwarizmi, que escreveu sobre os números e as contas. A palavra
+      "algoritmo", usada na computação, vem dele também.
+    learnMore:
+      - title: Priberam, algarismo
+        url: https://dicionario.priberam.org/algarismo
+
+  - id: obrigado-origin
+    level: medium
+    prompt: De onde vem o "obrigado" que dizemos para agradecer?
+    choices:
+      - De "ficar obrigado", em dívida com quem ajudou
+      - De uma palavra árabe que quer dizer paz
+      - Do nome de um rei português
+      - De uma palavra tupi que quer dizer amigo
+    answer: De "ficar obrigado", em dívida com quem ajudou
+    explanation: >-
+      Quem diz "obrigado" está dizendo que se sente devendo um favor à outra pessoa. Por
+      isso a palavra combina com quem fala: a mulher diz "obrigada".
+    learnMore:
+      - title: Ciberdúvidas, a origem do termo de agradecimento
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/origem-do-termo-de-agradecimento/14887

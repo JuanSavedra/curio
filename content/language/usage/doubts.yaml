@@ -1,0 +1,219 @@
+title: Dúvidas do dia a dia
+subtopic: Dúvidas de português
+questions:
+  - id: mas-or-mais
+    type: fill-blank
+    level: easy
+    prompt: Eu queria ir à praia, ___ choveu o dia todo.
+    choices:
+      - mas
+      - mais
+    answer: mas
+    explanation: >-
+      "Mas" liga ideias que se opõem, e dá para trocar por "porém". "Mais" é o contrário de
+      "menos": mais pão, mais tempo.
+    learnMore:
+      - title: Priberam, mas
+        url: https://dicionario.priberam.org/mas
+
+  - id: menas
+    type: true-false
+    level: easy
+    prompt: '"Menas" é uma palavra correta, como em "menas pessoas".'
+    answer: false
+    explanation: >-
+      "Menos" não muda nunca: menos pessoas, menos dinheiro, menos tempo. O "menas" aparece
+      na fala de quem tenta combinar a palavra com o feminino, mas não existe na norma.
+    learnMore:
+      - title: Ciberdúvidas, o uso do advérbio menos no Brasil
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-uso-do-adverbio-menos-no-brasil/16608
+
+  - id: obrigada
+    type: true-false
+    level: easy
+    prompt: Quando uma mulher agradece, o mais indicado é ela dizer "obrigada".
+    answer: true
+    explanation: >-
+      "Obrigado" combina com quem agradece: o homem diz "obrigado" e a mulher, "obrigada". A
+      palavra vem de "ficar obrigado", ou seja, sentir que deve um favor à outra pessoa.
+    learnMore:
+      - title: Ciberdúvidas, obrigado, obrigada e obrigados
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/obrigadoa-e-obrigadosas/10643
+      - title: Ciberdúvidas, a origem do termo de agradecimento
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/origem-do-termo-de-agradecimento/14887
+
+  - id: por-que-question
+    type: fill-blank
+    level: medium
+    prompt: ___ você chegou tão tarde?
+    choices:
+      - Por que
+      - Porque
+      - Porquê
+    answer: Por que
+    explanation: >-
+      No Brasil, a pergunta começa com "por que", separado. Na resposta vem o "porque",
+      junto: "Porque o ônibus atrasou". Em Portugal a regra é outra, e lá se escreve
+      "porque" também na pergunta.
+    learnMore:
+      - title: Ciberdúvidas, por que no Brasil e porque em Portugal
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/ainda-sobre-por-que-no-brasil-e-o-porque-em-portugal/35804
+      - title: Ciberdúvidas, porque, por que e porquê
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/porque-por-que-e-porque/243
+
+  - id: traz-or-tras
+    type: fill-blank
+    level: medium
+    prompt: Todo dia ele ___ o lanche de casa.
+    choices:
+      - traz
+      - trás
+    answer: traz
+    explanation: >-
+      "Traz", com Z, é do verbo trazer. "Trás", com S e acento, quer dizer atrás: "a porta
+      de trás", "para trás".
+    learnMore:
+      - title: Priberam, traz
+        url: https://dicionario.priberam.org/traz
+
+  - id: conserto
+    level: medium
+    prompt: Qual frase está escrita certo?
+    choices:
+      - Levei o carro para o concerto.
+      - Levei o carro para o conserto.
+    answer: Levei o carro para o conserto.
+    explanation: >-
+      "Conserto", com S, é arrumar o que quebrou. "Concerto", com C, é apresentação de
+      música: um concerto de piano.
+    learnMore:
+      - title: Priberam, conserto
+        url: https://dicionario.priberam.org/conserto
+
+  - id: sessao
+    level: medium
+    prompt: Comprei ingresso para a ___ das 20h do cinema.
+    choices:
+      - sessão
+      - seção
+      - cessão
+    answer: sessão
+    explanation: >-
+      "Sessão" é o tempo que dura uma reunião ou um espetáculo. "Seção" é uma parte ou um
+      setor (a seção de brinquedos). "Cessão" vem de ceder, emprestar algo.
+    learnMore:
+      - title: Priberam, sessão
+        url: https://dicionario.priberam.org/sess%C3%A3o
+
+  - id: acender
+    type: fill-blank
+    level: medium
+    prompt: Está escuro, pode ___ a luz?
+    choices:
+      - acender
+      - ascender
+    answer: acender
+    explanation: >-
+      "Acender" é pôr fogo ou ligar a luz. "Ascender", com SC, quer dizer subir: o balão
+      ascendeu ao céu.
+    learnMore:
+      - title: Priberam, acender
+        url: https://dicionario.priberam.org/acender
+
+  - id: a-gente-vai
+    type: true-false
+    level: medium
+    prompt: '"A gente vamos ao cinema" está de acordo com a norma-padrão.'
+    answer: false
+    explanation: >-
+      "A gente" fala de várias pessoas, mas o verbo fica no singular, como em "o povo vai":
+      "a gente vai ao cinema". Com "nós", o verbo vai para o plural: "nós vamos".
+    learnMore:
+      - title: Ciberdúvidas, a gente vamos?
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-gente-vamos/10712
+
+  - id: aonde
+    level: hard
+    prompt: Qual frase segue a norma-padrão?
+    choices:
+      - Aonde você vai?
+      - Aonde você está?
+    answer: Aonde você vai?
+    explanation: >-
+      "Aonde" é para movimento, com verbos como ir e chegar (vai a algum lugar). Para dizer
+      onde algo fica, é "onde": onde você está?
+    learnMore:
+      - title: Ciberdúvidas, onde e aonde
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/onde-vs-aonde/14214
+
+  - id: meio-cansada
+    type: fill-blank
+    level: hard
+    prompt: Depois da corrida, ela ficou ___ cansada.
+    choices:
+      - meio
+      - meia
+    answer: meio
+    explanation: >-
+      No sentido de "um pouco", "meio" não muda: ela ficou meio cansada. Já no sentido de
+      metade, ele combina com a palavra: meia hora, meia laranja.
+    learnMore:
+      - title: Ciberdúvidas, a diferença entre meio e médio
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-diferenca-entre-meio-e-medio/32580
+
+  - id: para-eu-fazer
+    level: hard
+    prompt: Qual frase segue a norma-padrão?
+    choices:
+      - Ele trouxe o livro para mim ler.
+      - Ele trouxe o livro para eu ler.
+    answer: Ele trouxe o livro para eu ler.
+    explanation: >-
+      Quando vem um verbo depois, quem faz a ação é "eu": para eu ler, para eu fazer. Sem
+      verbo, fica "mim": "o livro é para mim".
+    learnMore:
+      - title: Ciberdúvidas, para eu (+ verbo) e para mim
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/para-eu--verbo-vs-para-mim/31612
+
+  - id: em-vez-de
+    level: hard
+    prompt: Qual expressão quer dizer "no lugar de"?
+    choices:
+      - Em vez de
+      - Ao invés de
+    answer: Em vez de
+    explanation: >-
+      "Em vez de" é trocar uma coisa por outra: comi fruta em vez de doce. "Ao invés de" quer
+      dizer "ao contrário de": ao invés de subir, desceu.
+    learnMore:
+      - title: Ciberdúvidas, a diferença entre em vez de e ao invés de
+        url: https://ciberduvidas.iscte-iul.pt/artigos/rubricas/idioma/a-diferenca-entre-as-expressoes-em-vez-de-e-ao-inves-de/5679
+
+  - id: senao
+    type: fill-blank
+    level: hard
+    prompt: Leve o guarda-chuva, ___ você vai se molhar.
+    choices:
+      - senão
+      - se não
+    answer: senão
+    explanation: >-
+      "Senão", junto, quer dizer "caso contrário". "Se não", separado, é uma condição: se não
+      chover, vamos à praia.
+    learnMore:
+      - title: Priberam, senão
+        url: https://dicionario.priberam.org/sen%C3%A3o
+
+  - id: iminente
+    level: hard
+    prompt: As nuvens escuras mostravam que a chuva era ___, ia cair a qualquer momento.
+    choices:
+      - iminente
+      - eminente
+    answer: iminente
+    explanation: >-
+      "Iminente" é o que está prestes a acontecer. "Eminente" é alguém importante, de
+      destaque: um eminente cientista.
+    learnMore:
+      - title: Priberam, iminente
+        url: https://dicionario.priberam.org/iminente

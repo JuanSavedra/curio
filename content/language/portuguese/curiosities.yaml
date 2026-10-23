@@ -160,3 +160,175 @@ questions:
         url: https://ciberduvidas.iscte-iul.pt/artigos/rubricas/idioma/ha-anos-atras/2346
       - title: Governo do Paraná, dicas de português
         url: https://efaz.fazenda.pr.gov.br/Pagina/Dicas-de-Portugues-0
+
+  - id: latin-origin
+    level: easy
+    prompt: De qual língua antiga nasceu o português?
+    choices:
+      - Grego
+      - Latim
+      - Árabe
+      - Tupi
+    answer: Latim
+    explanation: >-
+      O português nasceu do latim falado pelo povo, passando pelo galego medieval, do norte
+      da Península Ibérica. Espanhol, italiano, francês e romeno são "irmãos" dele, todos
+      filhos do latim.
+    learnMore:
+      - title: Jornal da USP, sobre as origens galegas do português
+        url: https://jornal.usp.br/artigos/sobre-as-origens-galegas-do-portugues/
+
+  - id: language-day
+    type: fill-blank
+    level: medium
+    prompt: O Dia Mundial da Língua Portuguesa é comemorado em 5 de ___.
+    choices:
+      - janeiro
+      - maio
+      - setembro
+      - novembro
+    answer: maio
+    explanation: >-
+      A data foi criada em 2009 pelos países de língua portuguesa e, em 2019, a UNESCO a
+      reconheceu como dia mundial. É uma festa para uma das línguas mais faladas do planeta.
+    learnMore:
+      - title: UNESCO, Dia Mundial da Língua Portuguesa
+        url: https://www.unesco.org/en/days/portuguese-language
+
+  - id: cplp-countries
+    level: hard
+    prompt: Quantos países fazem parte da Comunidade dos Países de Língua Portuguesa (CPLP)?
+    choices:
+      - Três
+      - Cinco
+      - Nove
+      - Quinze
+    answer: Nove
+    explanation: >-
+      São Angola, Brasil, Cabo Verde, Guiné-Bissau, Guiné Equatorial, Moçambique, Portugal,
+      São Tomé e Príncipe e Timor-Leste. O Brasil é, de longe, o país com mais falantes.
+    learnMore:
+      - title: Senado Federal, documento sobre a CPLP
+        url: https://legis.senado.leg.br/sdleg-getter/documento?dm=3585097
+
+  - id: longest-word
+    level: hard
+    prompt: Quantas letras tem "pneumoultramicroscopicossilicovulcanoconiótico", a palavra mais longa do dicionário Houaiss?
+    choices:
+      - '26'
+      - '36'
+      - '46'
+      - '56'
+    answer: '46'
+    explanation: >-
+      É o nome de uma doença rara causada por respirar cinza de vulcão. Fora as palavras
+      técnicas, uma das mais longas é "anticonstitucionalissimamente".
+    learnMore:
+      - title: Ciberdúvidas, a maior palavra da língua portuguesa
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-maior-palavra-da-lingua-portuguesa/11286
+
+  - id: cedilla-start
+    type: true-false
+    level: medium
+    prompt: Nenhuma palavra em português começa com Ç.
+    answer: true
+    explanation: >-
+      No começo da palavra, esse som se escreve com S, como em sapo e sabiá, mesmo nas
+      palavras que vieram do tupi. O Ç só aparece no meio, antes de A, O e U: caça, aço,
+      açúcar.
+    learnMore:
+      - title: Ciberdúvidas, o ç em nomes indígenas do Brasil
+        url: https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-c-em-nomes-indigenas-do-brasil/37042
+
+  - id: tilde
+    level: easy
+    prompt: Para que serve o til (~), como em "mãe" e "pão"?
+    choices:
+      - Para indicar que o som sai pelo nariz
+      - Para indicar que a sílaba é mais forte
+      - Para indicar pergunta
+      - Ele é só enfeite
+    answer: Para indicar que o som sai pelo nariz
+    explanation: >-
+      O til marca um som nasal: tente dizer "pão" tapando o nariz e repare a diferença.
+      Compare "lá" e "lã".
+    learnMore:
+      - title: Priberam, til
+        url: https://dicionario.priberam.org/til
+
+  - id: onomatopoeia
+    level: medium
+    prompt: Palavras que imitam sons, como "tique-taque", "au-au" e "atchim", se chamam…
+    choices:
+      - Metáforas
+      - Onomatopeias
+      - Palíndromos
+      - Rimas
+    answer: Onomatopeias
+    explanation: >-
+      A palavra vem do grego e quer dizer "criação de palavras". Cada língua imita os sons
+      do seu jeito: o "au-au" do cachorro brasileiro é "woof" em inglês.
+    learnMore:
+      - title: Priberam, onomatopeia
+        url: https://dicionario.priberam.org/onomatopeia
+
+  - id: tongue-twister
+    level: easy
+    prompt: '"O rato roeu a roupa do rei de Roma" é um exemplo de quê?'
+    choices:
+      - Trava-língua
+      - Poema épico
+      - Ditado popular
+      - Palíndromo
+    answer: Trava-língua
+    explanation: >-
+      O trava-língua junta sons parecidos para a língua tropeçar quando se fala rápido. Outro
+      clássico: "três pratos de trigo para três tigres tristes".
+    learnMore:
+      - title: Priberam, trava-língua
+        url: https://dicionario.priberam.org/trava-l%C3%ADngua
+
+  - id: saude-syllables
+    level: medium
+    prompt: Quantas sílabas tem a palavra "saúde"?
+    choices:
+      - Duas
+      - Três
+      - Quatro
+    answer: Três
+    explanation: >-
+      Sa-ú-de. O acento no U mostra que ele forma uma sílaba sozinho, separado do A. Sem o
+      acento, a palavra seria lida "sau-de", como em "saudade".
+    learnMore:
+      - title: Priberam, saúde (com a divisão silábica)
+        url: https://dicionario.priberam.org/sa%C3%BAde
+
+  - id: proparoxytone-accent
+    type: true-false
+    level: hard
+    prompt: Toda palavra proparoxítona, com a sílaba forte na antepenúltima, leva acento.
+    answer: true
+    explanation: >-
+      É uma das regras mais simples da ortografia: lâmpada, máquina, pássaro, sábado. Se a
+      sílaba forte é a antepenúltima, sempre tem acento.
+    learnMore:
+      - title: Priberam, proparoxítono
+        url: https://dicionario.priberam.org/proparox%C3%ADtono
+      - title: CPLP, o texto do Acordo Ortográfico
+        url: https://www.cplp.org/Files/Filer/cplp/Acordos/maisAcordos/AcordoOrtogrLinguaPortug.pdf
+
+  - id: wolf-pack
+    level: medium
+    prompt: Como se chama um grupo de lobos?
+    choices:
+      - Cardume
+      - Alcateia
+      - Enxame
+      - Manada
+    answer: Alcateia
+    explanation: >-
+      Cardume é de peixes, enxame é de abelhas e manada é de bois ou elefantes. "Alcateia"
+      veio do árabe, onde queria dizer rebanho.
+    learnMore:
+      - title: Priberam, alcateia
+        url: https://dicionario.priberam.org/alcateia
