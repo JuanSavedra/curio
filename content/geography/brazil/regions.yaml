@@ -1,0 +1,236 @@
+title: Cantos do Brasil
+subtopic: Brasil
+questions:
+  - id: brazil-regions
+    type: fill-blank
+    level: easy
+    prompt: O IBGE divide o Brasil em ___ grandes regiões.
+    choices:
+      - três
+      - quatro
+      - cinco
+      - sete
+    answer: cinco
+    explanation: >-
+      São Norte, Nordeste, Centro-Oeste, Sudeste e Sul. Os estados de cada região têm
+      paisagens, clima e história parecidos.
+    learnMore:
+      - title: IBGE Educa, divisão político-administrativa e regional
+        url: https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/18310-divisao-politico-administrativa-e-regional.html
+
+  - id: biggest-state
+    level: easy
+    prompt: Qual é o maior estado do Brasil em área?
+    choices:
+      - Pará
+      - Mato Grosso
+      - Amazonas
+      - Minas Gerais
+    answer: Amazonas
+    explanation: >-
+      O Amazonas tem mais de 1,5 milhão de km². Ele é maior que as regiões Sul e Sudeste
+      somadas, e boa parte dele é coberta pela floresta.
+    learnMore:
+      - title: IBGE, atualização das áreas de estados e municípios
+        url: https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/27737-ibge-atualiza-dados-geograficos-de-estados-e-municipios-brasileiros.html
+
+  - id: smallest-state
+    level: medium
+    prompt: Qual é o menor estado do Brasil em área?
+    choices:
+      - Alagoas
+      - Sergipe
+      - Rio de Janeiro
+      - Espírito Santo
+    answer: Sergipe
+    explanation: >-
+      Sergipe tem uns 22 mil km², cerca de 70 vezes menos que o Amazonas. Fica no Nordeste,
+      entre a Bahia e Alagoas, e sua capital é Aracaju.
+    learnMore:
+      - title: IBGE, atualização das áreas de estados e municípios
+        url: https://agenciadenoticias.ibge.gov.br/agencia-sala-de-imprensa/27737-ibge-atualiza-dados-geograficos-de-estados-e-municipios-brasileiros.html
+
+  - id: most-populous-state
+    level: easy
+    prompt: Qual é o estado com mais moradores no Brasil?
+    choices:
+      - Rio de Janeiro
+      - Minas Gerais
+      - Bahia
+      - São Paulo
+    answer: São Paulo
+    explanation: >-
+      Pelo Censo de 2022, São Paulo tem mais de 44 milhões de moradores, cerca de 1 em cada
+      5 brasileiros. Minas Gerais vem em segundo, e Roraima é o estado com menos gente.
+    learnMore:
+      - title: Wikipédia, estados do Brasil por população (Censo 2022)
+        url: https://pt.wikipedia.org/wiki/Lista_de_unidades_federativas_do_Brasil_por_popula%C3%A7%C3%A3o
+
+  - id: newest-state
+    level: hard
+    prompt: Qual é o estado mais novo do Brasil, criado pela Constituição de 1988?
+    choices:
+      - Tocantins
+      - Acre
+      - Mato Grosso do Sul
+      - Rondônia
+    answer: Tocantins
+    explanation: >-
+      O Tocantins foi separado do norte de Goiás pela Constituição de 1988. Sua capital,
+      Palmas, foi planejada e construída depois disso.
+    learnMore:
+      - title: Planalto, Constituição de 1988 (Ato das Disposições Constitucionais Transitórias, art. 13)
+        url: https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm
+
+  - id: pico-da-neblina
+    level: medium
+    prompt: Qual é o ponto mais alto do Brasil?
+    choices:
+      - Pico da Bandeira
+      - Pico da Neblina
+      - Monte Roraima
+      - Pão de Açúcar
+    answer: Pico da Neblina
+    explanation: >-
+      Ele tem 2.995 metros e fica no Amazonas, na fronteira com a Venezuela. O nome vem das
+      nuvens que cobrem o topo quase o ano inteiro.
+    learnMore:
+      - title: Wikipédia, Pico da Neblina
+        url: https://pt.wikipedia.org/wiki/Pico_da_Neblina
+
+  - id: brazil-biomes
+    level: medium
+    prompt: Quantos biomas existem em terra no Brasil, segundo o IBGE?
+    choices:
+      - Três
+      - Quatro
+      - Seis
+      - Dez
+    answer: Seis
+    explanation: >-
+      São Amazônia, Cerrado, Caatinga, Mata Atlântica, Pampa e Pantanal. Cada bioma é uma
+      grande região com clima, plantas e animais próprios.
+    learnMore:
+      - title: IBGE Educa, biomas
+        url: https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/18307-biomas
+
+  - id: largest-biome
+    level: easy
+    prompt: Qual bioma ocupa a maior parte do território brasileiro?
+    choices:
+      - Amazônia
+      - Cerrado
+      - Mata Atlântica
+      - Caatinga
+    answer: Amazônia
+    explanation: >-
+      A Amazônia cobre quase metade do Brasil. O Cerrado, que vem em segundo, ocupa perto de
+      um quarto do país.
+    learnMore:
+      - title: IBGE Educa, biomas
+        url: https://educa.ibge.gov.br/jovens/conheca-o-brasil/territorio/18307-biomas
+
+  - id: caatinga
+    type: true-false
+    level: medium
+    prompt: A Caatinga é um bioma que só existe no Brasil.
+    answer: true
+    explanation: >-
+      A Caatinga, do semiárido do Nordeste e do norte de Minas Gerais, não aparece em nenhum
+      outro país. Suas plantas perdem as folhas na seca e ficam verdes de novo com a chuva.
+    learnMore:
+      - title: Embrapa, a Caatinga, único bioma exclusivamente brasileiro
+        url: https://www.alice.cnptia.embrapa.br/alice/handle/doc/907188
+
+  - id: pantanal
+    level: medium
+    prompt: Qual bioma brasileiro é uma das maiores áreas alagadas de água doce do mundo?
+    choices:
+      - Pampa
+      - Pantanal
+      - Cerrado
+      - Caatinga
+    answer: Pantanal
+    explanation: >-
+      Na época das chuvas, os rios transbordam e cobrem grande parte da planície. Mesmo
+      assim, o Pantanal é o menor bioma do Brasil em área.
+    learnMore:
+      - title: UNESCO, Área de Conservação do Pantanal
+        url: https://whc.unesco.org/en/list/999
+
+  - id: brazil-size-rank
+    level: medium
+    prompt: Qual a posição do Brasil entre os maiores países do mundo em área?
+    choices:
+      - 2º
+      - 5º
+      - 10º
+      - 15º
+    answer: 5º
+    explanation: >-
+      Só Rússia, Canadá, China e Estados Unidos são maiores. O Brasil ocupa quase metade da
+      América do Sul.
+    learnMore:
+      - title: CIA World Factbook, Brasil
+        url: https://www.cia.gov/the-world-factbook/countries/brazil/
+
+  - id: iguacu-falls
+    level: easy
+    prompt: As Cataratas do Iguaçu ficam na fronteira do Brasil com qual país?
+    choices:
+      - Paraguai
+      - Uruguai
+      - Argentina
+      - Bolívia
+    answer: Argentina
+    explanation: >-
+      As quedas se espalham por uns 2,7 km, divididas entre um parque nacional brasileiro e
+      um argentino. Os dois parques são Patrimônio Mundial.
+    learnMore:
+      - title: UNESCO, Parque Nacional do Iguaçu
+        url: https://whc.unesco.org/en/list/355
+
+  - id: brazil-time-zones
+    level: hard
+    prompt: Quantos fusos horários tem o Brasil?
+    choices:
+      - Um
+      - Dois
+      - Três
+      - Quatro
+    answer: Quatro
+    explanation: >-
+      Fernando de Noronha fica uma hora à frente de Brasília. Estados como Mato Grosso e
+      Amazonas ficam uma hora atrás, e o Acre, duas. O país é tão largo, de leste a oeste,
+      que um horário só não daria conta.
+    learnMore:
+      - title: Planalto, Lei 12.876, de 2013, sobre os fusos horários
+        url: https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12876.htm
+
+  - id: lencois-maranhenses
+    type: true-false
+    level: medium
+    prompt: As lagoas entre as dunas dos Lençóis Maranhenses se formam com a água da chuva.
+    answer: true
+    explanation: >-
+      Na época das chuvas, a água se junta entre as dunas de areia branca e forma lagoas
+      azuis e verdes, que vão secando depois. Em 2024, o parque virou Patrimônio Mundial.
+    learnMore:
+      - title: UNESCO, Parque Nacional dos Lençóis Maranhenses
+        url: https://whc.unesco.org/en/list/1611
+
+  - id: fernando-de-noronha
+    level: hard
+    prompt: Do que se formaram as ilhas de Fernando de Noronha, a uns 340 km da costa?
+    choices:
+      - De picos de vulcões submersos
+      - De recifes de coral
+      - De areia trazida pelo mar
+      - De pedaços que se soltaram do continente
+    answer: De picos de vulcões submersos
+    explanation: >-
+      As ilhas são o topo de uma cadeia de montanhas vulcânicas que fica no fundo do mar. As
+      águas em volta são um refúgio importante para golfinhos, tartarugas e peixes.
+    learnMore:
+      - title: UNESCO, Fernando de Noronha e Atol das Rocas
+        url: https://whc.unesco.org/en/list/1000

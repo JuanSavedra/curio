@@ -1,0 +1,242 @@
+title: Como a Terra se move e se forma
+subtopic: Planeta Terra
+questions:
+  - id: equator-line
+    type: fill-blank
+    level: easy
+    prompt: A linha imaginária que divide a Terra em hemisfério Norte e hemisfério Sul se chama ___.
+    choices:
+      - Equador
+      - Greenwich
+      - Trópico de Capricórnio
+      - Meridiano
+    answer: Equador
+    explanation: >-
+      O Equador fica bem no meio, entre os dois polos, e é onde a Terra é mais larga. Ele
+      passa pelo Brasil: cruza o Amapá, o Pará, o Amazonas e Roraima.
+    learnMore:
+      - title: National Geographic Education, Equador
+        url: https://education.nationalgeographic.org/resource/equator/
+
+  - id: magma-lava
+    type: fill-blank
+    level: easy
+    prompt: A rocha derretida que sai de um vulcão e escorre pela superfície se chama ___.
+    choices:
+      - lava
+      - magma
+      - areia
+      - pedra-pomes
+    answer: lava
+    explanation: >-
+      Enquanto está debaixo da terra, a rocha derretida se chama magma. Quando chega à
+      superfície, passa a se chamar lava.
+    learnMore:
+      - title: USGS, a diferença entre magma e lava
+        url: https://www.usgs.gov/faqs/what-difference-between-magma-and-lava
+
+  - id: plates-move
+    type: true-false
+    level: easy
+    prompt: Os continentes estão se movendo neste exato momento.
+    answer: true
+    explanation: >-
+      A crosta da Terra é dividida em placas que deslizam devagar, poucos centímetros por
+      ano. O Atlântico, por exemplo, alarga uns 2,5 cm por ano, e a América do Sul se afasta
+      da África.
+    learnMore:
+      - title: USGS, entendendo o movimento das placas
+        url: https://pubs.usgs.gov/gip/dynamic/understanding.html
+
+  - id: pangaea
+    level: medium
+    prompt: Como se chama o supercontinente que juntava todas as terras há uns 200 milhões de anos?
+    choices:
+      - Atlântida
+      - Pangeia
+      - Gondwana
+      - Oceania
+    answer: Pangeia
+    explanation: >-
+      "Pangeia" quer dizer "todas as terras" em grego. Olhe um mapa: o litoral do Brasil e o
+      da África se encaixam como peças de quebra-cabeça, uma das pistas de que já estiveram
+      juntos.
+    learnMore:
+      - title: USGS, a deriva dos continentes
+        url: https://pubs.usgs.gov/gip/dynamic/historical.html
+
+  - id: ring-of-fire
+    level: medium
+    prompt: Como se chama a faixa em volta do oceano Pacífico onde acontece a maior parte dos terremotos e vulcões?
+    choices:
+      - Círculo de Fogo
+      - Linha do Equador
+      - Cinturão de Gelo
+      - Triângulo das Bermudas
+    answer: Círculo de Fogo
+    explanation: >-
+      Ali várias placas da crosta se encontram e se empurram. Países como Japão, Chile e
+      Indonésia ficam nessa faixa, por isso têm tantos tremores.
+    learnMore:
+      - title: National Geographic Education, Círculo de Fogo
+        url: https://education.nationalgeographic.org/resource/ring-fire/
+      - title: USGS, o Círculo de Fogo
+        url: https://pubs.usgs.gov/gip/dynamic/fire.html
+
+  - id: greenwich
+    level: medium
+    prompt: Por qual cidade passa o meridiano de Greenwich, a linha de onde se contam as longitudes e os fusos horários?
+    choices:
+      - Paris
+      - Londres
+      - Nova York
+      - Lisboa
+    answer: Londres
+    explanation: >-
+      Em 1884, uma conferência internacional escolheu a linha que passa pelo Observatório
+      Real de Greenwich, em Londres. Muitos mapas de navegação já usavam esse ponto de
+      partida.
+    learnMore:
+      - title: NOAA, o que é longitude
+        url: https://oceanservice.noaa.gov/facts/longitude.html
+
+  - id: latitude
+    level: medium
+    prompt: O que a latitude de um lugar mede?
+    choices:
+      - A altura em relação ao mar
+      - A distância até a linha do Equador, para o norte ou para o sul
+      - A distância até Greenwich
+      - A temperatura média
+    answer: A distância até a linha do Equador, para o norte ou para o sul
+    explanation: >-
+      A latitude vai de 0 grau, no Equador, até 90 graus, nos polos. Junto com a longitude,
+      ela dá o "endereço" exato de qualquer ponto da Terra, como faz o GPS.
+    learnMore:
+      - title: NOAA, o que é latitude
+        url: https://oceanservice.noaa.gov/facts/latitude.html
+
+  - id: delta
+    level: medium
+    prompt: A foz de um rio que se abre em vários braços, num formato de triângulo, como a do Nilo, se chama…
+    choices:
+      - Estuário
+      - Delta
+      - Cânion
+      - Fiorde
+    answer: Delta
+    explanation: >-
+      O nome vem da letra grega delta, Δ, que tem forma de triângulo. O rio vai largando
+      areia e lama ao chegar no mar, e esse material forma novas terras.
+    learnMore:
+      - title: National Geographic Education, delta
+        url: https://education.nationalgeographic.org/resource/delta/
+
+  - id: stalactite
+    level: medium
+    prompt: Numa caverna, as formações de pedra que pendem do teto se chamam…
+    choices:
+      - Estalactites
+      - Estalagmites
+      - Geodos
+      - Fósseis
+    answer: Estalactites
+    explanation: >-
+      Gotas de água com minerais pingam do teto e, ao longo de muitos anos, deixam o mineral
+      para trás. As que crescem do chão para cima são as estalagmites. Uma dica: estalaCtite
+      tem C de "cima".
+    learnMore:
+      - title: Serviço de Parques dos EUA, formações de cavernas
+        url: https://www.nps.gov/subjects/caves/speleothems.htm
+
+  - id: cyclone-names
+    type: true-false
+    level: medium
+    prompt: Furacão, tufão e ciclone tropical são o mesmo fenômeno com nomes diferentes.
+    answer: true
+    explanation: >-
+      O nome muda conforme o lugar: no Atlântico Norte é furacão, no noroeste do Pacífico é
+      tufão, e no Índico e no Pacífico Sul é ciclone. A tempestade é a mesma.
+    learnMore:
+      - title: NOAA, a diferença entre furacão e tufão
+        url: https://oceanservice.noaa.gov/facts/cyclone.html
+
+  - id: earth-core
+    level: medium
+    prompt: De que é feito, principalmente, o núcleo, a parte mais central da Terra?
+    choices:
+      - Ferro e níquel
+      - Água quente
+      - Pedra e areia
+      - Ar comprimido
+    answer: Ferro e níquel
+    explanation: >-
+      Bilhões de anos atrás, quando a Terra era quente e mole, os metais pesados afundaram
+      para o centro. O núcleo de fora é líquido, e esse metal em movimento cria o campo
+      magnético que faz a bússola funcionar.
+    learnMore:
+      - title: National Geographic Education, núcleo da Terra
+        url: https://education.nationalgeographic.org/resource/core/
+
+  - id: troposphere
+    level: hard
+    prompt: Em qual camada da atmosfera acontecem quase todas as chuvas, nuvens e ventos?
+    choices:
+      - Troposfera
+      - Estratosfera
+      - Mesosfera
+      - Termosfera
+    answer: Troposfera
+    explanation: >-
+      A troposfera é a camada mais baixa, a que fica colada na superfície. Ela vai até uns
+      18 km de altura perto do Equador e menos perto dos polos. Acima dela fica a
+      estratosfera, onde está a camada de ozônio.
+    learnMore:
+      - title: NOAA, as camadas da atmosfera
+        url: https://www.noaa.gov/jetstream/atmosphere/layers-of-atmosphere
+
+  - id: fresh-water-ice
+    level: hard
+    prompt: Onde está guardada a maior parte da água doce da Terra?
+    choices:
+      - Nos rios
+      - Nos lagos
+      - No gelo das geleiras e dos polos
+      - Nas nuvens
+    answer: No gelo das geleiras e dos polos
+    explanation: >-
+      Mais de dois terços da água doce estão congelados, e uns 30% ficam debaixo da terra.
+      Rios e lagos, de onde tiramos quase toda a água que usamos, são uma fração bem pequena.
+    learnMore:
+      - title: USGS, onde está a água da Terra
+        url: https://www.usgs.gov/special-topics/water-science-school/science/where-earths-water
+
+  - id: himalaya
+    level: hard
+    prompt: Como se formou o Himalaia, a cordilheira mais alta do mundo?
+    choices:
+      - Por erupções de vulcões
+      - Pela batida entre a Índia e o resto da Ásia
+      - Pelo gelo que se acumulou
+      - Pela queda de um meteoro
+    answer: Pela batida entre a Índia e o resto da Ásia
+    explanation: >-
+      Há uns 50 milhões de anos, a placa da Índia, que vinha andando para o norte, bateu na
+      da Ásia. O choque enrugou a crosta como um tapete empurrado, e assim nasceram os picos
+      mais altos do planeta.
+    learnMore:
+      - title: USGS, o Himalaia
+        url: https://pubs.usgs.gov/gip/dynamic/himalaya.html
+
+  - id: amazon-oxygen
+    type: true-false
+    level: hard
+    prompt: A Amazônia é o "pulmão do mundo" e produz 20% do oxigênio que respiramos.
+    answer: false
+    explanation: >-
+      A floresta produz muito oxigênio, mas as próprias plantas, os animais e os micróbios
+      dela consomem quase tudo. A contribuição líquida fica perto de zero. Ela continua
+      vital pelo clima, pelas chuvas e pela vida que abriga.
+    learnMore:
+      - title: National Geographic, por que a Amazônia não produz 20% do oxigênio
+        url: https://www.nationalgeographic.com/environment/article/why-amazon-doesnt-produce-20-percent-worlds-oxygen

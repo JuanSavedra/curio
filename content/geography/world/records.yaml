@@ -165,3 +165,164 @@ questions:
     learnMore:
       - title: Itamaraty, geografia do Brasil
         url: https://www.gov.br/mre/pt-br/embaixada-bogota/o-brasil/geografia
+
+  - id: vatican
+    level: easy
+    prompt: Qual é o menor país do mundo?
+    choices:
+      - Mônaco
+      - Vaticano
+      - San Marino
+      - Malta
+    answer: Vaticano
+    explanation: >-
+      O Vaticano tem menos de meio quilômetro quadrado e fica dentro de Roma, na Itália.
+      Ele é a sede da Igreja Católica e o lugar onde mora o papa.
+    learnMore:
+      - title: UNESCO, Cidade do Vaticano
+        url: https://whc.unesco.org/en/list/286
+      - title: CIA World Factbook, Vaticano
+        url: https://www.cia.gov/the-world-factbook/countries/holy-see-vatican-city/
+
+  - id: greenland
+    level: easy
+    prompt: Qual é a maior ilha do mundo?
+    choices:
+      - Madagascar
+      - Groenlândia
+      - Bornéu
+      - Islândia
+    answer: Groenlândia
+    explanation: >-
+      A Groenlândia fica perto do polo Norte e quase toda ela é coberta por uma camada de
+      gelo. A Austrália é maior, mas costuma ser contada como continente, não como ilha.
+    learnMore:
+      - title: CIA World Factbook, Groenlândia
+        url: https://www.cia.gov/the-world-factbook/countries/greenland/
+
+  - id: coldest-place
+    type: true-false
+    level: easy
+    prompt: A temperatura mais fria já medida na Terra foi no polo Norte.
+    answer: false
+    explanation: >-
+      Foi na Antártida, perto do polo Sul: −89,2 °C, na estação russa Vostok, em 1983. A
+      Antártida é mais fria que o Ártico porque é um continente alto e coberto de gelo,
+      enquanto o polo Norte fica sobre o mar.
+    learnMore:
+      - title: Organização Meteorológica Mundial, a temperatura mais baixa do mundo
+        url: https://wmo.asu.edu/content/world-lowest-temperature
+
+  - id: mariana-trench
+    level: medium
+    prompt: Onde fica o ponto mais fundo dos oceanos?
+    choices:
+      - Na Fossa das Marianas, no Pacífico
+      - No meio do Atlântico
+      - Perto do polo Norte
+      - No mar Mediterrâneo
+    answer: Na Fossa das Marianas, no Pacífico
+    explanation: >-
+      O ponto mais fundo, o Abismo Challenger, tem uns 10.935 metros. Se o Everest fosse
+      colocado lá dentro, o topo ainda ficaria mais de 2 km debaixo d'água.
+    learnMore:
+      - title: NOAA, qual a profundidade do oceano
+        url: https://oceanservice.noaa.gov/facts/oceandepth.html
+
+  - id: caspian-sea
+    level: medium
+    prompt: Qual é o maior lago do mundo, tão grande que é chamado de mar?
+    choices:
+      - Mar Morto
+      - Mar Cáspio
+      - Lago Vitória
+      - Mar Vermelho
+    answer: Mar Cáspio
+    explanation: >-
+      O Cáspio, entre a Europa e a Ásia, cobre uns 371 mil km², mais que o estado de Goiás.
+      Ele não tem saída para o oceano e perde água só pela evaporação, por isso é salgado.
+    learnMore:
+      - title: NASA Earth Observatory, mar Cáspio
+        url: https://earthobservatory.nasa.gov/images/44253/caspian-sea
+
+  - id: dead-sea
+    level: medium
+    prompt: Qual é o ponto mais baixo em terra firme do planeta?
+    choices:
+      - O mar Morto
+      - O vale da Morte
+      - A Holanda
+      - O deserto do Saara
+    answer: O mar Morto
+    explanation: >-
+      A margem do mar Morto fica mais de 400 metros abaixo do nível do mar. A água é tão
+      salgada que quem entra boia sem esforço, e quase nenhum ser vivo aguenta viver nela.
+    learnMore:
+      - title: NASA JPL, o mar Morto
+        url: https://www.jpl.nasa.gov/images/pia01916-the-dead-sea
+
+  - id: atacama
+    type: fill-blank
+    level: medium
+    prompt: O deserto mais seco do mundo, fora as regiões polares, é o deserto do ___, no Chile.
+    choices:
+      - Atacama
+      - Saara
+      - Gobi
+      - Kalahari
+    answer: Atacama
+    explanation: >-
+      Em algumas partes do Atacama quase nunca chove. A cordilheira dos Andes de um lado e
+      uma corrente fria do oceano do outro barram a umidade.
+    learnMore:
+      - title: Wikipédia, deserto do Atacama
+        url: https://pt.wikipedia.org/wiki/Deserto_do_Atacama
+
+  - id: angel-falls
+    level: hard
+    prompt: Em que país fica o Salto Ángel, a cachoeira mais alta do mundo?
+    choices:
+      - Brasil
+      - Venezuela
+      - Canadá
+      - Noruega
+    answer: Venezuela
+    explanation: >-
+      A água cai de quase 1.000 metros do alto de um tepui, uma montanha de topo achatado,
+      no Parque Nacional Canaima. É mais de dez vezes a altura das Cataratas do Iguaçu.
+    learnMore:
+      - title: UNESCO, Parque Nacional Canaima
+        url: https://whc.unesco.org/en/list/701
+
+  - id: baikal
+    level: hard
+    prompt: O lago Baikal, na Rússia, guarda sozinho cerca de quanto da água doce líquida da superfície da Terra?
+    choices:
+      - 1%
+      - 5%
+      - 20%
+      - 50%
+    answer: 20%
+    explanation: >-
+      O Baikal é o lago mais fundo (mais de 1.600 metros) e mais antigo do mundo, com uns 25
+      milhões de anos. Por isso ele junta tanta água: um quinto de toda a água doce que não
+      está congelada.
+    learnMore:
+      - title: UNESCO, lago Baikal
+        url: https://whc.unesco.org/en/list/754
+
+  - id: indonesia-islands
+    level: hard
+    prompt: A Indonésia é um país formado por quantas ilhas, mais ou menos?
+    choices:
+      - Umas 50
+      - Umas 500
+      - Mais de 17 mil
+      - Mais de 1 milhão
+    answer: Mais de 17 mil
+    explanation: >-
+      São mais de 17 mil ilhas espalhadas entre a Ásia e a Oceania. Muitas são pequenas e
+      não têm moradores.
+    learnMore:
+      - title: CIA World Factbook, Indonésia
+        url: https://www.cia.gov/the-world-factbook/countries/indonesia/
